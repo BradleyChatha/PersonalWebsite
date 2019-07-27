@@ -1,5 +1,112 @@
 ﻿@{
     ViewData["Title"] = "FarmMaster";
     ViewData["NavLinkActive"] = "";
+    ViewData["Header"] = "FarmMaster © Aim Educational Ltd";
+    Layout = "_ProjectLayout";
 }
 
+@section MainBody
+{
+    <div class="ui center aligned dividing header">Overview</div>
+    <p>
+        FarmMaster is a website being developed under Aim Educational Ltd, which is designed to make it
+        easier to keep track and manage a farm, specifically the livestock.
+    </p>
+    <p>
+        FarmMaster features a robust user role system, where you can create custom roles with fine-grained permissions.
+        There is a hierarchy of roles to prevent abuse from those who have permission to edit roles. For example, you can't edit
+        a role higher in the hierarchy than you or on the same level; you can't modify your own role; you can't give or take permissions
+        unless you also have that permission (so there's no exploit to gain permissions you shouldn't have).
+    </p>
+    <p>
+        Contacts can be stored with extra annoyances to aid with GDPR. Anytime you view or modify any data related to a contact,
+        you must specify a reason for any of these actions. Every hour or so an email is sent to every email addresss associated to a contact which
+        details Who, When, What, and Why the actions were taken. These emails can be opt-out of.
+    </p>
+    <p>
+        The species and breeds of livestock are customisable. You can create new ones, or modify pre-existing ones. There is a flexible
+        system in place that allows a user to specify certain traits about a species or breed (breeds can override traits from their species if needed).
+        For example, take the 'Chicken' species, you can specify an 'Egg Formation' trait which is a TimeSpan of 24 hours as well as a trait called
+        'Egg Incubation' which is also a TimeSpan of 21 days. The point is that you can build up a profile of important points about species and breeds, to
+        make it easier to remember how to manage these creatures. In the far future there is a possibility of being able to extract this information from FarmMaster, and use
+        them in physical products such as our own custom incubator.
+    </p>
+    <p>
+        There are far more features planned/brainstormed for this project, and this overview will be updated as neccessary as they become reality.
+    </p>
+
+    <div class="ui center aligned dividing header">Development</div>
+    <p>
+        I started this project around the very end of February 2019, and as it was my first dive into making a website, there are a lot of things
+        I have learned and done during it's development.
+    </p>
+
+    <p>
+        First of all, here is an overview of all that I have learned, keep in mind this was all learned via self-teaching:
+    </p>
+    <ul>
+        <li>First time using ASP Core. Constantly learning more about good designs.</li>
+        <ul>
+            <li>
+                I had no formal learning of ASP Core, and simply self-taught as I went along, 
+                constantly learning more about ASP, and learning how awful some of my early code designs were.
+            </li>
+        </ul>
+
+        <li>First time using EF Core, but had previous experience with EF 6.</li>
+        <li>First time for buying a domain and setting up the DNS for it.</li>
+
+        <li>First time for buying a virtual machine (Ubuntu 18.06 on DigitalOcean).</li>
+        <ul>
+            <li>First time setting up a linux environment.</li>
+            <li>First time setting up Nginx, as well as a server block for the website.</li>
+            <li>First time using certbot for free SSL certificates.</li>
+            <li>First time deploying an ASP Core application onto a live server.</li>
+            <li>First time using systemctl to create my own services.</li>
+            <li>First time setting up a postgres server, with previous experience of using SQL Server.</li>
+            <li>First time setting up multiple websites that run off the same machine (I had a test website alongside FarmMaster).</li>
+            <li>Using all of this knowledge, I created a deployment tool (<a>AimCLITool</a>) to make the deployment process painless and automated.</li>
+        </ul>
+    </ul>
+
+    <p>
+        This project is currently on it's third rewrite. This comes from my previous two code bases being littered with bad
+        designs, short cuts, and overall buggy code as I was still very new to ASP and web development in general, and saw
+        value in simply learning from my past mistakes and rewriting the project to be a lot easier to maintain, less buggy, etc.
+    </p>
+    <p>
+        Between the second version of the code base, and the current rewrite, I <a href="https://localhost:44311/Home/Awards">won an award</a> 
+        at the School Farms Awards 2019, which has led to several school farms asking if they could trial and possibly purchase this product
+        once it is ready.
+    </p>
+    <p>
+        This has led me during this (hopefully) final rewrite of the project, to include much more flexibility in the project's features (see the Overview section).
+        While it is a lot more work, and I'm going through things one-by-one, it also means I'm taking my time in making sure this product will leave
+        a good impression on any possible clients. I'm constantly trying new design choice (both frontend and backend), while also trying to ensure my
+        code is more streamlined and consistent than previous iterations.
+    </p>
+    <p>
+        I will admit that as the sole developer of this project I have skimped out on documentation quite heavily. When the project is closer
+        to being able to be sold as a product, which also includes the possibility of hiring additional developers, then I will ensure to properly
+        document both the code; overall structure of the code; deployment and updating of the website, as well as any other things I see fit of being
+        documented.
+    </p>
+    <p>
+        Two other random tidbits about this project are that I transitioned from using Bootstrap to using Fomantic/Semantic UI, because I prefer
+        how the markup looks for it, as well as it supporting a few more features I quite like. Ther other tidbit is that I'm using a custom
+        client-side validation solution as the default one ASP uses isn't... great. I'm hoping to soon extract this into a seperate library.
+    </p>
+}
+
+@section SideBody
+{
+    <div class="ui image">
+        <img src="~/img/farm_master_login.png" width="600" />
+    </div>
+    <hr />
+    <p>
+        <a class="ui label" href="https://github.com/Aim-Educational/FarmMaster" target="_blank">
+            <i class="github icon"></i> Git Repo
+        </a>
+    </p>
+}
