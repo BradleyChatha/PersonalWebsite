@@ -32,12 +32,40 @@
                 </section>
             </section>
         </section>
-        <partial name="_ProjectContentPartial" model="Model.Content" />
+        <section id="divProjects" class="ui basic segment">
+            <partial name="_ProjectContentPartial" model="Model.Content" />
+        </section>
     </section>
 </section>
 
 @section Scripts {
     <script>
         $(".ui.dropdown").dropdown();
+    </script>
+
+    <script>
+        function refreshProjects() {
+            let name = document.getElementById("inputName").value;
+            let tags = document.getElementById("inputTags").value;
+            let div = document.getElementById("divProjects");
+
+            window.history.pushState({}, null, "/Home/Projects?name="+name+"&tags="+tags);
+
+            div.classList.add("loading");
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxGetFilteredProjectsHtml",
+                contentType: "application/json",
+                dataType: "html",
+                data: JSON.stringify({ name: name, tags: tags })
+            })
+            .done(function (html) {
+                div.classList.remove("loading");
+                div.innerHTML = html;
+            });
+        }
+
+        document.getElementById("inputTags").addEventListener('change', refreshProjects);
+        document.getElementById("inputName").addEventListener('change', refreshProjects);
     </script>
  }

@@ -17,7 +17,7 @@ namespace PersonalWebsite.Models
     public class ProjectFilterViewModel
     {
         public string Name { get; set; }
-        public IEnumerable<string> Tags { get; set; }
+        public string Tags { get; set; }
     }
 
     public class ProjectContentViewModel
