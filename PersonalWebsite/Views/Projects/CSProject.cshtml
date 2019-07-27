@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "CSProject";
+    ViewData["NavLinkActive"] = "";
+}
+
+<section class="ui center aligned dark home segment">
+    <h1 class="ui header">A-Level Computer Science Coursework - Machine learning Tic-tac-toe AI</h1>
+</section>
+<section class="ui horizontal darkish home segments">
+    <section class="ui segment" style="width: 70%;">
+        <div class="ui center aligned dividing header">Overview</div>
+        <p>
+            For my A-Level Computer Science course, the coursework consisted of a practical project that has sufficient complexity.
+            So over a 4 month period (I started this really late into the course...) I began work on this project.
+        </p>
+        <p>
+            This project was worth 25% of my overall mark, and achieved 99% of the marks possible (69/70).
+        </p>
+        <p>
+            This project features an AI that uses a basic machine learning technique to learn from its past games
+            to determine the best moves to make (to it's knowledge).
+        </p>
+        <p>
+            This project was written in C# using WPF. The game is multi-threaded which also makes use of thread-safe queues, and thread-safe
+            manipulation of both the game state and the window, which are also very loosely coupled.
+        </p>
+        <p>
+            Points of interest may include the modular way the game is designed. 'Player' classes simply have to implement an interface,
+            and can then be set up against eachother, making it relatively easy to add in new kinds of players (multiplayer, different types of AI, etc.).
+            Another point may be the storage format used by the game to save it's learned data, as it makes use of bitwise operations to store
+            the data in a compact format. A later storage format reduced the total size of the data by around 50%.
+        </p>
+
+        <div class="ui center aligned dividing header">Further Reading</div>
+        <p>
+            Part of this coursework required me to create a report throughout the development span. This
+            report details various things of interest such as initial requirements; reasearch prior to development;
+            recognition and analysis of the problems presented by the coursework and how I purpose to solve them;
+            overview of the code including it's main design points, and quite a lot more.
+        </p>
+        <p>
+            Instead of repeating all of this information on this page, please take some time to read the 
+            <a href="https://drive.google.com/open?id=1EXsCfzOcLm78L4c4lD7cqE3zBWa38jr2">report here</a>
+            if you're interested in learning more.
+        </p>
+    </section>
+    <section class="ui center aligned segment">
+        <div class="ui image">
+            <img src="~/img/cs_project.png" width="600" />
+        </div>
+        <hr />
+        <p>
+            <a class="ui label" href="https://gitlab.com/SealabJaster/CS_Project" target="_blank">
+                <i class="github icon"></i> Git Repo
+            </a>
+        </p>
+    </section>
+</section>

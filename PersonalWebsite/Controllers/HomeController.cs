@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PersonalWebsite.Models;
 
 namespace PersonalWebsite.Controllers
 {
@@ -16,6 +17,20 @@ namespace PersonalWebsite.Controllers
         public IActionResult Awards()
         {
             return View();
+        }
+
+        public IActionResult Project([FromQuery] string view)
+        {
+            return View(view);
+        }
+
+        public IActionResult Projects()
+        {
+            return View(new ProjectViewModel
+            {
+                Content = new ProjectContentViewModel{ Projects = Data.Projects.Store },
+                AllTags = Data.Projects.Store.SelectMany(p => p.Tags).Distinct()
+            });
         }
     }
 }

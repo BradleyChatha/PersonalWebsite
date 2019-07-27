@@ -1,0 +1,43 @@
+﻿@model ProjectViewModel
+
+@{
+    ViewData["Title"] = "Projects";
+    ViewData["NavLinkActive"] = "linkProjects";
+}
+
+<section class="ui dark home segment">
+    <section class="ui basic segment" style="margin-left: 300px; min-height: 400px;">
+        <section class="ui left attached rail" style="background-color: var(--colour-scheme-dark);">
+            <section class="ui basic segment">
+                <section class="ui form">
+                    <h3 class="ui dividing header">Filter</h3>
+                    <section class="field">
+                        <label>Name</label>
+                        <input id="inputName" type="text" placeholder="Name" />
+                    </section>
+                    <section class="field">
+                        <label>Tags</label>
+                        <div class="ui multiple search selection dropdown">
+                            <input id="inputTags" type="hidden" />
+                            <div class="default text">Tag Filter</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                @foreach(var tag in Model.AllTags.OrderBy(t => t))
+                                {
+                                    <div class="item" data-value="@tag">@tag</div>
+                                }
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <partial name="_ProjectContentPartial" model="Model.Content" />
+    </section>
+</section>
+
+@section Scripts {
+    <script>
+        $(".ui.dropdown").dropdown();
+    </script>
+ }
