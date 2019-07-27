@@ -12,5 +12,10 @@ namespace PersonalWebsite.Controllers
         {
             return View();
         }
+
+        public IActionResult Awards()
+        {
+            return View();
+        }
     }
 }

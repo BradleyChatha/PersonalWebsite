@@ -15,10 +15,16 @@
                 Bradley Chatha - Software Developer
             </a>
             <section class="right menu">
-                <a class="inverted active item">
+                <a id="linkHome" class="item" asp-action="Index" asp-controller="Home">
                     Home
                 </a>
+                <a id="linkAwards" class="item" asp-action="Awards" asp-controller="Home">
+                    Awards
+                </a>
             </section>
+            <script>
+                document.getElementById("@ViewData["NavLinkActive"]").classList.add("active");
+            </script>
         </section>
     </header>
     <main>

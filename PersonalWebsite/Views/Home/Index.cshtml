@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    ViewData["NavLinkActive"] = "linkHome";
 
     var Languages = new List<(string Name, string[] Experiences)>
     {
@@ -44,7 +45,7 @@
             "[Refer to 'JS & Typescript']",
             "Completely reliant on frameworks such as Bootstrap and Fomantic UI"
         }),
-        ("x86 ASM (NASM version)", new string[]
+        ("x86 ASM (NASM dialect)", new string[]
         {
             "I only know a handful of instructions",
             "I understand the basics needed for raw ASM coding (registers, stack, calling conventions, stack frames, memory addressing, etc.)",
@@ -54,16 +55,19 @@
         {
             "2 years experience with MS-SQL",
             "1 months experience with Postgres",
-            "Mostly rely on Entity Framework Core rather than make my own SQL statements"
+            "Mostly rely on Entity Framework Core rather than make my own SQL statements",
+            "Not much (if any) experience with most features that databases can offer"
         })
     };
 }
 
 <section class="ui lighter home center aligned attached segment">
     <h2 class="ui header">About me</h2>
-    <div>
-        Something Something Not a front end dev
-    </div>
+    <section class="container">
+        <p>
+            My name is Bradley, I'm a 20 year old software developer.
+        </p>
+    </section>
 </section>
 <section class="ui dark home center aligned attached segment">
     <h2 class="ui header">Skillset</h2>
@@ -232,11 +236,27 @@
                             pointed out in my code; I will try my best to always be caught up in whatever knowledge I need to have.
                         </p>
                         <p>
-                            Finally, Javascript and C++ are the anti-thesis to fun.
+                            Finally, Javascript and C++ are the anti-thesis of fun.
                         </p>
                     </div>
                 </div>
             </section>
         </section>
     </section>
+</section>
+<section class="ui lighter home center aligned attached segment">
+    <br />
+    <section class="ui centered cards">
+        <a asp-action="Awards">
+            <section class="ui card">
+                <div class="ui centered image">
+                    <img src="~/img/trophy.png" width="680" height="400" />
+                </div>
+                <div class="content">
+                    <div class="header">Awards</div>
+                </div>
+            </section>
+        </a>
+    </section>
+    <br />
 </section>
