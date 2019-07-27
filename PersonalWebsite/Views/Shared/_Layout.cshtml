@@ -5,10 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PersonalWebsite</title>
 
+    <partial name="_LayoutTrackingJsPartial" />
     <partial name="_LayoutStylesPartial" />
 </head>
 <body>
-    
+    <header>
+        <section class="ui secondary pointing menu">
+            <a class="header item" asp-action="Index" asp-controller="Home">
+                Bradley Chatha - Software Developer
+            </a>
+            <section class="right menu">
+                <a class="inverted active item">
+                    Home
+                </a>
+            </section>
+        </section>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <section class="ui segment">
+            <section class="ui one row grid">
+                <section class="five column row">
+                    <!--Extra columns are just for padding, and in case I want to add more into the footer into the future.-->
+                    <section class="column"></section>
+                    <section class="column"></section>
+                    <section class="column">
+                        <h4 class="ui sub header">Contact Me</h4>
+                        <address>
+                            <div>
+                                <i class="mail icon"></i>
+                                <a href="mailto:bradley.chatha@gmail.com">bradley.chatha@gmail.com</a>
+                            </div>
+                            <div>
+                                <i class="phone icon"></i>
+                                07506701660
+                            </div>
+                        </address>
+                    </section>
+                    <section class="column"></section>
+                    <section class="column"></section>
+                </section>
+            </section>
+        </section>
+    </footer>
+
     <partial name="_LayoutJsPartial" />
     @RenderSection("Scripts", required: false)
 </body>

@@ -1,4 +1,93 @@
-﻿/* Dynamic font sizes
+﻿/*
+    Colour scheme variables
+*/
+html {
+    --colour-scheme-darkest: hsl(189, 16%, 25%);
+    --colour-scheme-darkest-90: hsl(189, 14.4%, 22.5%);
+    --colour-scheme-dark: hsl(205, 16%, 45%);
+    --colour-scheme-dark-120: hsl(205, 19.2%, 54%);
+    --colour-scheme-dark-150: hsl(205, 24%, 67.5%);
+    --colour-scheme-light: hsl(177, 23%, 71%);
+    --colour-scheme-light-70: hsl(177, 16.1%, 49.7%);
+    --colour-scheme-lighter: hsl(176, 15%, 79%);
+    --colour-scheme-lightest: hsl(193, 17%, 90%);
+    --colour-scheme-lightest-90: hsl(193, 15.3%, 81%);
+}
+
+/*
+    Navbar styling (on top of Fomantic UI's styling)
+*/
+.ui.secondary.pointing.menu {
+    background-color: var(--colour-scheme-darkest);
+    border-bottom-color: var(--colour-scheme-light-70);
+    border-bottom-width: 3px;
+}
+
+.ui.secondary.pointing.menu .item {
+    color: var(--colour-scheme-lightest);
+}
+
+.ui.secondary.pointing.menu .active.item {
+    color: var(--colour-scheme-light);
+    border-bottom-width: 3px;
+}
+
+.ui.secondary.pointing.menu .header.item {
+    color: var(--colour-scheme-lightest-90) !important;
+    font-size: 18px;
+}
+
+/*
+    Footer styling
+*/
+footer section.ui.segment {
+    border-top-color: var(--colour-scheme-light-70);
+    border-top-width: 3px;
+    background-color: var(--colour-scheme-dark);
+}
+
+footer a {
+    color: darkblue;
+}
+
+/*
+    Home page styling
+*/
+section.ui.home.segment section.ui.segments {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+section.lighter.home.segment {
+    background-color: var(--colour-scheme-lighter);
+}
+
+section.dark.home.segment {
+    background-color: var(--colour-scheme-dark-120);
+}
+
+section.darkish.home.segments section.ui.segment {
+    background-color: var(--colour-scheme-dark-150);
+}
+
+.ui.home.card {
+    width: auto;
+    text-align: left;
+}
+
+.ui.home.card .content div.home.accented.description p {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/*
+    General styling
+*/
+body {
+    background-color: var(--colour-scheme-light);
+}
+
+/* Dynamic font sizes
 -------------------------------------------------- */
 html {
   font-size: 14px;
@@ -18,14 +107,5 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+  margin-bottom: 50px;
 }
