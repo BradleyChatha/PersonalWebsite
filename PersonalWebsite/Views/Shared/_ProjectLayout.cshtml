@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout";
+    
+    IgnoreBody();
+}
+
+<h1>_ProjectLayout</h1>
+
+<section class="ui center aligned dark home segment">
+    <h1 class="ui header">@ViewData["Header"]</h1>
+</section>
+<section class="ui horizontal darkish home segments">
+    <section class="ui segment" style="width: 70%;">
+        @RenderSection("MainBody", true)
+    </section>
+    <section class="ui center aligned segment">
+        @RenderSection("SideBody", true)
+    </section>
+</section>
