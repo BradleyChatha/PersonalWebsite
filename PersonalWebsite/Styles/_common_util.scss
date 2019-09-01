@@ -1,0 +1,11 @@
+﻿@import "_common_defs.scss";
+
+// .left.two.padded
+// .top.five.padded etc.
+@each $side in $sides {
+    @each $numberName in $numbers {
+        .#{$side}.#{$numberName}.padded {
+            padding-#{$side}: #{index($numbers, $numberName)}em;
+        }
+    }
+}

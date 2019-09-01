@@ -1,0 +1,49 @@
+﻿@import "_common_defs.scss";
+
+%grid_common {
+    display: flex;
+    flex-direction: column;
+}
+
+%row_common {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+%column_common {
+    display: flex;
+    flex-direction: column;
+}
+
+// Grids have to specify how many columns they have.
+@each $number in $numbers {
+    .#{$number}.column.grid {
+        @extend %grid_common;
+
+        // Columns are wrapped in rows.
+        & .row {
+            @extend %row_common;
+
+            // Columns can take up several columns amount of space.
+            @each $colNumber in $numbers {
+                $width: (100% / index($numbers, $number)) * index($numbers, $colNumber);
+
+                // We don't need any combos that result in things like "width:800%"
+                @if $width <= 100% {
+                    & .#{$colNumber}.wide.column {
+
+                        @extend %column_common;
+                        width: $width;
+                    }
+                }
+            }
+
+            // Or just the default one.
+            & .column {
+                @extend %column_common;
+                width: 100% / index($numbers, $number);
+            }
+        }
+    }
+}

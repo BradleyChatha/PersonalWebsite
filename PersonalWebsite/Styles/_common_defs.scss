@@ -1,0 +1,23 @@
+﻿// Needed so we can give numbers in generated CSS a proper word.
+$numbers: ( 
+    "one", 
+    "two", 
+    "three", 
+    "four", 
+    "five", 
+    "six", 
+    "seven", 
+    "eight", 
+    "nine", 
+    "ten", 
+    "eleven", 
+    "twelve" 
+);
+
+// Needed so we know what sides we can work with when generating CSS.
+$sides: (
+    "left",
+    "top",
+    "right",
+    "bottom"
+);

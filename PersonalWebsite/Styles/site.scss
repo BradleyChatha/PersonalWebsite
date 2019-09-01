@@ -1,0 +1,82 @@
+﻿@import "_common.scss";
+@import "_colour_scheme.scss";
+@import "_common_util.scss";
+
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    @extend .background.primary.shade.seven;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+
+    & h1 a {
+        @extend .primary.shade.two;
+        @extend .left.one.padded;
+        // Get rid of <a> styling.
+        all: initial;
+        font: inherit;
+        color: inherit;
+        padding: inherit;
+        //
+        display: flex;
+        flex-direction: column;
+        vertical-align: middle;
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+    & .right.items {
+        @extend .right.one.padded;
+        margin-left: auto;
+
+        & .item {
+            @extend .primary.shade.four;
+            // Get rid of default <a> styling, and keep some of the stuff we need.
+            all: initial;
+            font-family: inherit;
+            color: inherit;
+            //
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            // Padding
+            padding-bottom: 0.5em;
+            padding-left: 0.8em;
+            padding-right: 0.8em;
+            // Border stuff (transparent by default)
+            border-bottom-width: 3px;
+            border-bottom-style: solid;
+            border-bottom-color: transparent;
+            // To transition back to the original color, after it's changed by the :hover rules
+            transition: border-bottom-color 0.2s ease;
+
+            &.active {
+                @extend .primary.shade.three;
+                font-weight: bolder;
+                border-bottom-color: currentColor;
+            }
+
+            &:hover {
+                @extend .border.bottom.primary.shade.two;
+                @extend .primary.shade.two;
+                // Create a more specific selector, so we don't need to use !important.
+                &.active:hover {
+                    @extend .primary.shade.two;
+                }
+
+                transition: border-bottom-color 0.2s ease;
+            }
+        }
+    }
+}
+
+// To make sure the @extended rules take priority.
+@import "_colour_scheme.scss";

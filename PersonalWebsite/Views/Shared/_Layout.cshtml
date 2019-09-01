@@ -5,60 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bradley Chatha</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <partial name="_LayoutTrackingJsPartial" />
     <partial name="_LayoutStylesPartial" />
 </head>
 <body>
     <header>
-        <section class="ui secondary pointing menu">
-            <a class="header item" asp-action="Index" asp-controller="Home">
-                Bradley Chatha - Software Developer
-            </a>
-            <section class="right menu">
-                <a id="linkHome" class="item" asp-action="Index" asp-controller="Home">
-                    Home
+        <nav class="navbar">
+            <h1>
+                <a href="/">
+                    Bradley Chatha - Software Developer
                 </a>
-                <a id="linkAwards" class="item" asp-action="Awards" asp-controller="Home">
-                    Awards
-                </a>
-                <a id="linkProjects" class="item" asp-action="Projects" asp-controller="Home">
-                    Projects
-                </a>
+            </h1>
+            <section class="right items">
+                <a class="active item" href="/">Home</a>
+                <a class="item" href="/">Projects</a>
+                <a class="item" href="/">Awards</a>
             </section>
-            <script>
-                document.getElementById("@ViewData["NavLinkActive"]").classList.add("active");
-            </script>
-        </section>
+        </nav>
     </header>
-    <main>
-        @RenderBody()
-    </main>
-    <footer>
-        <section class="ui segment">
-            <section class="ui one row grid">
-                <section class="five column row">
-                    <!--Extra columns are just for padding, and in case I want to add more into the footer into the future.-->
-                    <section class="column"></section>
-                    <section class="column"></section>
-                    <section class="column">
-                        <h4 class="ui sub header">Contact Me</h4>
-                        <address>
-                            <div>
-                                <i class="mail icon"></i>
-                                <a href="mailto:bradley.chatha@gmail.com">bradley.chatha@gmail.com</a>
-                            </div>
-                            <div>
-                                <i class="phone icon"></i>
-                                07506701660
-                            </div>
-                        </address>
-                    </section>
-                    <section class="column"></section>
-                    <section class="column"></section>
-                </section>
-            </section>
-        </section>
-    </footer>
+
+    @{IgnoreBody();}
 
     <partial name="_LayoutJsPartial" />
     @RenderSection("Scripts", required: false)

@@ -1,0 +1,37 @@
+﻿@import "_common_defs.scss";
+
+// 10 SHADES PER THING. MIDDLE IS BASELINE.
+// 1 = LIGHTEST
+// 5 = BASELINE/MIDDLE
+// 10 = DARKEST
+$shadesPrimary: (
+    hsl(210, 13, 89), // 1
+    hsl(210, 23, 82), // 2
+    hsl(210, 36, 75), // 3
+    hsl(210, 50, 68), // 4
+    hsl(210, 68, 61), // 5
+    hsl(210, 68, 50), // 6
+    hsl(210, 68, 30), // 7
+    hsl(210, 68, 28), // 8
+    hsl(209, 68, 22), // 9
+    hsl(210, 69, 11)  // 10
+);
+
+@each $shade in $shadesPrimary {
+    $shadeIndex: index($shadesPrimary, $shade);
+    $shadeIndexName: nth($numbers, $shadeIndex);
+
+    .primary.shade.#{$shadeIndexName} {
+        color: $shade;
+    }
+
+    .background.primary.shade.#{$shadeIndexName} {
+        background-color: $shade;
+    }
+
+    @each $side in $sides {
+        .border.#{$side}.primary.shade.#{$shadeIndexName} {
+            border-#{$side}-color: $shade;
+        }
+    }
+}
