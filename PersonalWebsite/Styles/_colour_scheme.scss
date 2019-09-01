@@ -17,21 +17,39 @@ $shadesPrimary: (
     hsl(210, 69, 11)  // 10
 );
 
-@each $shade in $shadesPrimary {
-    $shadeIndex: index($shadesPrimary, $shade);
-    $shadeIndexName: nth($numbers, $shadeIndex);
+$shadesGray: (
+    hsl(0,   0, 87), // 1
+    hsl(0,   0, 70), // 2
+    hsl(120, 1, 66), // 3
+    hsl(120, 1, 62), // 4
+    hsl(120, 1, 54), // 5
+    hsl(120, 1, 44), // 6
+    hsl(120, 1, 39), // 7
+    hsl(0,   0, 29), // 8
+    hsl(0,   0, 18), // 9
+    hsl(0,   0, 10)  // 10
+);
 
-    .primary.shade.#{$shadeIndexName} {
-        color: $shade;
-    }
+@mixin genShades($shades, $name) {
+    @each $shade in $shades {
+        $shadeIndex: index($shades, $shade);
+        $shadeIndexName: nth($numbers, $shadeIndex);
 
-    .background.primary.shade.#{$shadeIndexName} {
-        background-color: $shade;
-    }
+        .#{$name}.shade.#{$shadeIndexName} {
+            color: $shade;
+        }
 
-    @each $side in $sides {
-        .border.#{$side}.primary.shade.#{$shadeIndexName} {
-            border-#{$side}-color: $shade;
+        .background.#{$name}.shade.#{$shadeIndexName} {
+            background-color: $shade;
+        }
+
+        @each $side in $sides {
+            .border.#{$side}.#{$name}.shade.#{$shadeIndexName} {
+                border-#{$side}-color: $shade;
+            }
         }
     }
 }
+
+@include genShades($shadesPrimary, "primary");
+@include genShades($shadesGray, "gray");
