@@ -1,0 +1,119 @@
+﻿@import "_common.scss";
+@import "_colour_scheme.scss";
+
+.languages.element {
+    @extend .background.primary.shade.two;
+    @extend .bottom.one.padded;
+    width: 100%;
+
+    & h1 {
+        @extend .primary.shade.ten;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    & .language {
+        @extend .background.primary.shade.three;
+        //
+        width: 290px;
+        //
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: flex-start;
+        //
+        box-shadow: 1px 1px 8px -3px;
+
+        & .header {
+            @extend .bottom.one.padded;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & img {
+                @extend .top.one.padded;
+                @extend .bottom.one.padded;
+                //
+                display: flex;
+                align-self: center;
+                //
+                width: 120px;
+                height: 120px;
+            }
+
+            & .years {
+                @extend .primary.shade.nine;
+                font-size: 18px;
+                font-weight: bolder;
+                text-transform: uppercase;
+            }
+
+            & .meta {
+                @extend .gray.shade.eight;
+            }
+        }
+
+        & .rating {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 1em;
+
+            & label {
+                display: flex;
+                padding-right: 2em;
+                padding-left: 1em;
+                text-transform: capitalize;
+            }
+
+            & .fa.fa-star:first-of-type {
+                margin-left: auto;
+            }
+
+            & .fa.fa-star:last-of-type {
+                padding-right: 1em;
+            }
+
+            & .fa.fa-star.checked {
+                color: darken(orange, 12%);
+            }
+        }
+
+        & .marking {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 1em;
+
+            &.check {
+                @extend .primary.shade.nine;
+            }
+
+            &.minus {
+                @extend .gray.shade.eight;
+            }
+
+            &.times {
+                color: darkred;
+            }
+
+            & .fa.fa-check {
+                padding-left: 0.7em;
+                padding-right: 0.2em;
+                color: darkgreen;
+            }
+
+            & .fa.fa-minus {
+                padding-left: 0.7em;
+                padding-right: 0.4em;
+                color: dimgray;
+            }
+
+            & .fa.fa-times {
+                padding-left: 0.7em;
+                padding-right: 0.4em;
+                color: darkred;
+            }
+        }
+    }
+}

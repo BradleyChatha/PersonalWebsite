@@ -25,8 +25,15 @@
             </section>
         </nav>
     </header>
-
-    @{IgnoreBody();}
+    <main>
+        <section class="one column grid">
+            <div class="center aligned row">
+                <div class="column">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+</main>
 
     <partial name="_LayoutJsPartial" />
     @RenderSection("Scripts", required: false)

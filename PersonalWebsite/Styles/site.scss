@@ -25,7 +25,7 @@ body {
         all: initial;
         font: inherit;
         color: inherit;
-        padding: inherit;
+        padding-left: 0.5em;
         //
         display: flex;
         flex-direction: column;
@@ -81,3 +81,6 @@ body {
 
 // To make sure the @extended rules take priority.
 @import "_colour_scheme.scss";
+
+// Specific styling
+@import "_styles_home.scss"; // Home page

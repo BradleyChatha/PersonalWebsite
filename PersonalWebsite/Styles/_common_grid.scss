@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 %column_common {
@@ -20,11 +21,9 @@
 @each $number in $numbers {
     .#{$number}.column.grid {
         @extend %grid_common;
-
         // Columns are wrapped in rows.
         & .row {
             @extend %row_common;
-
             // Columns can take up several columns amount of space.
             @each $colNumber in $numbers {
                 $width: (100% / index($numbers, $number)) * index($numbers, $colNumber);
@@ -38,11 +37,24 @@
                     }
                 }
             }
-
             // Or just the default one.
             & .column {
                 @extend %column_common;
                 width: 100% / index($numbers, $number);
+                
+                // Variations
+                &.full.height {
+                    height: 100%;
+                }
+            }
+            // Variations
+            &.center.aligned {
+                align-items: center;
+
+                & .column {
+                    align-items: center;
+                    align-self: center;
+                }
             }
         }
     }

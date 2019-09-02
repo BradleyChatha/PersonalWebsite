@@ -1,3 +1,126 @@
 ﻿@{
     ViewData["Title"] = "Index";
+
+    var languages = new List<(
+        string Image,
+        int Years,
+        string[] Meta,
+        int Comfort,
+        int Knowledge,
+        string[] Pros,
+        string[] MiddleGround,
+        string[] Cons
+    )>
+    {
+        (
+            "img/logos/csharp.png",
+            7,
+            new[]{ "6 as hobbyist", "1 as professional" },
+            5,
+            4,
+            new[]
+            {
+                "Understand advanced features such as reflection",
+                "Decent experience with .Net standard library; ASP Core; EF Core, and Nuget",
+                "Experience using .Net Core on Linux and Windows",
+                "First choice for Web Dev backend"
+            },
+            new[]
+            {
+                "Second main language",
+                "Second choice for App Dev",
+                "This website is made in C# with ASP Core"
+            },
+            new string[]{ }
+        ),
+        (
+            "img/logos/dlang.png",
+            5,
+            new[]{ "as hobbyist" },
+            5,
+            5,
+            new[]
+            {
+                "Main language",
+                "Almost complete knowledge of the language's features",
+                "First choice for App Dev (especially tooling)",
+                "Very comfortable with metaprogramming, including complex compile time code generation"
+            },
+            new[]
+            {
+                "This website is deployed via a custom made tool, written in D"
+            },
+            new string[]{ }
+        )
+    };
 }
+
+<!--Languages-->
+<section class="languages element">
+    <h1>Language Experience</h1>
+
+    <section class="three column grid">
+        <div class="row">
+            @foreach(var language in languages)
+            {
+                <div class="full height column"> <!--So flex-start is towards the top, not the left.-->
+                    <div>
+                        <div class="language">
+                            <div class="header">
+                                <img src="@language.Image" />
+                                <span class="years">@language.Years years experience</span>
+
+                                @foreach (var meta in language.Meta)
+                                {
+                                    <span class="meta">@meta</span>
+                                }
+                            </div>
+
+                            <div class="rating">
+                                <label>Comfort</label>
+
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <span class="fa fa-star @(i + 1 <= language.Comfort ? "checked" : "")"></span>
+                                }
+                            </div>
+
+                            <div class="rating">
+                                <label>Knowledge</label>
+
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <span class="fa fa-star @(i + 1 <= language.Knowledge ? "checked" : "")"></span>
+                                }
+                            </div>
+
+                            @foreach (var pro in language.Pros)
+                            {
+                                <div class="check marking">
+                                    <span class="fa fa-check fa-lg"></span>
+                                    @pro
+                                </div>
+                            }
+
+                            @foreach (var middleGround in language.MiddleGround)
+                            {
+                                <div class="minus marking">
+                                    <span class="fa fa-minus fa-lg"></span>
+                                    @middleGround
+                                </div>
+                            }
+
+                            @foreach (var con in language.Cons)
+                            {
+                                <div class="times marking">
+                                    <span class="fa fa-times fa-lg"></span>
+                                    @con
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</section>
