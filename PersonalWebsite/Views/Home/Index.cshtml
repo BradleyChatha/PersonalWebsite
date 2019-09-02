@@ -48,9 +48,72 @@
             },
             new[]
             {
+                "D's ecosystem is a bit lackluster, so I have decent experience with writing libraries",
                 "This website is deployed via a custom made tool, written in D"
             },
             new string[]{ }
+        ),
+        (
+            "img/logos/cpp.png",
+            5,
+            new[]{ "as hobbyist", "Very on/off usage" },
+            2,
+            2,
+            new[]
+            {
+                "Core knowledge of computers helps me identify and avoid certain pitfalls of C++",
+                "Understanding of smart pointers, and some understanding of how to efficiently use them"
+            },
+            new[]
+            {
+                "May or may not be able to write 'Modern C++', I need to research what it actually entails"
+            },
+            new[]
+            {
+                "Have very little experience that could be related to real world usage",
+                "Do not even slightly enjoy this language"
+            }
+        ),
+        (
+            "img/logos/html.png",
+            -7, // Minus = months
+            new[]{ "as professional" },
+            3,
+            3,
+            new[]
+            {
+                "It's basically XML. You either use it well or you don't. Not much else to put here"
+            },
+            new[]
+            {
+                "This is the first website I've created without the use of a UI framework"
+            },
+            new[]
+            {
+                "Still have a lot to learn about proper layout; proper tag usage; good practices; screen reader support, and responsive design. "
+               +"Plus things I don't even know about"
+            }
+        ),
+        (
+            "img/logos/css.png",
+            -1, // Minus = months
+            new[]{ "as professional" },
+            3,
+            2,
+            new[]
+            {
+                "Experience with SASS; Bootstrap, and Semantic UI",
+                "This website is purely made out of custom CSS. No external styling except for the icons"
+            },
+            new[]
+            {
+                "This is the first website I've created without the use of a UI framework"
+            },
+            new[]
+            {
+                "Still have a long way to go before I can call myself proficient",
+                "No real skill with responsive design yet. I style for desktop first currently."
+            }
         )
     };
 }
@@ -63,12 +126,14 @@
         <div class="row">
             @foreach(var language in languages)
             {
-                <div class="full height column"> <!--So flex-start is towards the top, not the left.-->
+                <div class="column"> <!--So flex-start is towards the top, not the left.-->
                     <div>
                         <div class="language">
                             <div class="header">
                                 <img src="@language.Image" />
-                                <span class="years">@language.Years years experience</span>
+                                <span class="years">
+                                    @(language.Years < 0 ? $"{language.Years * -1} months" : $"{language.Years} years") experience
+                                </span>
 
                                 @foreach (var meta in language.Meta)
                                 {

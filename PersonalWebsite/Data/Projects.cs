@@ -21,8 +21,8 @@ namespace PersonalWebsite.Data
             new Project
             {
                 Name        = "Computer Science Coursework - Tic-tac-toe AI",
-                Description = "My coursework project for my A Level Computer Science course. An AI that uses basic machine learning to play Tic-Tac-Toe.",
-                Tags        = new[] { "C#", "WPF", "AI", "Machine Learning" },
+                Description = "My coursework project for my A Level Computer Science course. An AI that uses basic machine to learn how to play Tic-Tac-Toe.",
+                Tags        = new[] { "C#", "WPF", "AI", "Machine Learning", "Application" },
                 View        = "/Views/Projects/CSProject.cshtml",
                 ImageUri    = "/img/cs_project.png"
             }
