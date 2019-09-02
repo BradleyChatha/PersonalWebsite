@@ -49,11 +49,10 @@
             }
             // Variations
             &.center.aligned {
-                align-items: center;
+                align-self: center;
 
                 & .column {
                     align-items: center;
-                    align-self: center;
                 }
             }
         }

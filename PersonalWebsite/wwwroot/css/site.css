@@ -21,10 +21,9 @@
     height: 100%; }
 
 .one.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .one.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .two.column.grid .row .one.wide.column {
   width: 50%; }
@@ -38,10 +37,9 @@
     height: 100%; }
 
 .two.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .two.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .three.column.grid .row .one.wide.column {
   width: 33.33333%; }
@@ -58,10 +56,9 @@
     height: 100%; }
 
 .three.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .three.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .four.column.grid .row .one.wide.column {
   width: 25%; }
@@ -81,10 +78,9 @@
     height: 100%; }
 
 .four.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .four.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .five.column.grid .row .one.wide.column {
   width: 20%; }
@@ -107,10 +103,9 @@
     height: 100%; }
 
 .five.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .five.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .six.column.grid .row .one.wide.column {
   width: 16.66667%; }
@@ -136,10 +131,9 @@
     height: 100%; }
 
 .six.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .six.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .seven.column.grid .row .one.wide.column {
   width: 14.28571%; }
@@ -168,10 +162,9 @@
     height: 100%; }
 
 .seven.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .seven.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .eight.column.grid .row .one.wide.column {
   width: 12.5%; }
@@ -203,10 +196,9 @@
     height: 100%; }
 
 .eight.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .eight.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .nine.column.grid .row .one.wide.column {
   width: 11.11111%; }
@@ -241,10 +233,9 @@
     height: 100%; }
 
 .nine.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .nine.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .ten.column.grid .row .one.wide.column {
   width: 10%; }
@@ -282,10 +273,9 @@
     height: 100%; }
 
 .ten.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .ten.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .eleven.column.grid .row .one.wide.column {
   width: 9.09091%; }
@@ -323,10 +313,9 @@
     height: 100%; }
 
 .eleven.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .eleven.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .twelve.column.grid .row .one.wide.column {
   width: 8.33333%; }
@@ -370,10 +359,9 @@
     height: 100%; }
 
 .twelve.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .twelve.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .left.one.padded, .navbar h1 a {
   padding-left: 1em; }
@@ -1450,10 +1438,9 @@ body {
     height: 100%; }
 
 .one.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .one.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .two.column.grid .row .one.wide.column {
   width: 50%; }
@@ -1467,10 +1454,9 @@ body {
     height: 100%; }
 
 .two.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .two.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .three.column.grid .row .one.wide.column {
   width: 33.33333%; }
@@ -1487,10 +1473,9 @@ body {
     height: 100%; }
 
 .three.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .three.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .four.column.grid .row .one.wide.column {
   width: 25%; }
@@ -1510,10 +1495,9 @@ body {
     height: 100%; }
 
 .four.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .four.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .five.column.grid .row .one.wide.column {
   width: 20%; }
@@ -1536,10 +1520,9 @@ body {
     height: 100%; }
 
 .five.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .five.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .six.column.grid .row .one.wide.column {
   width: 16.66667%; }
@@ -1565,10 +1548,9 @@ body {
     height: 100%; }
 
 .six.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .six.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .seven.column.grid .row .one.wide.column {
   width: 14.28571%; }
@@ -1597,10 +1579,9 @@ body {
     height: 100%; }
 
 .seven.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .seven.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .eight.column.grid .row .one.wide.column {
   width: 12.5%; }
@@ -1632,10 +1613,9 @@ body {
     height: 100%; }
 
 .eight.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .eight.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .nine.column.grid .row .one.wide.column {
   width: 11.11111%; }
@@ -1670,10 +1650,9 @@ body {
     height: 100%; }
 
 .nine.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .nine.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .ten.column.grid .row .one.wide.column {
   width: 10%; }
@@ -1711,10 +1690,9 @@ body {
     height: 100%; }
 
 .ten.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .ten.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .eleven.column.grid .row .one.wide.column {
   width: 9.09091%; }
@@ -1752,10 +1730,9 @@ body {
     height: 100%; }
 
 .eleven.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .eleven.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .twelve.column.grid .row .one.wide.column {
   width: 8.33333%; }
@@ -1799,10 +1776,9 @@ body {
     height: 100%; }
 
 .twelve.column.grid .row.center.aligned {
-  align-items: center; }
+  align-self: center; }
   .twelve.column.grid .row.center.aligned .column {
-    align-items: center;
-    align-self: center; }
+    align-items: center; }
 
 .left.one.padded, .navbar h1 a {
   padding-left: 1em; }
