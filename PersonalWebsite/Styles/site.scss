@@ -91,6 +91,53 @@ body {
     }
 }
 
+footer {
+    @extend .background.primary.shade.seven;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90px;
+
+    & .contact.element {
+        @extend .gray.shade.two;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0.5em;
+
+        & label {
+            @extend .primary.shade.four;
+            font-size: 1.3em;
+            align-self: center;
+            font-weight: bold;
+        }
+
+        & div {
+            margin-top: 0.4em;
+
+            // The phone icon is a bit thinner than the mail icon,
+            // so we need to pad the phone number text a tiny bit.
+            & .phone.padded {
+                padding-left: 0.32em;
+            }
+        }
+    }
+
+    & .social.media.element {
+        display: flex;
+        flex-direction: row;
+        padding-top: 1.05em;
+
+        & .linkedin {
+            @extend .background.primary.shade.nine;
+            @extend .gray.shade.two;
+            display: flex;
+            padding: 0.4em 0.6em 0.4em 0.6em;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    }
+}
+
 // To make sure the @extended rules take priority.
 @import "_colour_scheme.scss";
 
