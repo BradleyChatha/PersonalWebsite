@@ -2339,7 +2339,8 @@ body {
       display: flex;
       flex-direction: row;
       width: 100%;
-      margin-bottom: 1em; }
+      margin-bottom: 1em;
+      margin-right: 1em; }
       .languages.element .language .marking.times {
         color: darkred; }
       .languages.element .language .marking .fa.fa-check {
