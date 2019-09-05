@@ -1,16 +1,21 @@
 ﻿@import "_common.scss";
 @import "_colour_scheme.scss";
 
+.section.header {
+    & h1 {
+        @extend .primary.shade.eight;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+}
+
 .languages.element {
     @extend .background.primary.shade.two;
     @extend .bottom.one.padded;
     width: 100%;
-
-    & h1 {
-        @extend .primary.shade.ten;
-        text-align: center;
-        font-size: 1.5em;
-    }
+    display: flex;
+    flex-direction: column;
 
     & .language {
         @extend .background.primary.shade.three;
@@ -119,3 +124,57 @@
         }
     }
 }
+
+.knowledge.element {
+    @extend .bottom.one.padded;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: darken(nth($shadesPrimary, 3), 15);
+
+    & .knowledge {
+        @extend .border.primary.shade.seven;
+        @extend .background.primary.shade.four;
+        @extend .primary.shade.ten;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0.5em;
+        box-shadow: 1px 1px 8px -3px;
+        border: 1px solid;
+        border-radius: 12px;
+
+        & > label {
+            @extend .primary.shade.nine;
+            @extend .bottom.one.padded;
+            font-size: 1.3em;
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        & > img {
+            @extend .bottom.two.padded;
+        }
+
+        & > ul {
+            margin-top: 0;
+        }
+
+        & > p {
+            @extend .left.one.padded;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1em;
+            line-height: 1.5em;
+
+            &.left.aligned {
+                text-align: left;
+                align-self: flex-start;
+            }
+        }
+    }
+}
+
+@import "_colour_scheme.scss";

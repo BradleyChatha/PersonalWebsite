@@ -43,6 +43,10 @@ $shadesGray: (
             background-color: $shade;
         }
 
+        .border.#{$name}.shade.#{$shadeIndexName} {
+            border-color: $shade;
+        }
+
         @each $side in $sides {
             .border.#{$side}.#{$name}.shade.#{$shadeIndexName} {
                 border-#{$side}-color: $shade;
