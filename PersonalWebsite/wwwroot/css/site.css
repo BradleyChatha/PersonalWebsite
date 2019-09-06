@@ -2715,7 +2715,9 @@ footer {
     padding-top: 0.5em;
     box-shadow: 1px 1px 8px -3px;
     border: 1px solid;
-    border-radius: 12px; }
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 1em; }
     .knowledge.element .knowledge > label {
       font-size: 1.3em;
       letter-spacing: 0.1em;
