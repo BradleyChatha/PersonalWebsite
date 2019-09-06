@@ -113,7 +113,6 @@ footer {
 
         & div {
             margin-top: 0.4em;
-
             // The phone icon is a bit thinner than the mail icon,
             // so we need to pad the phone number text a tiny bit.
             & .phone.padded {
@@ -128,6 +127,16 @@ footer {
         padding-top: 1.05em;
 
         & .linkedin {
+            @extend .background.primary.shade.nine;
+            @extend .gray.shade.two;
+            display: flex;
+            padding: 0.4em 0.6em 0.4em 0.6em;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-right: 1em;
+        }
+
+        & .twitter {
             @extend .background.primary.shade.nine;
             @extend .gray.shade.two;
             display: flex;

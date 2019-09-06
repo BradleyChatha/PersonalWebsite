@@ -740,7 +740,7 @@
 .primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
 .border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
@@ -800,25 +800,25 @@
 .border.bottom.gray.shade.one {
   border-bottom-color: #dedede; }
 
-.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin {
+.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin, footer .social.media.element .twitter {
   color: #b3b3b3; }
 
-.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin {
+.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin, footer .social.media.element .background.twitter {
   background-color: #b3b3b3; }
 
-.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin {
+.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin, footer .social.media.element .border.twitter {
   border-color: #b3b3b3; }
 
-.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin {
+.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin, footer .social.media.element .border.left.twitter {
   border-left-color: #b3b3b3; }
 
-.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin {
+.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin, footer .social.media.element .border.top.twitter {
   border-top-color: #b3b3b3; }
 
-.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin {
+.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin, footer .social.media.element .border.right.twitter {
   border-right-color: #b3b3b3; }
 
-.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin {
+.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin, footer .social.media.element .border.bottom.twitter {
   border-bottom-color: #b3b3b3; }
 
 .gray.shade.three {
@@ -1223,6 +1223,12 @@ footer {
       display: flex;
       padding: 0.4em 0.6em 0.4em 0.6em;
       border-radius: 6px;
+      text-decoration: none;
+      margin-right: 1em; }
+    footer .social.media.element .twitter {
+      display: flex;
+      padding: 0.4em 0.6em 0.4em 0.6em;
+      border-radius: 6px;
       text-decoration: none; }
 
 .primary.shade.one {
@@ -1396,7 +1402,7 @@ footer {
 .primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
 .border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
@@ -1456,25 +1462,25 @@ footer {
 .border.bottom.gray.shade.one {
   border-bottom-color: #dedede; }
 
-.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin {
+.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin, footer .social.media.element .twitter {
   color: #b3b3b3; }
 
-.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin {
+.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin, footer .social.media.element .background.twitter {
   background-color: #b3b3b3; }
 
-.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin {
+.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin, footer .social.media.element .border.twitter {
   border-color: #b3b3b3; }
 
-.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin {
+.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin, footer .social.media.element .border.left.twitter {
   border-left-color: #b3b3b3; }
 
-.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin {
+.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin, footer .social.media.element .border.top.twitter {
   border-top-color: #b3b3b3; }
 
-.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin {
+.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin, footer .social.media.element .border.right.twitter {
   border-right-color: #b3b3b3; }
 
-.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin {
+.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin, footer .social.media.element .border.bottom.twitter {
   border-bottom-color: #b3b3b3; }
 
 .gray.shade.three {
@@ -2387,7 +2393,7 @@ footer {
 .primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
 .border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
@@ -2447,25 +2453,25 @@ footer {
 .border.bottom.gray.shade.one {
   border-bottom-color: #dedede; }
 
-.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin {
+.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin, footer .social.media.element .twitter {
   color: #b3b3b3; }
 
-.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin {
+.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin, footer .social.media.element .background.twitter {
   background-color: #b3b3b3; }
 
-.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin {
+.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin, footer .social.media.element .border.twitter {
   border-color: #b3b3b3; }
 
-.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin {
+.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin, footer .social.media.element .border.left.twitter {
   border-left-color: #b3b3b3; }
 
-.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin {
+.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin, footer .social.media.element .border.top.twitter {
   border-top-color: #b3b3b3; }
 
-.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin {
+.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin, footer .social.media.element .border.right.twitter {
   border-right-color: #b3b3b3; }
 
-.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin {
+.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin, footer .social.media.element .border.bottom.twitter {
   border-bottom-color: #b3b3b3; }
 
 .gray.shade.three {
@@ -2906,7 +2912,7 @@ footer {
 .primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
 .border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
@@ -2966,25 +2972,25 @@ footer {
 .border.bottom.gray.shade.one {
   border-bottom-color: #dedede; }
 
-.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin {
+.gray.shade.two, footer .contact.element, footer .social.media.element .linkedin, footer .social.media.element .twitter {
   color: #b3b3b3; }
 
-.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin {
+.background.gray.shade.two, footer .background.contact.element, footer .social.media.element .background.linkedin, footer .social.media.element .background.twitter {
   background-color: #b3b3b3; }
 
-.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin {
+.border.gray.shade.two, footer .border.contact.element, footer .social.media.element .border.linkedin, footer .social.media.element .border.twitter {
   border-color: #b3b3b3; }
 
-.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin {
+.border.left.gray.shade.two, footer .border.left.contact.element, footer .social.media.element .border.left.linkedin, footer .social.media.element .border.left.twitter {
   border-left-color: #b3b3b3; }
 
-.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin {
+.border.top.gray.shade.two, footer .border.top.contact.element, footer .social.media.element .border.top.linkedin, footer .social.media.element .border.top.twitter {
   border-top-color: #b3b3b3; }
 
-.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin {
+.border.right.gray.shade.two, footer .border.right.contact.element, footer .social.media.element .border.right.linkedin, footer .social.media.element .border.right.twitter {
   border-right-color: #b3b3b3; }
 
-.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin {
+.border.bottom.gray.shade.two, footer .border.bottom.contact.element, footer .social.media.element .border.bottom.linkedin, footer .social.media.element .border.bottom.twitter {
   border-bottom-color: #b3b3b3; }
 
 .gray.shade.three {
