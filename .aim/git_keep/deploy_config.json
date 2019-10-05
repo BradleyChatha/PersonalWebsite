@@ -1,7 +1,0 @@
-{
-	"fileVersion": "v1",
-	"name": "Personal",
-	"domain": "bradley.chatha.dev",
-	"port": 5015,
-	"secretsToExpose": null
-}
