@@ -414,7 +414,7 @@
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -492,7 +492,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -531,10 +531,10 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
   padding-bottom: 1em; }
 
-.bottom.two.padded, .knowledge.element .knowledge > img {
+.bottom.two.padded, .knowledge.element article.knowledge > img {
   padding-bottom: 2em; }
 
 .bottom.three.padded {
@@ -636,7 +636,7 @@
 .primary.shade.four, .navbar .center.items .item, footer .contact.element label {
   color: #85add6; }
 
-.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element .knowledge {
+.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element article.knowledge {
   background-color: #85add6; }
 
 .border.primary.shade.four, .navbar .center.items .border.item, footer .contact.element label.border {
@@ -702,19 +702,19 @@
 .background.primary.shade.seven, .navbar, footer {
   background-color: #184d81; }
 
-.border.primary.shade.seven, .knowledge.element .knowledge {
+.border.primary.shade.seven, .knowledge.element article.knowledge {
   border-color: #184d81; }
 
-.border.left.primary.shade.seven, .knowledge.element .left.knowledge {
+.border.left.primary.shade.seven, .knowledge.element article.left.knowledge {
   border-left-color: #184d81; }
 
-.border.top.primary.shade.seven, .knowledge.element .top.knowledge {
+.border.top.primary.shade.seven, .knowledge.element article.top.knowledge {
   border-top-color: #184d81; }
 
-.border.right.primary.shade.seven, .knowledge.element .right.knowledge {
+.border.right.primary.shade.seven, .knowledge.element article.right.knowledge {
   border-right-color: #184d81; }
 
-.border.bottom.primary.shade.seven, .knowledge.element .bottom.knowledge {
+.border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
 .primary.shade.eight, .section.header h1 {
@@ -738,46 +738,46 @@
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element .knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element .background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element .border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element .border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element .border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element .border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element .border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -990,7 +990,7 @@
 .border.bottom.gray.shade.ten {
   border-bottom-color: #1a1a1a; }
 
-.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -1068,7 +1068,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -1107,10 +1107,10 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
   padding-bottom: 1em; }
 
-.bottom.two.padded, .knowledge.element .knowledge > img {
+.bottom.two.padded, .knowledge.element article.knowledge > img {
   padding-bottom: 2em; }
 
 .bottom.three.padded {
@@ -1299,7 +1299,7 @@ footer {
 .primary.shade.four, .navbar .center.items .item, footer .contact.element label {
   color: #85add6; }
 
-.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element .knowledge {
+.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element article.knowledge {
   background-color: #85add6; }
 
 .border.primary.shade.four, .navbar .center.items .border.item, footer .contact.element label.border {
@@ -1365,19 +1365,19 @@ footer {
 .background.primary.shade.seven, .navbar, footer {
   background-color: #184d81; }
 
-.border.primary.shade.seven, .knowledge.element .knowledge {
+.border.primary.shade.seven, .knowledge.element article.knowledge {
   border-color: #184d81; }
 
-.border.left.primary.shade.seven, .knowledge.element .left.knowledge {
+.border.left.primary.shade.seven, .knowledge.element article.left.knowledge {
   border-left-color: #184d81; }
 
-.border.top.primary.shade.seven, .knowledge.element .top.knowledge {
+.border.top.primary.shade.seven, .knowledge.element article.top.knowledge {
   border-top-color: #184d81; }
 
-.border.right.primary.shade.seven, .knowledge.element .right.knowledge {
+.border.right.primary.shade.seven, .knowledge.element article.right.knowledge {
   border-right-color: #184d81; }
 
-.border.bottom.primary.shade.seven, .knowledge.element .bottom.knowledge {
+.border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
 .primary.shade.eight, .section.header h1 {
@@ -1401,46 +1401,46 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element .knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element .background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element .border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element .border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element .border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element .border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element .border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -2069,7 +2069,7 @@ footer {
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -2147,7 +2147,7 @@ footer {
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element article.knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -2186,10 +2186,10 @@ footer {
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
   padding-bottom: 1em; }
 
-.bottom.two.padded, .knowledge.element .knowledge > img {
+.bottom.two.padded, .knowledge.element article.knowledge > img {
   padding-bottom: 2em; }
 
 .bottom.three.padded {
@@ -2291,7 +2291,7 @@ footer {
 .primary.shade.four, .navbar .center.items .item, footer .contact.element label {
   color: #85add6; }
 
-.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element .knowledge {
+.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element article.knowledge {
   background-color: #85add6; }
 
 .border.primary.shade.four, .navbar .center.items .border.item, footer .contact.element label.border {
@@ -2357,19 +2357,19 @@ footer {
 .background.primary.shade.seven, .navbar, footer {
   background-color: #184d81; }
 
-.border.primary.shade.seven, .knowledge.element .knowledge {
+.border.primary.shade.seven, .knowledge.element article.knowledge {
   border-color: #184d81; }
 
-.border.left.primary.shade.seven, .knowledge.element .left.knowledge {
+.border.left.primary.shade.seven, .knowledge.element article.left.knowledge {
   border-left-color: #184d81; }
 
-.border.top.primary.shade.seven, .knowledge.element .top.knowledge {
+.border.top.primary.shade.seven, .knowledge.element article.top.knowledge {
   border-top-color: #184d81; }
 
-.border.right.primary.shade.seven, .knowledge.element .right.knowledge {
+.border.right.primary.shade.seven, .knowledge.element article.right.knowledge {
   border-right-color: #184d81; }
 
-.border.bottom.primary.shade.seven, .knowledge.element .bottom.knowledge {
+.border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
 .primary.shade.eight, .section.header h1 {
@@ -2393,46 +2393,46 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element .knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element .background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element .border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element .border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element .border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element .border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element .border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -2726,7 +2726,18 @@ footer {
   display: flex;
   flex-direction: column;
   background-color: #7499be; }
-  .knowledge.element .knowledge {
+  .knowledge.element section.knowledge.four.column.grid .row .column {
+    width: 100%; }
+    @media only screen and (min-width: 600px) {
+      .knowledge.element section.knowledge.four.column.grid .row .column {
+        width: 50%; } }
+    @media only screen and (min-width: 1000px) {
+      .knowledge.element section.knowledge.four.column.grid .row .column {
+        width: 33%; } }
+    @media only screen and (min-width: 1350px) {
+      .knowledge.element section.knowledge.four.column.grid .row .column {
+        width: 25%; } }
+  .knowledge.element article.knowledge {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2734,23 +2745,23 @@ footer {
     box-shadow: 1px 1px 8px -3px;
     border: 1px solid;
     border-radius: 12px;
-    width: 100%;
+    width: 290px;
     height: 480px;
     margin-bottom: 1em; }
-    .knowledge.element .knowledge > label {
+    .knowledge.element article.knowledge > label {
       font-size: 1.3em;
       letter-spacing: 0.1em;
       font-weight: bold; }
-    .knowledge.element .knowledge > ul {
+    .knowledge.element article.knowledge > ul {
       margin-top: 0; }
-    .knowledge.element .knowledge > p {
+    .knowledge.element article.knowledge > p {
       display: flex;
       flex-direction: row;
       text-align: center;
       margin-top: 0;
       margin-bottom: 1em;
       line-height: 1.5em; }
-      .knowledge.element .knowledge > p.left.aligned {
+      .knowledge.element article.knowledge > p.left.aligned {
         text-align: left;
         align-self: flex-start; }
 
@@ -2820,7 +2831,7 @@ footer {
 .primary.shade.four, .navbar .center.items .item, footer .contact.element label {
   color: #85add6; }
 
-.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element .knowledge {
+.background.primary.shade.four, .navbar .center.items .background.item, footer .contact.element label.background, .knowledge.element article.knowledge {
   background-color: #85add6; }
 
 .border.primary.shade.four, .navbar .center.items .border.item, footer .contact.element label.border {
@@ -2886,19 +2897,19 @@ footer {
 .background.primary.shade.seven, .navbar, footer {
   background-color: #184d81; }
 
-.border.primary.shade.seven, .knowledge.element .knowledge {
+.border.primary.shade.seven, .knowledge.element article.knowledge {
   border-color: #184d81; }
 
-.border.left.primary.shade.seven, .knowledge.element .left.knowledge {
+.border.left.primary.shade.seven, .knowledge.element article.left.knowledge {
   border-left-color: #184d81; }
 
-.border.top.primary.shade.seven, .knowledge.element .top.knowledge {
+.border.top.primary.shade.seven, .knowledge.element article.top.knowledge {
   border-top-color: #184d81; }
 
-.border.right.primary.shade.seven, .knowledge.element .right.knowledge {
+.border.right.primary.shade.seven, .knowledge.element article.right.knowledge {
   border-right-color: #184d81; }
 
-.border.bottom.primary.shade.seven, .knowledge.element .bottom.knowledge {
+.border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
 .primary.shade.eight, .section.header h1 {
@@ -2922,46 +2933,46 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element .knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element .background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element .border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element .border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element .border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element .border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element .border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {

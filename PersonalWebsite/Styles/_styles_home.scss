@@ -21,6 +21,7 @@
         .row {
             .column {
                 // Depending on the size of the screen, change the size of each column to fit better.
+                // Numbers were chosen based on testing.
                 width: 100%;
 
                 @media only screen and (min-width: 600px) {
@@ -152,7 +153,28 @@
     flex-direction: column;
     background-color: darken(nth($shadesPrimary, 3), 15);
 
-    & .knowledge {
+    section.knowledge.four.column.grid {
+        .row {
+            .column {
+                // Change width of columns based on screen size. Numbers taken from testing.
+                width: 100%;
+                
+                @media only screen and (min-width: 600px) {
+                    width: 50%;
+                }
+
+                @media only screen and (min-width: 1000px) {
+                    width: 33%;
+                }
+
+                @media only screen and (min-width: 1350px) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    & article.knowledge {
         @extend .border.primary.shade.seven;
         @extend .background.primary.shade.four;
         @extend .primary.shade.ten;
@@ -163,7 +185,7 @@
         box-shadow: 1px 1px 8px -3px;
         border: 1px solid;
         border-radius: 12px;
-        width: 100%;
+        width: 290px;
         height: 480px;
         margin-bottom: 1em;
 
