@@ -16,11 +16,30 @@ body {
     width: 100%;
     height: 50px;
     flex-direction: row;
+    // On super small screens, enable wrapping, and change the height
+    @media only screen and (max-width: 449px) {
+        flex-flow: wrap;
+        height: auto;
+    }
 
     & h1 {
         display: flex;
         align-self: center;
-        width: 33.33333%;
+        // Change a few things based on screen size, to keep things looking good.
+        font-size: 0.95em;
+        width: 100%;
+
+        @media only screen and (min-width: 450px) {
+            font-size: 1em;
+        }
+
+        @media only screen and (min-width: 870px) {
+            width: 33.33333%;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            font-size: 1.5em;
+        }
     }
 
     & h1 a {
@@ -43,13 +62,33 @@ body {
     & .center.column {
         display: flex;
         flex-direction: column;
-        align-self: flex-end;
-        width: 33%;
+        align-self: center;
+        // On smaller screens, take up more space so we can align properly.
+        width: 100%;
+
+        @media only screen and (min-width: 440px) {
+            align-self: center;
+            width: 66%;
+        }
+
+        @media only screen and (min-width: 870px) {
+            width: 33.33333%;
+        }
     }
 
     & .center.items {
         display: flex;
+        // On smaller screens, align the items to the far right instead of the center
+        // Then on SUPER small screens, go back to the center due to the header being too large
         align-self: center;
+
+        @media only screen and (min-width: 449px) {
+            align-self: flex-end;
+        }
+
+        @media only screen and (min-width: 870px) {
+            align-self: center;
+        }
 
         & .item {
             @extend .primary.shade.four;
@@ -66,6 +105,7 @@ body {
             padding-bottom: 0.5em;
             padding-left: 0.8em;
             padding-right: 0.8em;
+            padding-top: 0.8em;
             // Border stuff (transparent by default)
             border-bottom-width: 3px;
             border-bottom-style: solid;
