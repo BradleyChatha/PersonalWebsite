@@ -1191,7 +1191,7 @@ body {
     flex-direction: column;
     align-self: center;
     width: 100%; }
-    @media only screen and (min-width: 440px) {
+    @media only screen and (min-width: 449px) {
       .navbar .center.column {
         align-self: center;
         width: 66%; } }
