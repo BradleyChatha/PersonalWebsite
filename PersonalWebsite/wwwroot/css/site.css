@@ -2653,6 +2653,7 @@ footer {
   flex-direction: column; }
   .languages.element .language {
     width: 290px;
+    height: 645px;
     display: flex;
     flex-direction: column;
     align-items: center;
