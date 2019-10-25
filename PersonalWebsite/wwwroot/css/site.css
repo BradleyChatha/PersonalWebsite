@@ -491,7 +491,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded {
+.right.one.padded, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -1067,7 +1067,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded {
+.right.one.padded, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -2144,7 +2144,7 @@ footer {
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded {
+.right.one.padded, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -2724,6 +2724,7 @@ footer {
     border: 1px solid;
     border-radius: 12px;
     width: 100%;
+    height: 480px;
     margin-bottom: 1em; }
     .knowledge.element .knowledge > label {
       font-size: 1.3em;
