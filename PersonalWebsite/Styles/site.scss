@@ -139,12 +139,33 @@ footer {
     flex-direction: row;
     width: 100%;
     height: 90px;
+    // On small screens, disable the padding column, and increase the width of the middle one to compensate
+    .three.column.grid {
+        .center.aligned.row {
+            @media only screen and (max-width: 660px) {
+                .padding.column {
+                    width: 0%;
+                }
+
+                .column:nth-child(2) {
+                    width: 66%;
+                }
+            }
+        }
+    }
 
     & .contact.element {
         @extend .gray.shade.two;
         display: flex;
         flex-direction: column;
         padding-top: 0.5em;
+
+        // On small screens, we disable the padding column.
+        // So we need to left-align instead of center align, and add a bit of padding.
+        @media only screen and (max-width: 660px) {
+            padding-left: 1em;
+            align-self: start;
+        }
 
         & label {
             @extend .primary.shade.four;

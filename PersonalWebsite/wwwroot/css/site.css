@@ -1234,10 +1234,19 @@ footer {
   flex-direction: row;
   width: 100%;
   height: 90px; }
+  @media only screen and (max-width: 660px) {
+    footer .three.column.grid .center.aligned.row .padding.column {
+      width: 0%; }
+    footer .three.column.grid .center.aligned.row .column:nth-child(2) {
+      width: 66%; } }
   footer .contact.element {
     display: flex;
     flex-direction: column;
     padding-top: 0.5em; }
+    @media only screen and (max-width: 660px) {
+      footer .contact.element {
+        padding-left: 1em;
+        align-self: start; } }
     footer .contact.element label {
       font-size: 1.3em;
       align-self: center;
