@@ -1,7 +1,8 @@
 ﻿.one.column.grid, .two.column.grid, .three.column.grid, .four.column.grid, .five.column.grid, .six.column.grid, .seven.column.grid, .eight.column.grid, .nine.column.grid, .ten.column.grid, .eleven.column.grid, .twelve.column.grid, .thirteen.column.grid {
   display: flex;
   flex-direction: column;
-  width: 100%; }
+  width: 100%;
+  height: auto; }
 
 .one.column.grid .row, .two.column.grid .row, .three.column.grid .row, .four.column.grid .row, .five.column.grid .row, .six.column.grid .row, .seven.column.grid .row, .eight.column.grid .row, .nine.column.grid .row, .ten.column.grid .row, .eleven.column.grid .row, .twelve.column.grid .row, .thirteen.column.grid .row {
   display: flex;
@@ -413,7 +414,7 @@
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -452,7 +453,7 @@
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element .language .header img {
+.top.one.padded, .languages.element div.language .header img {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -491,7 +492,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -530,7 +531,7 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element .language .header, .languages.element .language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element .knowledge > img {
@@ -614,7 +615,7 @@
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element .language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -737,25 +738,25 @@
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element .language .header .border.left.years, .languages.element .language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element .language .header .border.top.years, .languages.element .language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element .language .header .border.right.years, .languages.element .language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element .language .header .border.bottom.years, .languages.element .language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
 .primary.shade.ten, .knowledge.element .knowledge {
@@ -926,25 +927,25 @@
 .border.bottom.gray.shade.seven {
   border-bottom-color: #626462; }
 
-.gray.shade.eight, .languages.element .language .header .meta, .languages.element .language .marking.minus {
+.gray.shade.eight, .languages.element div.language .header .meta, .languages.element div.language .marking.minus {
   color: #4a4a4a; }
 
-.background.gray.shade.eight, .languages.element .language .header .background.meta, .languages.element .language .background.marking.minus {
+.background.gray.shade.eight, .languages.element div.language .header .background.meta, .languages.element div.language .background.marking.minus {
   background-color: #4a4a4a; }
 
-.border.gray.shade.eight, .languages.element .language .header .border.meta, .languages.element .language .border.marking.minus {
+.border.gray.shade.eight, .languages.element div.language .header .border.meta, .languages.element div.language .border.marking.minus {
   border-color: #4a4a4a; }
 
-.border.left.gray.shade.eight, .languages.element .language .header .border.left.meta, .languages.element .language .border.left.marking.minus {
+.border.left.gray.shade.eight, .languages.element div.language .header .border.left.meta, .languages.element div.language .border.left.marking.minus {
   border-left-color: #4a4a4a; }
 
-.border.top.gray.shade.eight, .languages.element .language .header .border.top.meta, .languages.element .language .border.top.marking.minus {
+.border.top.gray.shade.eight, .languages.element div.language .header .border.top.meta, .languages.element div.language .border.top.marking.minus {
   border-top-color: #4a4a4a; }
 
-.border.right.gray.shade.eight, .languages.element .language .header .border.right.meta, .languages.element .language .border.right.marking.minus {
+.border.right.gray.shade.eight, .languages.element div.language .header .border.right.meta, .languages.element div.language .border.right.marking.minus {
   border-right-color: #4a4a4a; }
 
-.border.bottom.gray.shade.eight, .languages.element .language .header .border.bottom.meta, .languages.element .language .border.bottom.marking.minus {
+.border.bottom.gray.shade.eight, .languages.element div.language .header .border.bottom.meta, .languages.element div.language .border.bottom.marking.minus {
   border-bottom-color: #4a4a4a; }
 
 .gray.shade.nine {
@@ -989,7 +990,7 @@
 .border.bottom.gray.shade.ten {
   border-bottom-color: #1a1a1a; }
 
-.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -1028,7 +1029,7 @@
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element .language .header img {
+.top.one.padded, .languages.element div.language .header img {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -1067,7 +1068,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -1106,7 +1107,7 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element .language .header, .languages.element .language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element .knowledge > img {
@@ -1277,7 +1278,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element .language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -1400,25 +1401,25 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element .language .header .border.left.years, .languages.element .language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element .language .header .border.top.years, .languages.element .language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element .language .header .border.right.years, .languages.element .language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element .language .header .border.bottom.years, .languages.element .language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
 .primary.shade.ten, .knowledge.element .knowledge {
@@ -1589,25 +1590,25 @@ footer {
 .border.bottom.gray.shade.seven {
   border-bottom-color: #626462; }
 
-.gray.shade.eight, .languages.element .language .header .meta, .languages.element .language .marking.minus {
+.gray.shade.eight, .languages.element div.language .header .meta, .languages.element div.language .marking.minus {
   color: #4a4a4a; }
 
-.background.gray.shade.eight, .languages.element .language .header .background.meta, .languages.element .language .background.marking.minus {
+.background.gray.shade.eight, .languages.element div.language .header .background.meta, .languages.element div.language .background.marking.minus {
   background-color: #4a4a4a; }
 
-.border.gray.shade.eight, .languages.element .language .header .border.meta, .languages.element .language .border.marking.minus {
+.border.gray.shade.eight, .languages.element div.language .header .border.meta, .languages.element div.language .border.marking.minus {
   border-color: #4a4a4a; }
 
-.border.left.gray.shade.eight, .languages.element .language .header .border.left.meta, .languages.element .language .border.left.marking.minus {
+.border.left.gray.shade.eight, .languages.element div.language .header .border.left.meta, .languages.element div.language .border.left.marking.minus {
   border-left-color: #4a4a4a; }
 
-.border.top.gray.shade.eight, .languages.element .language .header .border.top.meta, .languages.element .language .border.top.marking.minus {
+.border.top.gray.shade.eight, .languages.element div.language .header .border.top.meta, .languages.element div.language .border.top.marking.minus {
   border-top-color: #4a4a4a; }
 
-.border.right.gray.shade.eight, .languages.element .language .header .border.right.meta, .languages.element .language .border.right.marking.minus {
+.border.right.gray.shade.eight, .languages.element div.language .header .border.right.meta, .languages.element div.language .border.right.marking.minus {
   border-right-color: #4a4a4a; }
 
-.border.bottom.gray.shade.eight, .languages.element .language .header .border.bottom.meta, .languages.element .language .border.bottom.marking.minus {
+.border.bottom.gray.shade.eight, .languages.element div.language .header .border.bottom.meta, .languages.element div.language .border.bottom.marking.minus {
   border-bottom-color: #4a4a4a; }
 
 .gray.shade.nine {
@@ -1655,7 +1656,8 @@ footer {
 .one.column.grid, .two.column.grid, .three.column.grid, .four.column.grid, .five.column.grid, .six.column.grid, .seven.column.grid, .eight.column.grid, .nine.column.grid, .ten.column.grid, .eleven.column.grid, .twelve.column.grid, .thirteen.column.grid {
   display: flex;
   flex-direction: column;
-  width: 100%; }
+  width: 100%;
+  height: auto; }
 
 .one.column.grid .row, .two.column.grid .row, .three.column.grid .row, .four.column.grid .row, .five.column.grid .row, .six.column.grid .row, .seven.column.grid .row, .eight.column.grid .row, .nine.column.grid .row, .ten.column.grid .row, .eleven.column.grid .row, .twelve.column.grid .row, .thirteen.column.grid .row {
   display: flex;
@@ -2067,7 +2069,7 @@ footer {
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -2106,7 +2108,7 @@ footer {
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element .language .header img {
+.top.one.padded, .languages.element div.language .header img {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -2145,7 +2147,7 @@ footer {
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element div.language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -2184,7 +2186,7 @@ footer {
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element .language .header, .languages.element .language .header img, .knowledge.element, .knowledge.element .knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element .knowledge > label {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element .knowledge > img {
@@ -2268,7 +2270,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element .language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -2391,25 +2393,25 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element .language .header .border.left.years, .languages.element .language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element .language .header .border.top.years, .languages.element .language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element .language .header .border.right.years, .languages.element .language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element .language .header .border.bottom.years, .languages.element .language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
 .primary.shade.ten, .knowledge.element .knowledge {
@@ -2580,25 +2582,25 @@ footer {
 .border.bottom.gray.shade.seven {
   border-bottom-color: #626462; }
 
-.gray.shade.eight, .languages.element .language .header .meta, .languages.element .language .marking.minus {
+.gray.shade.eight, .languages.element div.language .header .meta, .languages.element div.language .marking.minus {
   color: #4a4a4a; }
 
-.background.gray.shade.eight, .languages.element .language .header .background.meta, .languages.element .language .background.marking.minus {
+.background.gray.shade.eight, .languages.element div.language .header .background.meta, .languages.element div.language .background.marking.minus {
   background-color: #4a4a4a; }
 
-.border.gray.shade.eight, .languages.element .language .header .border.meta, .languages.element .language .border.marking.minus {
+.border.gray.shade.eight, .languages.element div.language .header .border.meta, .languages.element div.language .border.marking.minus {
   border-color: #4a4a4a; }
 
-.border.left.gray.shade.eight, .languages.element .language .header .border.left.meta, .languages.element .language .border.left.marking.minus {
+.border.left.gray.shade.eight, .languages.element div.language .header .border.left.meta, .languages.element div.language .border.left.marking.minus {
   border-left-color: #4a4a4a; }
 
-.border.top.gray.shade.eight, .languages.element .language .header .border.top.meta, .languages.element .language .border.top.marking.minus {
+.border.top.gray.shade.eight, .languages.element div.language .header .border.top.meta, .languages.element div.language .border.top.marking.minus {
   border-top-color: #4a4a4a; }
 
-.border.right.gray.shade.eight, .languages.element .language .header .border.right.meta, .languages.element .language .border.right.marking.minus {
+.border.right.gray.shade.eight, .languages.element div.language .header .border.right.meta, .languages.element div.language .border.right.marking.minus {
   border-right-color: #4a4a4a; }
 
-.border.bottom.gray.shade.eight, .languages.element .language .header .border.bottom.meta, .languages.element .language .border.bottom.marking.minus {
+.border.bottom.gray.shade.eight, .languages.element div.language .header .border.bottom.meta, .languages.element div.language .border.bottom.marking.minus {
   border-bottom-color: #4a4a4a; }
 
 .gray.shade.nine {
@@ -2652,7 +2654,15 @@ footer {
   width: 100%;
   display: flex;
   flex-direction: column; }
-  .languages.element .language {
+  .languages.element .language.three.column.grid .row .column {
+    width: 100%; }
+    @media only screen and (min-width: 600px) {
+      .languages.element .language.three.column.grid .row .column {
+        width: 50%; } }
+    @media only screen and (min-width: 1000px) {
+      .languages.element .language.three.column.grid .row .column {
+        width: 33%; } }
+  .languages.element div.language {
     width: 290px;
     height: 645px;
     display: flex;
@@ -2661,52 +2671,52 @@ footer {
     align-self: flex-start;
     margin-top: 1em;
     box-shadow: 1px 1px 8px -3px; }
-    .languages.element .language .header {
+    .languages.element div.language .header {
       display: flex;
       flex-direction: column;
       align-items: center; }
-      .languages.element .language .header img {
+      .languages.element div.language .header img {
         display: flex;
         align-self: center;
         width: 120px;
         height: 120px; }
-      .languages.element .language .header .years {
+      .languages.element div.language .header .years {
         font-size: 18px;
         font-weight: bolder;
         text-transform: uppercase; }
-    .languages.element .language .rating {
+    .languages.element div.language .rating {
       display: flex;
       flex-direction: row;
       width: 100%;
       margin-bottom: 1em; }
-      .languages.element .language .rating label {
+      .languages.element div.language .rating label {
         display: flex;
         padding-right: 2em;
         padding-left: 1em;
         text-transform: capitalize; }
-      .languages.element .language .rating .fa.fa-star:first-of-type {
+      .languages.element div.language .rating .fa.fa-star:first-of-type {
         margin-left: auto; }
-      .languages.element .language .rating .fa.fa-star:last-of-type {
+      .languages.element div.language .rating .fa.fa-star:last-of-type {
         padding-right: 1em; }
-      .languages.element .language .rating .fa.fa-star.checked {
+      .languages.element div.language .rating .fa.fa-star.checked {
         color: #c27d00; }
-    .languages.element .language .marking {
+    .languages.element div.language .marking {
       display: flex;
       flex-direction: row;
       width: 100%;
       margin-bottom: 1em;
       margin-right: 1em; }
-      .languages.element .language .marking.times {
+      .languages.element div.language .marking.times {
         color: darkred; }
-      .languages.element .language .marking .fa.fa-check {
+      .languages.element div.language .marking .fa.fa-check {
         padding-left: 0.7em;
         padding-right: 0.2em;
         color: darkgreen; }
-      .languages.element .language .marking .fa.fa-minus {
+      .languages.element div.language .marking .fa.fa-minus {
         padding-left: 0.7em;
         padding-right: 0.4em;
         color: dimgray; }
-      .languages.element .language .marking .fa.fa-times {
+      .languages.element div.language .marking .fa.fa-times {
         padding-left: 0.7em;
         padding-right: 0.4em;
         color: darkred; }
@@ -2789,7 +2799,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element .language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -2912,25 +2922,25 @@ footer {
 .border.bottom.primary.shade.eight, .section.header h1.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element .language .header .years, .languages.element .language .marking.check, .knowledge.element .knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element .knowledge > label {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element .language .header .background.years, .languages.element .language .background.marking.check, .knowledge.element .knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element .knowledge > label.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element .language .header .border.years, .languages.element .language .border.marking.check, .knowledge.element .knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element .knowledge > label.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element .language .header .border.left.years, .languages.element .language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element .knowledge > label.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element .language .header .border.top.years, .languages.element .language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element .knowledge > label.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element .language .header .border.right.years, .languages.element .language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element .knowledge > label.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element .language .header .border.bottom.years, .languages.element .language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element .knowledge > label.border.bottom {
   border-bottom-color: #12395e; }
 
 .primary.shade.ten, .knowledge.element .knowledge {
@@ -3101,25 +3111,25 @@ footer {
 .border.bottom.gray.shade.seven {
   border-bottom-color: #626462; }
 
-.gray.shade.eight, .languages.element .language .header .meta, .languages.element .language .marking.minus {
+.gray.shade.eight, .languages.element div.language .header .meta, .languages.element div.language .marking.minus {
   color: #4a4a4a; }
 
-.background.gray.shade.eight, .languages.element .language .header .background.meta, .languages.element .language .background.marking.minus {
+.background.gray.shade.eight, .languages.element div.language .header .background.meta, .languages.element div.language .background.marking.minus {
   background-color: #4a4a4a; }
 
-.border.gray.shade.eight, .languages.element .language .header .border.meta, .languages.element .language .border.marking.minus {
+.border.gray.shade.eight, .languages.element div.language .header .border.meta, .languages.element div.language .border.marking.minus {
   border-color: #4a4a4a; }
 
-.border.left.gray.shade.eight, .languages.element .language .header .border.left.meta, .languages.element .language .border.left.marking.minus {
+.border.left.gray.shade.eight, .languages.element div.language .header .border.left.meta, .languages.element div.language .border.left.marking.minus {
   border-left-color: #4a4a4a; }
 
-.border.top.gray.shade.eight, .languages.element .language .header .border.top.meta, .languages.element .language .border.top.marking.minus {
+.border.top.gray.shade.eight, .languages.element div.language .header .border.top.meta, .languages.element div.language .border.top.marking.minus {
   border-top-color: #4a4a4a; }
 
-.border.right.gray.shade.eight, .languages.element .language .header .border.right.meta, .languages.element .language .border.right.marking.minus {
+.border.right.gray.shade.eight, .languages.element div.language .header .border.right.meta, .languages.element div.language .border.right.marking.minus {
   border-right-color: #4a4a4a; }
 
-.border.bottom.gray.shade.eight, .languages.element .language .header .border.bottom.meta, .languages.element .language .border.bottom.marking.minus {
+.border.bottom.gray.shade.eight, .languages.element div.language .header .border.bottom.meta, .languages.element div.language .border.bottom.marking.minus {
   border-bottom-color: #4a4a4a; }
 
 .gray.shade.nine {

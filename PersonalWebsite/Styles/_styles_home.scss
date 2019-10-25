@@ -17,7 +17,24 @@
     display: flex;
     flex-direction: column;
 
-    & .language {
+    .language.three.column.grid {
+        .row {
+            .column {
+                // Depending on the size of the screen, change the size of each column to fit better.
+                width: 100%;
+
+                @media only screen and (min-width: 600px) {
+                    width: 50%;
+                }
+
+                @media only screen and (min-width: 1000px) {
+                    width: 33%;
+                }
+            }
+        }
+    }
+
+    & div.language {
         @extend .background.primary.shade.three;
         //
         width: 290px;
