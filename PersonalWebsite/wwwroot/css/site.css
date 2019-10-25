@@ -1166,6 +1166,7 @@ body {
     font: inherit;
     color: inherit;
     padding-left: 0.5em;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     vertical-align: middle;
