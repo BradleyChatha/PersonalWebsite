@@ -87,6 +87,8 @@
         }
 
         & .marking {
+            @extend .left.padded.one;
+            @extend .right.padded.one;
             display: flex;
             flex-direction: row;
             width: 100%;

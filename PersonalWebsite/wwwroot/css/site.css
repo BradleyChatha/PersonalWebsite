@@ -413,7 +413,7 @@
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -491,7 +491,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -989,7 +989,7 @@
 .border.bottom.gray.shade.ten {
   border-bottom-color: #1a1a1a; }
 
-.left.one.padded, .navbar h1 a, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -1067,7 +1067,7 @@
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
@@ -2066,7 +2066,7 @@ footer {
   .thirteen.column.grid .row.center.aligned .column {
     align-items: center; }
 
-.left.one.padded, .navbar h1 a, .knowledge.element .knowledge > p {
+.left.one.padded, .navbar h1 a, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-left: 1em; }
 
 .left.two.padded {
@@ -2144,7 +2144,7 @@ footer {
 .top.thirteen.padded {
   padding-top: 13em; }
 
-.right.one.padded, .knowledge.element .knowledge > p {
+.right.one.padded, .languages.element .language .marking, .knowledge.element .knowledge > p {
   padding-right: 1em; }
 
 .right.two.padded {
