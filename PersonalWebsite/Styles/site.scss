@@ -11,13 +11,17 @@ body {
 
 .navbar {
     @extend .background.primary.shade.seven;
+    $superSmallWidth: 450px;
+    $smallWidth: 870px;
+    $largeWidth: 1280px;
+
     margin: 0;
     display: flex;
     width: 100%;
     height: 50px;
     flex-direction: row;
     // On super small screens, enable wrapping, and change the height
-    @media only screen and (max-width: 449px) {
+    @media only screen and (max-width: $superSmallWidth) {
         flex-flow: wrap;
         height: auto;
     }
@@ -29,15 +33,15 @@ body {
         font-size: 0.95em;
         width: 100%;
 
-        @media only screen and (min-width: 450px) {
+        @media only screen and (min-width: $superSmallWidth) {
             font-size: 1em;
         }
 
-        @media only screen and (min-width: 870px) {
+        @media only screen and (min-width: $smallWidth) {
             width: 33.33333%;
         }
 
-        @media only screen and (min-width: 1280px) {
+        @media only screen and (min-width: $largeWidth) {
             font-size: 1.5em;
         }
     }
@@ -66,12 +70,12 @@ body {
         // On smaller screens, take up more space so we can align properly.
         width: 100%;
 
-        @media only screen and (min-width: 449px) {
+        @media only screen and (min-width: $superSmallWidth) {
             align-self: center;
             width: 66%;
         }
 
-        @media only screen and (min-width: 870px) {
+        @media only screen and (min-width: $smallWidth) {
             width: 33.33333%;
         }
     }
@@ -82,11 +86,11 @@ body {
         // Then on SUPER small screens, go back to the center due to the header being too large
         align-self: center;
 
-        @media only screen and (min-width: 449px) {
+        @media only screen and (min-width: $superSmallWidth) {
             align-self: flex-end;
         }
 
-        @media only screen and (min-width: 870px) {
+        @media only screen and (min-width: $smallWidth) {
             align-self: center;
         }
 

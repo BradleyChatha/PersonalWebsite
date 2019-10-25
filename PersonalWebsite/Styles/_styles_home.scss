@@ -10,6 +10,11 @@
     }
 }
 
+// Couple of useful screen sizes
+$twoColumnWidth: 600px;
+$threeColumnWidth: 1000px;
+$fourColumnWidth: 1350px;
+
 .languages.element {
     @extend .background.primary.shade.two;
     @extend .bottom.one.padded;
@@ -24,11 +29,11 @@
                 // Numbers were chosen based on testing.
                 width: 100%;
 
-                @media only screen and (min-width: 600px) {
+                @media only screen and (min-width: $twoColumnWidth) {
                     width: 50%;
                 }
 
-                @media only screen and (min-width: 1000px) {
+                @media only screen and (min-width: $threeColumnWidth) {
                     width: 33%;
                 }
             }
@@ -158,16 +163,16 @@
             .column {
                 // Change width of columns based on screen size. Numbers taken from testing.
                 width: 100%;
-                
-                @media only screen and (min-width: 600px) {
+
+                @media only screen and (min-width: $twoColumnWidth) {
                     width: 50%;
                 }
 
-                @media only screen and (min-width: 1000px) {
+                @media only screen and (min-width: $threeColumnWidth) {
                     width: 33%;
                 }
 
-                @media only screen and (min-width: 1350px) {
+                @media only screen and (min-width: $fourColumnWidth) {
                     width: 25%;
                 }
             }
