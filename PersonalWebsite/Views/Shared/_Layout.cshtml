@@ -19,9 +19,14 @@
             </h1>
             <section class="center column">
                 <div class="center items">
-                    <a class="active item" href="/">Home</a>
-                    <a class="item" href="/">Projects</a>
-                    <a class="item" asp-action="Awards">Awards</a>
+                    @{ 
+                        var homeClasses    = (ViewData["NavItem"] as string) == "Home"    ? "active item" : "item";
+                        var projectClasses = (ViewData["NavItem"] as string) == "Project" ? "active item" : "item";;
+                        var awardsClasses  = (ViewData["NavItem"] as string) == "Awards"  ? "active item" : "item";;
+                    }
+                    <a class="@homeClasses" href="/">Home</a>
+                    <a class="@projectClasses" href="/">Projects</a>
+                    <a class="@awardsClasses" asp-action="Awards">Awards</a>
                 </div>
             </section>
         </nav>

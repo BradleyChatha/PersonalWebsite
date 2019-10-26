@@ -1,15 +1,6 @@
 ﻿@import "_common.scss";
 @import "_colour_scheme.scss";
 
-.section.header {
-    & h1 {
-        @extend .primary.shade.eight;
-        text-align: center;
-        font-size: 1.8em;
-        font-weight: bold;
-    }
-}
-
 // Couple of useful screen sizes
 $twoColumnWidth: 600px;
 $threeColumnWidth: 1000px;

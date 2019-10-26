@@ -453,7 +453,7 @@
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element div.language .header img {
+.top.one.padded, .languages.element div.language .header img, .awards.element {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -531,7 +531,7 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label, .awards.element {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element article.knowledge > img {
@@ -594,7 +594,7 @@
 .primary.shade.two, .navbar h1 a, .navbar .center.items .item:hover, .navbar .center.items .item.active:hover {
   color: #c7d1dc; }
 
-.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element {
+.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element, .awards.element {
   background-color: #c7d1dc; }
 
 .border.primary.shade.two, .navbar h1 a.border, .navbar .center.items .border.item:hover, .navbar .center.items .border.item.active:hover {
@@ -615,7 +615,7 @@
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language, .awards.element article.award {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -717,67 +717,67 @@
 .border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
-.primary.shade.eight, .section.header h1 {
+.primary.shade.eight, .section.header h1, .awards.element article.award div.description p a {
   color: #174778; }
 
-.background.primary.shade.eight, .section.header h1.background {
+.background.primary.shade.eight, .section.header h1.background, .awards.element article.award div.description p a.background {
   background-color: #174778; }
 
-.border.primary.shade.eight, .section.header h1.border {
+.border.primary.shade.eight, .section.header h1.border, .awards.element article.award div.description p a.border {
   border-color: #174778; }
 
-.border.left.primary.shade.eight, .section.header h1.border.left {
+.border.left.primary.shade.eight, .section.header h1.border.left, .awards.element article.award div.description p a.border.left {
   border-left-color: #174778; }
 
-.border.top.primary.shade.eight, .section.header h1.border.top {
+.border.top.primary.shade.eight, .section.header h1.border.top, .awards.element article.award div.description p a.border.top {
   border-top-color: #174778; }
 
-.border.right.primary.shade.eight, .section.header h1.border.right {
+.border.right.primary.shade.eight, .section.header h1.border.right, .awards.element article.award div.description p a.border.right {
   border-right-color: #174778; }
 
-.border.bottom.primary.shade.eight, .section.header h1.border.bottom {
+.border.bottom.primary.shade.eight, .section.header h1.border.bottom, .awards.element article.award div.description p a.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label, .awards.element article.award h1, .awards.element article.award div.description p em {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background, .awards.element article.award h1.background, .awards.element article.award div.description p em.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border, .awards.element article.award h1.border, .awards.element article.award div.description p em.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left, .awards.element article.award h1.border.left, .awards.element article.award div.description p em.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top, .awards.element article.award h1.border.top, .awards.element article.award div.description p em.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right, .awards.element article.award h1.border.right, .awards.element article.award div.description p em.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom, .awards.element article.award h1.border.bottom, .awards.element article.award div.description p em.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element article.knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge, .awards.element article.award div.description p {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element article.background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge, .awards.element article.award div.description p.background {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element article.border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge, .awards.element article.award div.description p.border {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge, .awards.element article.award div.description p.border.left {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge, .awards.element article.award div.description p.border.top {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge, .awards.element article.award div.description p.border.right {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge, .awards.element article.award div.description p.border.bottom {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -1029,7 +1029,7 @@
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element div.language .header img {
+.top.one.padded, .languages.element div.language .header img, .awards.element {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -1107,7 +1107,7 @@
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label, .awards.element {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element article.knowledge > img {
@@ -1145,6 +1145,11 @@
 
 .bottom.thirteen.padded {
   padding-bottom: 13em; }
+
+.section.header h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold; }
 
 body {
   margin: 0;
@@ -1301,7 +1306,7 @@ footer {
 .primary.shade.two, .navbar h1 a, .navbar .center.items .item:hover, .navbar .center.items .item.active:hover {
   color: #c7d1dc; }
 
-.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element {
+.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element, .awards.element {
   background-color: #c7d1dc; }
 
 .border.primary.shade.two, .navbar h1 a.border, .navbar .center.items .border.item:hover, .navbar .center.items .border.item.active:hover {
@@ -1322,7 +1327,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language, .awards.element article.award {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -1424,67 +1429,67 @@ footer {
 .border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
-.primary.shade.eight, .section.header h1 {
+.primary.shade.eight, .section.header h1, .awards.element article.award div.description p a {
   color: #174778; }
 
-.background.primary.shade.eight, .section.header h1.background {
+.background.primary.shade.eight, .section.header h1.background, .awards.element article.award div.description p a.background {
   background-color: #174778; }
 
-.border.primary.shade.eight, .section.header h1.border {
+.border.primary.shade.eight, .section.header h1.border, .awards.element article.award div.description p a.border {
   border-color: #174778; }
 
-.border.left.primary.shade.eight, .section.header h1.border.left {
+.border.left.primary.shade.eight, .section.header h1.border.left, .awards.element article.award div.description p a.border.left {
   border-left-color: #174778; }
 
-.border.top.primary.shade.eight, .section.header h1.border.top {
+.border.top.primary.shade.eight, .section.header h1.border.top, .awards.element article.award div.description p a.border.top {
   border-top-color: #174778; }
 
-.border.right.primary.shade.eight, .section.header h1.border.right {
+.border.right.primary.shade.eight, .section.header h1.border.right, .awards.element article.award div.description p a.border.right {
   border-right-color: #174778; }
 
-.border.bottom.primary.shade.eight, .section.header h1.border.bottom {
+.border.bottom.primary.shade.eight, .section.header h1.border.bottom, .awards.element article.award div.description p a.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label, .awards.element article.award h1, .awards.element article.award div.description p em {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background, .awards.element article.award h1.background, .awards.element article.award div.description p em.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border, .awards.element article.award h1.border, .awards.element article.award div.description p em.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left, .awards.element article.award h1.border.left, .awards.element article.award div.description p em.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top, .awards.element article.award h1.border.top, .awards.element article.award div.description p em.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right, .awards.element article.award h1.border.right, .awards.element article.award div.description p em.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom, .awards.element article.award h1.border.bottom, .awards.element article.award div.description p em.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element article.knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge, .awards.element article.award div.description p {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element article.background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge, .awards.element article.award div.description p.background {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element article.border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge, .awards.element article.award div.description p.border {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge, .awards.element article.award div.description p.border.left {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge, .awards.element article.award div.description p.border.top {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge, .awards.element article.award div.description p.border.right {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge, .awards.element article.award div.description p.border.bottom {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -2152,7 +2157,7 @@ footer {
 .left.thirteen.padded {
   padding-left: 13em; }
 
-.top.one.padded, .languages.element div.language .header img {
+.top.one.padded, .languages.element div.language .header img, .awards.element {
   padding-top: 1em; }
 
 .top.two.padded {
@@ -2230,7 +2235,7 @@ footer {
 .right.thirteen.padded {
   padding-right: 13em; }
 
-.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label {
+.bottom.one.padded, .languages.element, .languages.element div.language .header, .languages.element div.language .header img, .knowledge.element, .knowledge.element article.knowledge > label, .awards.element {
   padding-bottom: 1em; }
 
 .bottom.two.padded, .knowledge.element article.knowledge > img {
@@ -2293,7 +2298,7 @@ footer {
 .primary.shade.two, .navbar h1 a, .navbar .center.items .item:hover, .navbar .center.items .item.active:hover {
   color: #c7d1dc; }
 
-.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element {
+.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element, .awards.element {
   background-color: #c7d1dc; }
 
 .border.primary.shade.two, .navbar h1 a.border, .navbar .center.items .border.item:hover, .navbar .center.items .border.item.active:hover {
@@ -2314,7 +2319,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language, .awards.element article.award {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -2416,67 +2421,67 @@ footer {
 .border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
-.primary.shade.eight, .section.header h1 {
+.primary.shade.eight, .section.header h1, .awards.element article.award div.description p a {
   color: #174778; }
 
-.background.primary.shade.eight, .section.header h1.background {
+.background.primary.shade.eight, .section.header h1.background, .awards.element article.award div.description p a.background {
   background-color: #174778; }
 
-.border.primary.shade.eight, .section.header h1.border {
+.border.primary.shade.eight, .section.header h1.border, .awards.element article.award div.description p a.border {
   border-color: #174778; }
 
-.border.left.primary.shade.eight, .section.header h1.border.left {
+.border.left.primary.shade.eight, .section.header h1.border.left, .awards.element article.award div.description p a.border.left {
   border-left-color: #174778; }
 
-.border.top.primary.shade.eight, .section.header h1.border.top {
+.border.top.primary.shade.eight, .section.header h1.border.top, .awards.element article.award div.description p a.border.top {
   border-top-color: #174778; }
 
-.border.right.primary.shade.eight, .section.header h1.border.right {
+.border.right.primary.shade.eight, .section.header h1.border.right, .awards.element article.award div.description p a.border.right {
   border-right-color: #174778; }
 
-.border.bottom.primary.shade.eight, .section.header h1.border.bottom {
+.border.bottom.primary.shade.eight, .section.header h1.border.bottom, .awards.element article.award div.description p a.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label, .awards.element article.award h1, .awards.element article.award div.description p em {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background, .awards.element article.award h1.background, .awards.element article.award div.description p em.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border, .awards.element article.award h1.border, .awards.element article.award div.description p em.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left, .awards.element article.award h1.border.left, .awards.element article.award div.description p em.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top, .awards.element article.award h1.border.top, .awards.element article.award div.description p em.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right, .awards.element article.award h1.border.right, .awards.element article.award div.description p em.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom, .awards.element article.award h1.border.bottom, .awards.element article.award div.description p em.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element article.knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge, .awards.element article.award div.description p {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element article.background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge, .awards.element article.award div.description p.background {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element article.border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge, .awards.element article.award div.description p.border {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge, .awards.element article.award div.description p.border.left {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge, .awards.element article.award div.description p.border.top {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge, .awards.element article.award div.description p.border.right {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge, .awards.element article.award div.description p.border.bottom {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -2688,11 +2693,6 @@ footer {
 
 .border.bottom.gray.shade.ten {
   border-bottom-color: #1a1a1a; }
-
-.section.header h1 {
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: bold; }
 
 .languages.element {
   width: 100%;
@@ -2833,7 +2833,7 @@ footer {
 .primary.shade.two, .navbar h1 a, .navbar .center.items .item:hover, .navbar .center.items .item.active:hover {
   color: #c7d1dc; }
 
-.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element {
+.background.primary.shade.two, .navbar h1 a.background, .navbar .center.items .background.item:hover, .navbar .center.items .background.item.active:hover, .languages.element, .awards.element {
   background-color: #c7d1dc; }
 
 .border.primary.shade.two, .navbar h1 a.border, .navbar .center.items .border.item:hover, .navbar .center.items .border.item.active:hover {
@@ -2854,7 +2854,7 @@ footer {
 .primary.shade.three, .navbar .center.items .item.active {
   color: #a8bfd6; }
 
-.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language {
+.background.primary.shade.three, .navbar .center.items .background.item.active, .languages.element div.language, .awards.element article.award {
   background-color: #a8bfd6; }
 
 .border.primary.shade.three, .navbar .center.items .border.item.active {
@@ -2956,67 +2956,67 @@ footer {
 .border.bottom.primary.shade.seven, .knowledge.element article.bottom.knowledge {
   border-bottom-color: #184d81; }
 
-.primary.shade.eight, .section.header h1 {
+.primary.shade.eight, .section.header h1, .awards.element article.award div.description p a {
   color: #174778; }
 
-.background.primary.shade.eight, .section.header h1.background {
+.background.primary.shade.eight, .section.header h1.background, .awards.element article.award div.description p a.background {
   background-color: #174778; }
 
-.border.primary.shade.eight, .section.header h1.border {
+.border.primary.shade.eight, .section.header h1.border, .awards.element article.award div.description p a.border {
   border-color: #174778; }
 
-.border.left.primary.shade.eight, .section.header h1.border.left {
+.border.left.primary.shade.eight, .section.header h1.border.left, .awards.element article.award div.description p a.border.left {
   border-left-color: #174778; }
 
-.border.top.primary.shade.eight, .section.header h1.border.top {
+.border.top.primary.shade.eight, .section.header h1.border.top, .awards.element article.award div.description p a.border.top {
   border-top-color: #174778; }
 
-.border.right.primary.shade.eight, .section.header h1.border.right {
+.border.right.primary.shade.eight, .section.header h1.border.right, .awards.element article.award div.description p a.border.right {
   border-right-color: #174778; }
 
-.border.bottom.primary.shade.eight, .section.header h1.border.bottom {
+.border.bottom.primary.shade.eight, .section.header h1.border.bottom, .awards.element article.award div.description p a.border.bottom {
   border-bottom-color: #174778; }
 
-.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label {
+.primary.shade.nine, .languages.element div.language .header .years, .languages.element div.language .marking.check, .knowledge.element article.knowledge > label, .awards.element article.award h1, .awards.element article.award div.description p em {
   color: #12395e; }
 
-.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background {
+.background.primary.shade.nine, footer .social.media.element .linkedin, footer .social.media.element .twitter, .languages.element div.language .header .background.years, .languages.element div.language .background.marking.check, .knowledge.element article.knowledge > label.background, .awards.element article.award h1.background, .awards.element article.award div.description p em.background {
   background-color: #12395e; }
 
-.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border {
+.border.primary.shade.nine, .languages.element div.language .header .border.years, .languages.element div.language .border.marking.check, .knowledge.element article.knowledge > label.border, .awards.element article.award h1.border, .awards.element article.award div.description p em.border {
   border-color: #12395e; }
 
-.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left {
+.border.left.primary.shade.nine, .languages.element div.language .header .border.left.years, .languages.element div.language .border.left.marking.check, .knowledge.element article.knowledge > label.border.left, .awards.element article.award h1.border.left, .awards.element article.award div.description p em.border.left {
   border-left-color: #12395e; }
 
-.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top {
+.border.top.primary.shade.nine, .languages.element div.language .header .border.top.years, .languages.element div.language .border.top.marking.check, .knowledge.element article.knowledge > label.border.top, .awards.element article.award h1.border.top, .awards.element article.award div.description p em.border.top {
   border-top-color: #12395e; }
 
-.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right {
+.border.right.primary.shade.nine, .languages.element div.language .header .border.right.years, .languages.element div.language .border.right.marking.check, .knowledge.element article.knowledge > label.border.right, .awards.element article.award h1.border.right, .awards.element article.award div.description p em.border.right {
   border-right-color: #12395e; }
 
-.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom {
+.border.bottom.primary.shade.nine, .languages.element div.language .header .border.bottom.years, .languages.element div.language .border.bottom.marking.check, .knowledge.element article.knowledge > label.border.bottom, .awards.element article.award h1.border.bottom, .awards.element article.award div.description p em.border.bottom {
   border-bottom-color: #12395e; }
 
-.primary.shade.ten, .knowledge.element article.knowledge {
+.primary.shade.ten, .knowledge.element article.knowledge, .awards.element article.award div.description p {
   color: #091c2f; }
 
-.background.primary.shade.ten, .knowledge.element article.background.knowledge {
+.background.primary.shade.ten, .knowledge.element article.background.knowledge, .awards.element article.award div.description p.background {
   background-color: #091c2f; }
 
-.border.primary.shade.ten, .knowledge.element article.border.knowledge {
+.border.primary.shade.ten, .knowledge.element article.border.knowledge, .awards.element article.award div.description p.border {
   border-color: #091c2f; }
 
-.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge {
+.border.left.primary.shade.ten, .knowledge.element article.border.left.knowledge, .awards.element article.award div.description p.border.left {
   border-left-color: #091c2f; }
 
-.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge {
+.border.top.primary.shade.ten, .knowledge.element article.border.top.knowledge, .awards.element article.award div.description p.border.top {
   border-top-color: #091c2f; }
 
-.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge {
+.border.right.primary.shade.ten, .knowledge.element article.border.right.knowledge, .awards.element article.award div.description p.border.right {
   border-right-color: #091c2f; }
 
-.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge {
+.border.bottom.primary.shade.ten, .knowledge.element article.border.bottom.knowledge, .awards.element article.award div.description p.border.bottom {
   border-bottom-color: #091c2f; }
 
 .gray.shade.one {
@@ -3228,3 +3228,38 @@ footer {
 
 .border.bottom.gray.shade.ten {
   border-bottom-color: #1a1a1a; }
+
+.awards.element {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .awards.element article.award {
+    max-width: 800px;
+    width: 90%;
+    padding: 0em 1em 1em 1em;
+    display: flex;
+    flex-direction: column; }
+    .awards.element article.award h1 {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      margin: 0.5em 0em 0.5em;
+      display: flex;
+      flex-direction: row;
+      justify-content: center; }
+    .awards.element article.award > a {
+      display: flex;
+      flex-direction: column; }
+      .awards.element article.award > a img {
+        height: 500px; }
+    .awards.element article.award div.description {
+      display: block; }
+      .awards.element article.award div.description p {
+        display: inline-block;
+        text-align: left;
+        letter-spacing: 0.02em; }
+        .awards.element article.award div.description p em {
+          display: inline; }
+        .awards.element article.award div.description p a {
+          display: inline;
+          text-decoration: none; }

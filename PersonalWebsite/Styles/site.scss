@@ -2,6 +2,15 @@
 @import "_colour_scheme.scss";
 @import "_common_util.scss";
 
+.section.header {
+    & h1 {
+        @extend .primary.shade.eight;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+}
+
 body {
     @extend .background.gray.shade.one;
     margin: 0;
