@@ -1149,7 +1149,11 @@
 body {
   margin: 0;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif; }
+  font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: block;
+  position: relative;
+  padding-bottom: 90px; }
 
 .navbar {
   margin: 0;
@@ -1233,7 +1237,9 @@ footer {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 90px; }
+  height: 90px;
+  position: absolute;
+  bottom: 0px; }
   @media only screen and (max-width: 660px) {
     footer .three.column.grid .center.aligned.row .padding.column {
       width: 0%; }

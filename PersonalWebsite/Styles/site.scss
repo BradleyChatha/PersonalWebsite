@@ -7,6 +7,10 @@ body {
     margin: 0;
     font-size: 16px;
     font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: block;
+    position: relative;
+    padding-bottom: 90px;
 }
 
 .navbar {
@@ -143,6 +147,8 @@ footer {
     flex-direction: row;
     width: 100%;
     height: 90px;
+    position: absolute;
+    bottom: 0px;
     // On small screens, disable the padding column, and increase the width of the middle one to compensate
     .three.column.grid {
         .center.aligned.row {
