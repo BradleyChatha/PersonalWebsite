@@ -40,9 +40,10 @@ namespace PersonalWebsite
                 o.MaxAge = TimeSpan.FromDays(365);
             });
 
-            services
-                .AddMvc(o => o.EnableEndpointRouting = false)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddRazorPages()
+                    .AddRazorRuntimeCompilation();
+            services.AddControllersWithViews()
+                    .AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,12 +70,11 @@ namespace PersonalWebsite
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseEndpoints(endpoints => 
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
