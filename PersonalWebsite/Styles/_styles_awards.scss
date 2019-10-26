@@ -38,9 +38,14 @@
             display: block;
 
             p {
+                $fontSize: 18px;
+                $lineHeight: $fontSize * 1.5;
                 @extend .primary.shade.ten;
                 display: inline-block;
                 text-align: left;
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                max-width: 50 * $lineHeight;
 
                 em {
                     @extend .primary.shade.nine;
