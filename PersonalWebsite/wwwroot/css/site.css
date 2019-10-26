@@ -3256,10 +3256,10 @@ footer {
       display: block; }
       .awards.element article.award div.description p {
         display: inline-block;
-        text-align: left;
-        letter-spacing: 0.02em; }
+        text-align: left; }
         .awards.element article.award div.description p em {
-          display: inline; }
+          display: inline;
+          letter-spacing: -0.5px; }
         .awards.element article.award div.description p a {
           display: inline;
           text-decoration: none; }

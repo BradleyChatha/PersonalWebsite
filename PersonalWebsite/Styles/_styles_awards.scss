@@ -41,11 +41,11 @@
                 @extend .primary.shade.ten;
                 display: inline-block;
                 text-align: left;
-                letter-spacing: 0.02em;
 
                 em {
                     @extend .primary.shade.nine;
                     display: inline;
+                    letter-spacing: -0.5px;
                 }
 
                 a {
