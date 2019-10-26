@@ -1,4 +1,6 @@
-﻿.awards.element {
+﻿@import "_colour_scheme.scss";
+
+.awards.element {
     @extend .background.primary.shade.two;
     @extend .bottom.one.padded;
     @extend .top.one.padded;
@@ -48,15 +50,19 @@
                 max-width: 50 * $lineHeight;
 
                 em {
-                    @extend .primary.shade.nine;
+                    @extend .primary.shade.eight;
                     display: inline;
                     letter-spacing: -0.5px;
                 }
 
                 a {
-                    @extend .primary.shade.eight;
+                    color: darken(nth($shadesPrimary, 5), 20%);
                     display: inline;
                     text-decoration: none;
+
+                    &:hover {
+                        @extend .primary.shade.six;
+                    }
                 }
             }
         }
