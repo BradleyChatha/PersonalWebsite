@@ -18,6 +18,7 @@
 
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Views\Projects\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
