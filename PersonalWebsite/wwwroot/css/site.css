@@ -3658,7 +3658,9 @@ footer {
     width: 90%;
     padding: 0em 1em 1em 1em;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 1px 1px 8px -3px; }
     .awards.element article.award h1 {
       text-align: center;
       font-size: 2em;
