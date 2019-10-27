@@ -21,12 +21,14 @@
                 <div class="center items">
                     @{ 
                         var homeClasses    = (ViewData["NavItem"] as string) == "Home"    ? "active item" : "item";
-                        var projectClasses = (ViewData["NavItem"] as string) == "Project" ? "active item" : "item";;
-                        var awardsClasses  = (ViewData["NavItem"] as string) == "Awards"  ? "active item" : "item";;
+                        var projectClasses = (ViewData["NavItem"] as string) == "Project" ? "active item" : "item";
+                        var awardsClasses  = (ViewData["NavItem"] as string) == "Awards"  ? "active item" : "item";
+                        var blogClasses    = (ViewData["NavItem"] as string) == "Blog"    ? "active item" : "item";
                     }
                     <a class="@homeClasses" href="/">Home</a>
                     <a class="@projectClasses" href="/">Projects</a>
                     <a class="@awardsClasses" asp-action="Awards">Awards</a>
+                    <a class="@blogClasses" href="/">Blog</a>
                 </div>
             </section>
         </nav>
