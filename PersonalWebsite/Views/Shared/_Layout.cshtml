@@ -27,7 +27,7 @@
                     }
                     <a class="@homeClasses" href="/">Home</a>
                     <a class="@projectClasses" href="/">Projects</a>
-                    <a class="@blogClasses" href="/">Blog</a>
+                    <a class="@blogClasses" asp-action="Blog">Blog</a>
                     <a class="@awardsClasses" asp-action="Awards">Awards</a>
                 </div>
             </section>
@@ -77,5 +77,8 @@
 
     <partial name="_LayoutJsPartial" />
     @RenderSection("Scripts", required: false)
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
 </body>
 </html>

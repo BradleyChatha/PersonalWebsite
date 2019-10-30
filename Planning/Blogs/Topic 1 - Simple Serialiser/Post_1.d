@@ -8,6 +8,11 @@ Covers:
 Excercises:
 	- Add type checking using JSONValue.type
 	- Add serialisation and deserialisation for the char type, hinting that it's probably best to store it as a string in the JSONValue.
+	- [Advanced] By checking the JSONValue's type, allow a JSONValue holding a signed integer to be converted into an unsigned integer, and vice versa.
+	- Use this as a way to practice writing unittests, using D's built in stuff.
+NOTES:
+	- The blog post ended up being too long, so enums should be moved into their own post.
+	  To keep interest flowing, structs should come after this, so do enums after structs.
 */
 import std.json : JSONValue;
 import std.traits : isNumeric;

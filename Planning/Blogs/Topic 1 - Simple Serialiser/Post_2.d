@@ -134,9 +134,13 @@ T deserialise(T)(JSONValue json)
 		import std.conv : to;
 		return json.str.to!T;
 	}
-	else static if(is(T == struct))
+	else static if(is(T == struct) || is(T == class))
 	{
-		T toReturn;
+		// Remind that static if does not create a scope.
+		static if(is(T == struct))
+			T toReturn;
+		else
+			T toReturn = new T();
 		
 		// Explain that they can design their code in different ways to reduce code replication,
 		// but I choose this way just to keep the examples simple.

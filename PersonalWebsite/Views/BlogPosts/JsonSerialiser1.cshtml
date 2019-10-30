@@ -1,0 +1,547 @@
+﻿
+@{
+    ViewData["Title"] = "Serialising basic D types";
+    ViewData["NavItem"] = "Blog";
+}
+
+<section class="bluer background">
+    <div class="one column grid">
+        <div class="row">
+            <div class="center column">
+                <article class="blog post">
+                    <h1>Creating a simple JSON serialiser in D #1 - Serialising basic D types</h1>
+                    <p>
+                        One of the most overlooked, yet powerful features of D, is its extensively powerful
+                        <a href="https://tour.dlang.org/tour/en/gems/template-meta-programming">metaprogramming</a> capabilities. 
+                        The aim of this series of blog posts
+                        is to teach and show off different aspects of D's metaprogramming features, and in the end
+                        create a semi-useful serialiser/deserialiser for JSON.
+                    </p>
+                    <p>
+                        This first post will cover how to create two template functions, that will use several
+                        features of D's meta programminmg to determine how to serialise/deserialise most
+                        of D's primitive types.
+                    </p>
+                    <p>
+                        Some code snippets may start with a comment containing a link to <a href="https://run.dlang.io/">https://run.dlang.io/</a>,
+                        which will take you to an online D environment containing all the code so far for that snippet.
+                    </p>
+
+                    <h2>Requirements</h2>
+                    <ul>
+                        <li>The ability to write and compile D code</li>
+                        <li>A basic understanding of what a template is (in any language)</li>
+                    </ul>
+
+                    <h2>std.json</h2>
+                    <p>
+                        To make these examples as frictionless to compile as possible, I will be purely
+                        using <a href="https://dlang.org/phobos/">Phobos</a>, D's standard library, which luckily for us includes
+                        a (rather outdated) JSON module called <a href="https://dlang.org/phobos/std_json.html">std.json</a>.
+                    </p>
+
+                    <h2>What are the primitive types?</h2>
+                    <p>
+                        For the context of this blog series, a primitive type is type built into the language itself.
+                    </p>
+                    <ul>
+                        <li>Integers: byte, short, int, long, including their unsigned versions (ubyte, ushort, etc.)</li>
+                        <li>Booleans: true or false.</li>
+                        <li>Strings: While not technically a built-in type, they're common enough that I'll treat them like one.</li>
+                    </ul>
+
+                    <h2>Serialising primitive types</h2>
+                    <p>
+                        To start off, let's begin with just having a D file that simply contains an empty main function, and
+                        import <code>std.json</code>:
+
+                        <!--I wish there were a better way that I could be bothered with :(-->
+                        <pre><code class="d">
+import std.json;
+
+void main()
+{
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Next we want to create a basic template function called <code>serialise</code>.
+
+                        This function will take a template parameter of any type (<code>T</code>), and return
+                        a <a href="https://dlang.org/phobos/std_json.html#.JSONValue">JSONValue</a>, 
+                        which is the main type that <code>std.json</code> uses to represent
+                        JSON values.
+                    </p>
+                    <p>
+                        One of the interesting things about <code>JSONValue</code> is that its constructor
+                        is also a template, which conveniently also supports being able to automatically
+                        wrap around any primitive type (and more) that D has.
+                    </p>
+                    <p>
+                        This means all we have to do to serialise a primitive type, is to construct a JSONValue,
+                        and pass our primitive value directly to it. Don't think things are this convenient later
+                        down the road though.
+
+                        <pre><code class="d">
+JSONValue serialise(T)(T value)
+{
+    return JSONValue(value);
+}
+                        </code></pre>
+
+                        And it can be used like so:
+
+                        <pre><code class="d">
+// <a href="https://run.dlang.io/is/0pBFdu">https://run.dlang.io/is/0pBFdu</a>
+void main()
+{
+    import std.stdio : writeln;
+
+    JSONValue json;
+
+    // Here we use `!int` to directly specify that `T` is of type `int`.
+    json = serialise!int(420);
+    writeln(json); // 420
+
+    // However, the compiler can actually infer what `T` is based off of the parameter we pass through.
+    // So here, `T` would be `string`.
+    json = serialise("Hello world!");
+    writeln(json); // "Hello world!", including the quotes.
+}
+                    </code></pre>
+                    </p>
+                    <p>
+                        Simple enough, but right now, we're letting the user pass through any type they want into our <code>serialise</code>
+                        function, but we would like to distinguish between primitive types, and any other future types
+                        we may want to handle such as structs, classes, and enums, all of which can't be serialised
+                        directly by JSONValue's constructor.
+                        "How do we do this?" you may ask. The answer is <code>static if</code>.
+                    </p>
+
+                    <h2>Static if</h2>
+                    <p>
+                        If you're familiar with C++'s <code>#if</code> directive, then <code>static if</code>
+                        should make you feel right at home (without all the downsides of <code>#if</code>).
+                    </p>
+                    <p>
+                        Basically, <code>static if</code> is like a normal <code>if</code> statement, except:
+                    </p>
+                    <ul>
+                        <li>It only runs at compile time, so its condition must also be able to be evaluated at compile time.</li>
+                        <li>It doesn't create a new scope.</li>
+                        <li>Any code that isn't inside a <code>static if</code>'s passing block (either the if or the else) doesn't get compiled into the program.</li>
+                    </ul>
+                    <p>
+                        For example, say I wanted to have a compile time flag in my code that determined whether my program
+                        decides to do any logging or not, <code>static if</code> could be used in this situation:
+                        
+                        <pre><code>
+// <a href="https://run.dlang.io/is/yjxGYT">https://run.dlang.io/is/yjxGYT</a>
+const bool SHOULD_LOG = true; // This value is readable at compile time, so can be used in static if.
+
+void main()
+{
+    import std.stdio : writeln;
+
+    static if(SHOULD_LOG)
+    {
+        writeln("This is a log!");
+    }
+
+    writeln("Done Task.");
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        If <code>SHOULD_LOG</code> is true, then the <code>writeln("This is a log!")</code>
+                        is compiled into the program, otherwise, everything inside of the <code>static if</code>
+                        is ignored by the compiler.
+                    </p>
+
+                    <h2>Deserialising primitive types</h2>
+                    <p>
+                        Now that we know how a <code>static if</code> works, we can move onto deserialising
+                        primive types, as it's less straight forward than serialising them.
+                    </p>
+                    <p>
+                        To start, we'll make a <code>deserialise</code> function that takes a <code>JSONValue</code>, a
+                        type parameter (<code>T</code>), and returns a <code>T</code>.
+
+                        <pre><code>
+// The `T` can be passed by doing `deserialise!int(someJsonValue)`, where `T` would then be `int`.
+T deserialise(T)(JSONValue json)
+{
+    assert(false, "Not implemented");
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Now, converting a JSONValue back into primitive values isn't as convenient as the other way around. 
+                    </p>
+                    <p>
+                        Instead, JSONValue has specific functions for converting back into different types:
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="https://dlang.org/phobos/std_json.html#.JSONValue.str">JSONValue.str - Convert to a string</a>
+                        </li>
+                        <li>
+                            <a href="https://dlang.org/phobos/std_json.html#.JSONValue.integer">JSONValue.integer - Convert to a long</a>
+                        </li>
+                        <li>
+                            <a href="https://dlang.org/phobos/std_json.html#.JSONValue.uinteger">JSONValue.uinteger - Convert to a ulong</a>
+                        </li>
+                        <li>
+                            <a href="https://dlang.org/phobos/std_json.html#.JSONValue.floating">JSONValue.floating - Convert to a double</a>
+                        </li>
+                        <li>
+                            <a href="https://dlang.org/phobos/std_json.html#.JSONValue.boolean">JSONValue.boolean - Convert to a bool</a>
+                        </li>
+                    </ul>
+                    <p>
+                        This means we have to use <code>static if</code> to determine which of the
+                        correct functions to call. It should be noted that if for example, you tried to convert a
+                        JSONValue containing a <code>string</code> into a <code>long</code> then an error would be thrown,
+                        making it more mandatory that the right function is called.
+                    </p>
+
+                    <h3>Deserialisation - is() expression</h3>
+                    <p>
+                        Let's start off with strings. There is a statement in D called the 
+                        <a href="https://dlang.org/spec/expression.html#IsExpression">is()</a> expression,
+                        which has some very magical features, but the most basic one is to compare one type to another.
+                    </p>
+                    <p>
+                        I feel this is best shown by example, so let's use <code>static if</code> and <code>is()</code>
+                        to determine if our type parameter (<code>T</code>) is a string, and then call <code>JSONValue.str</code>.
+
+                        <pre><code>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    {
+        return json.str;
+    }
+}
+                        </code></pre>
+
+                        Yea, it's actually that easy.
+                    </p>
+                    <p>
+                        One particular issue we have though is, with our current code things like
+                        <code>deserialise!string(JSONValue("Hello world!"))</code> would work, however
+                        if we were to do something such as <code>deserialise!int</code>, which we currently
+                        don't have code to handle, we'd get a compiler error complaining that there's no return
+                        value (since the static if doesn't compile in one).
+                    </p>
+                    <p>
+                        What if we could <em>create our own error messages</em> for a more user friendly
+                        experience? In comes <code>static assert</code>.
+                    </p>
+
+                    <h3>Deserialisation - static assert</h3>
+                    <p>
+                        <code>static assert</code> is a compile time version of <code>assert</code> (condition that must be true otherwise crash the program),
+                        that instead of crashing the program if its condition fails, it will instead fail
+                        compliation, optionally displaying a user-defined message.
+                    </p>
+                    <p>
+                        So what we can do is if all of our <code>static ifs</code> fail to have their
+                        conditions met, then we can fall back to a <code>static assert</code> that prints
+                        a user friendly message.
+                    </p>
+                    <p>
+                        We can use the special <code>.stringof</code> property every type has to get a human
+                        readable string of whatever type <code>T</code> currently is.
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/nd2LYl">https://run.dlang.io/is/nd2LYl</a>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    {
+        return json.str;
+    }
+    else
+    {
+        static assert(false, "Don't know how to deserialise type: " ~ T.stringof);
+    }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Here's an example of the output were we to do <code>deserialise!int(JSONValue(0))</code>
+
+                        <pre><code>
+.\test.d(17): Error: static assert:  "Don't know how to deserialise type: int"
+.\test.d(5):         instantiated from here: `deserialise!int`
+                        </code></pre>
+
+                        Starting to love D?
+                    </p>
+
+                    <h3>Deserialisation - cont.</h3>
+                    <p>
+                        Anyway, for bools, it's pretty much the same thing:
+                        <pre><code>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    { /* ... */ }
+    else static if(is(T == bool)) // Please note that it is "else STATIC if", not "else if"
+    {
+        return json.boolean;
+    }
+    else
+    { /* ... */ }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        For floating points, while we <em>could</em> just check for both a <code>float</code>
+                        and a <code>double</code> in the same <code>static if</code>, this is a good point
+                        to start getting used to 
+                        <a href="https://dlang.org/phobos/std_traits.html">std.traits</a>, which contains a plethora of templates
+                        that can determine certain things about a type (among other extremely useful things).
+                    </p>
+
+                    <h3>Deserialisation - std.traits.isFloatingPoint, and std.conv.to</h3>
+                    <p>
+                        So let's start by importing <code>std.traits</code> at the top of the file, alongside <code>std.json</code>:
+                        <pre><code>
+import std.json, std.traits;
+                        </code></pre>
+                    </p>
+                    <p>
+                        Now we need to add another <code>else static if</code> statement into our deserialise function,
+                        using the <a href="https://dlang.org/phobos/std_traits.html#isFloatingPoint">std.traits.isFloatingPoint</a> 
+                        template to check if <code>T</code> is a floating point type.
+                    </p>
+                    <p>
+                        However, there is also one last issue we must address first. <code>JSONValue.floating</code> returns
+                        to us a <code>double</code>, but we want to support both <code>float and double</code> at the same time. While we could just cast
+                        the return value into a <code>float</code> this presents another issue of, what if the return value
+                        is larger than a float can hold? The cast in this case would then provide back a bad value.
+                    </p>
+                    <p>
+                        So the solution is to use another incredibly helpful function called <code>std.conv.to</code>, which
+                        is a template function that can convert between different types, and provides a few sanity checks including
+                        throwing an exception if we try to cast a <code>double</code> to a <code>float</code> where the <code>double</code>
+                        is too large to fit into a <code>float</code>.
+                    </p>
+                    <p>
+                        So get an <code>import std.conv</code> going somewhere, and let's improve our deserialiser.
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/E7c9ZP">https://run.dlang.io/is/E7c9ZP</a>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    { /* ... */ }
+    else static if(is(T == bool))
+    { /* ... */ }
+    else static if(isFloatingPoint!T)
+    {
+        return json.floating.to!T();
+    }
+    else
+    { /* ... */ }
+}                        
+                        </code></pre>
+                        Side note that we're using a feature called UFCS (Uniform function call syntax)
+                        to allow us to use std.conv.to as if it were a member function for a double.
+                    </p>
+
+                    <h3>Deserialisation - isSigned, and isUnsigned</h3>
+                    <p>
+                        Finally, we're onto signed and unsigned integers.
+                    </p>
+                    <p>
+                        The <code>std.traits</code> module provides us with the <code>isSigned</code> and
+                        <code>isUnsigned</code> templates. The <code>JSONValue.integer</code> and the unsigned
+                        counterpart both return <code>long/ulong</code>, so we also want to use <code>std.conv.to</code>
+                        again for the sanity checks.
+                        
+                        <pre><code>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    { /* ... */ }
+    else static if(is(T == bool))
+    { /* ... */ }
+    else static if(isFloatingPoint!T)
+    { /* ... */ }
+    else static if(isSigned!T)
+    {
+        return json.integer.to!T();
+    }
+    else static if(isUnsigned!T)
+    {
+        return json.uinteger.to!T();
+    }
+    else
+    { /* ... */ }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        It's actually really simple once you understand a bit more about D's metaprogramming power, right?
+                    </p>
+                    <p>
+                        Anyway, let's do a quick test to see the results of our work.
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/unkmfu">https://run.dlang.io/is/unkmfu</a>
+void main()
+{
+    import std.stdio;
+
+    JSONValue foo;
+
+    foo = serialise("Hello world!");
+    writeln(foo); // "Hello world!"
+    writeln(deserialise!string(foo)); // Hello world!
+
+    foo = 500.serialise(); // Can also use UFCS for a cleaner syntax.
+    writeln(foo); // 500
+    writeln(foo.deserialise!short()); // 500
+}
+                        </code></pre>
+                    </p>
+                    
+                    <h2>Conclusion</h2>
+                    <p>
+                        We now have a serialiser that can serialise and deserialise most of D's primitive types.
+                        While it is not too useful in its current state, the next post will talk about how to start
+                        (de)serialising structs, which will turn this tiny little serialiser into something infinitely
+                        more useful.
+                    </p>
+                    <p>
+                        <a href="#">Next Post - NOT RELEASED YET</a>
+                    </p>
+
+                    <h2>Excercises</h2>
+                    <p>
+                        There are various things I left out, either to reduce the length of this blog post, or to
+                        leave up to you, the reader, to implement for yourself as a challenge.
+                    </p>
+
+                    <h3>Excercise #1 - Validation checks during deserialisation</h3>
+                    <p>
+                        While JSONValue itself does checks for things like "convert this string JSONValue into a long",
+                        adding these checks yourself can be good practice, and a great place to start getting into the
+                        habit of using the <a href="https://dlang.org/phobos/std_exception.html#enforce">std.exception.enforce</a> function.
+                    </p>
+                    <p>
+                        You can use <a href="https://dlang.org/phobos/std_json.html#.JSONValue.type">JSONValue.type</a> to
+                        get the type of the JSONValue passed to the deserilise function, and please see 
+                        <a href="https://dlang.org/phobos/std_json.html#.JSONType">JSONType</a> to see all the different types.
+                    </p>
+                    <p>
+                        Here is a test case. Just copy-paste this as your main function, and run the program.
+
+                        <pre><code>
+void main()
+{
+    import std.stdio     : writeln;
+    import std.exception : assertThrown, assertNotThrown;
+
+    JSONValue json = serialise("Lalafell");
+
+    assertThrown(json.deserialise!int());
+    assertNotThrown(json.deserialise!string());
+
+    writeln("Success");
+}
+                        </code></pre>
+                    </p>
+
+                    <h3>Excercise #2 - Add serialisation support for the 'char' type.</h3>
+                    <p>
+                        The only primitive type I didn't cover, was <code>char</code>. I'd recommend
+                        storing a <code>char</code> as a string in the JSONValue.
+                    </p>
+                    <p>
+                        For bonus points, you could also add support for deserialising a char, adding a check
+                        to make sure that the version in the JSONValue is only 1 character long.
+                    </p>
+                    <p>
+                        Test case (assuming you store it as a string):
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    JSONValue json = serialise('c');
+
+    assert(json.deserialise!string() == "c");
+    assert(json.deserialise!char() == 'c', "Comment out this test if you didn't do the bonus points objective.");
+
+    writeln("Success");
+}
+                        </code></pre>
+                    </p>
+
+                    <h3>Excercise #3 - Allowing conversion between signed and unsigned integers.</h3>
+                    <p>
+                        This is intended as a less straight forward challenge.
+                    </p>
+                    <p>
+                        Basically, you can store both signed and unsigned integers into a JSONValue. But, for example,
+                        if you store a signed integer, you can only get it back as a signed integer, and trying to get
+                        it back as an unsigned integer will make <code>JSONValue</code> throw an error.
+                    </p>
+                    <p>
+                        However, if you got a signed integer back as a signed integer, and <em>then</em> converted
+                        it to an unsigned integer, that'd work (although there's an argument about whether it's correct
+                        behaviour or not).
+                    </p>
+                    <p>
+                        So you must modify the deserialise function to allow <code>deserialise!uint()</code> to work
+                        on JSONValues containing either signed or unsigned integers, and vice versa with <code>deserialise!int()</code>.
+                    </p>
+                    <p>
+                        Test case:
+
+                        <pre><code>
+void main()
+{
+    import std.stdio     : writeln;
+    import std.exception : assertNotThrown;
+
+    JSONValue json;
+
+    void test()
+    {
+        assertNotThrown(json.deserialise!int());
+        assertNotThrown(json.deserialise!uint());
+        assert(json.deserialise!int() == 400);
+        assert(json.deserialise!uint() == 400);
+    }
+
+    json = serialise!uint(400u);
+    test();
+
+    json = serialise!int(400);
+    test();
+
+    writeln("Success");
+}
+                        </code></pre>
+                    </p>
+
+                    <h3>Excercises #4 - Write test cases using D's built-in unittesting.</h3>
+                    <p>
+                        D has <a href="https://tour.dlang.org/tour/en/gems/unittesting">built-in unittests</a>, and this tiny project
+                        could be a good way to get yourself started with them.
+                    </p>
+                    <p>
+                        For example, the test cases I gave for the other excercises could be moved from being
+                        in the main function, into their own unittests.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

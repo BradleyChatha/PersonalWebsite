@@ -1,0 +1,60 @@
+﻿@import "_colour_scheme.scss";
+
+article.blog.post {
+    $normalFontSize: 18px;
+    $normalLineHeight: $normalFontSize * 1.618;
+    $charsPerNormalLine: 50;
+    $normalLineMaxWidth: $charsPerNormalLine * $normalLineHeight;
+
+    @extend .background.primary.shade.three;
+    max-width: 1080px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 0em 1em 1em 1em;
+    margin: 1em 0em 1em 0em;
+    border-radius: 15px;
+    box-shadow: 1px 1px 8px -3px;
+
+    h1 {
+        @extend .primary.shade.nine;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 0.5em 0em 0.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    h2 {
+        @extend .primary.shade.eight;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+
+    h3 {
+        @extend .primary.shade.eight;
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-bottom: 0.2em;
+    }
+
+    p, ul li {
+        @extend .primary.shade.ten;
+        font-size: $normalFontSize;
+        line-height: $normalLineHeight;
+        max-width: $normalLineMaxWidth;
+        letter-spacing: 0.005em;
+
+        a {
+            color: darken(nth($shadesPrimary, 5), 20%);
+            display: inline;
+            text-decoration: none;
+
+            &:hover {
+                @extend .primary.shade.six;
+            }
+        }
+    }
+}

@@ -11,6 +11,12 @@
     }
 }
 
+.bluer.background {
+    @extend .background.primary.shade.two;
+    display: flex;
+    width: 100%;
+}
+
 body {
     @extend .background.gray.shade.one;
     margin: 0;
@@ -233,5 +239,6 @@ footer {
 @import "_colour_scheme.scss";
 
 // Specific styling
-@import "_styles_home.scss"; // Home page
+@import "_styles_home.scss";   // Home page
 @import "_styles_awards.scss"; // Awards page
+@import "_styles_blog.scss";   // Blog page and post pages

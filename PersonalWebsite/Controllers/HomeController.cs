@@ -18,5 +18,14 @@ namespace PersonalWebsite.Controllers
         {
             return View();
         }
+
+        public IActionResult Blog(string post)
+        {
+            // Meh. Not a great idea, but to be honest I don't really need to care about a better
+            // way for this website.
+            return (post == null)
+                    ? View()
+                    : View("/Views/BlogPosts/" + post + ".cshtml");
+        }
     }
 }
