@@ -2,6 +2,9 @@
     ViewData["Title"] = "Index";
     ViewData["NavItem"] = "Home";
 
+    // I know this is... *not ideal*, but I'm the only one who's ever gonna touch this code,
+    // and I don't really find a benefit of using a database for this website, so this works
+    // well enough for my own needs.
     var languages = new List<(
         string Image,
         int Years,
