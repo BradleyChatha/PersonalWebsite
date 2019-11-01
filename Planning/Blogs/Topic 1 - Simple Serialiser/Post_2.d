@@ -3,6 +3,8 @@ Covers:
 	- static foreach and struct/class.tupleof to perform reflection
 	- Using alias
 	- String mixins
+REMINDER:
+	- Enums are for post 3 now.
 */
 import std.json   : JSONValue;
 import std.traits : isNumeric;
@@ -13,6 +15,7 @@ enum PersonType
 	Staff
 }
 
+// NOTE: Since enums are for post 3, either just remove the "type", or come up with another example.
 struct Person 
 {
 	string name;
