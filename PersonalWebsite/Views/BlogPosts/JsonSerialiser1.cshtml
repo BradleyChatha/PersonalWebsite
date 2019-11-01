@@ -12,7 +12,7 @@
                     <h1>Creating a simple JSON serialiser in D #1 - Serialising basic D types</h1>
                     <p>
                         One of the most overlooked, yet powerful features of D, is its extensively powerful
-                        <a href="https://tour.dlang.org/tour/en/gems/template-meta-programming">metaprogramming</a> capabilities. 
+                        <a href="https://tour.dlang.org/tour/en/gems/template-meta-programming">metaprogramming</a> capabilities.
                         The aim of this series of blog posts
                         is to teach and show off different aspects of D's metaprogramming features, and in the end
                         create a semi-useful serialiser/deserialiser for JSON.
@@ -68,7 +68,7 @@ void main()
                         Next we want to create a basic template function called <code>serialise</code>.
 
                         This function will take a template parameter of any type (<code>T</code>), and return
-                        a <a href="https://dlang.org/phobos/std_json.html#.JSONValue">JSONValue</a>, 
+                        a <a href="https://dlang.org/phobos/std_json.html#.JSONValue">JSONValue</a>,
                         which is the main type that <code>std.json</code> uses to represent
                         JSON values.
                     </p>
@@ -134,7 +134,7 @@ void main()
                     <p>
                         For example, say I wanted to have a compile time flag in my code that determined whether my program
                         decides to do any logging or not, <code>static if</code> could be used in this situation:
-                        
+
                         <pre><code>
 // <a href="https://run.dlang.io/is/yjxGYT">https://run.dlang.io/is/yjxGYT</a>
 const bool SHOULD_LOG = true; // This value is readable at compile time, so can be used in static if.
@@ -176,7 +176,7 @@ T deserialise(T)(JSONValue json)
                         </code></pre>
                     </p>
                     <p>
-                        Now, converting a JSONValue back into primitive values isn't as convenient as the other way around. 
+                        Now, converting a JSONValue back into primitive values isn't as convenient as the other way around.
                     </p>
                     <p>
                         Instead, JSONValue has specific functions for converting back into different types:
@@ -207,7 +207,7 @@ T deserialise(T)(JSONValue json)
 
                     <h3>Deserialisation - is() expression</h3>
                     <p>
-                        Let's start off with strings. There is a statement in D called the 
+                        Let's start off with strings. There is a statement in D called the
                         <a href="https://dlang.org/spec/expression.html#IsExpression">is()</a> expression,
                         which has some very magical features, but the most basic one is to compare one type to another.
                     </p>
@@ -300,7 +300,7 @@ T deserialise(T)(JSONValue json)
                     <p>
                         For floating points, while we <em>could</em> just check for both a <code>float</code>
                         and a <code>double</code> in the same <code>static if</code>, this is a good point
-                        to start getting used to 
+                        to start getting used to
                         <a href="https://dlang.org/phobos/std_traits.html">std.traits</a>, which contains a plethora of templates
                         that can determine certain things about a type (among other extremely useful things).
                     </p>
@@ -314,7 +314,7 @@ import std.json, std.traits;
                     </p>
                     <p>
                         Now we need to add another <code>else static if</code> statement into our deserialise function,
-                        using the <a href="https://dlang.org/phobos/std_traits.html#isFloatingPoint">std.traits.isFloatingPoint</a> 
+                        using the <a href="https://dlang.org/phobos/std_traits.html#isFloatingPoint">std.traits.isFloatingPoint</a>
                         template to check if <code>T</code> is a floating point type.
                     </p>
                     <p>
@@ -361,7 +361,7 @@ T deserialise(T)(JSONValue json)
                         <code>isUnsigned</code> templates. The <code>JSONValue.integer</code> and the unsigned
                         counterpart both return <code>long/ulong</code>, so we also want to use <code>std.conv.to</code>
                         again for the sanity checks.
-                        
+
                         <pre><code>
 T deserialise(T)(JSONValue json)
 {
@@ -408,7 +408,7 @@ void main()
 }
                         </code></pre>
                     </p>
-                    
+
                     <h2>Conclusion</h2>
                     <p>
                         We now have a serialiser that can serialise and deserialise most of D's primitive types.
@@ -437,7 +437,7 @@ void main()
                     </p>
                     <p>
                         You can use <a href="https://dlang.org/phobos/std_json.html#.JSONValue.type">JSONValue.type</a> to
-                        get the type of the JSONValue passed to the deserilise function, and please see 
+                        get the type of the JSONValue passed to the deserilise function, and please see
                         <a href="https://dlang.org/phobos/std_json.html#.JSONType">JSONType</a> to see all the different types.
                     </p>
                     <p>
@@ -459,34 +459,7 @@ void main()
                         </code></pre>
                     </p>
 
-                    <h3>Excercise #2 - Add serialisation support for the 'char' type.</h3>
-                    <p>
-                        The only primitive type I didn't cover, was <code>char</code>. I'd recommend
-                        storing a <code>char</code> as a string in the JSONValue.
-                    </p>
-                    <p>
-                        For bonus points, you could also add support for deserialising a char, adding a check
-                        to make sure that the version in the JSONValue is only 1 character long.
-                    </p>
-                    <p>
-                        Test case (assuming you store it as a string):
-
-                        <pre><code>
-void main()
-{
-    import std.stdio : writeln;
-
-    JSONValue json = serialise('c');
-
-    assert(json.deserialise!string() == "c");
-    assert(json.deserialise!char() == 'c', "Comment out this test if you didn't do the bonus points objective.");
-
-    writeln("Success");
-}
-                        </code></pre>
-                    </p>
-
-                    <h3>Excercise #3 - Allowing conversion between signed and unsigned integers.</h3>
+                    <h3>Excercise #2 - Allowing conversion between signed and unsigned integers.</h3>
                     <p>
                         This is intended as a less straight forward challenge.
                     </p>
@@ -515,6 +488,7 @@ void main()
 
     JSONValue json;
 
+    // D has closures btw
     void test()
     {
         assertNotThrown(json.deserialise!int());
@@ -534,7 +508,7 @@ void main()
                         </code></pre>
                     </p>
 
-                    <h3>Excercises #4 - Write test cases using D's built-in unittesting.</h3>
+                    <h3>Excercise #3 - Write test cases using D's built-in unittesting.</h3>
                     <p>
                         D has <a href="https://tour.dlang.org/tour/en/gems/unittesting">built-in unittests</a>, and this tiny project
                         could be a good way to get yourself started with them.
@@ -542,6 +516,12 @@ void main()
                     <p>
                         For example, the test cases I gave for the other excercises could be moved from being
                         in the main function, into their own unittests.
+                    </p>
+
+                    <h3>Excercise #? - Add serialisation support for the 'char' type.</h3>
+                    <p>
+                        Please see <a href="https://forum.dlang.org/post/dyanrsznkhueibliowog@forum.dlang.org">this post</a>
+                        on why this excercise was removed.
                     </p>
                 </article>
             </div>
