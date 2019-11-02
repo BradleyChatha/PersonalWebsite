@@ -3,8 +3,17 @@ Covers:
 	- static foreach and struct/class.tupleof to perform reflection
 	- Using alias
 	- String mixins
+NOTES:
+	- Classes would be a good time to introduce __traits(compiles), due to classes
+	  not having a usable .init, and requiring the use of a ctor most of the time.
+	  
+	  So we can use classes to check for an empty ctor.
+	  
+	  This does mean that classes will be delayed for another post though,
+	  unless this one ends up too short.
 REMINDER:
-	- Enums are for post 3 now.
+	- Enums are for post 3 or 4 now.
+	- Classes are either post 3 or 4 now.
 */
 import std.json   : JSONValue;
 import std.traits : isNumeric;

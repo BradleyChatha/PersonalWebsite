@@ -1,0 +1,706 @@
+﻿
+@{
+    ViewData["Title"] = "Serialising structs";
+    ViewData["NavItem"] = "Blog";
+}
+
+<section class="bluer background">
+    <div class="one column grid">
+        <div class="row">
+            <div class="center column">
+                <article class="blog post">
+                    <h1>Creating a simple JSON serialiser in D #2 - Serialising structs</h1>
+                    <p>
+                        <em>
+                            This post is a follow up of
+                            <a asp-action="Blog" asp-route-post="JsonSerialiser1">Serialising basic D types</a>.
+                        </em>
+                    </p>
+                    <p>
+                        While we can now serialise/deserialise basic types, this alone isn't overly useful.
+                    </p>
+                    <p>
+                        The next step is to be able to serialise entire structs, which makes our code actually useable for something.
+                        While the end result of this serialiser is going to be relatively simple, this series
+                        of posts should get you started with the knowledge you need to tailor it to your taste.
+                    </p>
+
+                    <h2>static foreach</h2>
+                    <p>
+                        Before we can start with structs, there are a few features that need a dedicated explanation. One of these
+                        features being <code>static foreach</code>.
+                    </p>
+                    <p>
+                        A <code>static foreach</code> is a special compile-time-only version of a normal <code>foreach</code>
+                        loop. Like all compile time constructs, all the data it uses must also exist at compile time.
+                    </p>
+                    <p>
+                        A few things to note about <code>static foreach</code> are:
+                    </p>
+                    <ul>
+                        <li>It does not create a scope</li>
+                        <li>It is 'unrolled' at compile time</li>
+                    </ul>
+                    <p>
+                        For the first example, consider this code:
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    static foreach(number; [1, 2, 3, 4, 5])
+    {
+        writeln(number);
+    }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        While not particular useful in anyway, we're more focused on the code that is created.
+                    </p>
+                    <p>
+                        When I say that a <code>static foreach</code> is 'unrolled', it means that the loop
+                        is executed during compliation, and it's body is essentially copy-pasted for each
+                        of the loop's values.
+                    </p>
+                    <p>
+                        For example, the above example would unroll into the following code:
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    writeln(1);
+    writeln(2);
+    writeln(3);
+    writeln(4);
+    writeln(5);
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Now, as I mentioned, a <code>static foreach</code> won't create a scope, which can cause
+                        issues once we start using variables:
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    static foreach(number; [1, 2, 3])
+    {
+        int veryComplexEquation = number + number;
+        writeln(veryComplextEquation);
+    }
+}
+                        </code></pre>
+
+                        Unrolls to:
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    int veryComplexEquation = 1 + 1;
+    writeln(veryComplextEquation);
+
+    // Error: Redefining variable 'veryComplexEquation'
+    int veryComplexEquation = 2 + 2;
+    writeln(veryComplextEquation);
+
+    // Error: Redefining variable 'veryComplexEquation'
+    int veryComplexEquation = 3 + 3;
+    writeln(veryComplextEquation);
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        As you can see, because we don't create a scope, and we use a variable inside
+                        the <code>static foreach</code>, the variable we use is defined multiple times
+                        which causes a compiler error.
+                    </p>
+                    <p>
+                        While, in this case we could just define our variable outside the loop, this isn't
+                        always possible/clean to do so we will instead want to create a scope inside each
+                        unrolling of the <code>static foreach</code>.
+                    </p>
+                    <p>
+                        This is blindingly easy, instead of using singular curly braces ({ and }), double
+                        them up instead ({{ and }}):
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    static foreach(number; [1, 2, 3])
+    {{
+        int veryComplexEquation = number + number;
+        writeln(veryComplextEquation);
+    }}
+}
+                        </code></pre>
+
+                        Unrolls to:
+
+                        <pre><code>
+void main()
+{
+    import std.stdio : writeln;
+
+    {
+        int veryComplexEquation = 1 + 1;
+        writeln(veryComplextEquation);
+    }
+
+    {
+        int veryComplexEquation = 2 + 2;
+        writeln(veryComplextEquation);
+    }
+
+    {
+        int veryComplexEquation = 3 + 3;
+        writeln(veryComplextEquation);
+    }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        And that's basically all you need to do to create a scope.
+                        If it's not too clear how this is working, put the extra set of curly braces
+                        on their own lines, and it might make more sense. This also works for
+                        <code>static if</code>, just as a note.
+                    </p>
+
+                    <h2>aliases</h2>
+                    <p>
+                        An <code>alias</code> is similar to a <code>typedef</code> from the C/C++ world, but
+                        instead of defining an entirely new type, you, as the name suggests, create an alias to it instead.
+                        Aliases can be used with any symbol (e.g. functions), not just types.
+
+                        <pre><code>
+struct SomeStruct
+{
+    int a;
+}
+
+alias SStruct = SomeStruct;
+
+void main()
+{
+    // Since it's just an alias, we can do things like "set alias to original type",
+    // because they're literally the same thing.
+    SStruct a = SomeStruct(200);
+}
+                        </code></pre>
+                    </p>
+
+                    <h2>Manifest constants and their ability to be templates</h2>
+                    <p>
+                        This often seems to confuse people at first, especially those coming from other languages.
+                    </p>
+                    <p>
+                        A manifest constant can be seen as an immutable variable that exists only at compile time,
+                        and that any uses of it inside of runtime portions of the code will cause the constant to duplicate
+                        its value every where it is used.
+                    </p>
+                    <p>
+                        Manifest constants are defined and used like a normal variable, except they are prefixed
+                        by <code>enum</code>.
+
+                        <pre><code>
+enum float PI = 3.14;
+
+// Alternatively, let the compiler figure out the type by omitting the type completely.
+enum AGE = 200;
+                        </code></pre>
+                    </p>
+                    <p>
+                        They are a very important and useful in template code, as they effectively act as
+                        compile-time only variables, and are in fact one of the few ways to store values computed
+                        at compile time, while still allowing things like <code>static if</code> the ability to use them.
+                    </p>
+                    <p>
+                        Be warned that there are <a href="https://wiki.dlang.org/Declaring_constants#Caveats">caveats</a>
+                        to them when arrays are used, due to their nature of duplicating their value.
+                    </p>
+                    <p>
+                        One very interesting feature of manifest constants is that they can actually be templates.
+                    </p>
+                    <p>
+                        This allows for an interesting usage of them. For example, the things we were using from
+                        <code>std.traits</code> are all templated enums, and we could even implement our own things like
+                        <code>isBoolean</code> ourselves:
+
+                        <pre><code>
+// I should note that std.traits.isBoolean does a bit more than this
+// but that's besides the point.
+enum myIsBoolean(T) = is(T == bool);
+
+enum isStringABoolean  = myIsBoolean!string; // false
+enum isBooleanABoolean = myIsBoolean!bool;   // true
+
+static assert(!isStringABoolean);
+static assert(isBooleanABoolean);
+                        </code></pre>
+                    </p>
+
+                    <h2>Serialising a struct</h2>
+                    <p>
+                        Just as a reminder, here's our <code>serialise</code> function at the moment:
+
+                        <pre><code>
+JSONValue serialise(T)(T value)
+{
+    return JSONValue(value);
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        It's very simple and boring right now, effectively serving as a renamed constructor for <code>JSONValue</code>.
+                        That's going to be changing of course.
+                    </p>
+                    <p>
+                        The first thing we want to do is bring in a <code>static if</code> chain, so we
+                        can show the user a custom message if they pass in something we can't handle yet.
+                        Just like we do with the <code>deserialise</code> function.
+                    </p>
+
+                    <h3>Serialisation - Type checking</h3>
+                    <p>
+                        At the moment, let's just check if the value is a primitive type (bool, number, or string).
+                    </p>
+                    <p>
+                        If we were to just stuff a single <code>static if</code> with all of these checks, it'd be
+                        a bit ugly to look at, not to mention annoying to maintain if we needed to reuse the checks
+                        in another part of the code.
+                    </p>
+                    <p>
+                        So instead, let's create a templated manifest constant to make the code performing these
+                        checks cleaner to use.
+
+                        <pre><code>
+enum isPrimitiveType(T) = isNumeric!T || is(T == bool) || is(T == string);
+                        </code></pre>
+                    </p>
+                    <p>
+                        Now, let's modify our <code>serialise</code> function to spit out an error
+                        if this check fails:
+
+                        <pre><code>
+JSONValue serialise(T)(T value)
+{
+    static if(isPrimitiveType!T)
+    {
+        return JSONValue(value);
+    }
+    else
+    {
+        static assert(false, "Don't know how to serialise type: " ~ T.stringof);
+    }
+}
+                        </code></pre>
+                    </p>
+
+                    <h3>Serialisation - Iterating over a struct's members</h3>
+                    <p>
+                        To start, we're going to add a <code>static if</code> for structs, and
+                        simply return an empty json value:
+
+                        <pre><code>
+JSONValue serialise(T)(T value)
+{
+    static if(isPrimitiveType!T)
+    { /**/ }
+    else static if(is(T == struct))
+    {
+        JSONValue toReturn;
+
+        return toReturn;
+    }
+    else
+    { /**/ }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Next, we need a struct that we want to test with, so let's create one:
+
+                        <pre><code>
+struct Person 
+{
+    string name;
+    uint age;
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        In our <code>serialise</code> function, we need to be able to iterate
+                        over all of the fields of our struct so we can actually serialise them.
+                    </p>
+                    <p>
+                        Structs and classes in D have a special <code>.tupleof</code> property, which returns
+                        a special kind of compile time tuple (think of an immutable array that can contain
+                        different types of data, including symbols) that contains all of the fields for the
+                        struct/class.
+                    </p>
+                    <p>
+                        So if we combine <code>.tupleof</code> and <code>static foreach</code> together
+                        then we can effectively create specialised code for each member field in the struct.
+                    </p>
+                    <p>
+                        At first, let's use an <code>alias</code> of the member's type, then
+                        print out the type of each member using <code>pragma(msg)</code>,
+                        which is pretty much a compile time version of <code>writeln</code>.
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/NbfZ9i">https://run.dlang.io/is/NbfZ9i</a>
+JSONValue serialise(T)(T value)
+{
+    /* omitted for brevity */
+    else static if(is(T == struct))
+    {
+        JSONValue toReturn;
+
+        // Note that we're using double braces, so we can have a scope.
+        static foreach(member; T.tupleof)
+        {{
+            alias MemberType = typeof(member);
+            pragma(msg, MemberType.stringof);
+        }}
+
+        return toReturn;
+    }
+    /**/
+}
+                        </code></pre>
+
+                        With the simple output of:
+
+                        <pre><code>
+string
+int
+                        </code></pre>
+                    </p>
+                    <p>
+                        While we now have the type of the member (which we're not going to use until a bit later)
+                        we also want the member's name, since otherwise we don't know what name to give it in JSON.
+                    </p>
+                    <p>
+                        To do this, we can use one of the special functions of
+                        <a href="https://dlang.org/spec/traits.html">__traits()</a>
+                        which exposes many different characteristics about symbols.
+                    </p>
+                    <p>
+                        The one we're going to be using is
+                        <a href="https://dlang.org/spec/traits.html#identifier">__traits(identifier)</a>, which when
+                        given a symbol, will return its name. This is different from <code>.stringof</code>
+                        as that only works on types.
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/ptqEnV">https://run.dlang.io/is/ptqEnV</a>
+JSONValue serialise(T)(T value)
+{
+    /* omitted for brevity */
+    else static if(is(T == struct))
+    {
+        JSONValue toReturn;
+
+        static foreach(member; T.tupleof)
+        {{
+            alias MemberType = typeof(member);
+
+            // Much like `enum`, the compiler can figure out that the type is a string here
+            const MemberName = __traits(identifier, member);
+
+            pragma(msg, MemberName ~ " is a " ~ MemberType.stringof);
+        }}
+
+        return toReturn;
+    }
+    /**/
+}
+                        </code></pre>
+
+                        Which outputs:
+
+                        <pre><code>
+name is a string
+age is a int
+                        </code></pre>
+                    </p>
+
+                    <h3>Serialisation - Serialising each member, and string mixins</h3>
+                    <p>
+                        Now that we have the name, type, and ability
+                        to iterate each member of a struct, it's time to serialise each of them
+                        into our <code>toReturn</code> value.
+                    </p>
+                    <p>
+                        This is fairly straight forward, all we need to do is pass each member
+                        to <code>serialise</code> as that already has all the logic in place,
+                        and then place the return value into the <code>toReturn</code> value
+                        with the member's name as the key, and the return value as the value.
+                    </p>
+                    <p>
+                        There's one thing you might be wondering however, which is how to
+                        actually <em>access</em> the member using the <code>value</code>
+                        parameter that gets passed to the function.
+                    </p>
+                    <p>
+                        The answer here, is to use a string mixin.
+                    </p>
+                    <p>
+                        A string mixin is similar to the <code>#define</code> directive in C/C++ land
+                        in that it can be used to turn a string into code,
+                        except its more limited in where you can place it, but more powerful by the fact
+                        it uses strings directly.
+                    </p>
+                    <p>
+                        So basically, we have our <code>value</code> parameter, and we have the <code>MemberName</code>
+                        of each member of our the value. All we need to do is put the two together into a string mixin
+                        to get access to the member's value.
+
+                        <pre><code>
+MemberType memberValue = mixin("value." ~ MemberName);
+                        </code></pre>
+
+                        Which compiles into:
+
+                        <pre><code>
+// For Person.name
+string memberValue = value.name;
+
+// For Person.age
+int memberValue = value.age;
+                        </code></pre>
+
+                        Relatively easy, right?
+                    </p>
+                    <p>
+                        Anyway, now all that's left to do is to serialise the <code>memberValue</code> and place it
+                        into the <code>toReturn</code> value under the member's name.
+
+                        <pre><code>
+JSONValue serialise(T)(T value)
+{
+    /* omitted for brevity */
+    else static if(is(T == struct))
+    {
+        JSONValue toReturn;
+
+        static foreach(member; T.tupleof)
+        {{
+            alias MemberType = typeof(member);
+            const MemberName = __traits(identifier, member);
+
+            MemberType memberValue = mixin("value." ~ MemberName);
+
+            // toReturn is a JSON object. Use MemberName as the key. Serialise memberValue as the value.
+            toReturn[MemberName] = serialise(memberValue);
+        }}
+
+        return toReturn;
+    }
+    /**/
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        Now, comes the time to test it!
+                        <pre><code>
+// <a href="https://run.dlang.io/is/1WtNd0">https://run.dlang.io/is/1WtNd0</a>
+void main()
+{
+    import std.stdio;
+    
+    // Instead of specifying the type ourselves as JSONValue, we can
+    // instead use `auto`, which let's the compiler do it for us.
+    auto json = serialise(Person("Bradley", 20));
+    writeln(json);
+}
+                        </code></pre>
+
+                        Which outputs:
+
+                        <pre><code>
+{"age":20,"name":"Bradley"}
+                        </code></pre>
+
+                        Success!
+                    </p>
+
+                    <h2>Deserialising a struct</h2>
+                    <p>
+                        For reference, this is what the <code>deserialise</code> function
+                        looks like at the moment:
+
+                        <pre><code>
+T deserialise(T)(JSONValue json)
+{
+    static if(is(T == string))
+    {
+        return json.str;
+    }
+    else static if(is(T == bool))
+    {
+        return json.boolean;
+    }
+    else static if(isFloatingPoint!T)
+    {
+        return json.floating.to!T();
+    }    
+    else static if(isSigned!T)
+    {
+        return json.integer.to!T();
+    }
+    else static if(isUnsigned!T)
+    {
+        return json.uinteger.to!T();
+    }
+    else
+    {
+        static assert(false, "Don't know how to deserialise type: " ~ T.stringof);
+    }
+}
+                        </code></pre>
+                    </p>
+                    <p>
+                        To be honest, this is pretty much the exact same process, so
+                        here's the code needed for our <code>deserialise</code> function
+                        and I'll point out the differences afterwards.
+
+                        <pre><code>
+T deserialise(T)(JSONValue json)
+{
+    /* omitted for brevity */
+    else static if(is(T == struct))
+    {
+        T toReturn;
+
+        static foreach(member; T.tupleof)
+        {{
+            alias MemberType = typeof(member);
+            const MemberName = __traits(identifier, member);
+
+            MemberType memberValue = deserialise!MemberType(json[MemberName]);
+
+            // Since the mixin is the *entire* statement, we need to also include a semi-colon in the mixin.
+            mixin("toReturn." ~ MemberName ~ " = memberValue;");
+            // e.g
+            // toReturn.name = memberValue;
+            // toReturn.age = memberValue;
+        }}
+
+        return toReturn;
+    }
+    /**/
+}
+</code></pre>
+                    </p>
+                    <ul>
+                        <li>The type of <code>toReturn</code> is now <code>T</code>, the struct we're deserialising</li>
+                        <li>
+                            memberValue uses <code>json[MemberName]</code> to get the JSON version of the value,
+                            then calls <code>deserialise</code> to turn it into a <code>MemberType</code>
+                        </li>
+                        <li>
+                            We use a string mixin to generate the code to assign the value inside of <code>toReturn</code>
+                            to the deserialised <code>memberValue</code>
+                        </li>
+                    </ul>
+                    <p>
+                        Let's give it a test:
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/nCESzP">https://run.dlang.io/is/nCESzP</a>
+void main()
+{
+    import std.stdio : writeln;
+    
+    auto json = serialise(Person("Bradley", 20));
+    writeln("As JSON: ", json);
+    
+    auto person = deserialise!Person(json);
+    writeln("As Person: ", person);
+}
+                        </code></pre>
+
+                        With the output of:
+
+                        <pre><code>
+As JSON: {"age":20,"name":"Bradley"}
+As Person: Person("Bradley", 20)
+                        </code></pre>
+                    </p>
+
+                    <h2>Conclusion</h2>
+                    <p>
+                        We now have a slightly more useful serialiser, with the newly included
+                        ability to serialise and deserialise structs.
+                    </p>
+                    <p>
+                        The next post will be going over serialising enums, and maybe classes if the
+                        post's length isn't too long with just enums.
+                    </p>
+                    <p>
+                        <a asp-action="Blog" asp-route-post="JsonSerialiser1">Previous post - Serialising basic types</a>
+                    </p>
+                    <p>
+                        <a href="#">Next Post - NOT RELEASED YET</a>
+                    </p>
+
+                    <h2>Excercises</h2>
+
+                    <h3>Excercise #1 - More validation</h3>
+                    <p>
+                        Fairly similar to the excercise from the previous post.
+                    </p>
+                    <p>
+                        Basically, in the <code>deserialise</code> function ensure that the
+                        <code>json</code> value passed to the function is an object, and not something
+                        like a string or int.
+                    </p>
+                    <p>
+                        Then, before you deserialise a member, check that it actually exists first inside
+                        of the json value, and throw an exception otherwise.
+                    </p>
+                    <p>
+                        You can use the <code>in</code> operator on <code>JSONValues</code>, which
+                        returns a pointer, e.g. <code>JSONValue* ptr = ("name" in json);</code>
+                    </p>
+                    <p>
+                        If this pointer is <code>null</code>, then the key doesn't exist. If it does exist,
+                        then you can continue with the deserialisation.
+                    </p>
+                    <p>
+                        Like before, while <code>JSONValue</code> will technically do this for you, it's a good way to
+                        practice checking for and handling things like this.
+                    </p>
+                    <p>
+                        Test case:
+
+                        <pre><code>
+// <a href="https://run.dlang.io/is/HhxkdZ">https://run.dlang.io/is/HhxkdZ</a>
+void main()
+{
+    import std.exception : assertThrown, assertNotThrown;
+
+    JSONValue json;
+    json["age"] = JSONValue(200);
+
+    assertThrown(json.deserialise!Person());
+    assertThrown(JSONValue(null).deserialise!Person());
+
+    json["name"] = JSONValue("Bradley");
+    assertNotThrown(json.deserialise!Person());
+}
+                        </code></pre>
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
