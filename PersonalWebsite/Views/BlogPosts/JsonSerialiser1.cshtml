@@ -470,8 +470,8 @@ void main()
                     </p>
                     <p>
                         However, if you got a signed integer back as a signed integer, and <em>then</em> converted
-                        it to an unsigned integer, that'd work (although there's an argument about whether it's correct
-                        behaviour or not).
+                        it to an unsigned integer, that'd work, although there's an argument about whether it's correct
+                        behaviour or not (but <code>std.conv.to</code> should catch most errornous conversions).
                     </p>
                     <p>
                         So you must modify the deserialise function to allow <code>deserialise!uint()</code> to work
@@ -511,7 +511,7 @@ void main()
                     <h3>Excercise #3 - Write test cases using D's built-in unittesting.</h3>
                     <p>
                         D has <a href="https://tour.dlang.org/tour/en/gems/unittesting">built-in unittests</a>, and this tiny project
-                        could be a good way to get yourself started with them.
+                        could be a good way to introduce yourself with them.
                     </p>
                     <p>
                         For example, the test cases I gave for the other excercises could be moved from being

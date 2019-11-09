@@ -58,6 +58,8 @@ void main()
 	auto json = (new PersonClass("Bradley", 20, PersonType.Student)).serialise();
 	writeln(json);
 	writeln(json.deserialise!PersonClass());
+	
+	writeln(JSONValue(null).deserialise!PersonClass());
 }
 
 enum isPrimitiveType(T) = (isNumeric!T || is(T == bool) || is(T == string)) && !is(T == enum);
@@ -146,6 +148,12 @@ T deserialise(T)(JSONValue json)
 			);
 		}
 		
+		static if(is(T == class))
+		{
+			if(json.type == JSONType.null_)
+				return null;
+		}
+		
 		static if(HasStaticDeserialiseFunc)
 		{
 			return T.deserialise(json);
@@ -153,7 +161,7 @@ T deserialise(T)(JSONValue json)
 		else
 		{
 			static if(is(T == class))
-			{
+			{			
 				static if(HasDefaultCtor)
 				{
 					T toReturn = new T();
