@@ -777,7 +777,7 @@ struct VerySimpleTest
 
 void main()
 {
-    auto json = VerySimpleTest("Zuzu").serialise();
+    auto json = serialise(VerySimpleTest("Zuzu"));
     assert(json["lalafell"].str == "Zuzu");
     assert(json["hidden_secret"].str == "Don't be a lalafell please.");
 }
