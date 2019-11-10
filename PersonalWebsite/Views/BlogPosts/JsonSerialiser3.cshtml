@@ -52,7 +52,7 @@ struct Person
 }
                         </code></pre>
                     </p>
-                    
+
                     <h3>The issue with enums</h3>
                     <p>
                         There is one fairly important, but easy to solve issue with enums - they count as both an enum,
@@ -138,7 +138,7 @@ JSONValue serialise(T)(T value)
                     <h3>Upgrading our deserialise function</h3>
                     <p>
                         For reference, here's the shortened code for the deserialise function:
-                        
+
                         <pre><code>
 T deserialise(T)(JSONValue json)
 {
@@ -231,7 +231,7 @@ void main()
                         need to fine tune how the serialiser works for your own needs, as my solutions are going to be
                         relatively basic and therefore, not robust.
                     </p>
-                    
+
                     <h3>Treating classes as structs</h3>
                     <p>
                         Before we can start taking on some of the other issues, we need to treat the most
@@ -439,7 +439,7 @@ void main()
                         the construction of objects (well, unless you want it to).
                     </p>
                     <p>
-                        There are many ways you may want to handle this, such as using 
+                        There are many ways you may want to handle this, such as using
                         <a href="">std.traits.Parameters</a>
                         to check and recognise constructors with certain parameter patterns, having
                         a pre-defined list of constructor parameters that you support, or just
@@ -526,7 +526,7 @@ void main()
                         This isn't overly ideal for many reasons, but thankfully as we explore the workaround,
                         we'll implement something that handles this issue to a somewhat reasonable degree.
                     </p>
-                    
+
                     <h3>Workaround for the constructor issue, and the fact classes tend to not expose variables directly</h3>
                     <p>
                         I'll be brief. I've already gone over the constrcutor issue; and
@@ -579,7 +579,7 @@ enum HasStaticDeserialiseFunc(T) = __traits(compiles, { T obj = T.deserialise(JS
                         than a basic function call.
                     </p>
                     <p>
-                        We're using <code>T.deserialise</code> to specifically check for a static function 
+                        We're using <code>T.deserialise</code> to specifically check for a static function
                         (or anything that has the same syntax as a static function); we assign the return value
                         to a <code>T obj</code> to check that the return value is compatible with whatever <code>T</code> is;
                         then finally we also check that a <code>JSONValue</code> can be passed as the first parameter.
@@ -723,6 +723,63 @@ void main()
 
     person = json.deserialise!Person();
     writeln(person); // Person(Bradley, 20, Student)
+}
+                        </code></pre>
+                    </p>
+
+                    <h2>Conclusion</h2>
+                    <p>
+                        Our serialiser can now serialise enums by name, and has some dodgey support for serialising
+                        classes, meaning it's starting to shape up to be at least <em>kind of</em> useable. Maybe.
+                        If you're desperate.
+                    </p>
+                    <p>
+                        The next thing we'll look into is to serialise arrays and associative arrays.
+                    </p>                    
+                    <p>
+                        <a asp-action="Blog" asp-route-post="JsonSerialiser2">Previous post - Serialising structs</a>
+                    </p>
+                    <p>
+                        <a href="#">Next Post - NOT RELEASED YET</a>
+                    </p>
+
+                    <h2>Excercises</h2>
+
+                    <h3>Add support for classes and structs to provide their own serialise function</h3>
+                    <p>
+                        This might be something I end up doing in a future post, but for now this is a
+                        good excercise to practice using <code>__traits(compiles)</code>.
+                    </p>
+                    <p>
+                        Basically, allow classes and structs to provide a custom <code>serialise</code> function.
+                    </p>
+                    <p>
+                        For the test case to work, the serialise function must match the signature of: <code>JSONValue serialise()</code>
+                    </p>
+                    <p>
+                        And here's the test case:
+
+                        <pre><code>
+struct VerySimpleTest
+{
+    string lalafell;
+
+    JSONValue serialise()
+    {
+        JSONValue json;
+
+        json["lalafell"] = this.lalafell;
+        json["hidden_secret"] = "Don't be a lalafell please.";
+
+        return json;
+    }
+}
+
+void main()
+{
+    auto json = VerySimpleTest("Zuzu").serialise();
+    assert(json["lalafell"].str == "Zuzu");
+    assert(json["hidden_secret"].str == "Don't be a lalafell please.");
 }
                         </code></pre>
                     </p>
