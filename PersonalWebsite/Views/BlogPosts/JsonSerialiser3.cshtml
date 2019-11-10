@@ -29,12 +29,12 @@
                     </p>
                     <p>
                         There are pros and cons to both, mostly revolving around enums that are used as bit flags,
-                        but for now we're going to serialise them by names and later on provide a way to do use either
+                        but for now we're going to serialise them by names and later on provide a way to use either
                         names or values.
                     </p>
                     <p>
                         We're going to need an enum to work with, so let's create a <code>PersonType</code> enum
-                        for our <code>Person</code> struct from our <a>previous code</a>:
+                        for our <code>Person</code> struct from our <a href="https://run.dlang.io/is/nCESzP">previous code</a>:
 
                         <pre><code>
 enum PersonType
@@ -59,13 +59,13 @@ struct Person
                         as well as their value type.
                     </p>
                     <p>
-                        For example, take our newly made <code>PersonType</code> enum. It is just a
+                        For example take our newly made <code>PersonType</code> enum. It is just a
                         bog standard enum where the value type is an <code>int</code> (by default).
                     </p>
                     <p>
                         The <code>PersonType</code> enum, due to having a value type of <code>int</code>, will actually
                         <strong>pass</strong> a check such as <code>is(PersonType == int)</code> and <code>isNumeric!PersonType</code>.
-                        Needless to say, this is a bit of a roadblock due to our decision to serialise by name instead of value.
+                        Needless to say this is a bit of a roadblock due to our decision to serialise by name instead of value.
                     </p>
                     <p>
                         Fortunately, this issue is actually super easy to work around. Via <code>is(T == enum)</code> we can create
@@ -95,7 +95,7 @@ JSONValue serialise(T)(T value)
                     </p>
                     <ul>
                         <li>Modify <code>isPrimitiveType</code> so that it ignore enums, then handle enums later on in the function.</li>
-                        <li>Handle enums inside the function <strong>before</strong> handling primitive types, so enums get a bigger 'priority'.</li>
+                        <li>Handle enums inside the function <strong>before</strong> handling primitive types, so enums get a larger 'priority'.</li>
                     </ul>
                     <p>
                         We will in fact be doing both - option #1 for the <code>serialise</code> function, and then option #2 for the
@@ -105,6 +105,7 @@ JSONValue serialise(T)(T value)
                         So first off, by using <code>!is(T == enum)</code> we can make <code>isPrimitiveType</code> ignore enums:
 
                         <pre><code>
+// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
 enum isPrimitiveType(T) = !is(T == enum) && (isNumeric!T || is(T == bool) || is(T == string));    
                         </code></pre>
                     </p>
@@ -127,6 +128,11 @@ JSONValue serialise(T)(T value)
     { /* omitted for brevity */ }
 }    
                         </code></pre>
+                    </p>
+                    <p>
+                        Note that if you do something weird such as <code>cast(PersonType)400</code>, then
+                        <code>std.conv.to</code> will actually return <code>"cast(PersonType)400"</code>, which
+                        will cause errors down the line.
                     </p>
 
                     <h3>Upgrading our deserialise function</h3>
@@ -218,13 +224,12 @@ void main()
                         <li>Classes can be null.</li>
                         <li>Classes may not have a reliable way to construct them (more on that later in the post).</li>
                         <li>Classes tend to not expose variables directly, but via getters, setters, and other functions.</li>
-                        <li>Inheritance needs to be taken into account somehow.</li>
                         <li>And many other reasons...</li>
                     </ul>
                     <p>
-                        This post will provide a way to handle most of those issues, but in a real project you may
+                        This post will provide a way to handle some of these issues, but in a real project you may
                         need to fine tune how the serialiser works for your own needs, as my solutions are going to be
-                        relatively basic and therefor, not robust.
+                        relatively basic and therefore, not robust.
                     </p>
                     
                     <h3>Treating classes as structs</h3>
@@ -309,11 +314,13 @@ void main()
     p.type = PersonType.Student;
 
     auto json = p.serialise();
-    writeln(json);
+    writeln(json); // {"age":20,"name":"Bradley","type":"Student"}
 
     // writeln can't automatically format a class like with structs.
     // So either override the `toString` function in a class, or just manually write out the fields.
     writefln("Person(%s, %s, %s)", p.name, p.age, p.type);
+
+    // Output: Person(Bradley, 20, Student)
 }
                         </code></pre>
                     </p>
@@ -324,7 +331,7 @@ void main()
                         let's get that out of the way quickly.
                     </p>
                     <p>
-                        For serilising, if the class is null, then we can return a <code>JSONValue(null)</code>
+                        For serialising, if the class is null, then we can return a <code>JSONValue(null)</code>
                         which works perfectly fine:
 
                         <pre><code>
@@ -376,7 +383,6 @@ T deserialise(T)(JSONValue json)
     {
         static if(is(T == class))
         {
-            // vvvv
             if(json.type == JSONType.null_)
                 return null;
 
@@ -413,8 +419,8 @@ void main()
     Person p = null;
     auto json = p.serialise();
 
-    writeln(json);
-    writeln(json.deserialise!Person());
+    writeln(json);                      // null
+    writeln(json.deserialise!Person()); // null
 }
                         </code></pre>
                     </p>
@@ -441,18 +447,17 @@ void main()
                     </p>
                     <p>
                         In our case we're going to disallow the use of classes that do not contain a default
-                        constructor. Fret not though, as we will be exploring one potential work around when
-                        we come to explore the other issues regarding classes.
+                        constructor. Fret not though, as we will be exploring one potential workaround soon.
                     </p>
                     <p>
-                        But for now, we're going to be creating ourselves a helper template called <code>HasDefaultCtor</code>,
-                        and using that to show a custom error message if it fails.
+                        But for now we're going to be creating ourselves a helper template called <code>HasDefaultCtor</code>,
+                        and using that in our <code>deserialise</code> function if the check returns <code>false</code>.
 
                     </p>
                     <p>
                         One way we can do this is to check if the exact code of <code>new T()</code> can compile,
                         which can be achieved via another magical function of <code>__traits()</code> called
-                        <a href="">__traits(compiles)</a>.
+                        <a href="https://dlang.org/spec/traits.html#compiles">__traits(compiles)</a>.
                     </p>
                     <p>
                         By passing in some code as a parameter, the compiler will determine if the code will
@@ -464,7 +469,7 @@ void main()
                     </p>
                     <p>
                         Anyway, by telling the compiler to check if <code>new T()</code> works for a given type,
-                        then we can effectively check if the type has a default constructor, then from there
+                        we can effectively check if the type has a default constructor, then from there
                         we can use a <code>static assert</code> to let us display a message to the user:
 
                         <pre><code>
@@ -510,39 +515,44 @@ class NoDefaultCtor
 
 void main()
 {
-    serialise(new NoDefaultCtor());
+    deserialise!NoDefaultCtor(JSONValue());
 
-    // TODO ONCE I CAN TEST
+    // .\temp.d(27): Error: static assert:  "The class `NoDefaultCtor` requires a default constructor."
+    // .\temp.d(10):        instantiated from here: `deserialise!(NoDefaultCtor)`
 }
                         </code></pre>
                     </p>
                     <p>
-                        This isn't overly ideal for many reasons, but thankfully as we explore the other issues,
-                        we'll implement something that works around most of them to a reasonable degree.
+                        This isn't overly ideal for many reasons, but thankfully as we explore the workaround,
+                        we'll implement something that handles this issue to a somewhat reasonable degree.
                     </p>
                     
-                    <h3>Handling inheritance, the constructor issue, and the fact classes tend to not expose variables directly</h3>
+                    <h3>Workaround for the constructor issue, and the fact classes tend to not expose variables directly</h3>
                     <p>
-                        I'll be brief. I've already gone over the constrcutor issue; Inheritance may require certain needs; and
+                        I'll be brief. I've already gone over the constrcutor issue; and
                         because classes usually don't expose variables directly, our current behaviour won't work for most classes.
                     </p>
                     <p>
                         Regarding the latter issue, there are several ways to handle the issue ranging from directly
                         inspecting the names of functions for keywords (e.g. starting with "get" or "set"), looking for
-                        getters/setters the use the <code>@@property</code> attribute, and any other ways suitable
+                        getters/setters that use the <code>@@property</code> attribute, and any other ways suitable
                         for your use cases.
                     </p>
                     <p>
-                        The solution I will be going with is to add support for classes and structs to have a static
-                        <code>deserialise</code> function.
+                        The solution I will be going for is to add support for classes and structs to have a static
+                        <code>deserialise</code> function. This will provide a workaround for the constructor issue, as this
+                        is essentially just a special constructor, and will also outsource the task of handling deserialisation
+                        to the class itself, which technically handles the issue of classes not generally exposing variables.
                     </p>
                     <p>
-                        The purpose of the static <code>deserialise</code> function is so that classes can essentially
-                        provide a factory function to construct themselves from a <code>JSONValue</code>.
+                        A downside of course is that there's more code to be written for classes to support
+                        deserialisation, and therefore more technical debt over the long term.
                     </p>
                     <p>
-                        While you could also just specifically check for a constructor that takes a <code>JSONValue</code>
-                        , I prefer to create specific functions for things like this.
+                        While you could also just specifically check for a constructor that takes a <code>JSONValue</code>,
+                        I prefer to create specific functions for things like this as I don't like
+                        that it'll limit classes from providing a <code>this(JSONValue)</code> constructor for other
+                        purposes.
                     </p>
                     <p>
                         The first thing we're going to do is make another helper template (similar to <code>HasDefaultCtor</code>)
@@ -566,8 +576,13 @@ enum HasStaticDeserialiseFunc(T) = __traits(compiles, { T obj = T.deserialise(JS
                     </p>
                     <p>
                         Notice that the code we're checking is now inside brackets, since we're doing more
-                        than a basic function call. Also notice that we're using <code>T.deserialise</code>
-                        to specifically check for a static function (or anything that has the same syntax as a static function).
+                        than a basic function call.
+                    </p>
+                    <p>
+                        We're using <code>T.deserialise</code> to specifically check for a static function 
+                        (or anything that has the same syntax as a static function); we assign the return value
+                        to a <code>T obj</code> to check that the return value is compatible with whatever <code>T</code> is;
+                        then finally we also check that a <code>JSONValue</code> can be passed as the first parameter.
                     </p>
                     <p>
                         Next, in the <code>deserialise</code> function, we want to update the <code>static assert</code>
@@ -593,7 +608,8 @@ T deserialise(T)(JSONValue json)
             static assert(HasDefaultCtor!T || HasStaticDeserialiseFunc!T, 
                 "The class `" ~ T.stringof ~ "` requires a default constructor or a function matching "
                ~"`static " ~ T.stringof ~ " deserialise(JSONValue)`"
-            ); // e.g. "The class Person requires a default constructor or a function matching `static Person deserialise(JSONValue)`"
+            ); 
+            // e.g. "The class Person requires a default constructor or a function matching `static Person deserialise(JSONValue)`"
 
             /**/
 
@@ -612,7 +628,7 @@ T deserialise(T)(JSONValue json)
                         </code></pre>
                     </p>
                     <p>
-                        Now, if the class has a static deserialise func, then we want to use that function
+                        Now, if the class has a static deserialise function then we want to use that function
                         for deserialisation instead of our other logic. We still want to handle null JSONValues,
                         and we want to disable our other logic as we won't need it, among another issue of having
                         code exist beyond a <code>return</code> statement.
@@ -668,6 +684,7 @@ class Person
         PersonType type;
     }
 
+    // No default ctor.
     this(string name, int age, PersonType type)
     {
         this.name = name;
@@ -677,6 +694,8 @@ class Person
 
     static deserialise(JSONValue value)
     {
+        // Classes having to implement this logic themselves is a neccessary burden if you
+        // were to go this route... or is it *wink* (this is a topic for a future post)
         return new Person(
             value["name"].deserialise!string(),
             value["age"].deserialise!int(),
@@ -700,10 +719,10 @@ void main()
     auto person = new Person("Bradley", 20, PersonType.Student);
     auto json = person.serialise();
 
-    writeln(json);
+    writeln(json); // {"age":20,"name":"Bradley","type":"Student"}
 
     person = json.deserialise!Person();
-    writeln(person);
+    writeln(person); // Person(Bradley, 20, Student)
 }
                         </code></pre>
                     </p>
