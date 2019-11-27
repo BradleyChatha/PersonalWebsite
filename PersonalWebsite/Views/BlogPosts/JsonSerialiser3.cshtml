@@ -17,6 +17,13 @@
                         </em>
                     </p>
                     <p>
+                        <em>
+                            Side note: In true D fashion, run.dlang.org's ability to create snippets has been
+                            broken for a few weeks, with no sign of it being fixed, so I've swapped over to a
+                            difference service for the snippet links.
+                        </em>
+                    </p>
+                    <p>
                         In this post, we'll be going over how to serialise classes and enums,
                         both of which have certain considerations to go over.
                     </p>
@@ -105,7 +112,7 @@ JSONValue serialise(T)(T value)
                         So first off, by using <code>!is(T == enum)</code> we can make <code>isPrimitiveType</code> ignore enums:
 
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/_edV5X">https://godbolt.org/z/_edV5X</a>
 enum isPrimitiveType(T) = !is(T == enum) && (isNumeric!T || is(T == bool) || is(T == string));    
                         </code></pre>
                     </p>
@@ -120,7 +127,7 @@ JSONValue serialise(T)(T value)
     { /* omitted for brevity */ }
     else static if(is(T == enum))
     {
-        return value.to!string(); // PersonType.Student -> "Student", PersonType.Staff -> "Staff", etc.
+        return JSONValue(value.to!string()); // PersonType.Student -> "Student", PersonType.Staff -> "Staff", etc.
     }
     else static if(is(T == struct))
     { /* omitted for brevity */ }
@@ -195,7 +202,7 @@ T deserialise(T)(JSONValue json)
                     <p>
                         Finally, as usual, we'll give things a quick test:
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/f4xTyB">https://godbolt.org/z/f4xTyB</a>
 void main()
 {
     import std.stdio : writeln;
@@ -301,7 +308,7 @@ T deserialise(T)(JSONValue json)
                         test if it works:
 
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/EhHVdN">https://godbolt.org/z/EhHVdN</a>
 void main()
 {
     import std.stdio : writeln, writefln;
@@ -411,7 +418,7 @@ T deserialise(T)(JSONValue json)
                         handling (change <code>Person</code> to a class):
 
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/Q8pU7v">https://godbolt.org/z/Q8pU7v</a>
 void main()
 {
     import std.stdio : writeln;
@@ -506,7 +513,7 @@ T deserialise(T)(JSONValue json)
                         Here is an example of the error message:
 
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/NSwveB">https://godbolt.org/z/NSwveB</a>
 
 class NoDefaultCtor
 {
@@ -529,8 +536,9 @@ void main()
 
                     <h3>Workaround for the constructor issue, and the fact classes tend to not expose variables directly</h3>
                     <p>
-                        I'll be brief. I've already gone over the constrcutor issue; and
-                        because classes usually don't expose variables directly, our current behaviour won't work for most classes.
+                        I'll be brief. I've already gone over the constructor issue; and
+                        because classes usually don't expose variables directly, our current behaviour won't work for most
+                        of them.
                     </p>
                     <p>
                         Regarding the latter issue, there are several ways to handle the issue ranging from directly
@@ -673,7 +681,7 @@ T deserialise(T)(JSONValue json)
                         To finish off, let's give it a test:
 
                         <pre><code>
-// <a href="">run.dlang.org won't let me create snippets. Will fix when possible.</a>
+// <a href="https://godbolt.org/z/Xbann8">https://godbolt.org/z/Xbann8</a>
 
 class Person
 {
