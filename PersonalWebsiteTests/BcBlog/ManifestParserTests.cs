@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Tok  = PersonalWebsite.BcBlog.ManifestParser.Token;
+using Tok  = PersonalWebsite.BcBlog.BcToken<PersonalWebsite.BcBlog.ManifestParser.TokenType>;
 using TokT = PersonalWebsite.BcBlog.ManifestParser.TokenType;
 
 namespace PersonalWebsite.BcBlog.Tests
