@@ -14,7 +14,7 @@ namespace PersonalWebsite.BcBlog.Tests
     public class ManifestParserTests
     {
         [TestMethod()]
-        public void Test()
+        public void TestParser()
         {
             var parser = new ManifestParser(
 @"@series

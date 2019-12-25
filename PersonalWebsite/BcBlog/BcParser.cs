@@ -31,7 +31,8 @@ namespace PersonalWebsite.BcBlog
         #endregion
 
         #region Constants
-        protected const char DATE_PREFIX = '$';
+        protected const char   DATE_PREFIX = '$';
+        internal  const string DATE_FORMAT = "dd-MM-yyyy-z";
         #endregion
 
         #region Main variables
@@ -137,7 +138,7 @@ namespace PersonalWebsite.BcBlog
             this.NextChar(); // Skip the dollar.
 
             var  date      = this.ReadUntil(Until.Whitespace | Until.Operator);
-            bool validDate = DateTimeOffset.TryParseExact(date, "dd-MM-yyyy-z", null, DateTimeStyles.AdjustToUniversal, out _);
+            bool validDate = DateTimeOffset.TryParseExact(date, DATE_FORMAT, null, DateTimeStyles.AdjustToUniversal, out _);
             if (!validDate)
                 throw new Exception($"The date '{new string(date)}' is not valid.");
 
