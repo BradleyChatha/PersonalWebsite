@@ -38,8 +38,8 @@ namespace PersonalWebsite.BcBlog
         protected Dictionary<char, TokenTypeT>   Operators { get; private set; }
         protected Dictionary<string, TokenTypeT> Markers   { get; private set; }
 
-        private string              _input;
-        private int                 _inputIndex;
+        private string _input;
+        private int    _inputIndex;
 
         protected BcToken<TokenTypeT> CurrentToken;
 
