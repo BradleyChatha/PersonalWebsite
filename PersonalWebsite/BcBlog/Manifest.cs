@@ -65,14 +65,14 @@ namespace PersonalWebsite.BcBlog
         public ManifestParserImpl(string input) 
             : base(
                   input, 
-                  new Dictionary<char, ManifestParser.TokenType>
+                  operators: new Dictionary<char, ManifestParser.TokenType>
                   {
                       { '[', ManifestParser.TokenType.LSquareBracket },
                       { ']', ManifestParser.TokenType.RSquareBracket },
                       { '{', ManifestParser.TokenType.LBracket },
                       { '}', ManifestParser.TokenType.RBracket }
                   },
-                  new Dictionary<string, ManifestParser.TokenType>
+                  markers: new Dictionary<string, ManifestParser.TokenType>
                   {
                       { "@series", ManifestParser.TokenType.SeriesMarker }
                   }
