@@ -69,8 +69,8 @@ namespace PersonalWebsite.BcBlog
                   {
                       { '[', ManifestParser.TokenType.LSquareBracket },
                       { ']', ManifestParser.TokenType.RSquareBracket },
-                      { '{', ManifestParser.TokenType.LBracket },
-                      { '}', ManifestParser.TokenType.RBracket }
+                      { '{', ManifestParser.TokenType.LBracket       },
+                      { '}', ManifestParser.TokenType.RBracket       }
                   },
                   markers: new Dictionary<string, ManifestParser.TokenType>
                   {
