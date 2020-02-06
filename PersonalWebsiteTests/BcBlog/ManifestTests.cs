@@ -35,7 +35,7 @@ namespace PersonalWebsite.BcBlog.Tests
             Assert.AreEqual("a b c", series.Description);
             Assert.AreEqual(new DateTimeOffset(2019, 10, 31, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateReleased);
             Assert.AreEqual(new DateTimeOffset(2019, 12, 25, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateUpdated);
-            Assert.IsTrue(series.Posts.SequenceEqual(new[]
+            Assert.IsTrue(series.PostFilePaths.SequenceEqual(new[]
             {
                 "test/blog.bcb"
             }));

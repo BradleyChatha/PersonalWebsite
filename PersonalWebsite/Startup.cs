@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalWebsite.Services;
 
 namespace PersonalWebsite
 {
@@ -39,6 +40,8 @@ namespace PersonalWebsite
                 o.IncludeSubDomains = true;
                 o.MaxAge = TimeSpan.FromDays(365);
             });
+
+            services.AddSingleton<IBlogProvider, CachingBlogProvider>();
 
             services.AddRazorPages()
                     .AddRazorRuntimeCompilation();

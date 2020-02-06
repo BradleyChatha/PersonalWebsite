@@ -32,7 +32,7 @@ namespace PersonalWebsite.BcBlog
 
         #region Constants
         protected const char   DATE_PREFIX = '$';
-        internal  const string DATE_FORMAT = "dd-MM-yyyy-z";
+        internal  const string DATE_FORMAT = "dd-MM-yyyy";
         #endregion
 
         #region Main variables

@@ -116,7 +116,7 @@ namespace PersonalWebsite.BcBlog
                             var post = tokens.Current.Value;
                             this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
 
-                            series.Posts.Add(post);
+                            series.PostFilePaths.Add(post);
                             break;
 
                         default:
@@ -153,11 +153,11 @@ namespace PersonalWebsite.BcBlog
         public string Description { get; set; }
         public DateTimeOffset DateReleased { get; set; }
         public DateTimeOffset DateUpdated { get; set; }
-        public ICollection<string> Posts { get; set; }
+        public ICollection<string> PostFilePaths { get; set; }
 
         public BlogSeries()
         {
-            this.Posts = new List<string>();
+            this.PostFilePaths = new List<string>();
         }
     }
 

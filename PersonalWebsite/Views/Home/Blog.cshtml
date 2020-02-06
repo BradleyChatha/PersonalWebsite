@@ -1,4 +1,4 @@
-﻿
+﻿@model string
 @{
     ViewData["Title"] = "Blog";
     ViewData["NavItem"] = "Blog";
@@ -9,57 +9,7 @@
         <div class="row">
             <div class="center aligned column">
                 <article class="award">
-                    <h1>Blog posts</h1>
-                    <div class="description">
-                        <p>
-                            This is a placeholder page. I don't know how I want it to look yet, but it does need
-                            to exist in some form.
-                        </p>
-                        <h2>D Tutorial - Simple JSON Serialiser</h2>
-                        <p>
-                            A small series of blogs where I work through how to create a simple JSON serialiser.
-                            Aimed at newer D users, it will teach and go over several metaprogramming features such as
-                            static if, string mixins, and compile time reflection.
-                        </p>
-                        <ol>
-                            <li>
-                                <a asp-action="Blog" asp-route-post="JsonSerialiser1">
-                                    (De)Serialise built-in types
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a asp-action="Blog" asp-route-post="JsonSerialiser1_1">
-                                            Alternative way to layout the templates
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a asp-action="Blog" asp-route-post="JsonSerialiser2">
-                                    Serialise structs
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-action="Blog" asp-route-post="JsonSerialiser3">
-                                    Serialise classes and enums
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-action="Blog" asp-route-post="JsonSerialiser4">
-                                    Serialise arrays
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-action="Blog" asp-route-post="JsonSerialiser5">
-                                    Using UDAs to customise serialisation
-                                </a>
-                            </li>
-                            <li>
-                                Series on a small hiatus while I work on the website and other projects.
-                                Only 1 or 2 more posts left.
-                            </li>
-                        </ol>
-                    </div>
+                    @Html.Raw(Model)
                 </article>
             </div>
         </div>
