@@ -1,8 +1,8 @@
 ﻿@date-created 31-10-2019@
-@date-updated 26-10-2019@
-@title Intro to metaprogramming in D #1 - Serialising basic D types@
+@date-updated 06-02-2019@
+@title Serialising basic D types@
 
-One of the most overlooked, yet powerful features of D, is its extensively powerful 
+One of the most overlooked yet powerful features of D is its incredibly powerful 
 [metaprogramming](https://tour.dlang.org/tour/en/gems/template-meta-programming) capabilities. 
 The aim of this series of blog posts is to teach and show off different aspects of D's metaprogramming features, 
 and in the end create a semi-useful serialiser/deserialiser for JSON.

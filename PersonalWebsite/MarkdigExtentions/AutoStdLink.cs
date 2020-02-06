@@ -138,7 +138,7 @@ namespace PersonalWebsite.MarkdigExtentions
 
         private string CreateUrlToDlangDocumentation(string library, string module, string member)
         {
-            return $"https://dlang.org/{library}/{module.Replace('.', '_')}.html#{member ?? ""}";
+            return $"https://dlang.org/{library}/{module.Replace('.', '_')}.html#.{member ?? ""}";
         }
     }
 }
