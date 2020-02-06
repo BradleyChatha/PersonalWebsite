@@ -21,11 +21,14 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        public IActionResult Blog([FromServices] IBlogProvider blogs)
+        [Route("/Blog/")]
+        [Route("/Blog/{seriesRef}")]
+        public IActionResult Blog(string seriesRef, [FromServices] IBlogProvider blogs)
         {
             return View(new BlogIndexViewModel
             {
                 Series = blogs.GetBlogSeries()
+                              .Where(s => seriesRef == null || s.Series.Reference == seriesRef)
             });
         }
 
