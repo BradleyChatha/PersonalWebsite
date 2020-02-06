@@ -51,7 +51,9 @@ namespace PersonalWebsite.Services
             var pipeline = new MarkdownPipelineBuilder()
                               .UseAutoLinks()
                               .UseAutoStdLink()
+                              .UseAutoIdentifiers()
                               .UseBlogMetadata()
+                              .UseEmphasisExtras()
                               .Build();
             var order = 0;
             this._seriesCache = 
