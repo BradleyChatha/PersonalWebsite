@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PersonalWebsite.Models;
 using PersonalWebsite.Services;
 
 namespace PersonalWebsite.Controllers
@@ -31,13 +32,40 @@ namespace PersonalWebsite.Controllers
 
         public IActionResult Blog([FromServices] IBlogProvider blogs)
         {
-            // TEMP: Just so I can start testing now instead of later :p
-            return View("Blog",
-                blogs.GetBlogSeries()
-                     .SelectMany(bs => bs.Posts)
-                     .First()
-                     .GeneratedHtml
-            );
+            return View(new BlogIndexViewModel
+            {
+                Series = blogs.GetBlogSeries()
+            });
+        }
+
+        public IActionResult BlogPost(string seriesName, int postIndex, [FromServices] IBlogProvider blogs)
+        {
+            var series = blogs.GetBlogSeries().FirstOrDefault(s => s.Series.Name == seriesName);
+            if(series == null)
+                return Redirect("Blog");
+
+            BlogPost lastBlog    = null;
+            BlogPost currentBlog = null;
+            BlogPost nextBlog    = null;
+
+            if(postIndex > 0 && series.Posts.Count > 1)
+                lastBlog = series.Posts[postIndex - 1];
+
+            if(postIndex <= series.Posts.Count)
+                currentBlog = series.Posts[postIndex];
+            else
+                return Redirect("Blog");
+
+            if(postIndex < series.Posts.Count - 1)
+                nextBlog = series.Posts[postIndex + 1];
+
+            return View(new BlogPostViewModel
+            {
+                Series      = series.Series,
+                LastPost    = lastBlog,
+                CurrentPost = currentBlog,
+                NextPost    = nextBlog
+            });
         }
     }
 }

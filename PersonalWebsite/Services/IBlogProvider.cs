@@ -19,6 +19,7 @@ namespace PersonalWebsite.Services
 
     public sealed class BlogPost
     {
+        public string Title { get; set; }
         public DateTimeOffset DateCreated { get; set; }
         public DateTimeOffset DateUpdated { get; set; }
         public string GeneratedHtml { get; set; }
@@ -74,6 +75,7 @@ namespace PersonalWebsite.Services
                                                       GeneratedHtml = Markdown.ToHtml(text, pipeline), // meh
                                                       DateCreated   = this.FindRequiredMetadataAsDate(document, "date-created"),
                                                       DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
+                                                      Title         = this.FindRequiredMetadataAsText(document, "title"),
                                                       OrderInSeries = order++
                                                   };
                                               }).ToList()
@@ -101,10 +103,17 @@ namespace PersonalWebsite.Services
 
         private DateTimeOffset FindRequiredMetadataAsDate(MarkdownDocument document, string key)
         {
-            if(!this.FindMetadata(document, key, out string dateString))
+            if (!this.FindMetadata(document, key, out string dateString))
                 throw new InvalidDataException($"The blog post is missing the required metadata '@{key}'");
 
             return DateTimeOffset.Parse(dateString);
+        }
+        private string FindRequiredMetadataAsText(MarkdownDocument document, string key)
+        {
+            if (!this.FindMetadata(document, key, out string text))
+                throw new InvalidDataException($"The blog post is missing the required metadata '@{key}'");
+
+            return text;
         }
     }
 }

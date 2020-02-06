@@ -13,19 +13,19 @@ to determine how to serialise/deserialise most of D's primitive types.
 Some code snippets may start with a comment containing a link to https://run.dlang.io/,
 which will take you to an online D environment containing all the code so far for that snippet.
 
-# Requirements
+## Requirements
 
 * The ability to write and compile D code
 
 * A basic understanding of what a template is (in any language)
     
-# std.json
+## std.json
     
 To make these examples as frictionless to compile as possible, I will be purely using 
 [Phobos](https://dlang.org/phobos/), D's standard library, which luckily for us 
 includes a (rather outdated) JSON module called std.json
     
-# What are the primitive types?
+## What are the primitive types?
     
 For the context of this blog series, a primitive type is type built into the language itself.
 
@@ -37,7 +37,7 @@ For the context of this blog series, a primitive type is type built into the lan
 
 * There are also chars, but in D they're UTF8 code units, so are a bit weird to handle so I'm just going to ignore them.
 
-# Serialising primitive types
+## Serialising primitive types
 
 To start off, let's begin with just having a D file that simply contains an empty main function, and import std.json :
 
@@ -94,7 +94,7 @@ classes, and enums, all of which can't be serialised directly by std.json#JSONVa
 
 "How do we do this?" you may ask. The answer is `static if`.
     
-# Static if
+## Static if
 
 If you're familiar with C++'s `#if` directive
 then `static if` should make you feel right at home (without all the downsides of `#if`).
@@ -130,7 +130,7 @@ void main()
 If `SHOULD_LOG` is true, then the `writeln("This is a log!")` is compiled into the program, otherwise, 
 everything inside of the static if is ignored by the compiler. 
     
-# Deserialising primitive types
+## Deserialising primitive types
     
 Now that we know how a static if works we can move onto deserialising primitive types, 
 as it's less straight forward than serialising them.
@@ -160,7 +160,7 @@ This means we have to use static if to determine which of the correct functions 
 It should be noted that if for example, you tried to convert a std.json#JSONValue containing a string into a long then an error would be thrown, 
 making it mandatory that the right function is called.
 
-## Deserialisation - is() expression
+### Deserialisation - is() expression
 
 Let's start off with strings. There is an expression in D called the `is()` expression, which has some very magical features 
 but the most basic one is to compare one type to another.
@@ -185,7 +185,7 @@ complaining that there's no return value (since the static if doesn't compile a 
 
 What if we could create our own error messages for a more user friendly experience? In comes `static assert`.
 
-## Deserialisation - static assert
+### Deserialisation - static assert
 
 static assert is a compile time version of assert (requires a condition that must be true otherwise crash the program), 
 that instead of crashing the program if its condition fails it will instead fail compliation, 
@@ -218,7 +218,7 @@ Here's an example of the output were we to do `deserialise!int(JSONValue(0))`:
 .\test.d(5):         instantiated from here: `deserialise!int`
 ```
 
-##  Deserialisation - cont.
+###  Deserialisation - cont.
 
 Carrying on, with bools we pretty much do the same thing: 
 
@@ -240,7 +240,7 @@ For floating points while we could just check for both a float and a double in t
 we could instead start learning about what std.traits offers us, 
 as it contains a plethora of templates that can determine certain things about a type (among other extremely useful things).
 
-## Deserialisation - std.traits#isFloatingPoint, and std.conv#to 
+### Deserialisation - std.traits#isFloatingPoint, and std.conv#to 
 
 So let's start by importing std.traits at the top of the file: 
 
@@ -282,7 +282,7 @@ So get an import std.conv going somewhere, and let's improve our deserialiser.
 Side note that we're using a feature called UFCS (Uniform function call syntax) 
 to allow us to use std.conv#to as if it were a member function for a double.
 
-## Deserialisation - isSigned, and isUnsigned
+### Deserialisation - isSigned, and isUnsigned
 
 Finally, we're onto signed and unsigned integers.
 
@@ -335,18 +335,18 @@ void main()
 ```
 
 
-# Conclusion 
+## Conclusion 
 
 We now have a serialiser that can serialise and deserialise most of D's primitive types. 
 While it is not too useful in its current state, the next post will talk about how to start (de)serialising structs, 
 which will turn this tiny little serialiser into something infinitely more useful. 
 
-# Excercises
+## Excercises
 
 There are various things I left out, either to reduce the length of this blog post, 
 or to leave up to you, the reader, to implement for yourself as a challenge.
 
-## Excercise #1 - Validation checks during deserialisation
+### Excercise #1 - Validation checks during deserialisation
 
 While std.json#JSONValue itself does checks for things like "take this JSONValue containing a string and convert it into a long", 
 adding these checks yourself can be good practice, and a great place to start getting into the habit of 
@@ -372,7 +372,7 @@ void main()
 }
 ```
 
-## Excercise #2 - Allowing conversion between signed and unsigned integers.
+### Excercise #2 - Allowing conversion between signed and unsigned integers.
 
 Basically, you can store both signed and unsigned integers into a std.json#JSONValue. 
 But, for example, if you store a signed integer, you can only get it back as a signed integer, 
@@ -414,7 +414,7 @@ void main()
 }
 ```
 
-## Excercise #3 - Write test cases using D's built-in unittesting.
+### Excercise #3 - Write test cases using D's built-in unittesting.
 
 D has built-in unittests, and this tiny project could be a good way to introduce yourself with them.
 

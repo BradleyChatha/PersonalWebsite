@@ -1,0 +1,18 @@
+﻿@model BlogPostViewModel
+@{
+    ViewData["Title"]   = Model.CurrentPost.Title;
+    ViewData["NavItem"] = "Blog";
+}
+
+<section class="bluer background">
+    <div class="one column grid">
+        <div class="row">
+            <div class="center column">
+                <article class="blog post">
+                    <h1>@Model.CurrentPost.Title</h1>
+                    @Html.Raw(Model.CurrentPost.GeneratedHtml)
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

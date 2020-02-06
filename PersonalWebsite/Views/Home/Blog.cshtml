@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model BlogIndexViewModel
 @{
     ViewData["Title"] = "Blog";
     ViewData["NavItem"] = "Blog";
@@ -9,7 +9,22 @@
         <div class="row">
             <div class="center aligned column">
                 <article class="award">
-                    @Html.Raw(Model)
+                    @foreach(var series in Model.Series)
+                    {
+                        <h1>@series.Series.Name</h1>
+                        <p>@series.Series.Description</p>
+
+                        <ul>
+                            @foreach (var post in series.Posts)
+                            {
+                                <li>
+                                    <a asp-action="BlogPost" asp-route-seriesName="@series.Series.Name" asp-route-postIndex="@post.OrderInSeries">
+                                        @post.Title
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    }
                 </article>
             </div>
         </div>
