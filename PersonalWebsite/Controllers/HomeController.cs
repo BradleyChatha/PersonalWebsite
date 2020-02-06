@@ -21,15 +21,6 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        public IActionResult OldBlog(string post)
-        {
-            // Meh. Not a great idea, but to be honest I don't really need to care about a better
-            // way for this website.
-            return (post == null)
-                    ? View()
-                    : View("/Views/BlogPosts/" + post + ".cshtml");
-        }
-
         public IActionResult Blog([FromServices] IBlogProvider blogs)
         {
             return View(new BlogIndexViewModel
