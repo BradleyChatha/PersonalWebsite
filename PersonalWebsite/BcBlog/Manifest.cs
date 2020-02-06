@@ -112,6 +112,13 @@ namespace PersonalWebsite.BcBlog
                             series.DateUpdated = DateTimeOffset.ParseExact(date, BcParser<ManifestParser.TokenType>.DATE_FORMAT, null);
                             break;
 
+                        case "reference":
+                            var reference = tokens.Current.Value;
+                            this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
+
+                            series.Reference = reference;
+                            break;
+
                         case "post":
                             var post = tokens.Current.Value;
                             this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
@@ -149,6 +156,7 @@ namespace PersonalWebsite.BcBlog
 
     public class BlogSeries
     {
+        public string Reference { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTimeOffset DateReleased { get; set; }

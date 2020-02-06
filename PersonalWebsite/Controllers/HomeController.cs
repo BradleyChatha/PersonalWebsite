@@ -38,9 +38,10 @@ namespace PersonalWebsite.Controllers
             });
         }
 
-        public IActionResult BlogPost(string seriesName, int postIndex, [FromServices] IBlogProvider blogs)
+        [Route("/BlogPost/{seriesRef}/{postIndex}")]
+        public IActionResult BlogPost(string seriesRef, int postIndex, [FromServices] IBlogProvider blogs)
         {
-            var series = blogs.GetBlogSeries().FirstOrDefault(s => s.Series.Name == seriesName);
+            var series = blogs.GetBlogSeries().FirstOrDefault(s => s.Series.Reference == seriesRef);
             if(series == null)
                 return Redirect("Blog");
 

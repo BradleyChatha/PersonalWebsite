@@ -18,7 +18,7 @@
                             @foreach (var post in series.Posts)
                             {
                                 <li>
-                                    <a asp-action="BlogPost" asp-route-seriesName="@series.Series.Name" asp-route-postIndex="@post.OrderInSeries">
+                                    <a asp-action="BlogPost" asp-route-seriesRef="@series.Series.Reference" asp-route-postIndex="@post.OrderInSeries">
                                         @post.Title
                                     </a>
                                 </li>

@@ -1,5 +1,6 @@
 ﻿@series
 {
+	[reference      "JsonSerialiser"]
 	[name			"Intro to D metaprogramming - Creating a JSON serialiser"]
 	[description	"A series of blog posts that cover how to create a basic JSON serialiser in D,"
 					"while teaching several different aspects of D's metaprogramming, such as templates;"
