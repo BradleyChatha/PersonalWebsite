@@ -178,13 +178,13 @@ void main()
     writeln(json);
     writeln(json.deserialise!Person());
 
-	/*
-		Output:
-			"Student"
-			Student
-			{"age":20,"name":"Bradley","type":"Student"}
-			Person("Bradley", 20, Student)
-	*/
+    /*
+        Output:
+            "Student"
+            Student
+            {"age":20,"name":"Bradley","type":"Student"}
+            Person("Bradley", 20, Student)
+    */
 }
 ```
 
@@ -291,11 +291,11 @@ void main()
     // So either override the `toString` function in a class, or just manually write out the fields.
     writefln("Person(%s, %s, %s)", p.name, p.age, p.type);
 
-	/*
-		Output:
-			{"age":20,"name":"Bradley","type":"Student"}
-			Person(Bradley, 20, Student)
-	*/
+    /*
+        Output:
+            {"age":20,"name":"Bradley","type":"Student"}
+            Person(Bradley, 20, Student)
+    */
 }
 ```
 
@@ -390,11 +390,11 @@ void main()
     writeln(json);
     writeln(json.deserialise!Person());
 
-	/*
-		Output:
-			null
-			null
-	*/
+    /*
+        Output:
+            null
+            null
+    */
 }
 ```
 
@@ -478,11 +478,11 @@ void main()
 {
     deserialise!NoDefaultCtor(JSONValue());
 
-	/*
-		Output:
-			.\temp.d(27): Error: static assert:  "The class `NoDefaultCtor` requires a default constructor."
-			.\temp.d(10):        instantiated from here: `deserialise!(NoDefaultCtor)`
-	*/
+    /*
+        Output:
+            .\temp.d(27): Error: static assert:  "The class `NoDefaultCtor` requires a default constructor."
+            .\temp.d(10):        instantiated from here: `deserialise!(NoDefaultCtor)`
+    */
 }
 ```
 
@@ -558,8 +558,8 @@ T deserialise(T)(JSONValue json)
         static if(is(T == class))
         {
             static assert(HasDefaultCtor!T || HasStaticDeserialiseFunc!T, 
-				"The class `" ~ T.stringof ~ "` requires a default constructor or a function matching "
-				~"`static " ~ T.stringof ~ " deserialise(JSONValue)`"
+                "The class `" ~ T.stringof ~ "` requires a default constructor or a function matching "
+                ~"`static " ~ T.stringof ~ " deserialise(JSONValue)`"
             ); 
             // e.g. "The class Person requires a default constructor or a function matching `static Person deserialise(JSONValue)`"
 
@@ -673,11 +673,11 @@ void main()
     person = json.deserialise!Person();
     writeln(person);
 
-	/*
-		Output:
-			{"age":20,"name":"Bradley","type":"Student"}
-			Person(Bradley, 20, Student)
-	*/
+    /*
+        Output:
+            {"age":20,"name":"Bradley","type":"Student"}
+            Person(Bradley, 20, Student)
+    */
 }
 ```
 
