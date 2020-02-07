@@ -622,7 +622,7 @@ T deserialise(T)(JSONValue json)
 To finish off, let's give it a test:
 
 ```
-// <a href="https://godbolt.org/z/Xbann8">https://godbolt.org/z/Xbann8</a>
+// https://godbolt.org/z/Xbann8
 
 class Person
 {
