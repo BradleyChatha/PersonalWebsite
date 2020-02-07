@@ -16,13 +16,14 @@ namespace PersonalWebsite.BcBlog.Tests
             var parser = new ManifestParser(
 @"@series
 {
+    [reference      ""test""]
 	[name			""abc""]
     [description    ""a""
                     ""b""
                     ""c""
     ]
-    [date-released   $31-10-2019-+0]
-    [date-updated	 $25-12-2019-+0]
+    [date-released   $31-10-2019]
+    [date-updated	 $25-12-2019]
     [post            ""test/blog.bcb""]
 }"
             );
@@ -31,8 +32,9 @@ namespace PersonalWebsite.BcBlog.Tests
             Assert.AreEqual(1, manifest.Series.Count);
             
             var series = manifest.Series.First();
-            Assert.AreEqual("abc", series.Name);
+            Assert.AreEqual("abc",   series.Name);
             Assert.AreEqual("a b c", series.Description);
+            Assert.AreEqual("test",  series.Reference);
             Assert.AreEqual(new DateTimeOffset(2019, 10, 31, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateReleased);
             Assert.AreEqual(new DateTimeOffset(2019, 12, 25, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateUpdated);
             Assert.IsTrue(series.PostFilePaths.SequenceEqual(new[]

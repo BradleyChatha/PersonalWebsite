@@ -24,8 +24,8 @@ namespace PersonalWebsite.BcBlog.Tests
                     ""b""
                     ""c""
     ]
-    [date-released   $31-10-2019-+1]
-    [date-updated	 $25-12-2019-+1]
+    [date-released   $31-10-2019]
+    [date-updated	 $25-12-2019]
 }"
             );
 
@@ -47,12 +47,12 @@ namespace PersonalWebsite.BcBlog.Tests
 
                 new Tok{ Type = TokT.LSquareBracket                             },
                 new Tok{ Type = TokT.Identifier,    Value = "date-released"     },
-                new Tok{ Type = TokT.Date,          Value = "31-10-2019-+1"     },
+                new Tok{ Type = TokT.Date,          Value = "31-10-2019"        },
                 new Tok{ Type = TokT.RSquareBracket                             },
 
                 new Tok{ Type = TokT.LSquareBracket                             },
                 new Tok{ Type = TokT.Identifier,    Value = "date-updated"      },
-                new Tok{ Type = TokT.Date,          Value = "25-12-2019-+1"     },
+                new Tok{ Type = TokT.Date,          Value = "25-12-2019"        },
                 new Tok{ Type = TokT.RSquareBracket                             },
 
                 new Tok{ Type = TokT.RBracket                                   },
