@@ -25,4 +25,29 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://bradley.chatha.dev/Home/BlogPost/JsonSerialiser/1</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradley.chatha.dev/Home/BlogPost/JsonSerialiser/2</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradley.chatha.dev/Home/BlogPost/JsonSerialiser/3</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradley.chatha.dev/Home/BlogPost/JsonSerialiser/4</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradley.chatha.dev/Home/BlogPost/JsonSerialiser/5</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
