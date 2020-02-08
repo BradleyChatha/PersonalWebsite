@@ -3,13 +3,13 @@
 @title Serialising arrays@ 
 
 *Note that in the previous post, the `Person` struct was converted into a class*
-*for testing purposes. From this point on, `Person` is a struct again unless specified otherwise.*
+*for testing purposes. From this point on `Person` is a struct again unless specified otherwise.*
 
 One of the final things missing before our serialiser can reach a "minimalistic but useable" state
 is the ability to serialise both dynamic and associative arrays. Static arrays are saved as an excercise
 for this post.
 
-I've already covered all the main metaprogramming features that'll be used in this post, and arrays
+I've already covered the majority of the main metaprogramming features that'll be used in this post, and arrays
 are relatively simple to serialise, so this post will be on the shorter end.
 
 ## Serialising dynamic arrays
@@ -30,15 +30,15 @@ JSONValue serialise(T)(T value)
 }    
 ```
 
-For dynamic arrays, all that needs to happen is to iterate over the array's elements, serialise
+For dynamic arrays we need to iterate over the array's elements; serialise
 them, and then append the serialised value into a JSON array.
 
 There's not too much to explain about to code, so I'll quickly highlight two things:
 
-* We use <a href="https://dlang.org/phobos/std_traits.html#isDynamicArray">std.traits.isDynamicArray</a> 
-  to check if `T` is a dynamic array.
+* We use std.traits#isDynamicArray to check if `T` is a dynamic array.
 
-* Creating a JSONValue that is also an array is a bit iffy, the `parseJSON("[]")` part is the best way I could find.
+* Creating a std.json#JSONValue that is also an array is a bit iffy, using `parseJSON("[]")` was the cleanest way I could find.
+  (std.json is pretty outdated)
 
 ```
 JSONValue serialise(T)(T value)
@@ -66,16 +66,16 @@ JSONValue serialise(T)(T value)
 ```
 
 Do note that `string` in D is actually just an `immutable(char)[]`, which
-would satisfy the `isDynamicArray` template.
+would satisfy the std.json#isDynamicArray template.
 
 This isn't so much an issue in our case due to the fact we handle `string` higher
 up in the if-else chain, but it's something worth keeping in mind.
 
-Also, there are actually two other string types in D, `wstring` and `dstring`.
-While up to this point I've pretended they don't exist, this series still won't be going over
-using them due to various reasons (such as JSONValue not supporting them).
+Also, there's actually two other string types in D, `wstring` and `dstring`.
+While up to this point I've tried to pretend they don't exist this series still won't be going over
+using them due to various reasons (such as std.json#JSONValue not supporting them).
 
-In regards to that issue, it may be wise to combine `isDynamicArray` with a check to make sure
+In regards to that issue it may be wise to combine std.json#isDynamicArray with a check to make sure
 the type isn't a `wstring` or `dstring`, depending on your circumstances.
 
 Other than that, there's not really any other surprises in this code that haven't been seen before
@@ -108,9 +108,8 @@ T deserialise(T)(JSONValue json)
 }    
 ```
 
-Again, there's nothing overly new or complicated about the deserialisation code, except for one thing:
-<a href="https://dlang.org/library/std/range/primitives/element_type.html">std.range.ElementType</a> 
-is used to get the type of data stored in the array. Make sure to `import std.range;` somewhere.
+Again, there's nothing overly new or complicated about the deserialisation code except for one thing:
+std.range#ElementType is used to get the type of data stored in the array. Make sure to `import std.range;` somewhere.
 
 ```
 T deserialise(T)(JSONValue json)
@@ -133,7 +132,7 @@ T deserialise(T)(JSONValue json)
 	{
 		T toReturn;
 		
-		alias ElementT = ElementType!T; // E.g. If `T` were `string[]`, then this would be `string`.
+		alias ElementT = ElementType!T; // E.g. If `T` were `int[]`, then this would be `int`.
 		
 		foreach(element; json.array)
 		{
@@ -148,35 +147,38 @@ T deserialise(T)(JSONValue json)
 ```
 
 As another side note about strings, since they're kind of annoying, `ElementType`
-will *always* return `dchar` if used on any kind of string. However, `ElementEncodingType`
+will *always* return `dchar` if used on any kind of string. However `ElementEncodingType`
 will properly return `char`, `wchar`, and `dchar` for their respective
 string types.
 
 Finally, let's give it a test:
 
 ```
-// <a href="https://godbolt.org/z/h7U38W">https://godbolt.org/z/h7U38W</a>
+// https://godbolt.org/z/h7U38W
 void main()
 {
 	import std.stdio : writeln;
 
 	auto json = ["a", "b", "c"].serialise();
-	writeln(json);                        // ["a","b","c"]
-	writeln(json.deserialise!(string[])); // ["a", "b", "c"]
+	writeln(json); 
+	writeln(json.deserialise!(string[]));
+
+	/*
+		Output:
+			["a","b","c"]
+			["a", "b", "c"]
+	*/
 }
 ```
 
 ## Serialising and deserialising associative arrays (abbreviated as 'AA')
 
-As a common theme with this post, there's nothing overly complicated to explain for AAs, so
-here's a quick list of what's new/noteworthy that we're going to use:
+As a common theme with this post there's nothing new to explain for AAs, so
+here's a quick list of noteworthy templates that we're going to use:
 
-* <a href="https://dlang.org/phobos/std_traits.html#isAssociativeArray">std.traits.isAssociativeArray</a> to check if a type is an AA.
+* std.traits#isAssociativeArray to check if a type is an AA.
 
-* <a href="https://dlang.org/phobos/std_traits.html#KeyType">std.traits.KeyType</a>
-and
-<a href="https://dlang.org/phobos/std_traits.html#ValueType">std.traits.ValueType</a>
-are used to get what type is used for the AA's key and value, respectively.
+* std.traits#KeyType and std.traits#ValueType are used to get what type is used for the AA's key and value, respectively.
 
 * We'll use `static assert` to enforce that the key type is a string.
 
@@ -196,7 +198,7 @@ JSONValue serialise(T)(T value)
 	{
 		JSONValue toReturn;
 		
-		alias KeyT = KeyType!T;		
+		alias KeyT = KeyType!T;	// E.g. For bool[string] this would evaluate to `string`
 		static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
 		
 		foreach(key, element; value)
@@ -235,8 +237,8 @@ T deserialise(T)(JSONValue json)
 	{
 		T toReturn;
 		
-		alias KeyT   = KeyType!T;
-		alias ValueT = ValueType!T;
+		alias KeyT   = KeyType!T;   // bool[string] -> string
+		alias ValueT = ValueType!T; // bool[string] -> bool
 		
 		static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
 		
@@ -252,9 +254,11 @@ T deserialise(T)(JSONValue json)
 }
 ```
 
+And of course we should probably test these additions.
+
 ### Test
 ```
-// <a href="https://godbolt.org/z/vjcQkc">https://godbolt.org/z/vjcQkc</a>
+// https://godbolt.org/z/vjcQkc
 void main()
 {
 	import std.stdio : writeln;
@@ -265,21 +269,24 @@ void main()
 		"andy":    Person("Andy", 100, PersonType.Staff)
 	].serialise();
 
-	// {"andy":{"age":100,"name":"Andy","type":"Staff"},"bradley":{"age":20,"name":"Bradley","type":"Student"}}
 	writeln(json);
-
-	// ["andy":Person("Andy", 100, Staff), "bradley":Person("Bradley", 20, Student)]
 	writeln(json.deserialise!(Person[string]));
+
+	/*
+		Output:
+			{"andy":{"age":100,"name":"Andy","type":"Staff"},"bradley":{"age":20,"name":"Bradley","type":"Student"}}
+			["andy":Person("Andy", 100, Staff), "bradley":Person("Bradley", 20, Student)]
+	*/
 }
 ```
 
 ## Conclusion
 
 This post was a bit short and sweet. There weren't really any new features to explain, mostly just
-new templates such as `isDynamicArray`.
+new templates such as std.json#isDynamicArray.
 
 While this post may have been a bit boring, hopefully the next post, where we explore the use
-of <a href="https://dlang.org/spec/attribute.html#uda">UDAs</a> (User Defined Attributes) 
+of [UDAs](https://dlang.org/spec/attribute.html#uda) (User Defined Attributes) 
 to allow deeper customisation of how things are serialised, will be more interesting.
 
 ## Excercises
@@ -288,10 +295,9 @@ to allow deeper customisation of how things are serialised, will be more interes
 
 The main two things you'll need for this are:
 
-* <a href="https://dlang.org/phobos/std_traits.html#isStaticArray">std.traits.isStaticArray</a>
-to determine whether a type is a static array or not.
+* std.traits#isStaticArray to determine whether a type is a static array or not.
 
-* After you identify a type (T) as a static array, you can be assured that the type will
+* After you identify a type (`T`) as a static array, you can then be assured that the type will
 have a constant property called `T.length`, which of course is the length of the array.
 
 Something to consider is, what if during deserialisation you find that the JSON data has
@@ -303,13 +309,13 @@ For the purposes of this excercise (you may want to do something different for r
 * If there are too **many** values, throw an exception.
 
 * If there are **not enough** values, fill the empty spaces up with either
-<a href="https://dlang.org/spec/property.html#init">T.init</a> (for value types), 
-or `null` (for reference types).
+  [T.init(https://dlang.org/spec/property.html#init) (for value types), 
+  or `null` (for reference types).
 
 And finally, here's a test case:
 
 ```
-// <a href="https://godbolt.org/z/hjZdpN">https://godbolt.org/z/hjZdpN</a>
+// https://godbolt.org/z/hjZdpN
 void main()
 {
 	import std.format    : format;
