@@ -108,7 +108,7 @@ namespace PersonalWebsite.Services
             if (!this.FindMetadata(document, key, out string dateString))
                 throw new InvalidDataException($"The blog post is missing the required metadata '@{key}'");
 
-            return DateTimeOffset.Parse(dateString);
+            return DateTimeOffset.ParseExact(dateString.Trim(), "dd-MM-yyyy", null);
         }
         private string FindRequiredMetadataAsText(MarkdownDocument document, string key)
         {
