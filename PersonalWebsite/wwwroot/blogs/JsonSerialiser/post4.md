@@ -19,14 +19,14 @@ As usual, here's our current serialise function for reference:
 ```
 JSONValue serialise(T)(T value)
 {    
-	static if(isPrimitiveType!T)
-	{ /* omitted for brevity */ }
-	else static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else
-	{ /**/ }
+    static if(isPrimitiveType!T)
+    { /* omitted for brevity */ }
+    else static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else
+    { /**/ }
 }    
 ```
 
@@ -43,25 +43,25 @@ There's not too much to explain about to code, so I'll quickly highlight two thi
 ```
 JSONValue serialise(T)(T value)
 {    
-	static if(isPrimitiveType!T)
-	{ /* omitted for brevity */ }
-	else static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else static if(isDynamicArray!T)
-	{
-		JSONValue toReturn = parseJSON("[]");
-		
-		foreach(element; value)
-		{
-			toReturn.array ~= serialise(element);
-		}
-		
-		return toReturn;
-	}
-	else
-	{ /**/ }
+    static if(isPrimitiveType!T)
+    { /* omitted for brevity */ }
+    else static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else static if(isDynamicArray!T)
+    {
+        JSONValue toReturn = parseJSON("[]");
+        
+        foreach(element; value)
+        {
+            toReturn.array ~= serialise(element);
+        }
+        
+        return toReturn;
+    }
+    else
+    { /**/ }
 } 
 ```
 
@@ -89,22 +89,22 @@ Reference:
 ```
 T deserialise(T)(JSONValue json)
 {    
-	static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == string))
-	{ /**/ }
-	else static if(is(T == bool))
-	{ /**/ }
-	else static if(isFloatingPoint!T)
-	{ /**/ }    
-	else static if(isSigned!T)
-	{ /**/ }
-	else static if(isUnsigned!T)
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else
-	{ /**/ }
+    static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == string))
+    { /**/ }
+    else static if(is(T == bool))
+    { /**/ }
+    else static if(isFloatingPoint!T)
+    { /**/ }    
+    else static if(isSigned!T)
+    { /**/ }
+    else static if(isUnsigned!T)
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else
+    { /**/ }
 }    
 ```
 
@@ -114,35 +114,35 @@ std.range#ElementType is used to get the type of data stored in the array. Make 
 ```
 T deserialise(T)(JSONValue json)
 {    
-	static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == string))
-	{ /**/ }
-	else static if(is(T == bool))
-	{ /**/ }
-	else static if(isFloatingPoint!T)
-	{ /**/ }    
-	else static if(isSigned!T)
-	{ /**/ }
-	else static if(isUnsigned!T)
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else static if(isDynamicArray!T)
-	{
-		T toReturn;
-		
-		alias ElementT = ElementType!T; // E.g. If `T` were `int[]`, then this would be `int`.
-		
-		foreach(element; json.array)
-		{
-			toReturn ~= deserialise!ElementT(element);
-		}
-		
-		return toReturn;
-	}
-	else
-	{ /**/ }
+    static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == string))
+    { /**/ }
+    else static if(is(T == bool))
+    { /**/ }
+    else static if(isFloatingPoint!T)
+    { /**/ }    
+    else static if(isSigned!T)
+    { /**/ }
+    else static if(isUnsigned!T)
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else static if(isDynamicArray!T)
+    {
+        T toReturn;
+        
+        alias ElementT = ElementType!T; // E.g. If `T` were `int[]`, then this would be `int`.
+        
+        foreach(element; json.array)
+        {
+            toReturn ~= deserialise!ElementT(element);
+        }
+        
+        return toReturn;
+    }
+    else
+    { /**/ }
 }
 ```
 
@@ -157,17 +157,17 @@ Finally, let's give it a test:
 // https://godbolt.org/z/h7U38W
 void main()
 {
-	import std.stdio : writeln;
+    import std.stdio : writeln;
 
-	auto json = ["a", "b", "c"].serialise();
-	writeln(json); 
-	writeln(json.deserialise!(string[]));
+    auto json = ["a", "b", "c"].serialise();
+    writeln(json); 
+    writeln(json.deserialise!(string[]));
 
-	/*
-		Output:
-			["a","b","c"]
-			["a", "b", "c"]
-	*/
+    /*
+        Output:
+            ["a","b","c"]
+            ["a", "b", "c"]
+    */
 }
 ```
 
@@ -186,30 +186,30 @@ here's a quick list of noteworthy templates that we're going to use:
 ```
 JSONValue serialise(T)(T value)
 {    
-	static if(isPrimitiveType!T)
-	{ /* omitted for brevity */ }
-	else static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else static if(isDynamicArray!T)
-	{ /**/ }
-	else static if(isAssociativeArray!T)
-	{
-		JSONValue toReturn;
-		
-		alias KeyT = KeyType!T;	// E.g. For bool[string] this would evaluate to `string`
-		static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
-		
-		foreach(key, element; value)
-		{
-			toReturn[key] = serialise(element);
-		}
+    static if(isPrimitiveType!T)
+    { /* omitted for brevity */ }
+    else static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else static if(isDynamicArray!T)
+    { /**/ }
+    else static if(isAssociativeArray!T)
+    {
+        JSONValue toReturn;
+        
+        alias KeyT = KeyType!T;	// E.g. For bool[string] this would evaluate to `string`
+        static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
+        
+        foreach(key, element; value)
+        {
+            toReturn[key] = serialise(element);
+        }
 
-		return toReturn;
-	}
-	else
-	{ /**/ }
+        return toReturn;
+    }
+    else
+    { /**/ }
 }
 ```
 
@@ -217,40 +217,40 @@ JSONValue serialise(T)(T value)
 ```
 T deserialise(T)(JSONValue json)
 {    
-	static if(is(T == enum))
-	{ /**/ }
-	else static if(is(T == string))
-	{ /**/ }
-	else static if(is(T == bool))
-	{ /**/ }
-	else static if(isFloatingPoint!T)
-	{ /**/ }    
-	else static if(isSigned!T)
-	{ /**/ }
-	else static if(isUnsigned!T)
-	{ /**/ }
-	else static if(is(T == struct) || is(T == class))
-	{ /**/ }
-	else static if(isDynamicArray!T)
-	{ /**/ }
-	else static if(isAssociativeArray!T)
-	{
-		T toReturn;
-		
-		alias KeyT   = KeyType!T;   // bool[string] -> string
-		alias ValueT = ValueType!T; // bool[string] -> bool
-		
-		static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
-		
-		foreach(key, element; json.object)
-		{
-			toReturn[key] = deserialise!ValueT(element);
-		}
-			
-		return toReturn;
-	}
-	else
-	{ /**/ }
+    static if(is(T == enum))
+    { /**/ }
+    else static if(is(T == string))
+    { /**/ }
+    else static if(is(T == bool))
+    { /**/ }
+    else static if(isFloatingPoint!T)
+    { /**/ }    
+    else static if(isSigned!T)
+    { /**/ }
+    else static if(isUnsigned!T)
+    { /**/ }
+    else static if(is(T == struct) || is(T == class))
+    { /**/ }
+    else static if(isDynamicArray!T)
+    { /**/ }
+    else static if(isAssociativeArray!T)
+    {
+        T toReturn;
+        
+        alias KeyT   = KeyType!T;   // bool[string] -> string
+        alias ValueT = ValueType!T; // bool[string] -> bool
+        
+        static assert(is(KeyT == string), "Only string keys are supported, not: " ~ KeyT.stringof);
+        
+        foreach(key, element; json.object)
+        {
+            toReturn[key] = deserialise!ValueT(element);
+        }
+            
+        return toReturn;
+    }
+    else
+    { /**/ }
 }
 ```
 
@@ -261,22 +261,22 @@ And of course we should probably test these additions.
 // https://godbolt.org/z/vjcQkc
 void main()
 {
-	import std.stdio : writeln;
+    import std.stdio : writeln;
 
-	auto json = 
-	[
-		"bradley": Person("Bradley", 20, PersonType.Student), 
-		"andy":    Person("Andy", 100, PersonType.Staff)
-	].serialise();
+    auto json = 
+    [
+        "bradley": Person("Bradley", 20, PersonType.Student), 
+        "andy":    Person("Andy", 100, PersonType.Staff)
+    ].serialise();
 
-	writeln(json);
-	writeln(json.deserialise!(Person[string]));
+    writeln(json);
+    writeln(json.deserialise!(Person[string]));
 
-	/*
-		Output:
-			{"andy":{"age":100,"name":"Andy","type":"Staff"},"bradley":{"age":20,"name":"Bradley","type":"Student"}}
-			["andy":Person("Andy", 100, Staff), "bradley":Person("Bradley", 20, Student)]
-	*/
+    /*
+        Output:
+            {"andy":{"age":100,"name":"Andy","type":"Staff"},"bradley":{"age":20,"name":"Bradley","type":"Student"}}
+            ["andy":Person("Andy", 100, Staff), "bradley":Person("Bradley", 20, Student)]
+    */
 }
 ```
 
@@ -318,29 +318,29 @@ And finally, here's a test case:
 // https://godbolt.org/z/hjZdpN
 void main()
 {
-	import std.format    : format;
-	import std.exception : assertThrown;
+    import std.format    : format;
+    import std.exception : assertThrown;
 
-	string[2] people;
-	JSONValue json;
+    string[2] people;
+    JSONValue json;
 
-	// Serialise
-	people = ["Bradley", "Andy"];
-	json = people.serialise();
-	assert(json[0].str == "Bradley", "Got: " ~ json[0].str);
-	assert(json[1].str == "Andy",    "Got: " ~ json[1].str);
+    // Serialise
+    people = ["Bradley", "Andy"];
+    json = people.serialise();
+    assert(json[0].str == "Bradley", "Got: " ~ json[0].str);
+    assert(json[1].str == "Andy",    "Got: " ~ json[1].str);
 
-	// Deserialise (exact amount of values wanted)
-	people = json.deserialise!(string[2]);
-	assert(people == ["Bradley", "Andy"], format("Got: %s", people));
+    // Deserialise (exact amount of values wanted)
+    people = json.deserialise!(string[2]);
+    assert(people == ["Bradley", "Andy"], format("Got: %s", people));
 
-	// Deserialise (too many values, so exception should be thrown)
-	json = parseJSON(`["Bradley", "Andy", "Kaiya"]`);
-	assertThrown(json.deserialise!(string[2]), "No exception was thrown");
+    // Deserialise (too many values, so exception should be thrown)
+    json = parseJSON(`["Bradley", "Andy", "Kaiya"]`);
+    assertThrown(json.deserialise!(string[2]), "No exception was thrown");
 
-	// Deserialise (not enough values, so empty spaces should be `string.init`)
-	json = parseJSON(`["Bradley"]`);
-	people = json.deserialise!(string[2]);
-	assert(people == ["Bradley", string.init], format("Got: %s", people));
+    // Deserialise (not enough values, so empty spaces should be `string.init`)
+    json = parseJSON(`["Bradley"]`);
+    people = json.deserialise!(string[2]);
+    assert(people == ["Bradley", string.init], format("Got: %s", people));
 }
 ```
