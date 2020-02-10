@@ -63,5 +63,17 @@
     <script>
         hljs.initHighlightingOnLoad();
     </script>
+
+    <!--Log how long it took for the page to load-->
+    <script>
+        if (location.hostname !== "localhost" && window.performance) {
+            var timeSincePageLoad = Math.round(performance.now());
+            gtag('event', 'timing_complete', {
+                'name': 'load',
+                'value': timeSincePageLoad,
+                'event_category': 'JS Dependencies'
+            });
+        }
+    </script>
 </body>
 </html>
