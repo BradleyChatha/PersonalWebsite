@@ -31,7 +31,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: $HEADER_HEIGHT;
+    min-height: $HEADER_HEIGHT;
 
     > nav.navbar {
         $MULTI_LINE_BREAKPOINT: 600px; // Once we get smaller than this, put the links and the header onto their own lines.

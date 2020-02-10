@@ -1,6 +1,7 @@
 section.blog.wrapper {
     display: flex;
     max-width: 900px;
+    width: 100vw;
     margin: 0 auto;
 }
 
@@ -10,6 +11,7 @@ article.blog {
     display: flex;
     flex-direction: column;
     max-width: inherit;
+    width: inherit;
 
     font-size: 20px;
     line-height: 1.8em;
@@ -26,6 +28,7 @@ article.blog {
 
     p {
         width: 1ch * $CHARS_PER_LINE;
+        max-width: 95vw;
     }
 
     ul, ol {
