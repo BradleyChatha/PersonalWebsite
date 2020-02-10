@@ -1,0 +1,180 @@
+body {
+    font-family: "Roboto";
+    color: #444444;
+}
+
+// Height calcs
+$HEADER_HEIGHT_PERCENT: 0.075; // Header is actually locked to 68PX, this is just here as a rough estimate for Main and Footer to scale from.
+$FOOTER_HEIGHT_PERCENT: 0.055;
+$MAIN_HEIGHT_PERCENT:   (1 - $HEADER_HEIGHT_PERCENT) - $FOOTER_HEIGHT_PERCENT;
+
+$HEADER_HEIGHT: 68px;
+$MAIN_HEIGHT:   100vh * $MAIN_HEIGHT_PERCENT;
+$FOOTER_HEIGHT: 100vh * $FOOTER_HEIGHT_PERCENT;
+
+// Colours
+$HEADER_FOOTER_BACK_COLOUR: hsl(203, 43%, 25%);
+$HEADER_FOOTER_TEXT_COLOUR: hsl(224, 100%, 96%);
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $HEADER_HEIGHT;
+
+    > nav.navbar {
+        $MULTI_LINE_BREAKPOINT: 600px; // Once we get smaller than this, put the links and the header onto their own lines.
+
+        display: flex;
+        flex-direction: row;
+
+        @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+            flex-wrap: wrap;
+        }
+
+        width: 100%;
+        height: 100%;
+        background-color: $HEADER_FOOTER_BACK_COLOUR;
+
+        > h1 {
+            display: flex;
+            flex-direction: column;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 1em;
+
+            min-width: 200px;
+
+            @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+                width: 100%;
+                text-align: center;
+                padding-left: 0;
+            }
+
+            color: $HEADER_FOOTER_TEXT_COLOUR;
+            font-size: 28px;
+        }
+
+        > div.gutter {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            // Act as top padding when we're multi line.
+            @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+                height: 10px;
+            }
+        }
+
+        > div.links {
+            display: flex;
+            flex-direction: row;
+            margin-top: auto;
+            margin-bottom: auto;
+            justify-content: space-evenly;
+
+            // Edge doesn't support space-evenly in Flexbox (only grid) so we'll try something different for it.
+            @supports (-ms-ime-align: auto) {
+                justify-content: space-between;
+                margin-right: 1em;
+            }
+            
+            // Forces links onto their own line.
+            min-width: 380px;
+            @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+                min-width: 100%;
+            }
+
+            > a.item {
+                $TRANSITION_TIME: 0.1s;
+
+                display: flex;
+                flex-direction: column;
+
+                text-align: center;
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: normal;
+                color: rgb(159, 190, 223);
+
+                transition: color ease-out $TRANSITION_TIME;
+
+                &:hover {
+                    color: hsl(211, 59%, 84%);
+                    transition: color ease-in $TRANSITION_TIME;
+                }
+
+                &.active {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+main {
+    // Because of position: absolute, we need a bit of padding so we don't get absorbed by the navbar.
+    padding-top: $HEADER_HEIGHT;
+    min-height: $MAIN_HEIGHT;
+}
+
+footer {
+    $REMOVE_GUTTER_BREAKPOINT: 840px; // When to remove the gutter.
+
+    display: flex;
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    min-height: $FOOTER_HEIGHT;
+    padding-top: 0.4em;
+    background-color: $HEADER_FOOTER_BACK_COLOUR;
+    color: $HEADER_FOOTER_TEXT_COLOUR;
+    
+    > address, > div.gutter, > div.social.medias {
+        width: calc(100% / 3);
+    }
+
+    @media screen and (max-width: $REMOVE_GUTTER_BREAKPOINT) {
+        > div.gutter {
+            display: none;
+        }
+
+        > address, > div.social.medias {
+            width: 50%;
+        }
+    }
+
+    > address {
+        font-style: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 220px;
+
+        > label {
+            padding-bottom: 0.2em;
+            font-weight: bold;
+            color: #b2c6fd;
+        }
+
+        > div {
+            margin-bottom: 0.2em;
+        }
+        
+        > div > i.fa-phone {
+            margin-left: -4.5em;
+            padding-right: 0.2em;
+        }
+    }
+
+    > div.social.medias {
+        display: flex;
+        justify-content: flex-end;
+        > a {
+            color: lighten($HEADER_FOOTER_BACK_COLOUR, 30%);
+            padding-right: 1em;
+        }
+    }
+}

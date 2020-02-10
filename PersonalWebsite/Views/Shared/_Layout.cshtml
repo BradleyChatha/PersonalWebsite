@@ -16,67 +16,46 @@
 <body>
     <header>
         <nav class="navbar">
-            <h1>
-                <a href="/">
-                    Bradley Chatha - Software Developer
-                </a>
-            </h1>
-            <section class="center column">
-                <div class="center items">
-                    @{ 
-                        var homeClasses    = (ViewData["NavItem"] as string) == "Home"    ? "active item" : "item";
-                        var projectClasses = (ViewData["NavItem"] as string) == "Project" ? "active item" : "item";
-                        var awardsClasses  = (ViewData["NavItem"] as string) == "Awards"  ? "active item" : "item";
-                        var blogClasses    = (ViewData["NavItem"] as string) == "Blog"    ? "active item" : "item";
-                    }
-                    <a class="@homeClasses" href="/">Home</a>
-                    <a class="@projectClasses" href="/">Projects</a>
-                    <a class="@blogClasses" asp-action="Blog">Blog</a>
-                    <a class="@awardsClasses" asp-action="Awards">Awards</a>
-                </div>
-            </section>
+            <h1>Bradley Chatha</h1>
+            <div class="gutter"></div>
+            <div class="links">
+                @{ 
+                    var homeClasses    = (ViewData["NavItem"] as string) == "Home"    ? "active item" : "item";
+                    var projectClasses = (ViewData["NavItem"] as string) == "Project" ? "active item" : "item";
+                    var awardsClasses  = (ViewData["NavItem"] as string) == "Awards"  ? "active item" : "item";
+                    var blogClasses    = (ViewData["NavItem"] as string) == "Blog"    ? "active item" : "item";
+                }
+                <a class="@homeClasses" href="/">Home</a>
+                <a class="@projectClasses" href="/">Projects</a>
+                <a class="@blogClasses" asp-action="Blog">Blog</a>
+                <a class="@awardsClasses" asp-action="Awards">Awards</a>
+            </div>
         </nav>
     </header>
     <main>
-        <section class="one column grid">
-            <div class="center aligned row">
-                <div class="column">
-                    @RenderBody()
-                </div>
-            </div>
-        </section>
+        @RenderBody()
     </main>
     <footer>
-        <section class="three column grid">
-            <div class="center aligned row">
-                <div class="padding column"></div>
-                <div class="column">
-                    <div class="contact element">
-                        <label>Contact Me</label>
-                        <div>
-                            <i class="fa fa-envelope fa-lg"></i>
-                            bradley.chatha@gmail.com
-                        </div>
-                        <div>
-                            <i class="fa fa-phone fa-lg"></i>
-                            <span class="phone padded">
-                                +447506701660
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="social media element">
-                        <a class="linkedin" href="https://www.linkedin.com/in/bradley-chatha/" target="_blank">
-                            <i class="fa fa-linkedin fa-3x"></i>
-                        </a>
-                        <a class="twitter" href="https://twitter.com/BradleyChatha" target="_blank">
-                            <i class="fa fa-twitter fa-3x"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="gutter"></div>
+        <address>
+            <label>Contact Me</label>
+            <div>
+                <i class="fa fa-envelope"></i>
+                bradley.chatha@gmail.com
             </div>
-        </section>
+            <div>
+                <i class="fa fa-phone"></i>
+                +44 7506701660
+            </div>
+        </address>
+        <div class="social medias">
+            <a href="https://www.github.com/SealabJaster">
+                <i class="fa fa-github-square fa-4x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/bradley-chatha/">
+                <i class="fa fa-linkedin-square fa-4x"></i>
+            </a>
+        </div>
     </footer>
 
     <partial name="_LayoutJsPartial" />

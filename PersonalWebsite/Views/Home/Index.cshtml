@@ -1,413 +1,46 @@
 ﻿@{
     ViewData["Title"] = "Index";
     ViewData["NavItem"] = "Home";
-
-    // I know this is... *not ideal*, but I'm the only one who's ever gonna touch this code,
-    // and I don't really find a benefit of using a database for this website, so this works
-    // well enough for my own needs.
-    var languages = new List<(
-        string Image,
-        int Years,
-        string[] Meta,
-        int Comfort,
-        int Knowledge,
-        string[] Pros,
-        string[] MiddleGround,
-        string[] Cons
-    )>
-    {
-        (
-            "img/logos/csharp.png",
-            7,
-            new[]{ "6 as hobbyist", "1 as professional" },
-            5,
-            4,
-            new[]
-            {
-                "Understand advanced features such as reflection",
-                "Decent experience with .Net standard library; ASP Core; EF Core, and Nuget",
-                "Experience using .Net Core on Linux and Windows",
-                "First choice for Web Dev as backend"
-            },
-            new[]
-            {
-                "Second main language",
-                "Second choice for App Dev",
-                "This website is made in C# with ASP Core"
-            },
-            new string[]{ }
-        ),
-        (
-            "img/logos/dlang.png",
-            5,
-            new[]{ "as hobbyist" },
-            5,
-            5,
-            new[]
-            {
-                "Main language",
-                "First choice for App Dev (especially tooling)",
-                "Very comfortable with metaprogramming, including complex compile time code generation"
-            },
-            new[]
-            {
-                "D's ecosystem is a bit lackluster, so I have decent experience with writing libraries",
-                "This website is deployed via a custom made tool, written in D"
-            },
-            new string[]{ }
-        ),
-        (
-            "img/logos/cpp.png",
-            5,
-            new[]{ "as hobbyist", "Very on/off usage" },
-            2,
-            2,
-            new[]
-            {
-                "Core knowledge of computers helps me identify and avoid certain pitfalls of C++",
-                "Understanding of smart pointers, and some understanding of how to efficiently use them"
-            },
-            new string[]
-            {
-                
-            },
-            new[]
-            {
-                "Have very little experience that could be related to real world usage",
-                "Do not even slightly enjoy this language"
-            }
-        ),
-        (
-            "img/logos/html.png",
-            -7, // Minus = months
-            new[]{ "as professional" },
-            3,
-            3,
-            new[]
-            {
-                "It's basically XML. You either use it well or you don't. Not much else to put here"
-            },
-            new[]
-            {
-                "This is the first website I've created without the use of a UI framework"
-            },
-            new[]
-            {
-                "Still have a lot to learn about proper layout; proper tag usage; good practices; screen reader support, and responsive design. "
-               +"Plus things I don't even know about"
-            }
-        ),
-        (
-            "img/logos/css.png",
-            -3, // Minus = months
-            new[]{ "as professional" },
-            3,
-            2,
-            new[]
-            {
-                "Experience with SASS; Bootstrap, and Semantic UI",
-                "This website is purely made out of custom CSS. No external styling except for the icons",
-                "This website is my first attempt at responsive design"
-            },
-            new[]
-            {
-                "This is the first website I've created without the use of a UI framework"
-            },
-            new[]
-            {
-                "Still have a long way to go before I can call myself proficient"
-            }
-        ),
-        (
-            "img/logos/ts.png",
-            -7,
-            new[]{ "as professional" },
-            3,
-            2,
-            new[]
-            {
-                "Experience with writing JS/TS for a browser environment",
-                "Experience with writing ES6 modules",
-                "Experience with writing an NPM library"
-            },
-            new string[]{ },
-            new[]
-            {
-                "No experience with other non-browser JS/TS environments",
-                "Still very new to the JS/TS ecosystem, as most of my experience has been tiny functions to make web pages interactive",
-                "Still have a lot to learn about the features TS offers, best practices, etc."
-            }
-        )
-    };
 }
 
-<!--Languages-->
-<section class="languages element">
-    <div class="section header">
-        <h1>Language Experience</h1>
-    </div>
-
-    <section class="language three column grid">
-        <div class="row">
-            @foreach(var language in languages)
-            {
-                <div class="column"> <!--So flex-start is towards the top, not the left.-->
-                    <div>
-                        <div class="language">
-                            <div class="header">
-                                <img src="@language.Image" />
-                                <span class="years">
-                                    @(language.Years < 0 ? $"{language.Years * -1} months" : $"{language.Years} years") experience
-                                </span>
-
-                                @foreach (var meta in language.Meta)
-                                {
-                                    <span class="meta">@meta</span>
-                                }
-                            </div>
-
-                            <div class="rating">
-                                <label>Comfort</label>
-
-                                @for (int i = 0; i < 5; i++)
-                                {
-                                    <span class="fa fa-star @(i + 1 <= language.Comfort ? "checked" : "")"></span>
-                                }
-                            </div>
-
-                            <div class="rating">
-                                <label>Knowledge</label>
-
-                                @for (int i = 0; i < 5; i++)
-                                {
-                                    <span class="fa fa-star @(i + 1 <= language.Knowledge ? "checked" : "")"></span>
-                                }
-                            </div>
-
-                            @foreach (var pro in language.Pros)
-                            {
-                                <div class="check marking">
-                                    <span class="fa fa-check fa-lg"></span>
-                                    @pro
-                                </div>
-                            }
-
-                            @foreach (var middleGround in language.MiddleGround)
-                            {
-                                <div class="minus marking">
-                                    <span class="fa fa-minus fa-lg"></span>
-                                    @middleGround
-                                </div>
-                            }
-
-                            @foreach (var con in language.Cons)
-                            {
-                                <div class="times marking">
-                                    <span class="fa fa-times fa-lg"></span>
-                                    @con
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            }
+<section class="home about">
+    <h1>
+        <span>
+            About Me
+        </span>
+    </h1>
+    <div class="personal summary">
+        <div class="image">
+            <div class="images">
+                <img src="~/img/cooper.JPG" />
+                <img src="~/img/selfie.JPG" />
+            </div>
+            <p>
+                "Complacency is the devil; Never stop learning."
+            </p>
         </div>
-    </section>
-</section>
-
-<!--Misc knowledge-->
-<section class="knowledge element">
-    <div class="section header">
-        <h1>Misc Knowledge</h1>
-    </div>
-
-    <section class="knowledge four column grid">
-        <div class="row">
-            <div class="column">
-                <article class="knowledge">
-                    <label>Memory Management</label>
-                    <img src="~/img/logos/ram.png" style="width: 67%;" />
-                    <p>
-                        I have an understanding of how computers manage memory, including:
-                    </p>
-                    <ul>
-                        <li>The stack</li>
-                        <li>Paging/Virtual Memory</li>
-                        <li>Segmentation</li>
-                        <li>Fragmentation of memory</li>
-                        <li>The hidden costs of allocation</li>
-                    </ul>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Memory Management</label>
-                    <img src="~/img/logos/ram.png" style="width: 67%;" />
-                    <p class="left aligned">
-                        I have a basic understanding of allocators, such as block allocators,
-                        and bitmap bookeeping.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Memory Management</label>
-                    <img src="~/img/logos/ram.png" style="width: 67%;" />
-                    <p class="left aligned">
-                        I have an understanding of Garbage Collectors, and some of their techniques such as
-                        'stop the world'; generational, and sweeping GCs.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Memory Management</label>
-                    <img src="~/img/logos/ram.png" style="width: 67%;" />
-                    <p class="left aligned">
-                        I understand and have implemented Linked Lists; Hashmaps, and Dynamic arrays.
-                    </p>
-                    <p class="left aligned">
-                        These were implemented using manual memory management, which demonstrates
-                        my understanding of representing and manipulating data in dynamic memory
-                        structures.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Memory Management</label>
-                    <img src="~/img/logos/ram.png" style="width: 67%;" />
-                    <p class="left aligned">
-                        I understand, have used, and have implemented smart pointers (Shared and Unique).
-                    </p>
-                    <p class="left aligned">
-                        This shows I understand RAII, reference counting, and also the hidden costs behind
-                        reference counting.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Toolchains</label>
-                    <img src="~/img/logos/exe.png" style="width: 60px; height: 75px;" />
-                    <p class="left aligned">
-                        I understand the jobs performed by compilers, assemblers, and linkers.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Toolchains</label>
-                    <img src="~/img/logos/exe.png" style="width: 60px; height: 75px;" />
-                    <p class="left aligned">
-                        I understand what object files are, and how they tie into incremental compilation.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Toolchains</label>
-                    <img src="~/img/logos/exe.png" style="width: 60px; height: 75px;" />
-                    <p class="left aligned">
-                        I have experience with build systems such as Dub and Make.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Toolchains</label>
-                    <img src="~/img/logos/exe.png" style="width: 60px; height: 75px;" />
-                    <p class="left aligned">
-                        I have written various toy languages that compile to a custom bytecode format,
-                        which is then ran in a custom VM.
-                    </p>
-                    <p class="left aligned">
-                        The compilers use a top-decent parser, and ASTs. Showing I understand syntax and lexical analysis.
-                    </p>
-                    <p class="left aligned">
-                        While I'm aware of some optimisation techniques compilers may perform,
-                        I haven't actually implemented any myself yet.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Optimisation</label>
-                    <img src="~/img/logos/bigo.png" />
-                    <p class="left aligned">
-                        I understand Big O notation, and how to determine both speed and memory
-                        complexity of an algorithm.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Optimisation</label>
-                    <img src="~/img/logos/bigo.png" />
-                    <p class="left aligned">
-                        I understand the costs associated with various aspects of memory management, and
-                        the different approaches for certain sitatuations.
-                    </p>
-                    <p>
-                        Some examples:
-                    </p>
-                    <ul>
-                        <li>Memory pooling</li>
-                        <li>Preallocating memory (e.g. before a large concat loop)</li>
-                        <li>Minimise allocations within a loop</li>
-                        <li>Reusing memory</li>
-                    </ul>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Optimisation</label>
-                    <img src="~/img/logos/bigo.png" />
-                    <p class="left aligned">
-                        I understand the hidden costs associated with certain abstractions, including
-                        reference counting; RAII; virtual functions; deferencing pointers, and bounds checking.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Optimisation</label>
-                    <img src="~/img/logos/bigo.png" />
-                    <p class="left aligned">
-                        I understand what CPU caches are, and how to design code to improve
-                        cache hits.
-                    </p>
-                </article>
-            </div>
-
-            <div class="column">
-                <article class="knowledge">
-                    <label>Optimisation</label>
-                    <img src="~/img/logos/bigo.png" />
-                    <p class="left aligned">
-                        I understand various optimisations that compilers may make:
-                    </p>
-                    <ul>
-                        <li>Inlining</li>
-                        <li>Dead code and store elimination</li>
-                        <li>Tail call</li>
-                        <li>Constant folding</li>
-                        <li>Auto Vectorisation</li>
-                    </ul>
-                </article>
-            </div>
+        <div class="summary">
+            <p>
+                I'm an aspiring UK Software Developer who is mostly interested in backend development, while also boasting marketable experience
+                with web development.
+            </p>
+            <p>
+                For the last 7 years I have self-taught myself anything ranging from new languages, frameworks/libraries,
+                and concepts such as programming patterns, best practices, and hidden performance costs.
+            </p>
+            <p>
+                For example, within a year I've researched and learned about CSS & SASS; JS & TS; HTML; ASP Core; Razor; basic DevOps 
+                (DNS, CI, and server management); GraphQL, and EF Core. This is of course on top of my already broad experience
+                with many other aspects of programming.
+            </p>
+            <p>
+                Problems and challenges greatly motivate me which when combined with my enjoyment from educating myself
+                allows me to overcome most issues thrown at me.
+            </p>
+            <p>
+                I have minimal experience with working in a group, however I'm sure given enough time I'll be able to
+                fit in and work efficiently with others, provided that they're friendly. <i class="fa fa-smile-o"></i>
+            </p>
         </div>
-    </section>
+    </div>
 </section>

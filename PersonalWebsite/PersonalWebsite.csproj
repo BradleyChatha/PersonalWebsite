@@ -6,10 +6,6 @@
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.18.1" />
@@ -27,11 +23,7 @@
   <ItemGroup>
     <Folder Include="Views\Projects\" />
     <Folder Include="wwwroot\js\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>

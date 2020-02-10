@@ -1,0 +1,55 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SASS Watch",
+            "type": "shell",
+            "command": "sass site.scss ../wwwroot/css/site.css --watch",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "${cwd}",
+                "fileLocation": "relative",
+                "pattern":[
+                    {
+                        "regexp": "^([^\\\\s].*)\\\\((\\\\d+,\\\\d+)\\\\):\\\\s*(.*)$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*",
+                    "endsPattern": "Compiled .*"
+                }
+            }
+        },
+        {
+            "label": "CSSO Watch",
+            "type": "shell",
+            "command": "csso ../wwwroot/css/site.css --output ../wwwroot/css/site.min.css --watch",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "${cwd}",
+                "fileLocation": "relative",
+                "pattern":[
+                    {
+                        "regexp": "^([^\\\\s].*)\\\\((\\\\d+,\\\\d+)\\\\):\\\\s*(.*)$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*",
+                    "endsPattern": "Compiled .*"
+                }
+            }
+        }
+    ]
+}

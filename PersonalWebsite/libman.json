@@ -1,10 +1,5 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
-  "libraries": [
-    {
-      "library": "fomantic-ui@2.7.6",
-      "destination": "wwwroot/lib/fomantic-ui/"
-    }
-  ]
+  "libraries": []
 }
