@@ -1,0 +1,43 @@
+section.blog.wrapper {
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+article.blog {
+    $CHARS_PER_LINE: 80;
+
+    display: flex;
+    flex-direction: column;
+    max-width: inherit;
+
+    font-size: 20px;
+    line-height: 1.8em;
+
+    h1 {
+        font-size: 38px;
+        align-self: center;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 0.2em;
+    }
+
+    p {
+        width: 1ch * $CHARS_PER_LINE;
+    }
+
+    ul, ol {
+        margin-top: 0em;
+    }
+
+    p ~ ul, p ~ ol {
+        margin-top: -0.6em;
+    }
+
+    pre > code {
+        font-size: 16px;
+        line-height: 1.2em;
+    }
+}
