@@ -47,13 +47,14 @@ header {
         height: 100%;
         background-color: $HEADER_FOOTER_BACK_COLOUR;
 
-        > h1 {
+        > h1 > a {
             display: flex;
             flex-direction: column;
             margin-top: auto;
             margin-bottom: auto;
             padding-left: 1em;
 
+            text-decoration: none;
             min-width: 200px;
 
             @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {

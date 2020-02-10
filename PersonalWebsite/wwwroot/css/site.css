@@ -31,18 +31,19 @@ header > nav.navbar {
     flex-wrap: wrap;
   }
 }
-header > nav.navbar > h1 {
+header > nav.navbar > h1 > a {
   display: flex;
   flex-direction: column;
   margin-top: auto;
   margin-bottom: auto;
   padding-left: 1em;
+  text-decoration: none;
   min-width: 200px;
   color: #ebf0ff;
   font-size: 28px;
 }
 @media screen and (max-width: 600px) {
-  header > nav.navbar > h1 {
+  header > nav.navbar > h1 > a {
     width: 100%;
     text-align: center;
     padding-left: 0;
