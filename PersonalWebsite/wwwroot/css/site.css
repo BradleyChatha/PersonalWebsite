@@ -3,6 +3,11 @@ body {
   color: #444444;
 }
 
+a {
+  text-decoration: none;
+  color: #1511ff;
+}
+
 header {
   position: absolute;
   top: 0;

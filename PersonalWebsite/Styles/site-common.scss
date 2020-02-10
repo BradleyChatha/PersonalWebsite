@@ -3,6 +3,11 @@ body {
     color: #444444;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(21, 17, 255);
+}
+
 // Height calcs
 $HEADER_HEIGHT_PERCENT: 0.075; // Header is actually locked to 68PX, this is just here as a rough estimate for Main and Footer to scale from.
 $FOOTER_HEIGHT_PERCENT: 0.055;
