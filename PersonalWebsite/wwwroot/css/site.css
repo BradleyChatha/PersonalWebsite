@@ -225,4 +225,33 @@ section.home > div.personal.summary > div.summary > p > i.fa-smile-o:hover::befo
   }
 }
 
+article.award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+article.award > h1 {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 34px;
+}
+article.award > h1 > span {
+  padding-bottom: 0.35em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  border-bottom: solid 4px black;
+  border-radius: 3%;
+}
+article.award > a > img {
+  max-width: 960px;
+  max-height: 724px;
+}
+@media screen and (max-width: 960px) {
+  article.award > a > img {
+    max-width: 95vw;
+  }
+}
+
 /*# sourceMappingURL=site.css.map */

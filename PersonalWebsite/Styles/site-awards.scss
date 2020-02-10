@@ -1,0 +1,33 @@
+article.award {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    > h1 {
+        display: flex;
+        justify-content: center;
+        color: black;
+
+        // Otherwise the border goes across the entire screen.
+        > span {
+            padding-bottom: 0.35em;  
+            padding-left: 0.2em;
+            padding-right: 0.2em;
+            border-bottom: solid 4px black;
+            border-radius: 3%;
+        }
+
+        font-size: 34px;
+    }
+
+    > a > img {
+        max-width: 960px;
+        max-height: 724px;
+
+        @media screen and(max-width: 960px) {
+            max-width: 95vw;
+        }
+    }
+}
