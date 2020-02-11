@@ -6,6 +6,13 @@
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ImageRaw\**" />
+    <Content Remove="ImageRaw\**" />
+    <EmbeddedResource Remove="ImageRaw\**" />
+    <None Remove="ImageRaw\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.18.1" />

@@ -9,7 +9,7 @@ namespace PersonalWebsite.Models
     {
         public DateTimeOffset  StartedUsing    { get; set; }
         public string          Name            { get; set; }
-        public string          Logo            { get; set; }
+        public string          LogoClass       { get; set; }
         public int             Comfort         { get; set; }
         public int             Knowledge       { get; set; }
 
@@ -17,7 +17,7 @@ namespace PersonalWebsite.Models
         {
             this.StartedUsing = startedUsing;
             this.Name         = name;
-            this.Logo         = logo;
+            this.LogoClass    = logo;
             this.Comfort      = comfort;
             this.Knowledge    = knowledge;
         }

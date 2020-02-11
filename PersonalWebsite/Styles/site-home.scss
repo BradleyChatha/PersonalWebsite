@@ -4,6 +4,71 @@
 
     width: 100%;
 
+    // Sprite atlas (for /img/index/atlas.png)
+    img.atlas {
+        object-fit: none;
+
+        &.bradley { // Baseline
+            object-position: 0 0;
+            width: 300;
+            height: 300;
+        }
+
+        &.cooper { // + 300x
+            object-position: -300px 0;
+            width: 300;
+            height: 300;
+        }
+
+        &.cpp { // + 300x
+            object-position: -600px 0;
+            width: 120;
+            height: 120;
+        }
+
+        &.csharp { // +120y
+            object-position: -600px -120px;
+            width: 120;
+            height: 120;
+        }
+
+        &.css { // +120x
+            object-position: -720px 0px;
+            width: 120;
+            height: 120;
+        }
+
+        &.dlang { // +120y
+            object-position: -720px -120px;
+            width: 120;
+            height: 120;
+        }
+
+        &.html { // +120x
+            object-position: -840px 0px;
+            width: 120;
+            height: 120;
+        }
+
+        &.ts { // +120y
+            object-position: -840px -120px;
+            width: 120;
+            height: 120;
+        }
+
+        &.nasm { // +120x
+            object-position: -960px 0px;
+            width: 120;
+            height: 120;
+        }
+
+        &.python { // +120y
+            object-position: -960px -120px;
+            width: 120;
+            height: 120;
+        }
+    }
+
     > h1 {
         display: flex;
         justify-content: center;
@@ -52,7 +117,6 @@
                     height: 300px;
                     border-radius: 50%;
                     border: solid 1px black;
-                    transform: rotate(90deg);
                     margin: 0 auto;
                     transition: opacity $COOPER_TRANSITION_TIME ease-in;
                 }

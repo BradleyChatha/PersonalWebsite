@@ -155,6 +155,59 @@ section.home {
   flex-direction: column;
   width: 100%;
 }
+section.home img.atlas {
+  object-fit: none;
+}
+section.home img.atlas.bradley {
+  object-position: 0 0;
+  width: 300;
+  height: 300;
+}
+section.home img.atlas.cooper {
+  object-position: -300px 0;
+  width: 300;
+  height: 300;
+}
+section.home img.atlas.cpp {
+  object-position: -600px 0;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.csharp {
+  object-position: -600px -120px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.css {
+  object-position: -720px 0px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.dlang {
+  object-position: -720px -120px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.html {
+  object-position: -840px 0px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.ts {
+  object-position: -840px -120px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.nasm {
+  object-position: -960px 0px;
+  width: 120;
+  height: 120;
+}
+section.home img.atlas.python {
+  object-position: -960px -120px;
+  width: 120;
+  height: 120;
+}
 section.home > h1 {
   display: flex;
   justify-content: center;
@@ -199,7 +252,6 @@ section.home > div.personal.summary > div.image > div.images > img {
   height: 300px;
   border-radius: 50%;
   border: solid 1px black;
-  transform: rotate(90deg);
   margin: 0 auto;
   transition: opacity 0.3s ease-in;
 }
