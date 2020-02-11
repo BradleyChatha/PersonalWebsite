@@ -96,4 +96,96 @@
             }
         }
     }
+
+    > div.languages {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+
+        // So I can evenly space them, while also keeping them left-aligned while ALSO center-aligned.
+        // Because apparently that's insanely hard to do with flexbox.
+        > div.wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            margin-bottom: 1em;
+            align-items: center;
+
+            // As with all the other responsive CSS, these breakpoints were
+            // chosen via manually testing how things look at certain sizes.
+            @media screen and (max-width: 1710px) {
+                width: 25%;
+            }
+
+            @media screen and (max-width: 1380px) {
+                width: calc(100% / 3);
+            }
+
+            @media screen and (max-width: 1024px) {
+                width: 50%;
+            }
+
+            @media screen and (max-width: 690px) {
+                width: 100%;
+            }
+
+            > div.language {
+                display: flex;
+                flex-direction: column;
+
+                background-color: hsl(48, 20%, 97%);
+                border: solid 1px hsl(203, 43%, 20%);
+                border-radius: 5%;
+
+                width: 300px;
+
+                > img {
+                    display: flex;
+                    align-self: center;
+                    padding-top: 1em;
+
+                    width: 120px;
+                    height: 120px;
+                }
+
+                > h2 {
+                    display: flex;
+                    align-self: center;
+
+                    color: hsl(0, 0%, 20%);
+                }
+
+                > div.rating {
+                    display: flex;
+                    width: 100%;
+                    padding-bottom: 0.5em;
+
+                    > label {
+                        padding-left: 2em;
+                        font-size: 18px;
+                    }
+
+                    > span.fa {
+                        padding-left: 0.3em;
+
+                        &.checked {
+                            color: darken(orange, 5%);
+                        }
+                    }
+
+                    > span.fa:first-of-type {
+                        margin-left: auto;
+                    }
+
+                    > span.fa:last-of-type {
+                        padding-right: 2em;
+                    }
+                }
+            }
+        }
+    }
 }

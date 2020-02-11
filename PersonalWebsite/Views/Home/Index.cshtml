@@ -1,6 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Index";
     ViewData["NavItem"] = "Home";
+
+    Func<int, int, int, DateTimeOffset> makeDate = (y, m, d) => new DateTimeOffset(y, m, d, 0, 0, 0, TimeSpan.FromSeconds(0));
+
+    var languages = new List
+    <
+        (   string         name,
+            string         logo,
+            DateTimeOffset startedUsing,
+            int            comfort,
+            int            knowledge
+        )
+    >() 
+    {
+        ("CSharp", "/img/logos/csharp.png", makeDate(2013, 06, 01), 5, 4),
+        ("DLang",  "/img/logos/dlang.png",  makeDate(2014, 02, 01), 5, 4),
+        ("HTML",   "/img/logos/html.png",   makeDate(2019, 06, 29), 3, 3),
+        ("CSS",    "/img/logos/css.png",    makeDate(2019, 10, 05), 3, 3),
+        ("TS/JS",  "/img/logos/ts.png",     makeDate(2019, 06, 29), 3, 2)
+    };
 }
 
 <section class="home about">
@@ -12,8 +31,8 @@
     <div class="personal summary">
         <div class="image">
             <div class="images">
-                <img src="~/img/cooper.JPG" />
-                <img src="~/img/selfie.JPG" />
+                <img src="~/img/cooper.JPG" alt="Floofer of Worlds"/>
+                <img src="~/img/selfie.JPG" alt="Bradley"/>
             </div>
             <p>
                 "Complacency is the devil; Never stop learning."
@@ -34,7 +53,7 @@
                 with many other aspects of programming.
             </p>
             <p>
-                Problems and challenges greatly motivate me which when combined with my enjoyment from educating myself
+                Problems and challenges greatly motivate me which when combined with my enjoyment from educating myself,
                 allows me to overcome most issues thrown at me.
             </p>
             <p>
@@ -42,5 +61,51 @@
                 fit in and work efficiently with others, provided that they're friendly. <i class="fa fa-smile-o"></i>
             </p>
         </div>
+    </div>
+</section>
+<section class="home languages">
+    <h1>
+        <span>
+            Noteworthy Languages
+        </span>
+    </h1>
+    <div class="languages">
+        @foreach(var language in languages)
+        {
+            var timeUsed = DateTimeOffset.UtcNow - language.startedUsing;
+            var timeUsedString = (timeUsed.TotalDays >= 365)
+                                 ? $"{Math.Round(timeUsed.TotalDays / 365)} Years"
+                                 : $"{Math.Round(timeUsed.TotalDays / 30)} Months";
+
+            <div class="wrapper">
+                <div class="language">
+                    <img src="@language.logo" alt="@language.name" />
+                    <h2>@timeUsedString Experience</h2>
+                    <div class="rating">
+                        <label>Comfort</label>
+                        @for(int i = 0; i < 5; i++)
+                        {
+                            var classes = "fa fa-star";
+                            if(i < language.comfort)
+                                classes += " checked";
+
+                            <span class="@classes"></span>
+                        }
+                    </div>
+                    <!--A bit of code duplication, but meh-->
+                    <div class="rating">
+                        <label>Knowledge</label>
+                        @for(int i = 0; i < 5; i++)
+                        {
+                            var classes = "fa fa-star";
+                            if(i < language.knowledge)
+                                classes += " checked";
+
+                            <span class="@classes"></span>
+                        }
+                    </div>  
+                </div>
+            </div>
+        }
     </div>
 </section>

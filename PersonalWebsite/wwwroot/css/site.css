@@ -234,6 +234,82 @@ section.home > div.personal.summary > div.summary > p > i.fa-smile-o:hover::befo
     width: 70ch;
   }
 }
+section.home > div.languages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+section.home > div.languages > div.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-bottom: 1em;
+  align-items: center;
+}
+@media screen and (max-width: 1710px) {
+  section.home > div.languages > div.wrapper {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1380px) {
+  section.home > div.languages > div.wrapper {
+    width: calc(100% / 3);
+  }
+}
+@media screen and (max-width: 1024px) {
+  section.home > div.languages > div.wrapper {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 690px) {
+  section.home > div.languages > div.wrapper {
+    width: 100%;
+  }
+}
+section.home > div.languages > div.wrapper > div.language {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f8f6;
+  border: solid 1px #1d3849;
+  border-radius: 5%;
+  width: 300px;
+}
+section.home > div.languages > div.wrapper > div.language > img {
+  display: flex;
+  align-self: center;
+  padding-top: 1em;
+  width: 120px;
+  height: 120px;
+}
+section.home > div.languages > div.wrapper > div.language > h2 {
+  display: flex;
+  align-self: center;
+  color: #333333;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating {
+  display: flex;
+  width: 100%;
+  padding-bottom: 0.5em;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating > label {
+  padding-left: 2em;
+  font-size: 18px;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating > span.fa {
+  padding-left: 0.3em;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating > span.fa.checked {
+  color: #e69500;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating > span.fa:first-of-type {
+  margin-left: auto;
+}
+section.home > div.languages > div.wrapper > div.language > div.rating > span.fa:last-of-type {
+  padding-right: 2em;
+}
 
 article.award {
   display: flex;
