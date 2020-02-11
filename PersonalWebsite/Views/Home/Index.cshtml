@@ -4,21 +4,20 @@
 
     Func<int, int, int, DateTimeOffset> makeDate = (y, m, d) => new DateTimeOffset(y, m, d, 0, 0, 0, TimeSpan.FromSeconds(0));
 
-    var languages = new List
-    <
-        (   string         name,
-            string         logo,
-            DateTimeOffset startedUsing,
-            int            comfort,
-            int            knowledge
-        )
-    >() 
+    var mainLanguages = new List<IndexLanguageCard>()
     {
-        ("CSharp", "/img/logos/csharp.png", makeDate(2013, 06, 01), 5, 4),
-        ("DLang",  "/img/logos/dlang.png",  makeDate(2014, 02, 01), 5, 4),
-        ("HTML",   "/img/logos/html.png",   makeDate(2019, 06, 29), 3, 3),
-        ("CSS",    "/img/logos/css.png",    makeDate(2019, 10, 05), 3, 3),
-        ("TS/JS",  "/img/logos/ts.png",     makeDate(2019, 06, 29), 3, 2)
+        new IndexLanguageCard("CSharp", "/img/logos/csharp.png", makeDate(2013, 06, 01), 5, 4),
+        new IndexLanguageCard("DLang",  "/img/logos/dlang.png",  makeDate(2014, 02, 01), 5, 4),
+        new IndexLanguageCard("HTML",   "/img/logos/html.png",   makeDate(2019, 06, 29), 3, 3),
+        new IndexLanguageCard("CSS",    "/img/logos/css.png",    makeDate(2019, 10, 05), 3, 2),
+        new IndexLanguageCard("TS/JS",  "/img/logos/ts.png",     makeDate(2019, 06, 29), 3, 2)
+    };
+
+    var minorLanguages = new List<IndexLanguageCard>()
+    {
+        new IndexLanguageCard("C++",    "/img/logos/cpp.png",       makeDate(2013, 11, 01), 1, 2),
+        new IndexLanguageCard("Python", "/img/logos/python.png",    makeDate(2015, 01, 01), 3, 2),
+        new IndexLanguageCard("NASM",   "/img/logos/nasm.png",      makeDate(2017, 01, 01), 1, 1)
     };
 }
 
@@ -66,46 +65,19 @@
 <section class="home languages">
     <h1>
         <span>
-            Noteworthy Languages
+            Languages (Main)
         </span>
     </h1>
     <div class="languages">
-        @foreach(var language in languages)
-        {
-            var timeUsed = DateTimeOffset.UtcNow - language.startedUsing;
-            var timeUsedString = (timeUsed.TotalDays >= 365)
-                                 ? $"{Math.Round(timeUsed.TotalDays / 365)} Years"
-                                 : $"{Math.Round(timeUsed.TotalDays / 30)} Months";
+        <partial name="_Index_LanguageCards" model="mainLanguages" />
+    </div>
 
-            <div class="wrapper">
-                <div class="language">
-                    <img src="@language.logo" alt="@language.name" />
-                    <h2>@timeUsedString Experience</h2>
-                    <div class="rating">
-                        <label>Comfort</label>
-                        @for(int i = 0; i < 5; i++)
-                        {
-                            var classes = "fa fa-star";
-                            if(i < language.comfort)
-                                classes += " checked";
-
-                            <span class="@classes"></span>
-                        }
-                    </div>
-                    <!--A bit of code duplication, but meh-->
-                    <div class="rating">
-                        <label>Knowledge</label>
-                        @for(int i = 0; i < 5; i++)
-                        {
-                            var classes = "fa fa-star";
-                            if(i < language.knowledge)
-                                classes += " checked";
-
-                            <span class="@classes"></span>
-                        }
-                    </div>  
-                </div>
-            </div>
-        }
+    <h1>
+        <span>
+            Languages (Minor/on-off)
+        </span>
+    </h1>
+    <div class="languages">
+        <partial name="_Index_LanguageCards" model="minorLanguages" />
     </div>
 </section>

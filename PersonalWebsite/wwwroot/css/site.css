@@ -159,6 +159,7 @@ section.home > h1 {
   display: flex;
   justify-content: center;
   color: black;
+  padding-top: 1.6em;
   font-size: 34px;
 }
 section.home > h1 > span {
@@ -167,6 +168,9 @@ section.home > h1 > span {
   padding-right: 0.2em;
   border-bottom: solid 4px black;
   border-radius: 3%;
+}
+section.home.about > h1 {
+  padding-top: 0;
 }
 section.home > div.personal.summary {
   display: flex;
