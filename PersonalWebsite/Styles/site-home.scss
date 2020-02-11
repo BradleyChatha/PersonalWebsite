@@ -9,63 +9,63 @@
         object-fit: none;
 
         &.bradley { // Baseline
-            object-position: 0 0;
-            width: 300;
-            height: 300;
+            object-position: 0px 0px;
+            width: 300px;
+            height: 300px;
         }
 
         &.cooper { // + 300x
-            object-position: -300px 0;
-            width: 300;
-            height: 300;
+            object-position: -300px 0px;
+            width: 300px;
+            height: 300px;
         }
 
         &.cpp { // + 300x
-            object-position: -600px 0;
-            width: 120;
-            height: 120;
+            object-position: -600px 0px;
+            width: 120px;
+            height: 120px;
         }
 
         &.csharp { // +120y
             object-position: -600px -120px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.css { // +120x
             object-position: -720px 0px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.dlang { // +120y
             object-position: -720px -120px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.html { // +120x
             object-position: -840px 0px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.ts { // +120y
             object-position: -840px -120px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.nasm { // +120x
             object-position: -960px 0px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
 
         &.python { // +120y
             object-position: -960px -120px;
-            width: 120;
-            height: 120;
+            width: 120px;
+            height: 120px;
         }
     }
 

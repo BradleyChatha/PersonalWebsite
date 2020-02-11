@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalWebsite.Services;
@@ -76,12 +77,7 @@ namespace PersonalWebsite
             {
                 OnPrepareResponse = ctx => 
                 {
-                    // Any files that are versioned will get cached for 30 days.
-                    if(ctx.Context.Request.Query.ContainsKey("v"))
-                    { 
-                        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
-                        ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
-                    }
+                    ctx.CacheVersionedFiles();
                 }
             });
             app.UseCookiePolicy();
@@ -91,6 +87,18 @@ namespace PersonalWebsite
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+        }
+    }
+
+    public static class StaticFileExtentions
+    {
+        public static void CacheVersionedFiles(this StaticFileResponseContext ctx)
+        {
+            if (ctx.Context.Request.Query.ContainsKey("v"))
+            {
+                ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
+                ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
+            }
         }
     }
 }
