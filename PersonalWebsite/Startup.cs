@@ -78,6 +78,7 @@ namespace PersonalWebsite
                 OnPrepareResponse = ctx => 
                 {
                     ctx.CacheVersionedFiles();
+                    ctx.ServeGzipFiles();
                 }
             });
             app.UseCookiePolicy();
@@ -92,12 +93,34 @@ namespace PersonalWebsite
 
     public static class StaticFileExtentions
     {
+        static FileExtensionContentTypeProvider _fileTypes = new FileExtensionContentTypeProvider();
+
         public static void CacheVersionedFiles(this StaticFileResponseContext ctx)
         {
             if (ctx.Context.Request.Query.ContainsKey("v"))
             {
                 ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
                 ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
+            }
+        }
+
+        // https://gunnarpeipman.com/aspnet-core-precompressed-files/
+        public static void ServeGzipFiles(this StaticFileResponseContext context)
+        {
+            var headers = context.Context.Response.Headers;
+            var contentType = headers["Content-Type"];
+
+            if (contentType != "application/x-gzip" && !context.File.Name.EndsWith(".gz"))
+            {
+                return;
+            }
+
+            var fileNameToTry = context.File.Name.Substring(0, context.File.Name.Length - 3);
+
+            if (_fileTypes.TryGetContentType(fileNameToTry, out var mimeType))
+            {
+                headers.Add("Content-Encoding", "gzip");
+                headers["Content-Type"] = mimeType;
             }
         }
     }
