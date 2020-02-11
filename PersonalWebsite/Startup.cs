@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -71,7 +72,18 @@ namespace PersonalWebsite
 
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx => 
+                {
+                    // Any files that are versioned will get cached for 30 days.
+                    if(ctx.Context.Request.Query.ContainsKey("v"))
+                    { 
+                        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
+                        ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
+                    }
+                }
+            });
             app.UseCookiePolicy();
             app.UseRouting();
             app.UseEndpoints(endpoints => 
