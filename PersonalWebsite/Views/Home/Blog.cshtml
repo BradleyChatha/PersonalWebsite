@@ -2,31 +2,31 @@
 @{
     ViewData["Title"] = "Blog";
     ViewData["NavItem"] = "Blog";
+
+    string DATE_FORMAT = "dd/MM/yyyy";
 }
 
-<section class="awards element">
-    <div class="one column grid">
-        <div class="row">
-            <div class="center aligned column">
-                <article class="award">
-                    @foreach(var series in Model.Series)
-                    {
-                        <h1>@series.Series.Name</h1>
-                        <p>@series.Series.Description</p>
+<section class="series">
+    @foreach(var series in Model.Series)
+    {
+        <div class="wrapper">
+            <article>
+                <h1>@series.Series.Name</h1>
+                <small>Created on @series.Posts.First().DateCreated.ToString(DATE_FORMAT)</small>
+                <small>Updated on @series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)</small>
+                <p>@series.Series.Description</p>
 
-                        <ul>
-                            @foreach (var post in series.Posts)
-                            {
-                                <li>
-                                    <a asp-action="BlogPost" asp-route-seriesRef="@series.Series.Reference" asp-route-postIndex="@post.OrderInSeries">
-                                        @post.Title
-                                    </a>
-                                </li>
-                            }
-                        </ul>
+                <ol>
+                    @foreach (var post in series.Posts)
+                    {
+                        <li>
+                            <a asp-action="BlogPost" asp-route-seriesRef="@series.Series.Reference" asp-route-postIndex="@post.OrderInSeries">
+                                @post.Title
+                            </a>
+                        </li>
                     }
-                </article>
-            </div>
+                </ol>
+            </article>
         </div>
-    </div>
+    }
 </section>

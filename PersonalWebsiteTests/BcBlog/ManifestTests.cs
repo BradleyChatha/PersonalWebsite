@@ -22,8 +22,6 @@ namespace PersonalWebsite.BcBlog.Tests
                     ""b""
                     ""c""
     ]
-    [date-released   $31-10-2019]
-    [date-updated	 $25-12-2019]
     [post            ""test/blog.bcb""]
 }"
             );
@@ -35,8 +33,6 @@ namespace PersonalWebsite.BcBlog.Tests
             Assert.AreEqual("abc",   series.Name);
             Assert.AreEqual("a b c", series.Description);
             Assert.AreEqual("test",  series.Reference);
-            Assert.AreEqual(new DateTimeOffset(2019, 10, 31, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateReleased);
-            Assert.AreEqual(new DateTimeOffset(2019, 12, 25, 0, 0, 0, TimeSpan.FromSeconds(0)), series.DateUpdated);
             Assert.IsTrue(series.PostFilePaths.SequenceEqual(new[]
             {
                 "test/blog.bcb"

@@ -6,8 +6,6 @@
 					"while teaching several different aspects of D's metaprogramming, such as templates;"
 					"template arguments; function contracts; static if; static foreach; mixins; and more."
 	]
-	[date-released	$31-10-2019]
-	[date-updated	$25-12-2019]
 
 	[post "/blogs/JsonSerialiser/post1.md"]
 	[post "/blogs/JsonSerialiser/post1_1.md"]

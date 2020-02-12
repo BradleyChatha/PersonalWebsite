@@ -101,15 +101,11 @@ namespace PersonalWebsite.BcBlog
                         case "date-released":
                             var date = tokens.Current.Value;
                             this.AssertNextToken(tokens, ManifestParser.TokenType.Date, PopToken.Yes);
-
-                            series.DateReleased = DateTimeOffset.ParseExact(date, BcParser<ManifestParser.TokenType>.DATE_FORMAT, null);
                             break;
 
                         case "date-updated":
                             date = tokens.Current.Value;
                             this.AssertNextToken(tokens, ManifestParser.TokenType.Date, PopToken.Yes);
-
-                            series.DateUpdated = DateTimeOffset.ParseExact(date, BcParser<ManifestParser.TokenType>.DATE_FORMAT, null);
                             break;
 
                         case "reference":
@@ -159,8 +155,6 @@ namespace PersonalWebsite.BcBlog
         public string Reference { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTimeOffset DateReleased { get; set; }
-        public DateTimeOffset DateUpdated { get; set; }
         public ICollection<string> PostFilePaths { get; set; }
 
         public BlogSeries()
