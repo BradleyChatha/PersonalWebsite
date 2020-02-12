@@ -98,16 +98,6 @@ namespace PersonalWebsite.BcBlog
                             series.Description = builder.ToString();
                             break;
 
-                        case "date-released":
-                            var date = tokens.Current.Value;
-                            this.AssertNextToken(tokens, ManifestParser.TokenType.Date, PopToken.Yes);
-                            break;
-
-                        case "date-updated":
-                            date = tokens.Current.Value;
-                            this.AssertNextToken(tokens, ManifestParser.TokenType.Date, PopToken.Yes);
-                            break;
-
                         case "reference":
                             var reference = tokens.Current.Value;
                             this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
