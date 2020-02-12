@@ -48,6 +48,12 @@ section.series {
     }
 }
 
+// This is for inline code in a blog's markdown.
+// KEEP THIS HERE as otherwise it'll override highlight.js' styling of code blocks due to being more specific.
+code {
+    background-color: hsl(48, 20%, 90%);
+}
+
 article.blog {
     $CHARS_PER_LINE: 80;
 
