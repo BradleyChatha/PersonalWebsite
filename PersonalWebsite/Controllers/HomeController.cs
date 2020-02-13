@@ -21,6 +21,17 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
+        [Route("/sitemap.xml")]
+        public IActionResult Sitemap([FromServices] ISitemapGenerator sitemap)
+        {
+            return new ContentResult
+            {
+                Content     = sitemap.GenerateSitemap().ToString(),
+                ContentType = "text/xml",
+                StatusCode  = 200
+            };
+        }
+
         [Route("/Blog/")]
         [Route("/Blog/{seriesRef}")]
         public IActionResult Blog(string seriesRef, [FromServices] IBlogProvider blogs)

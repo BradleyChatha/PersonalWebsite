@@ -44,6 +44,18 @@ namespace PersonalWebsite
             });
 
             services.AddSingleton<IBlogProvider, CachingBlogProvider>();
+            services.AddSingleton<BlogSitemapProvider>();
+
+            // Keep this under all custom services.
+            services.AddSitemapGenerator(o => 
+            {
+                var root = "https://bradley.chatha.dev";
+                var p = o.ContentProviders;
+                p.Add(new StaticSitemapProvider(root,                  SitemapFrequency.Monthly, 1.0f));
+                p.Add(new StaticSitemapProvider($"{root}/Home/Awards", SitemapFrequency.Yearly,  0.6f));
+                p.Add(new StaticSitemapProvider($"{root}/Blog",        SitemapFrequency.Weekly,  0.7f));
+                p.Add(new ServicedSitemapProvider<BlogSitemapProvider>());
+            });
 
             services.AddRazorPages()
                     .AddRazorRuntimeCompilation();
