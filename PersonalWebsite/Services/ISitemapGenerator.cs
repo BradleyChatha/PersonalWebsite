@@ -55,6 +55,7 @@ namespace PersonalWebsite.Services
     {
         readonly SitemapGeneratorOptions _options;
         readonly IServiceProvider        _services;
+                 XDocument               _cachedSitemap;
 
         public SitemapGenerator(SitemapGeneratorOptions options, IServiceProvider services)
         {
@@ -64,6 +65,9 @@ namespace PersonalWebsite.Services
 
         public XDocument GenerateSitemap()
         {
+            if(this._cachedSitemap != null)
+                return this._cachedSitemap;
+
             XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
             var document = new XDocument();
             document.Add(new XElement(
@@ -72,8 +76,7 @@ namespace PersonalWebsite.Services
                     .ContentProviders
                     .SelectMany(p => 
                     {
-                        var servicedProvider = p as ISitemapServicedContentProvider;
-                        if (servicedProvider != null)
+                        if (p is ISitemapServicedContentProvider servicedProvider)
                             servicedProvider.ConstructProvider(this._services);
 
                         return p.GetContent();
@@ -85,6 +88,7 @@ namespace PersonalWebsite.Services
                     ))
             ));
 
+            this._cachedSitemap = document;
             return document;
         }
     }
