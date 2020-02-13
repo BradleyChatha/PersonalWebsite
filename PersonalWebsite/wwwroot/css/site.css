@@ -245,6 +245,11 @@ section.home > div.personal.summary > div.image > div.images {
   height: 300px;
   margin-left: 20px;
 }
+@media screen and (max-width: 840px) {
+  section.home > div.personal.summary > div.image > div.images {
+    margin-left: 0;
+  }
+}
 section.home > div.personal.summary > div.image > div.images > img {
   display: block;
   position: absolute;

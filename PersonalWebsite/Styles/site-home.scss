@@ -110,6 +110,11 @@
 
                 height: 300px;
                 margin-left: 20px;
+
+                @media screen and (max-width: $VERTICAL_BREAKPOINT) {
+                    margin-left: 0;
+                }
+
                 > img {
                     display: block;
                     position: absolute;
