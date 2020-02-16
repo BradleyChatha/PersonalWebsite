@@ -1,6 +1,10 @@
 name: Test with dotnet
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+      - refs/tags/*
 
 jobs:
   build:
@@ -16,3 +20,42 @@ jobs:
     
     - name: Test with dotnet
       run: dotnet test
+    
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+      
+    - name: Publish with dotnet
+      run: dotnet publish -o ./bin
+      
+    - name: Create build artifact
+      if: contains(github.ref, 'v')
+      uses: actions/upload-artifact@v1
+      with:
+        name: dotnet-publish
+        path: ./bin/
+
+  package:
+    runs-on: ubuntu-latest
+    needs: build
+    if: contains(github.ref, 'v')
+    steps:
+      - name: Setup AimCLITool
+        run: |
+          wget https://gitlab.com/SealabJaster/AimCLITool/-/jobs/artifacts/v0.0.1.1/raw/linux-x64/aim?job=Bundle -O aim
+          chmod +x ./aim
+      
+      - name: Download build artifact
+        uses: actions/download-artifact@v1.0.0
+        with:
+          name: dotnet-publish
+          path: ./bin/
+        
+      - name: Package with AimCLITool
+        run: ./aim deploy pack -d ./bin -a ./.aim/ -v
+        
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifact: ./deploy-package.tar
+          token: ${{ secrets.GITHUB_TOKEN }}
