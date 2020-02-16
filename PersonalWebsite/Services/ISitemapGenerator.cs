@@ -81,10 +81,10 @@ namespace PersonalWebsite.Services
 
                         return p.GetContent();
                     })
-                    .Select(c => new XElement("url",
-                        new XElement("loc",        c.Loc),
-                        new XElement("changefreq", Enum.GetName(typeof(SitemapFrequency), c.ChangeFreq).ToLower()),
-                        new XElement("priority",   Math.Round(c.Priority, 1))
+                    .Select(c => new XElement(xmlns + "url",
+                        new XElement(xmlns + "loc",        c.Loc),
+                        new XElement(xmlns + "changefreq", Enum.GetName(typeof(SitemapFrequency), c.ChangeFreq).ToLower()),
+                        new XElement(xmlns + "priority",   Math.Round(c.Priority, 1))
                     ))
             ));
 
