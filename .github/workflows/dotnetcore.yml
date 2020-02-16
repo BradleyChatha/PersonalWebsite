@@ -14,6 +14,9 @@ jobs:
       with:
         dotnet-version: 3.0.100
     
+    - name: Test with dotnet
+      run: dotnet test
+    
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
@@ -27,7 +30,7 @@ jobs:
           wget https://gitlab.com/SealabJaster/AimCLITool/-/jobs/artifacts/v0.0.1.1/raw/linux-x64/aim?job=Bundle -O aim
           chmod +x ./aim
           
-      - name: Publish with .NET Core
+      - name: Publish with dotnet
         run: dotnet publish -o ./bin
         
       - name: Package with AimCLITool
