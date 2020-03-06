@@ -32,7 +32,7 @@ jobs:
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
     - name: Publish the Docker image
-      run: docker push docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.outputs.short_ref }}
+      run: docker push docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
     - name: Update deployment status (success)
       if: success()
