@@ -1,0 +1,53 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - docker_test
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - uses: chrnorm/deployment-action@releases/v1
+      name: Create GitHub deployment
+      id: deployment
+      with:
+        token: "${{ github.token }}"
+        target-url: https://bradley.chatha.dev/
+        environment: production
+      
+    - name: Set output
+      id: vars
+      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+      
+    - name: Docker login
+      run: docker login -u SealabJaster -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.output.short_ref }}
+      
+    - name: Publish the Docker image
+      run: docker push docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.output.short_ref }}
+      
+    - name: Update deployment status (success)
+      if: success()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: "${{ github.token }}"
+        target-url: https://bradley.chatha.dev/
+        state: "pending"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+    - name: Update deployment status (failure)
+      if: failure()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: "${{ github.token }}"
+        target-url: https://bradley.chatha.dev/
+        state: "failure"
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
