@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
 
-COPY * /app/
+COPY . /app/
 WORKDIR /app/
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
