@@ -29,10 +29,10 @@ jobs:
       run: docker login -u SealabJaster -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.output.short_ref }}
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
     - name: Publish the Docker image
-      run: docker push docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.output.short_ref }}
+      run: docker push docker.pkg.github.com/SealabJaster/PersonalWebsite/Deployment:${{ steps.vars.outputs.short_ref }}
       
     - name: Update deployment status (success)
       if: success()
