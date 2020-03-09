@@ -44,16 +44,14 @@ mobile-friendly websites without the use of existing frameworks such as Boostrap
 On the DevOps side of things I'd like to mention that the website is hosted on a [DigitalOcean](https://www.digitalocean.com/) droplet,
 which via the use of my custom [deployment tool](https://github.com/Aim-Educational/AimCLITool) is able to:
 
-* Download the latest deployment of my website. Deployments are [automated](https://github.com/SealabJaster/PersonalWebsite/blob/master/.gitlab-ci.yml) using Gitlab CI.
-  * The tool is flexible enough that you only have to specify deployment-specific variables (e.g. Database connection strings, domain to host on, port, etc.) a single time, and it can handle the rest.
+* Download the latest deployment of my website. Deployments are [automated](https://github.com/SealabJaster/PersonalWebsite/blob/master/.github/workflows/dockerimage.yml) using Github Actions.
 
 * Configure [NGINX](http://nginx.org/) automatically so that the website will handle any requests for https://bradley.chatha.dev without any further configuration on my side of things.
 
 * Invoke [certbot](https://certbot.eff.org/) automatically so that the website always has a valid Let's Encrypt certifcate, allowing for HTTPS to be used.
 
-* Create a [systemd](https://freedesktop.org/wiki/Software/systemd/) service for the website that allows:
-  * Automatically running the website if it somehow crashes.
-  * Easy management of websites via commands like `systemctl restart PersonalWebsite`
-  * Pretty much every benefit of `systemd`, all automatically setup for you by the deployment tool.
+* Github Actions will package the website as a Docker image, which the deployment tool is then able to pull the image; replace any previous image of the website; optionally set a memory limit; optionally provide environmental variables to the image.
+
+* Updates the [deployment status](https://github.com/SealabJaster/PersonalWebsite/deployments/) on Github, if Github deployments are used as a trigger.
 
 And of course I know how to setup the DNS records for the website as well.
