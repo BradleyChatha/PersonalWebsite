@@ -34,7 +34,7 @@ jobs:
       
     - name: Set output
       id: vars
-      run: echo "::set-output name=short_ref::${echo GITHUB_REF | cut -d/ -f3}"
+      run: echo "::set-output name=short_ref::$(echo $GITHUB_REF | cut -d/ -f3)"
          
     - name: Docker login
       run: docker login -u SealabJaster -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
