@@ -20,23 +20,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Test with dotnet
-        run: dotnet test
-  gulp:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup NPM
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
-
-      - run: cd ./PersonalWebsite/
-      - name: Restore dependencies
-        run: npm install
-
-      - name: Run gulp
-        run: gulp
-      - run: cd ..
-      
+        run: dotnet test      
   package:
     needs: [build]
     runs-on: ubuntu-latest
