@@ -158,56 +158,6 @@ section.home {
 section.home img.atlas {
   object-fit: none;
 }
-section.home img.atlas.bradley {
-  object-position: 0px 0px;
-  width: 300px;
-  height: 300px;
-}
-section.home img.atlas.cooper {
-  object-position: -300px 0px;
-  width: 300px;
-  height: 300px;
-}
-section.home img.atlas.cpp {
-  object-position: -600px 0px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.csharp {
-  object-position: -600px -120px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.css {
-  object-position: -720px 0px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.dlang {
-  object-position: -720px -120px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.html {
-  object-position: -840px 0px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.ts {
-  object-position: -840px -120px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.nasm {
-  object-position: -960px 0px;
-  width: 120px;
-  height: 120px;
-}
-section.home img.atlas.python {
-  object-position: -960px -120px;
-  width: 120px;
-  height: 120px;
-}
 section.home > h1 {
   display: flex;
   justify-content: center;
