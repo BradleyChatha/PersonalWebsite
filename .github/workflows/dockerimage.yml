@@ -43,14 +43,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - uses: chrnorm/deployment-action@releases/v1
-      name: Create GitHub deployment
-      id: deployment
-      with:
-        token: "${{ github.token }}"
-        target-url: https://bradley.chatha.dev/
-        environment: production
-      
     - name: Set output
       id: vars
       run: echo "::set-output name=short_ref::$(echo $GITHUB_REF | cut -d/ -f3)"
@@ -64,6 +56,15 @@ jobs:
     - name: Publish the Docker image
       run: docker push docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
+    - uses: chrnorm/deployment-action@releases/v1
+      if: always()
+      name: Create GitHub deployment
+      id: deployment
+      with:
+        token: "${{ github.token }}"
+        target-url: https://bradley.chatha.dev/
+        environment: production
+
     - name: Update deployment status (success)
       if: success()
       uses: chrnorm/deployment-status@releases/v1
