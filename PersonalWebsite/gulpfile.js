@@ -84,13 +84,13 @@ function cssGenerator(data) {
     return css;
 }
 
-gulp.task("atlas-index", function () {
-    return gulp.src(paths.src.imgs_index)
+function createAtlas(sourcePath, imgName, cssName, atlasConfig) {
+    return gulp.src(sourcePath)
         .pipe(buffer())
         .pipe(through.obj((file, enc, cb) => {
-            for (const glob of Object.keys(indexAtlas)) {
+            for (const glob of Object.keys(atlasConfig)) {
                 if (minimatch(file.basename, glob)) {
-                    const config = indexAtlas[glob];
+                    const config = atlasConfig[glob];
 
                     file.contents = sharp(file.contents)
                         .resize(null, null, config)
@@ -102,13 +102,17 @@ gulp.task("atlas-index", function () {
             return cb(null, file);
         }))
         .pipe(spriteSmith({
-            imgName: paths.dest.imgs_index_atlas,
-            cssName: paths.dest.imgs_index_css,
+            imgName: imgName,
+            cssName: cssName,
             cssTemplate: cssGenerator
         }))
         .pipe(buffer())
         .pipe(webp({ quality: 90 }))
         .pipe(gulp.dest("./"));
+}
+
+gulp.task("atlas-index", function () {
+    return createAtlas(paths.src.imgs_index, paths.dest.imgs_index_atlas, paths.dest.imgs_index_css, indexAtlas);
 });
 
 gulp.task("atlas", gulp.series(["atlas-index"]));
