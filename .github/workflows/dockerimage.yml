@@ -10,14 +10,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
+
       - name: Test with dotnet
         run: dotnet test
+  gulp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NPM
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - run: cd PersonalWebsite
+      - name: Restore dependencies
+        run: npm install
+
+      - name: Run gulp
+        run: gulp
+      - run: cd ..
+      
   package:
     needs: [build]
     runs-on: ubuntu-latest
