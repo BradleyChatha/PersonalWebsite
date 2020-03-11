@@ -44,7 +44,7 @@ namespace PersonalWebsite.Controllers
         }
 
         [Route("/BlogPost/{seriesRef}/{postIndex}")]
-        public IActionResult BlogPost(string seriesRef, int postIndex, [FromServices] IBlogProvider blogs)
+        public IActionResult BlogPost(string seriesRef, string postIndex, [FromServices] IBlogProvider blogs)
         {
             var series = blogs.GetBlogSeries().FirstOrDefault(s => s.Series.Reference == seriesRef);
             if(series == null)
@@ -54,16 +54,22 @@ namespace PersonalWebsite.Controllers
             BlogPost currentBlog = null;
             BlogPost nextBlog    = null;
 
-            if(postIndex > 0 && series.Posts.Count > 1)
-                lastBlog = series.Posts[postIndex - 1];
+            var postIndexNumString = postIndex.Split('-').FirstOrDefault(); // Allows SEO keywords after the post index.
+            var isNumber = Int32.TryParse(postIndexNumString, out int postIndexValue);
 
-            if(postIndex <= series.Posts.Count)
-                currentBlog = series.Posts[postIndex];
+            if(!isNumber)
+                return Redirect($"/Blog/{seriesRef}");
+
+            if(postIndexValue > 0 && series.Posts.Count > 1)
+                lastBlog = series.Posts[postIndexValue - 1];
+
+            if(postIndexValue <= series.Posts.Count)
+                currentBlog = series.Posts[postIndexValue];
             else
                 return Redirect("Blog");
 
-            if(postIndex < series.Posts.Count - 1)
-                nextBlog = series.Posts[postIndex + 1];
+            if(postIndexValue < series.Posts.Count - 1)
+                nextBlog = series.Posts[postIndexValue + 1];
 
             return View(new BlogPostViewModel
             {
