@@ -26,6 +26,7 @@ $FOOTER_HEIGHT: 100vh * $FOOTER_HEIGHT_PERCENT;
 $HEADER_FOOTER_BACK_COLOUR: hsl(203, 43%, 25%);
 $HEADER_FOOTER_TEXT_COLOUR: hsl(224, 100%, 96%);
 
+$MULTI_LINE_BREAKPOINT: 600px; // Once we get smaller than this, put the links and the header onto their own lines.
 header {
     position: absolute;
     top: 0;
@@ -34,8 +35,6 @@ header {
     min-height: $HEADER_HEIGHT;
 
     > nav.navbar {
-        $MULTI_LINE_BREAKPOINT: 600px; // Once we get smaller than this, put the links and the header onto their own lines.
-
         display: flex;
         flex-direction: row;
 
@@ -128,6 +127,10 @@ main {
     // Because of position: absolute, we need a bit of padding so we don't get absorbed by the navbar.
     padding-top: $HEADER_HEIGHT;
     min-height: $MAIN_HEIGHT;
+
+    @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+        padding-top: $HEADER_HEIGHT * 1.5;
+    }
 }
 
 footer {

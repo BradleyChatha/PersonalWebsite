@@ -2,9 +2,55 @@
 @{
     ViewData["Title"] = Model.CurrentPost.Title;
     ViewData["NavItem"] = "Blog";
+
+    int tabCount = (Model.LastPost != null && Model.NextPost != null)
+                   ? 3
+                   : (Model.LastPost != null || Model.NextPost != null)
+                     ? 2
+                     : 1;
+
+    string tabClass = null;
+    switch(tabCount)
+    {
+        case 1:
+            tabClass = "one";
+            break;
+
+        case 2:
+            tabClass = "two";
+            break;
+
+        case 3:
+            tabClass = "three";
+            break;
+
+        default: break;
+    }
+
+    var seriesUrl = $"/BlogPost/{Model.Series.Reference}/";
 }
 
 <section class="blog wrapper">
+    <menu class="blog navigation @tabClass tab">
+        @if (Model.LastPost != null)
+        {
+            <a class="tab" href="@($"{seriesUrl}{Model.LastPost.OrderInSeries}")">
+                <h2>Previous</h2>
+                <span title="@Model.LastPost.Title">@Model.LastPost.Title</span>
+            </a>
+        }
+        <a class="active tab" href="@($"{seriesUrl}{Model.CurrentPost.OrderInSeries}")">
+            <h2>Current</h2>
+            <span title="@Model.CurrentPost.Title">@Model.CurrentPost.Title</span>
+        </a>
+        @if (Model.NextPost != null)
+        {
+            <a class="tab" href="@($"{seriesUrl}{Model.NextPost.OrderInSeries}")">
+                <h2>Next</h2>
+                <span title="@Model.NextPost.Title">@Model.NextPost.Title</span>
+            </a>
+        }
+    </menu>
     <article class="blog">
         <h1>@Model.CurrentPost.Title</h1>
         @Html.Raw(Model.CurrentPost.GeneratedHtml)

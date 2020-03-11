@@ -1,5 +1,6 @@
 section.blog.wrapper {
     display: flex;
+    flex-direction: column;
     max-width: 900px;
     width: 100vw;
     margin: 0 auto;
@@ -52,6 +53,8 @@ section.series {
 // KEEP THIS HERE as otherwise it'll override highlight.js' styling of code blocks due to being more specific.
 code {
     background-color: hsl(48, 20%, 90%);
+    padding-left: 0.5ch;
+    padding-right: 0.5ch;
 }
 
 article.blog {
@@ -91,5 +94,90 @@ article.blog {
     pre > code {
         font-size: 16px;
         line-height: 1.2em;
+    }
+}
+
+menu.blog.navigation {
+    $BORDER_RADIUS: 10px;
+    $MULTILINE_BREAKPOINT: 920px;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: inherit; // Inherit from wrapper.
+    padding-left: 0;
+    margin-bottom: 0;
+
+    @media screen and (max-width: $MULTILINE_BREAKPOINT) {
+        flex-wrap: wrap;
+    }
+
+    a.tab {
+        border-style: solid;
+        border-width: 4px;
+        border-color: hsl(0, 0%, 90%);
+
+        &:hover {
+            text-decoration: none;
+            background-color: hsl(0, 0%, 95%);
+        }
+
+        &.active {
+            background-color: hsl(0, 0%, 90%);
+
+            h2 {
+                color: #757070;
+            }
+        }
+
+        h2 {
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+            padding-left: 0.5em;
+            color: #979090;
+        }
+
+        span {
+            display: block;
+            padding-left: 0.8em;
+            padding-bottom: 0.5em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            height: 1.2em;
+            width: 95%;
+            color: #666;
+        }
+
+        &:first-of-type {
+            border-top-left-radius: $BORDER_RADIUS;
+            border-bottom-left-radius: $BORDER_RADIUS;
+        }
+
+        &:last-of-type {
+            border-top-right-radius: $BORDER_RADIUS;
+            border-bottom-right-radius: $BORDER_RADIUS;
+        }
+    }
+
+    &.one.tab a.tab {
+        width: 100%;
+    }
+
+    &.two.tab a.tab {
+        width: 50%;
+    }
+
+    &.three.tab a.tab {
+        width: 33%;
+    }
+
+    &.three.tab a.tab, &.two.tab a.tab {
+        @media screen and (max-width: $MULTILINE_BREAKPOINT) {
+            width: 100%;
+            margin-right: 1em;
+            border-style: solid;
+            border-radius: 0;
+        }
     }
 }
