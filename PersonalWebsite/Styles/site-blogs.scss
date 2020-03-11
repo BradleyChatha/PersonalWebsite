@@ -19,7 +19,8 @@ section.series {
         flex-direction: row;
         padding-bottom: 1em;
 
-        width: 60%;
+        width: 900px;
+        max-width: 95%;
 
         // When the screen's too small, remove most of the whitespace on the sides.
         @media screen and (max-width: 1100px) {
