@@ -63,10 +63,10 @@ namespace PersonalWebsite.Controllers
             if(postIndexValue > 0 && series.Posts.Count > 1)
                 lastBlog = series.Posts[postIndexValue - 1];
 
-            if(postIndexValue <= series.Posts.Count)
+            if(postIndexValue < series.Posts.Count)
                 currentBlog = series.Posts[postIndexValue];
             else
-                return Redirect("Blog");
+                return Redirect($"/Blog/{seriesRef}");
 
             if(postIndexValue < series.Posts.Count - 1)
                 nextBlog = series.Posts[postIndexValue + 1];
