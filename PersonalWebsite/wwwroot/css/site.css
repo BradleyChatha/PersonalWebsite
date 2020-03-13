@@ -332,7 +332,7 @@ section.home > div.languages > div.wrapper > div.language > div.metadata > div.c
   padding-left: 5%;
 }
 section.home > div.languages > div.wrapper > div.language > div.metadata > div.content > div i {
-  width: 20px;
+  min-width: 20px;
 }
 @keyframes fadeIn {
   0% {
