@@ -131,13 +131,8 @@ function compileBundle(bundleName) {
             .pipe(gulp.dest(paths.dest.webpack_bundles));
 }
 
-gulp.task("webpack-index", function(){
-    return compileBundle("index");
-});
-
-gulp.task("webpack-awards", function(){
-    return compileBundle("awards");
-});
+gulp.task("webpack-index", () => compileBundle("index"));
+gulp.task("webpack-awards", () => compileBundle("awards"));
 
 gulp.task("vue", gulp.series("webpack-index", "webpack-awards"));
 
