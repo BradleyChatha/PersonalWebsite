@@ -20,20 +20,19 @@ sass.compiler = require("sass");
 // Path configs
 const paths = {
     src: {
-        sass: "Styles/site.scss",
-        sass_watch: "Styles/*.scss",
-        imgs_watch: "ImageRaw/**",
-        imgs_index: "ImageRaw/Index/*.+(png|jpg)",
-        webpack_index: "Scripts/bundles/index.js",
-        webpack_awards: "Scripts/bundles/awards.js",
-        vue_watch: "Scripts/**"
+        sass:                   "Styles/site.scss",
+        sass_watch:             "Styles/*.scss",
+        imgs_watch:             "ImageRaw/**",
+        imgs_index:             "ImageRaw/Index/*.+(png|jpg)",
+        webpack_bundles:        "Scripts/bundles/",
+        vue_watch:              "Scripts/**"
     },
 
     dest: {
-        sass: "wwwroot/css",
-        imgs_index_atlas: "wwwroot/img/atlas/index.png",
-        imgs_index_css: "wwwroot/css/atlas_index.css",
-        webpack_bundles: "wwwroot/js/"
+        sass:               "wwwroot/css",
+        imgs_index_atlas:   "wwwroot/img/atlas/index.png",
+        imgs_index_css:     "wwwroot/css/atlas_index.css",
+        webpack_bundles:    "wwwroot/js/"
     }
 };
 
@@ -123,24 +122,24 @@ gulp.task("atlas-index", function () {
 gulp.task("atlas", gulp.series(["atlas-index"]));
 
 // Compile vue templates with webpack
-function compileBundle(src, bundleName) {
+function compileBundle(bundleName) {
     const config = require("./webpack.config");
-    config.output.filename = bundleName;
+    config.output.filename = bundleName + ".js";
 
-    return gulp.src(src)
+    return gulp.src(paths.src.webpack_bundles + bundleName + ".js")
             .pipe(webpack(config))
             .pipe(gulp.dest(paths.dest.webpack_bundles));
 }
 
 gulp.task("webpack-index", function(){
-    return compileBundle(paths.src.webpack_index, "vue_index.js");
+    return compileBundle("index");
 });
 
 gulp.task("webpack-awards", function(){
-    return compileBundle(paths.src.webpack_awards, "vue_awards.js");
+    return compileBundle("awards");
 });
 
-gulp.task("vue", gulp.series(["webpack-index", "webpack-awards"]));
+gulp.task("vue", gulp.series("webpack-index", "webpack-awards"));
 
 // Watch Files For Changes
 gulp.task('watch', function () {
@@ -150,4 +149,4 @@ gulp.task('watch', function () {
 });
 
 // Default Task
-gulp.task('default', gulp.series(["atlas", 'sass']));
+gulp.task('default', gulp.series("atlas", 'sass'));
