@@ -182,73 +182,48 @@ section.home.about > h1 {
 }
 section.home > div.personal.summary {
   display: flex;
-}
-@media screen and (max-width: 840px) {
-  section.home > div.personal.summary {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
 }
 section.home > div.personal.summary > div.image {
   display: flex;
   flex-direction: column;
-  font-style: italic;
-  margin-left: 15%;
-  margin-top: auto;
-  margin-bottom: auto;
+  width: 100%;
 }
-section.home > div.personal.summary > div.image > div.images {
+section.home > div.personal.summary > div.image > .images {
+  width: 300px;
   height: 300px;
-  margin-left: -5px;
+  margin: 0 auto;
 }
-@media screen and (max-width: 840px) {
-  section.home > div.personal.summary > div.image > div.images {
-    margin-left: 0;
-  }
-}
-section.home > div.personal.summary > div.image > div.images > img {
-  display: block;
+section.home > div.personal.summary > div.image > .images > img {
+  display: inline-block;
   position: absolute;
   width: 300px;
   height: 300px;
   border-radius: 50%;
   border: solid 1px black;
   margin: 0 auto;
-  transition: opacity 0.3s ease-in;
+  transition: opacity 0.35s ease-in;
 }
-section.home > div.personal.summary > div.image > div.images:hover > img:nth-child(2) {
+section.home > div.personal.summary > div.image > .images:hover > img:nth-child(2) {
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.35s ease-out;
 }
-@media screen and (max-width: 1190px) {
-  section.home > div.personal.summary > div.image {
-    margin-left: 0;
-  }
-}
-@media screen and (max-width: 840px) {
-  section.home > div.personal.summary > div.image {
-    margin-left: auto;
-    margin-right: auto;
-  }
+section.home > div.personal.summary > div.image > p {
+  padding-top: 1em;
+  margin: 0 auto;
+  font-style: italic;
 }
 section.home > div.personal.summary > div.summary {
   display: flex;
   flex-direction: column;
-  align-self: center;
-  padding-left: 5em;
-  width: 600px;
+  width: 90ch;
   line-height: 1.4em;
   font-size: 18px;
+  margin: 0 auto;
+  padding-top: 1em;
 }
 section.home > div.personal.summary > div.summary > p > i.fa-smile-o:hover::before {
   content: "Wrong face.";
-}
-@media screen and (max-width: 840px) {
-  section.home > div.personal.summary > div.summary {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    width: 70ch;
-  }
 }
 section.home > div.languages {
   display: flex;
