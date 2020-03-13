@@ -8,14 +8,11 @@
     <h1>
         <span>Innovation Award - School Farm Awards 2019</span>
     </h1>
-    <carousel ref="carousel" class="carousel" :per-page="1" :mouse-drag="false" :touch-drag="false">
-        <slide>
-            <img src="~/img/school_farm_award_stage.jpg" />
-        </slide>
-        <slide>
-            <img src="~/img/school_farm_award_closeup.jpg" />
-        </slide>
-    </carousel>    
+    <carousel :autoplay="true"
+              :loop="true"
+              :autoplay-timeout="5000"
+              :sources="['/img/school_farm_award_stage.jpg', '/img/school_farm_award_closeup.jpg']">
+    </carousel>
     <div class="description">
         <p>
             My <a href="#">FarmMaster</a> project was nominated by Aim Educational Ltd for the School Farm Network's
@@ -32,13 +29,9 @@
 @section Scripts {
     <script src="/js/vue_awards.js"></script>
     <script>
-        Vue.use(components.default.Carousel);
+        Vue.component("carousel", components.default.Carousel);
         new Vue({
-            el: "#app",
-
-            mounted () {
-                setTimeout(this.$refs.carousel.computeCarouselWidth, 300)
-            }
+            el: "#app"
         });
     </script>
 }

@@ -124,7 +124,7 @@ gulp.task("atlas", gulp.series(["atlas-index"]));
 // Compile vue templates with webpack
 function compileBundle(bundleName) {
     const config = require("./webpack.config");
-    config.output.filename = bundleName + ".js";
+    config.output.filename = "vue_" + bundleName + ".js";
 
     return gulp.src(paths.src.webpack_bundles + bundleName + ".js")
             .pipe(webpack(config))

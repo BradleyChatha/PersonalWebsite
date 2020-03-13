@@ -1,3 +1,3 @@
 export default {
-    Carousel: require("vue-carousel").default
+    Carousel: require("../components/carousel.vue").default
 }
