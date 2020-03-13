@@ -6,7 +6,8 @@
                   :touch-drag="false" 
                   :autoplay="autoplay"
                   :loop="loop"
-                  :autoplay-timeout="autoplayTimeout">
+                  :autoplay-timeout="autoplayTimeout"
+                  pagination-color="#D7D0D0">
         <slide v-for="source in sources"
                :key="source">
             <a :href="source" target="__blank">
