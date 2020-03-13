@@ -12,8 +12,8 @@
     <div class="personal summary">
         <div class="image">
             <div class="images">
-                <img class="atlas cooper" src="~/img/atlas/index.webp" alt="Floofer of Worlds" asp-append-version="true"/>
-                <img class="atlas selfie" src="~/img/atlas/index.webp" alt="Bradley" asp-append-version="true"/>
+                <img class="atlas cooper" src="~/img/atlas/index.webp" alt="Floofer of Worlds" asp-append-version="true" />
+                <img class="atlas selfie" src="~/img/atlas/index.webp" alt="Bradley" asp-append-version="true" />
             </div>
             <p>
                 "C++ is for masochists; D is for sadists."
@@ -29,7 +29,7 @@
                 and concepts such as programming patterns, best practices, and hidden performance costs.
             </p>
             <p>
-                For example, within a year I've researched and learned about CSS & SASS; JS & TS; HTML; ASP Core; Razor; basic DevOps 
+                For example, within a year I've researched and learned about CSS & SASS; JS & TS; HTML; ASP Core; Razor; basic DevOps
                 (DNS, CI, and server management); GraphQL, and EF Core. This is of course on top of my already broad experience
                 with many other aspects of programming.
             </p>
@@ -60,52 +60,16 @@
 </section>
 
 @section Scripts {
-    <script type="text/x-template" id="language-card">
-        <div class="wrapper">
-            <div class="language">
-                <img class="atlas" v-bind:class="[logoClass]" src="/img/atlas/index.webp" :alt="logoClass" asp-append-version="true" />
-                <h2>{{ timeUsedString }} Experience</h2>
-                <div class="rating">
-                    <label>Comfort</label>
-                    <span v-for="i in 5" class="fa fa-star" v-bind:class="{ checked: i <= comfort }"></span>
-                </div>
-                <!--A bit of code duplication, but meh-->
-                <div class="rating">
-                    <label>Knowledge</label>
-                    <span v-for="i in 5" class="fa fa-star" v-bind:class="{ checked: i <= knowledge }"></span>
-                </div>
-            </div>
-        </div>
-    </script>
-
+    <script src="/js/vue_index.js"></script> <!--Exports as components.default-->
     <script>
-        Vue.component("language-card", {
-            template: "#language-card",
-            props: {
-                logoClass:      String,
-                timeStarted:    Date,
-                comfort:        Number,
-                knowledge:      Number
-            },
-            computed: {
-                timeUsedString() {
-                    const elapsed = Date.now() - this.timeStarted;
-                    const oneDayMs = 24 * 60 * 60 * 1000;
-                    const daysElapsed = Math.round(Math.abs(elapsed / oneDayMs));
-
-                    return (daysElapsed >= 365)
-                        ? `${Math.round(daysElapsed / 365)} Years`
-                        : `${Math.round(daysElapsed / 30)} Months`;
-                }
-            }
-        });
+        Vue.component("language-card", components.default.LanguageCard);
 
         function createLanguageCardObject(array) {
             return {
-                logoClass:   array[0],
+                logoClass: array[0],
                 timeStarted: array[1],
-                comfort:     array[2],
-                knowledge:   array[3]
+                comfort: array[2],
+                knowledge: array[3]
             };
         }
 
@@ -117,18 +81,18 @@
                         name: "Languages (Main)",
                         cards: [
                             ["csharp", new Date(2013, 06, 01), 5, 4],
-                            ["dlang",  new Date(2014, 02, 01), 5, 4],
-                            ["html",   new Date(2019, 06, 29), 3, 3],
-                            ["css",    new Date(2019, 10, 05), 3, 2],
-                            ["ts",     new Date(2019, 06, 29), 3, 2],
+                            ["dlang", new Date(2014, 02, 01), 5, 4],
+                            ["html", new Date(2019, 06, 29), 3, 3],
+                            ["css", new Date(2019, 10, 05), 3, 2],
+                            ["ts", new Date(2019, 06, 29), 3, 2],
                         ].map(arr => createLanguageCardObject(arr))
                     },
                     {
                         name: "Languages (Minor, on/off usage)",
                         cards: [
-                            ["cpp",    new Date(2013, 11, 01), 1, 2],
+                            ["cpp", new Date(2013, 11, 01), 1, 2],
                             ["python", new Date(2015, 01, 01), 3, 2],
-                            ["nasm",   new Date(2017, 01, 01), 1, 1]
+                            ["nasm", new Date(2017, 01, 01), 1, 1]
                         ].map(arr => createLanguageCardObject(arr))
                     }
                 ]

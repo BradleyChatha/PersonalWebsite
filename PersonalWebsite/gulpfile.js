@@ -1,4 +1,4 @@
-﻿// Include gulp
+// Include gulp
 let gulp = require('gulp');
 
 // Include Our Plugins
@@ -12,6 +12,7 @@ let through     = require("through2");
 let webp        = require("gulp-webp");
 let buffer      = require("vinyl-buffer");
 let order       = require("gulp-order");
+let webpack     = require("webpack-stream");
 
 // Configure plugins
 sass.compiler = require("sass");
@@ -22,13 +23,16 @@ const paths = {
         sass: "Styles/site.scss",
         sass_watch: "Styles/*.scss",
         imgs_watch: "ImageRaw/**",
-        imgs_index: "ImageRaw/Index/*.+(png|jpg)"
+        imgs_index: "ImageRaw/Index/*.+(png|jpg)",
+        webpack_index: "Scripts/bundles/index.js",
+        vue_watch: "Scripts/**"
     },
 
     dest: {
         sass: "wwwroot/css",
         imgs_index_atlas: "wwwroot/img/atlas/index.png",
-        imgs_index_css: "wwwroot/css/atlas_index.css"
+        imgs_index_css: "wwwroot/css/atlas_index.css",
+        webpack_bundles: "wwwroot/js/"
     }
 };
 
@@ -117,10 +121,27 @@ gulp.task("atlas-index", function () {
 
 gulp.task("atlas", gulp.series(["atlas-index"]));
 
+// Compile vue templates with webpack
+function compileBundle(src, bundleName) {
+    const config = require("./webpack.config");
+    config.output.filename = bundleName;
+
+    return gulp.src(src)
+            .pipe(webpack(config))
+            .pipe(gulp.dest(paths.dest.webpack_bundles));
+}
+
+gulp.task("webpack-index", function(){
+    return compileBundle(paths.src.webpack_index, "vue_index.js");
+});
+
+gulp.task("vue", gulp.series(["webpack-index"]));
+
 // Watch Files For Changes
 gulp.task('watch', function () {
     gulp.watch(paths.src.sass_watch, gulp.series(["sass"]));
     gulp.watch(paths.src.imgs_watch, gulp.series(["atlas"]));
+    gulp.watch(paths.src.vue_watch, gulp.series(["vue"]));
 });
 
 // Default Task
