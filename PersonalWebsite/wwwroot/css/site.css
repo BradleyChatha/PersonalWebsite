@@ -321,14 +321,11 @@ article.award > h1 > span {
   border-bottom: solid 4px black;
   border-radius: 3%;
 }
-article.award > a > img {
+article.award > .carousel, article.award > .carousel img {
   max-width: 960px;
-  max-height: 724px;
-}
-@media screen and (max-width: 960px) {
-  article.award > a > img {
-    max-width: 95vw;
-  }
+  max-height: 720px;
+  width: 95vw;
+  height: 80vh;
 }
 
 section.blog.wrapper {

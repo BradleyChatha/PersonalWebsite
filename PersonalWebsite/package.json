@@ -31,5 +31,7 @@
     "vue-template-compiler": "^2.6.11",
     "webpack-stream": "^5.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue-carousel": "^0.18.0"
+  }
 }

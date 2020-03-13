@@ -25,6 +25,7 @@ const paths = {
         imgs_watch: "ImageRaw/**",
         imgs_index: "ImageRaw/Index/*.+(png|jpg)",
         webpack_index: "Scripts/bundles/index.js",
+        webpack_awards: "Scripts/bundles/awards.js",
         vue_watch: "Scripts/**"
     },
 
@@ -135,7 +136,11 @@ gulp.task("webpack-index", function(){
     return compileBundle(paths.src.webpack_index, "vue_index.js");
 });
 
-gulp.task("vue", gulp.series(["webpack-index"]));
+gulp.task("webpack-awards", function(){
+    return compileBundle(paths.src.webpack_awards, "vue_awards.js");
+});
+
+gulp.task("vue", gulp.series(["webpack-index", "webpack-awards"]));
 
 // Watch Files For Changes
 gulp.task('watch', function () {

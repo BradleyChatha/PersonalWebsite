@@ -4,13 +4,18 @@
     ViewData["NavItem"] = "Awards";
 }
 
-<article class="award">
+<article id="app" class="award">
     <h1>
         <span>Innovation Award - School Farm Awards 2019</span>
     </h1>
-    <a href="~/img/school_farm_award_stage.jpg" target="_blank">
-        <img src="~/img/school_farm_award_stage.jpg" />
-    </a>
+    <carousel ref="carousel" class="carousel" :per-page="1" :mouse-drag="false" :touch-drag="false">
+        <slide>
+            <img src="~/img/school_farm_award_stage.jpg" />
+        </slide>
+        <slide>
+            <img src="~/img/school_farm_award_closeup.jpg" />
+        </slide>
+    </carousel>    
     <div class="description">
         <p>
             My <a href="#">FarmMaster</a> project was nominated by Aim Educational Ltd for the School Farm Network's
@@ -22,7 +27,18 @@
             first place.
         </p>
     </div>
-    <a href="~/img/school_farm_award_closeup.jpg" target="_blank">
-        <img src="~/img/school_farm_award_closeup.jpg" />
-    </a>
 </article>
+
+@section Scripts {
+    <script src="/js/vue_awards.js"></script>
+    <script>
+        Vue.use(components.default.Carousel);
+        new Vue({
+            el: "#app",
+
+            mounted () {
+                setTimeout(this.$refs.carousel.computeCarouselWidth, 300)
+            }
+        });
+    </script>
+}
