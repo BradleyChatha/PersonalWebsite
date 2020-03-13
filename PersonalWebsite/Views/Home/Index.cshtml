@@ -69,7 +69,8 @@
                 logoClass: array[0],
                 timeStarted: array[1],
                 comfort: array[2],
-                knowledge: array[3]
+                knowledge: array[3],
+                metadata: array[4]
             };
         }
 
@@ -80,19 +81,19 @@
                     {
                         name: "Languages (Main)",
                         cards: [
-                            ["csharp", new Date(2013, 06, 01), 5, 4],
-                            ["dlang", new Date(2014, 02, 01), 5, 4],
-                            ["html", new Date(2019, 06, 29), 3, 3],
-                            ["css", new Date(2019, 10, 05), 3, 2],
-                            ["ts", new Date(2019, 06, 29), 3, 2],
+                            ["csharp",  new Date(2013, 06, 01), 5, 4, ["ASP Core", "EF Core", "Nuget", "Reflection", "1st Web Dev", "2nd App Dev"]],
+                            ["dlang",   new Date(2014, 02, 01), 5, 4, ["Main Language", "1st App Dev", "Advanced Metaprogramming", "Complex codegen"]],
+                            ["html",    new Date(2019, 06, 29), 3, 3, ["Razor"]],
+                            ["css",     new Date(2019, 10, 05), 3, 2, ["Bootstrap 4", "Semantic UI", "SASS", "Responsive Design"]],
+                            ["ts",      new Date(2019, 06, 29), 3, 2, ["JS & TS", "NPM", "Vue.js", "Browser", "ES6", "Gulp"]],
                         ].map(arr => createLanguageCardObject(arr))
                     },
                     {
                         name: "Languages (Minor, on/off usage)",
                         cards: [
-                            ["cpp", new Date(2013, 11, 01), 1, 2],
-                            ["python", new Date(2015, 01, 01), 3, 2],
-                            ["nasm", new Date(2017, 01, 01), 1, 1]
+                            ["cpp",     new Date(2013, 11, 01), 1, 2, ["Smart pointers"]],
+                            ["python",  new Date(2015, 01, 01), 3, 2],
+                            ["nasm",    new Date(2017, 01, 01), 1, 1]
                         ].map(arr => createLanguageCardObject(arr))
                     }
                 ]

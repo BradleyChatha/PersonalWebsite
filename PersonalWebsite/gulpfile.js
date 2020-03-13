@@ -140,7 +140,9 @@ gulp.task("vue", gulp.series("webpack-index", "webpack-awards"));
 gulp.task('watch', function () {
     gulp.watch(paths.src.sass_watch, gulp.series(["sass"]));
     gulp.watch(paths.src.imgs_watch, gulp.series(["atlas"]));
-    gulp.watch(paths.src.vue_watch, gulp.series(["vue"]));
+    gulp.watch("Scripts/bundles/index.js", gulp.series("webpack-index"));
+    gulp.watch("Scripts/components/language_card.vue", gulp.series("webpack-index"));
+    gulp.watch("Scripts/bundles/awards.js", gulp.series("webpack-awards"));
 });
 
 // Default Task

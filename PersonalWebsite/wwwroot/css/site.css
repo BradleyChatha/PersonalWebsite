@@ -267,13 +267,14 @@ section.home > div.languages > div.wrapper > div.language {
   border: solid 1px #1d3849;
   border-radius: 5%;
   width: 300px;
+  transition: height ease 0.25s;
 }
 section.home > div.languages > div.wrapper > div.language > img {
   display: flex;
   align-self: center;
   padding-top: 1em;
   width: 120px;
-  height: 120px;
+  min-height: 120px;
 }
 section.home > div.languages > div.wrapper > div.language > h2 {
   display: flex;
@@ -300,6 +301,76 @@ section.home > div.languages > div.wrapper > div.language > div.rating > span.fa
 }
 section.home > div.languages > div.wrapper > div.language > div.rating > span.fa:last-of-type {
   padding-right: 2em;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata {
+  transition: height ease 0.15s;
+  width: 300px;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2em;
+  width: calc(300px - 1em);
+  font-size: 15px;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content.processed {
+  display: flex;
+  position: absolute;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content.shown {
+  animation: fadeIn ease 0.25s;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content.hidden {
+  animation: fadeOut ease 0.25s;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content > div {
+  display: flex;
+  width: 45%;
+  padding-top: 1em;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content > div:nth-child(2n) {
+  padding-left: 5%;
+}
+section.home > div.languages > div.wrapper > div.language > div.metadata > div.content > div i {
+  width: 20px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+section.home > div.languages > div.wrapper > div.language > div.toggle {
+  width: 100%;
+  height: 100%;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  cursor: pointer;
+}
+section.home > div.languages > div.wrapper > div.language > div.toggle > i {
+  display: flex;
+  align-self: center;
+  font-size: 22px;
+  transition: transform ease 1s;
+}
+section.home > div.languages > div.wrapper > div.language > div.toggle.down > i {
+  transform: rotate(90deg);
+}
+section.home > div.languages > div.wrapper > div.language > div.toggle.up > i {
+  transform: rotate(-90deg);
 }
 
 article.award {
