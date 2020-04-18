@@ -146,7 +146,7 @@ namespace PersonalWebsite.Services
                        .Select(s => s.Posts
                                      .Select(b => new SitemapContent
                                      {
-                                         Loc        = $"https://bradley.chatha.dev/BlogPost/{s.Series.Reference}/{b.OrderInSeries}",
+                                         Loc        = $"https://bradley.chatha.dev/BlogPost/{s.Series.Reference}/{b.OrderInSeries}-{s.Series.Tags.Aggregate((a, b) => $"{a}-{b}")}",
                                          ChangeFreq = SitemapFrequency.Monthly,
                                          Priority   = 0.7f
                                      })

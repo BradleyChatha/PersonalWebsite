@@ -22,7 +22,10 @@ namespace PersonalWebsite.BcBlog.Tests
                     ""b""
                     ""c""
     ]
-    [post            ""test/blog.bcb""]
+    [post           ""test/blog.bcb""]
+    [tags           ""super""
+                    ""blog""
+    ]
 }"
             );
 
@@ -36,6 +39,11 @@ namespace PersonalWebsite.BcBlog.Tests
             Assert.IsTrue(series.PostFilePaths.SequenceEqual(new[]
             {
                 "test/blog.bcb"
+            }));
+            Assert.IsTrue(series.Tags.SequenceEqual(new[]
+            {
+                "super",
+                "blog"
             }));
         }
     }

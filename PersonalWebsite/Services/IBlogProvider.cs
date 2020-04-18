@@ -45,8 +45,10 @@ namespace PersonalWebsite.Services
         // So the path to the series folder is just gonna be hard coded.
         public IEnumerable<BlogSeriesAndPosts> GetBlogSeries()
         {
-            //if(this._seriesCache != null)
-                //return this._seriesCache;
+            #if !DEBUG
+            if(this._seriesCache != null)
+                return this._seriesCache;
+            #endif
 
             var pipeline = new MarkdownPipelineBuilder()
                               .UseAutoLinks()

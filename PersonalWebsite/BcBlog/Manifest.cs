@@ -112,6 +112,18 @@ namespace PersonalWebsite.BcBlog
                             series.PostFilePaths.Add(post);
                             break;
 
+                        case "tags":
+                            while(true)
+                            {
+                                if (tokens.Current.Type == ManifestParser.TokenType.RSquareBracket)
+                                    break;
+
+                                series.Tags.Add(tokens.Current.Value);
+
+                                this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
+                            }
+                            break;
+
                         default:
                             throw new Exception($"Unknown entry called '{name}' while parsing a series entry.");
                     }
@@ -146,10 +158,12 @@ namespace PersonalWebsite.BcBlog
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<string> PostFilePaths { get; set; }
+        public ICollection<string> Tags { get; set; }
 
         public BlogSeries()
         {
             this.PostFilePaths = new List<string>();
+            this.Tags = new List<string>();
         }
     }
 

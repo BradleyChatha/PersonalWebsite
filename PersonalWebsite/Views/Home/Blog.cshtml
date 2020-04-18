@@ -26,6 +26,19 @@
                         </li>
                     }
                 </ol>
+                <div class="tags">
+                    <i class="fa fa-tags"></i>
+                    @for(int i = 0; i < series.Series.Tags.Count; i++)
+                    {
+                        var tag = series.Series.Tags.Skip(i).First();
+                        var needsComma = (i != series.Series.Tags.Count - 1);
+                        <small>
+                            <a asp-action="Blog" asp-route-tag="@tag">
+                                @(tag + (needsComma ? "," : ""))
+                            </a>
+                        </small>
+                    }
+                </div>
             </article>
         </div>
     }

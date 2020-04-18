@@ -34,12 +34,13 @@ namespace PersonalWebsite.Controllers
 
         [Route("/Blog/")]
         [Route("/Blog/{seriesRef}")]
-        public IActionResult Blog(string seriesRef, [FromServices] IBlogProvider blogs)
+        public IActionResult Blog(string seriesRef, string tag, [FromServices] IBlogProvider blogs)
         {
             return View(new BlogIndexViewModel
             {
                 Series = blogs.GetBlogSeries()
                               .Where(s => seriesRef == null || s.Series.Reference == seriesRef)
+                              .Where(s => tag == null       || s.Series.Tags.Contains(tag))
             });
         }
 
