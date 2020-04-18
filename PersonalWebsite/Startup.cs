@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalWebsite.Middleware;
 using PersonalWebsite.Services;
+using Prometheus;
 
 namespace PersonalWebsite
 {
@@ -95,10 +97,13 @@ namespace PersonalWebsite
             });
             app.UseCookiePolicy();
             app.UseRouting();
+            app.UseHttpMetrics();
+            app.UseMetricsMiddleware();
             app.UseEndpoints(endpoints => 
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapMetrics();
             });
         }
     }
