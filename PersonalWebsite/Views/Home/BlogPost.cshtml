@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = Model.CurrentPost.Title;
     ViewData["NavItem"] = "Blog";
+    ViewData["SeoDescription"] = Model.Series
+                                      .Tags
+                                      .Concat(new[] { Model.CurrentPost.Title, "Blog post" })
+                                      .Aggregate((a, b) => $"{a} {b}");
 
     int tabCount = (Model.LastPost != null && Model.NextPost != null)
                    ? 3

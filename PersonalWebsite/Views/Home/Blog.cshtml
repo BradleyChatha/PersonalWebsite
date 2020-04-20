@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Blog";
     ViewData["NavItem"] = "Blog";
+    ViewData["SeoDescription"] = Model.Series
+                                      .SelectMany(s => s.Series.Tags)
+                                      .Concat(Model.Series.Select(s => s.Series.Reference))
+                                      .Aggregate((a, b) => $"{a} {b}");
 
     string DATE_FORMAT = "dd/MM/yyyy";
 }
