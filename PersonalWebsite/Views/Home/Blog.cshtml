@@ -2,10 +2,13 @@
 @{
     ViewData["Title"] = "Blog";
     ViewData["NavItem"] = "Blog";
-    ViewData["SeoDescription"] = Model.Series
-                                      .SelectMany(s => s.Series.Tags)
-                                      .Concat(Model.Series.Select(s => s.Series.Reference))
-                                      .Aggregate((a, b) => $"{a} {b}");
+
+    var seoExtraDescription = Model.Series
+                                   .SelectMany(s => s.Series.Tags)
+                                   .Concat(Model.Series.Select(s => s.Series.Reference))
+                                   .Aggregate((a, b) => $"{a} {b}");
+    ViewData["SeoDescription"] =
+        $"A collection of all of my blog series, including but not limited to: {seoExtraDescription}";
 
     string DATE_FORMAT = "dd/MM/yyyy";
 }

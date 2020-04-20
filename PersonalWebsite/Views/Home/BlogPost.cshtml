@@ -2,10 +2,23 @@
 @{
     ViewData["Title"] = Model.CurrentPost.Title;
     ViewData["NavItem"] = "Blog";
-    ViewData["SeoDescription"] = Model.Series
-                                      .Tags
-                                      .Concat(new[] { Model.CurrentPost.Title, "Blog post" })
-                                      .Aggregate((a, b) => $"{a} {b}");
+
+    var seoIndexString = Convert.ToString(Model.CurrentPost.OrderInSeries + 1); // Plus one so we don't include "0th".
+    string seoIndexSuffix = "";
+
+    if(Model.CurrentPost.OrderInSeries >= 10 && Model.CurrentPost.OrderInSeries <= 20)
+        seoIndexSuffix = "th"; // 11th, 12th, etc.
+    else if(seoIndexString.Last() == '1')
+        seoIndexSuffix = "st"; // 1st, 21st, etc.
+    else if(seoIndexString.Last() == '2')
+        seoIndexSuffix = "nd"; // 2nd, 22nd, etc.
+    else if(seoIndexString.Last() == '3')
+        seoIndexSuffix = "rd"; // 3rd, 23rd, etc.
+    else
+        seoIndexSuffix = "th"; // 4th, 24th, etc.
+    ViewData["SeoDescription"] =
+        $"The {seoIndexString}{seoIndexSuffix} blog post of my {Model.Series.Reference} series. " +
+        $"Includes: {Model.Series.Tags.Aggregate((a, b) => $"{a} {b}")}";
 
     int tabCount = (Model.LastPost != null && Model.NextPost != null)
                    ? 3
