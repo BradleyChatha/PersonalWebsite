@@ -70,10 +70,14 @@ namespace PersonalWebsite.MarkdigExtentions
                 return false;
 
             var startPosition = slice.Start;
-            while(slice.Start < slice.End && !Char.IsWhiteSpace(slice.CurrentChar) && slice.CurrentChar != ',')
+            var endOffset     = 0;
+            while(slice.Start < slice.End && !Char.IsWhiteSpace(slice.CurrentChar) && slice.CurrentChar != ';')
                 slice.NextChar();
 
-            var text     = slice.Text.Substring(startPosition, (slice.Start - startPosition) + 1).TrimEnd();
+            if(slice.CurrentChar == ';')
+                endOffset += 1;
+
+            var text     = slice.Text.Substring(startPosition, (slice.Start - startPosition) + 1).TrimEnd(' ', '\n', ';', '\t', '\r');
             var sections = text.Split('#', ':');
             if(sections.Length == 0 || sections.Length > 3)
                 return false;
@@ -119,7 +123,7 @@ namespace PersonalWebsite.MarkdigExtentions
                 Url        = this.CreateUrlToDlangDocumentation("phobos", module, member)
             };
 
-            inlineLink.Span.End = startPosition + text.Length;
+            inlineLink.Span.End = startPosition + text.Length + endOffset;
             inlineLink.UrlSpan  = inlineLink.Span;
             inlineLink.AppendChild(new LiteralInline
             {

@@ -2,16 +2,22 @@
 @date-updated 06-02-2019@
 @title Serialising basic D types@
 
-One of the most overlooked yet powerful features of D from people who are unfamiliar with the language is its incredibly powerful 
-[metaprogramming](https://tour.dlang.org/tour/en/gems/template-meta-programming) capabilities. 
+Have you ever wondered about how serialisers (or other pieces of code) perform their 'magic'? Are you someone
+who wants to learn how to perform such seemingly arcane feats yourself? Or are you simply someone who wants to learn more about D?
+
+Regardless of your reason for being here, with the power of D I'll be taking you through the steps of creating a basic
+JSON Serialiser that uses compile-time introspection/reflection to serialise any random object!
+
+To achieve this, we'll be using one of D's most powerful features: [metaprogramming](https://tour.dlang.org/tour/en/gems/template-meta-programming)
+
 This series is aimed towards people who are new/interested in D, while its purpose is to teach and 
 show off different aspects of D's metaprogramming features, ending with the creation of a semi-useful serialiser/deserialiser for JSON.
 
-This first post will cover how to create two template functions, which as the series progresses they will 
-use a broad range of D's meta programming features to determine how to serialise/deserialise most of D's primitive types.
+This first post will cover the creation of two template functions, which, as the series progresses, will 
+begin to use a broad range of D's meta programming features to determine how to serialise/deserialise most of D's primitive types.
 
-Some code snippets may start with a comment containing a link to https://run.dlang.io/,
-that will take you to an online D environment containing all the code so far for that snippet.
+Some code snippets may start with a comment containing a link to https://run.dlang.io/
+which will take you to an online D environment containing a runnable version of that snippet.
 
 ## Requirements
 
@@ -19,7 +25,7 @@ that will take you to an online D environment containing all the code so far for
 
 * A basic understanding of what a template is (in any language)
 
-* A ~~rubber ducky~~ [D man](https://twitter.com/crvrh/status/1068769903681789952/photo/1) close by.
+* A ~~rubber ducky~~ [D man](https://dlang.org/images/dman-rain.jpg) close by.
     
 ## std.json
     
@@ -43,7 +49,7 @@ For the context of this blog series, a primitive type is type built into the lan
 
 ## Serialising primitive types
 
-To start off, let's begin with just having a D file that simply contains an empty main function and imports std.json :
+To start off let's begin with a simple D file that contains an empty main function, and imports std.json;:
 
 ```
 import std.json;
@@ -58,9 +64,9 @@ This function will take a template parameter of any type (`T`),
 and returns a std.json#JSONValue which is the main struct that std.json uses to represent JSON values.
 
 One of the interesting things about std.json#JSONValue is that its constructor is also a template, 
-which conveniently also supports being able to automatically wrap around any primitive type (and more) that D has.
+which conveniently supports being able to automatically wrap around any primitive type (and more) that D has.
 
-This means that all we have to do to serialise a primitive type is to construct a std.json#JSONValue
+This means that to serialise a primitive type all we must do is construct a std.json#JSONValue
 and pass our primitive value directly to it. 
 Don't think things are this convenient later down the road though.
 
@@ -103,7 +109,7 @@ classes, and enums, all of which are unable to be serialised directly by std.jso
 If you're familiar with C++'s `#if` directive
 then `static if` should make you feel right at home (without all the downsides of `#if`).
 
-`static if` is like a normal if statement, except: 
+`static if` is like a normal `if` statement, except: 
 
 * It only runs at compile time, so its condition must also be able to be evaluated at compile time.
 
@@ -170,7 +176,7 @@ Let's start off with strings. There is an expression in D called the `is()` expr
 but the most basic one is to compare one type to another.
 
 I feel this is best shown by example, so let's use `static if` and `is()` together to determine if our type parameter (`T`) is a string, 
-and then call std.json#JSONValue.str.
+and then call std.json#JSONValue.str;.
 
 ```
 T deserialise(T)(JSONValue json)
@@ -244,7 +250,7 @@ For floating points while we could just check for both a float and a double in t
 we could instead start learning about what std.traits offers us, 
 as it contains a plethora of templates that can determine certain things about a type (among other extremely useful things).
 
-### Deserialisation - std.traits#isFloatingPoint, and std.conv#to 
+### Deserialisation - std.traits#isFloatingPoint;, and std.conv#to 
 
 So let's start by importing std.traits at the top of the file: 
 
@@ -260,7 +266,7 @@ but we want to support both `float` and `double` at the same time. While we coul
 this presents another issue of, what if the return value is larger than a `float` can hold? 
 The cast in this case would then provide back a bad value.
 
-So the solution is to use another incredibly helpful function called std.conv#to , 
+So the solution is to use another incredibly helpful function called std.conv#to;, 
 which is a template function that can convert between different types, and provides a few sanity checks including 
 throwing an exception if we try to cast a `double` to a `float` where the `double` is too large to fit into a `float`.
 
@@ -378,7 +384,7 @@ void main()
 
 ### Excercise #2 - Allowing conversion between signed and unsigned integers.
 
-Basically, you can store both signed and unsigned integers into a std.json#JSONValue. 
+Basically, you can store both signed and unsigned integers into a std.json#JSONValue;. 
 But, for example, if you store a signed integer, you can only get it back as a signed integer, 
 and trying to get it back as an unsigned integer will make std.json#JSONValue throw an error.
 
