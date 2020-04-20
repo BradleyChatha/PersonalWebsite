@@ -71,6 +71,7 @@ namespace PersonalWebsite
             if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
             }
             else
             {
@@ -86,7 +87,17 @@ namespace PersonalWebsite
             });
 
             app.UseHttpsRedirection();
-            app.UseStatusCodePages();
+            app.UseRewriteMiddleware(c => 
+            {
+                // Rewrite the old links for JsonSerialiser
+                for(int i = 0; i < 5; i++)
+                {
+                    if(i == 1)
+                        continue;
+                    c.ExactRewrite.Add($"/Home/Blog?post=JsonSerialiser{(i == 0 ? i + 1 : i)}", $"/BlogPost/JsonSerialiser/{i}");
+                }
+                c.ExactRewrite.Add("/Home/Blog?post=JsonSerialiser1_1", "/BlogPost/JsonSerialiser/1");
+            });
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx => 
