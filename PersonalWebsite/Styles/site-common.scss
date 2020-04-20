@@ -27,7 +27,7 @@ $HEADER_FOOTER_BACK_COLOUR: hsl(203, 43%, 25%);
 $HEADER_FOOTER_TEXT_COLOUR: hsl(224, 100%, 96%);
 
 $MULTI_LINE_BREAKPOINT: 600px; // Once we get smaller than this, put the links and the header onto their own lines.
-header {
+body > header {
     position: absolute;
     top: 0;
     left: 0;

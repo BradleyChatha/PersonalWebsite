@@ -12,14 +12,14 @@ a:hover {
   text-decoration: underline;
 }
 
-header {
+body > header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   min-height: 68px;
 }
-header > nav.navbar {
+body > header > nav.navbar {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -27,11 +27,11 @@ header > nav.navbar {
   background-color: #24465b;
 }
 @media screen and (max-width: 600px) {
-  header > nav.navbar {
+  body > header > nav.navbar {
     flex-wrap: wrap;
   }
 }
-header > nav.navbar > h1 > a {
+body > header > nav.navbar > h1 > a {
   display: flex;
   flex-direction: column;
   margin-top: auto;
@@ -43,23 +43,23 @@ header > nav.navbar > h1 > a {
   font-size: 28px;
 }
 @media screen and (max-width: 600px) {
-  header > nav.navbar > h1 > a {
+  body > header > nav.navbar > h1 > a {
     width: 100%;
     text-align: center;
     padding-left: 0;
   }
 }
-header > nav.navbar > div.gutter {
+body > header > nav.navbar > div.gutter {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 @media screen and (max-width: 600px) {
-  header > nav.navbar > div.gutter {
+  body > header > nav.navbar > div.gutter {
     height: 10px;
   }
 }
-header > nav.navbar > div.links {
+body > header > nav.navbar > div.links {
   display: flex;
   flex-direction: row;
   margin-top: auto;
@@ -68,17 +68,17 @@ header > nav.navbar > div.links {
   min-width: 380px;
 }
 @supports (-ms-ime-align: auto) {
-  header > nav.navbar > div.links {
+  body > header > nav.navbar > div.links {
     justify-content: space-between;
     margin-right: 1em;
   }
 }
 @media screen and (max-width: 600px) {
-  header > nav.navbar > div.links {
+  body > header > nav.navbar > div.links {
     min-width: 100%;
   }
 }
-header > nav.navbar > div.links > a.item {
+body > header > nav.navbar > div.links > a.item {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -88,11 +88,11 @@ header > nav.navbar > div.links > a.item {
   color: #9fbedf;
   transition: color ease-out 0.1s;
 }
-header > nav.navbar > div.links > a.item:hover {
+body > header > nav.navbar > div.links > a.item:hover {
   color: #bed5ee;
   transition: color ease-in 0.1s;
 }
-header > nav.navbar > div.links > a.item.active {
+body > header > nav.navbar > div.links > a.item.active {
   font-weight: bold;
 }
 
@@ -163,22 +163,23 @@ section.home {
 section.home img.atlas {
   object-fit: none;
 }
-section.home > h1 {
+section.home > header {
   display: flex;
   justify-content: center;
   color: black;
   padding-top: 1.6em;
+  padding-bottom: 1em;
   font-size: 34px;
 }
-section.home > h1 > span {
+section.home > header > span {
   padding-bottom: 0.35em;
   padding-left: 0.2em;
   padding-right: 0.2em;
   border-bottom: solid 4px black;
   border-radius: 3%;
 }
-section.home.about > h1 {
-  padding-top: 0;
+section.home.about > header {
+  padding-top: 0.5em;
 }
 section.home > div.personal.summary {
   display: flex;

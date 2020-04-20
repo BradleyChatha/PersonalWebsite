@@ -1,14 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Index";
     ViewData["NavItem"] = "Home";
+    ViewData["SeoDescription"] = "Young UK Junior Backend Website Webdev Software Developer Dlang Vue SASS ASP Core DevOps";
 }
 
 <section class="home about">
-    <h1>
+    <header>
         <span>
             About Me
         </span>
-    </h1>
+    </header>
     <div class="personal summary">
         <div class="image">
             <div class="images">
@@ -46,11 +47,11 @@
 </section>
 <section id="appCards" class="home languages">
     <template v-for="section in sections">
-        <h1>
+        <header>
             <span>
                 {{ section.name }}
             </span>
-        </h1>
+        </header>
         <div class="languages">
             <language-card v-for="card in section.cards"
                            :key="card.logoClass"
