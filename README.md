@@ -43,6 +43,8 @@ mobile-friendly websites without the use of existing frameworks such as Boostrap
 
 I am making use of [Prometheus](https://prometheus.io/) to store non-persistant time series data (such as process memory usage; total HTTP requests since last restart, etc.), whereas I'm using [InfluxDb](https://www.influxdata.com/) to store persistant time series data, such as blog post views and where they were referred from.
 
+I am using [Grafana]() to visualise my data ![image](https://i.imgur.com/hkEZ842.png)
+
 On the DevOps side of things I'd like to mention that the website is hosted on a [DigitalOcean](https://www.digitalocean.com/) droplet,
 which via the use of my custom [deployment tool](https://github.com/Aim-Educational/AimCLITool) is able to:
 
