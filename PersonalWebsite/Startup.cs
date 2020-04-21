@@ -101,7 +101,7 @@ namespace PersonalWebsite
             app.UseRewriteMiddleware(c => 
             {
                 // Rewrite the old links for JsonSerialiser
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i <= 5; i++)
                 {
                     if(i == 1)
                         continue;
