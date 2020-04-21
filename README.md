@@ -41,6 +41,8 @@ I noticed that it was pretty much just Markdown with a worse syntax, which spear
 My CSS consists *entirely* of custom [SASS](https://sass-lang.com/), to showcase my [ability](https://github.com/SealabJaster/PersonalWebsite/tree/master/PersonalWebsite/Styles) to create responsive,
 mobile-friendly websites without the use of existing frameworks such as Boostrap or Semantic UI.
 
+I am making use of [Prometheus](https://prometheus.io/) to store non-persistant time series data (such as process memory usage; total HTTP requests since last restart, etc.), whereas I'm using [InfluxDb](https://www.influxdata.com/) to store persistant time series data, such as blog post views and where they were referred from.
+
 On the DevOps side of things I'd like to mention that the website is hosted on a [DigitalOcean](https://www.digitalocean.com/) droplet,
 which via the use of my custom [deployment tool](https://github.com/Aim-Educational/AimCLITool) is able to:
 
