@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using InfluxDB.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -57,6 +58,16 @@ namespace PersonalWebsite
                 p.Add(new StaticSitemapProvider($"{root}/Home/Awards", SitemapFrequency.Yearly,  0.6f));
                 p.Add(new StaticSitemapProvider($"{root}/Blog",        SitemapFrequency.Weekly,  0.7f));
                 p.Add(new ServicedSitemapProvider<BlogSitemapProvider>());
+            });
+
+            // InfluxDb
+            services.AddSingleton(_ => 
+            {
+                var url   = Configuration.GetValue<string>("InfluxDbUrl", null);
+                var token = Configuration.GetValue<string>("InfluxDbToken", null);
+                return token != null
+                       ? InfluxDBClientFactory.Create(url, token.ToCharArray())
+                       : InfluxDBClientFactory.Create();
             });
 
             services.AddRazorPages()

@@ -2,28 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InfluxDB.Client;
+using InfluxDB.Client.Api.Domain;
+using InfluxDB.Client.Writes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Prometheus;
 
 namespace PersonalWebsite.Middleware
 {
     public class MetricsMiddleware
     {
-        static readonly Counter _blogPostCounter = Metrics.CreateCounter(
-            "post_viewed_total",
-            "The amount of times a specific blog post has been viewed in total.",
-            
-            "seriesRef",
-            "postIndex",
-            "referrer"
-        );
-
         private readonly RequestDelegate _next;
+        private readonly InfluxDBClient _influx;
 
-        public MetricsMiddleware(RequestDelegate next)
+        public MetricsMiddleware(RequestDelegate next, InfluxDBClient influx)
         {
             _next = next;
+            this._influx = influx;
         }
 
         public Task Invoke(HttpContext httpContext)
@@ -43,9 +38,19 @@ namespace PersonalWebsite.Middleware
             var seriesRef = (string)httpContext.Request.RouteValues["seriesRef"];
             var postIndex = (string)httpContext.Request.RouteValues["postIndex"];
 
-            _blogPostCounter
-                .WithLabels(seriesRef, postIndex, referrer)
-                .Inc();
+            // TODO: Batch things
+            using(var api = this._influx.GetWriteApi())
+            {
+                api.WritePoint(
+                    "Personal", 
+                    "Personal", 
+                    PointData.Measurement("post_view")
+                             .Tag("series_ref", seriesRef)
+                             .Tag("post_index", postIndex)
+                             .Field("referrer", referrer)
+                             .Timestamp(DateTime.UtcNow, WritePrecision.Ns)
+                );
+            }
         }
     }
 
