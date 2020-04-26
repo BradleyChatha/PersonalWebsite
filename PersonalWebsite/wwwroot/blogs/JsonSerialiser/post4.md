@@ -1,5 +1,5 @@
 ﻿@date-created 31-10-2019@
-@date-updated 07-02-2019@
+@date-updated 07-02-2020@
 @title Serialising arrays@ 
 
 *Note that in the previous post, the `Person` struct was converted into a class*

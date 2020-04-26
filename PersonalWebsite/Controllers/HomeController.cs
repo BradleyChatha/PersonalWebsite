@@ -40,7 +40,8 @@ namespace PersonalWebsite.Controllers
             {
                 Series = blogs.GetBlogSeries()
                               .Where(s => seriesRef == null || s.Series.Reference == seriesRef)
-                              .Where(s => tag == null       || s.Series.Tags.Contains(tag))
+                              .Where(s => tag == null       || s.Series.Tags.Contains(tag)),
+                TagFilter = tag
             });
         }
 

@@ -1,5 +1,5 @@
 ﻿@date-created 31-10-2019@
-@date-updated 06-02-2019@
+@date-updated 06-02-2020@
 @title Serialising basic D types@
 
 Have you ever wondered about how serialisers (or other pieces of code) perform their 'magic'? Are you someone

@@ -1,5 +1,5 @@
 ﻿@date-created 31-10-2019@
-@date-updated 07-02-2019@
+@date-updated 07-02-2020@
 @title Serialising enums and classes@
 
 *Side note: In true D fashion, https://run.dlang.io is broken with no sign of it being fixed (in terms of creating links),

@@ -108,6 +108,7 @@ namespace PersonalWebsite
                     c.ExactRewrite.Add($"/Home/Blog?post=JsonSerialiser{(i == 0 ? i + 1 : i)}", $"/BlogPost/JsonSerialiser/{i}");
                 }
                 c.ExactRewrite.Add("/Home/Blog?post=JsonSerialiser1_1", "/BlogPost/JsonSerialiser/1");
+                c.ExactRewrite.Add("/Blog/JsonSerialiser/1", "/BlogPost/JsonSerialiser/1"); // No clue where this is coming from, but it exists.
                 c.ExactRewrite.Add("/Home/Blog", "/Blog");
             });
             app.UseStaticFiles(new StaticFileOptions

@@ -1,5 +1,5 @@
 ﻿@date-created 31-10-2019@
-@date-updated 07-02-2019@
+@date-updated 07-02-2020@
 @title Serialising basic D types - Alternative function layout@
 
 *This post is an optional post, meaning you can skip this post without it being

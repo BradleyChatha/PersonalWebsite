@@ -1,14 +1,15 @@
 ﻿@model BlogIndexViewModel
 @{
-    ViewData["Title"] = "Blog";
-    ViewData["NavItem"] = "Blog";
+    ViewData["NavItem"] = "My Programming Blog";
+    ViewData["Title"] = (Model.TagFilter == null) ? "Blog" : $"Blogs for {Model.TagFilter}";
 
     var seoExtraDescription = Model.Series
-                                   .SelectMany(s => s.Series.Tags)
-                                   .Concat(Model.Series.Select(s => s.Series.Reference))
-                                   .Aggregate((a, b) => $"{a} {b}");
+                                   .Select(s => $"{s.Series.Reference} which covers {s.Series.Tags.Aggregate((a, b) => a+" "+b)}")
+                                   .Aggregate((a, b) => $"{a}, and {b}");
     ViewData["SeoDescription"] =
-        $"A collection of all of my blog series, including but not limited to: {seoExtraDescription}";
+        Model.TagFilter == null
+        ? $"A collection of all of my blog series, such as {seoExtraDescription}"
+        : $"A collection of all of my blog series that are tagged with {Model.TagFilter}, such as {seoExtraDescription}";
 
     string DATE_FORMAT = "dd/MM/yyyy";
 }

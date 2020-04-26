@@ -18,5 +18,6 @@ namespace PersonalWebsite.Models
     public class BlogIndexViewModel
     {
         public IEnumerable<BlogSeriesAndPosts> Series { get; set; }
+        public string TagFilter { get; set; } // Used to make the seoDescription unique.
     }
 }
