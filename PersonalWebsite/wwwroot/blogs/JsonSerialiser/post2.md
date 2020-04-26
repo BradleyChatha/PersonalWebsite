@@ -1,6 +1,7 @@
 ﻿@date-created 31-10-2019@
 @date-updated 07-02-2020@
 @title Serialising structs@ 
+@seo-tag serialise-struct@
 
 The ability to serialiser basic types is fun and all, but it's not *useful*.
  

@@ -15,12 +15,36 @@ namespace PersonalWebsite.Services
     {
         public BlogSeries Series { get; set; }
         public IList<BlogPost> Posts { get; set; }
+
+        public Uri GetPostSeoPath(int postIndex)
+        {
+            var post   = this.Posts[postIndex];
+            var values = new string[]
+            {
+                Convert.ToString(post.OrderInSeries),
+                post.SeoTag,
+                this.Series.Tags.Aggregate((a,b) => a+'-'+b)
+            };
+            return new Uri($"{this.Series.Reference}/{values.Aggregate((a,b) => a+'-'+b)}", UriKind.Relative);
+        }
+
+        public Uri GetPostSeoPath(BlogPost p)
+        {
+            for(int i = 0; i < this.Posts.Count; i++)
+            {
+                if(this.Posts[i] == p)
+                    return this.GetPostSeoPath(i);
+            }
+
+            throw new KeyNotFoundException();
+        }
     }
 
     public sealed class BlogPost
     {
         public string Title { get; set; }
         public string SeoTitle { get; set; }
+        public string SeoTag { get; set; }
         public DateTimeOffset DateCreated { get; set; }
         public DateTimeOffset DateUpdated { get; set; }
         public string GeneratedHtml { get; set; }
@@ -82,6 +106,7 @@ namespace PersonalWebsite.Services
                                                       DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
                                                       Title         = this.FindRequiredMetadataAsText(document, "title"),
                                                       SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
+                                                      SeoTag        = this.FindMetadataAsText(document, "seo-tag"),
                                                       OrderInSeries = order++
                                                   };
                                               }).ToList()
@@ -133,6 +158,12 @@ namespace PersonalWebsite.Services
                 throw new InvalidDataException($"The blog post is missing the required metadata '@{key}'");
 
             return text;
+        }
+
+        private string FindMetadataAsText(MarkdownDocument document, string key)
+        {
+            var found = this.FindMetadata(document, key, out string text);
+            return (found) ? text : null;
         }
 
         private string FindFirstMatchingMetadataAsText(MarkdownDocument document, params string[] keys)

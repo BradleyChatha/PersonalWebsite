@@ -1,6 +1,7 @@
 ﻿@date-created 31-10-2019@
 @date-updated 07-02-2020@
 @title Using UDAs for customisation@ 
+@seo-tag uda-customise-at-sign@
 
 At the moment our serialiser is still really basic and rigid, without really any way to customise
 how it serialises/deserialises our data.

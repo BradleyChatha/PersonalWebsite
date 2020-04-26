@@ -25,10 +25,11 @@
                 <p>@series.Series.Description</p>
 
                 <ol>
-                    @foreach (var post in series.Posts)
+                    @for (int i = 0; i < series.Posts.Count; i ++)
                     {
+                        var post = series.Posts[i];
                         <li>
-                            <a asp-action="BlogPost" asp-route-seriesRef="@series.Series.Reference" asp-route-postIndex="@post.OrderInSeries">
+                            <a href="BlogPost/@series.GetPostSeoPath(i)">
                                 @post.Title
                             </a>
                         </li>

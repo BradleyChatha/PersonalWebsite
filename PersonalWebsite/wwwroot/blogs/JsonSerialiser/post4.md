@@ -1,6 +1,7 @@
 ﻿@date-created 31-10-2019@
 @date-updated 07-02-2020@
-@title Serialising arrays@ 
+@title Serialising arrays@
+@seo-tag serialise-array-dynamic-static@
 
 *Note that in the previous post, the `Person` struct was converted into a class*
 *for testing purposes. From this point on `Person` is a struct again unless specified otherwise.*

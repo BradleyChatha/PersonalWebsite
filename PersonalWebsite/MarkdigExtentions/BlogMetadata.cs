@@ -75,7 +75,7 @@ namespace PersonalWebsite.MarkdigExtentions
             block.Entries.Add(new BlogMetadataEntry
             {
                 Key = key,
-                Value = value
+                Value = value.Trim()
             });
 
             return true;

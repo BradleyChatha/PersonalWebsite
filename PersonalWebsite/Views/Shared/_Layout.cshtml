@@ -17,6 +17,11 @@
     <link rel="manifest" href="/site.webmanifest">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
+    @if(ViewData.ContainsKey("SeoCanonical"))
+    {
+        <link rel="canonical" href="https://bradley.chatha.dev/@ViewData["SeoCanonical"]" />
+    }
+
     <partial name="_LayoutStylesPartial" />
 </head>
 <body>
