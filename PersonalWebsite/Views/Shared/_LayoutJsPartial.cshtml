@@ -6,3 +6,20 @@
 <environment exclude="Development">
     <script src="~/js/vue.min.js" asp-append-version="true"></script>
 </environment>
+
+<!-- Matomo -->
+<script type="text/javascript">
+    var _paq = window._paq || [];
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        var u = "//matomo.chatha.dev/";
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'mjs'; s.parentNode.insertBefore(g, s);
+    })();
+    window._paq = _paq;
+</script>
+<!-- End Matomo Code -->
