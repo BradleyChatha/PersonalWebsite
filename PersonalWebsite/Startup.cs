@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using InfluxDB.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +14,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalWebsite.Middleware;
 using PersonalWebsite.Services;
-using Prometheus;
 
 namespace PersonalWebsite
 {
@@ -58,17 +56,7 @@ namespace PersonalWebsite
                 p.Add(new StaticSitemapProvider($"{root}/Home/Awards", SitemapFrequency.Yearly,  0.6f));
                 p.Add(new StaticSitemapProvider($"{root}/Blog",        SitemapFrequency.Weekly,  0.7f));
                 p.Add(new ServicedSitemapProvider<BlogSitemapProvider>());
-            });
-
-            // InfluxDb
-            services.AddSingleton(_ => 
-            {
-                var url   = Configuration.GetValue<string>("InfluxDbUrl", null);
-                var token = Configuration.GetValue<string>("InfluxDbToken", null);
-                return token != null
-                       ? InfluxDBClientFactory.Create(url, token.ToCharArray())
-                       : InfluxDBClientFactory.Create();
-            });
+            }); 
 
             services.AddRazorPages()
                     .AddRazorRuntimeCompilation();
@@ -121,13 +109,10 @@ namespace PersonalWebsite
             });
             app.UseCookiePolicy();
             app.UseRouting();
-            app.UseHttpMetrics();
-            app.UseMetricsMiddleware();
             app.UseEndpoints(endpoints => 
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-                endpoints.MapMetrics();
             });
         }
     }
