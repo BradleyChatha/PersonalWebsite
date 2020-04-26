@@ -20,6 +20,7 @@ namespace PersonalWebsite.Services
     public sealed class BlogPost
     {
         public string Title { get; set; }
+        public string SeoTitle { get; set; }
         public DateTimeOffset DateCreated { get; set; }
         public DateTimeOffset DateUpdated { get; set; }
         public string GeneratedHtml { get; set; }
@@ -80,6 +81,7 @@ namespace PersonalWebsite.Services
                                                       DateCreated   = this.FindRequiredMetadataAsDate(document, "date-created"),
                                                       DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
                                                       Title         = this.FindRequiredMetadataAsText(document, "title"),
+                                                      SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
                                                       OrderInSeries = order++
                                                   };
                                               }).ToList()
@@ -105,6 +107,18 @@ namespace PersonalWebsite.Services
             return true;
         }
 
+        private bool FindFirstMatchingMetadata(MarkdownDocument document, out string value, params string[] keys)
+        {
+            foreach(var key in keys)
+            {
+                if(this.FindMetadata(document, key, out value))
+                    return true;
+            }
+
+            value = null;
+            return false;
+        }
+
         private DateTimeOffset FindRequiredMetadataAsDate(MarkdownDocument document, string key)
         {
             if (!this.FindMetadata(document, key, out string dateString))
@@ -112,10 +126,19 @@ namespace PersonalWebsite.Services
 
             return DateTimeOffset.ParseExact(dateString.Trim(), "dd-MM-yyyy", null);
         }
+
         private string FindRequiredMetadataAsText(MarkdownDocument document, string key)
         {
             if (!this.FindMetadata(document, key, out string text))
                 throw new InvalidDataException($"The blog post is missing the required metadata '@{key}'");
+
+            return text;
+        }
+
+        private string FindFirstMatchingMetadataAsText(MarkdownDocument document, params string[] keys)
+        {
+            if(!this.FindFirstMatchingMetadata(document, out string text, keys))
+                throw new InvalidDataException($"The blog post is missing all of the following potential keys: {keys}");
 
             return text;
         }

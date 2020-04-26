@@ -1,6 +1,7 @@
 ﻿@date-created 31-10-2019@
 @date-updated 07-02-2020@
 @title Serialising basic D types - Alternative function layout@
+@seo-title Template function constraints@
 
 *This post is an optional post, meaning you can skip this post without it being
 detrimental for viewing future posts, and simply exists as an aside "FYI".*
