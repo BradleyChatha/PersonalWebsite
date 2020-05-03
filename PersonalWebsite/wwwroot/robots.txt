@@ -1,2 +1,3 @@
 ﻿User-agent: *
 Sitemap: https://bradley.chatha.dev/sitemap.xml
+Disallow: /*?*

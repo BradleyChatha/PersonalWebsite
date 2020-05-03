@@ -3,6 +3,7 @@
     ViewData["NavItem"] = "Home";
     ViewData["SeoDescription"] = 
         "I'm a young UK Software Developer boasting workable experience with Web Dev, Tooling, DevOps, and SysAdmin.";
+    ViewData["SeoCanonical"] = "";
 }
 
 @section SchemaOrg {
@@ -38,6 +39,12 @@
         }
     }
     </script>
+
+    <meta property="og:url"             content="https://bradley.chatha.dev"/>
+    <meta property="og:title"           content="Bradley Chatha's personal website and portfolio"/>
+    <meta property="og:description"     content="@ViewData["SeoDescription"]"/>
+    <meta property="og:image"           content="https://bradley.chatha.dev/favicon.ico"/>
+    <meta property="og:type"            content="website"/>
 }
 
 <section class="home about">
