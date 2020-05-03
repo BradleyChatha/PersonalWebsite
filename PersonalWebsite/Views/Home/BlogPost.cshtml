@@ -55,6 +55,14 @@
     string DATE_FORMAT = "dd/MM/yyyy";
 }
 
+@section SchemaOrg {
+    <meta property="og:url"             content="https://bradley.chatha.dev/BlogPost/@seoAccessor.GetPostSeoPath(1)"/>
+    <meta property="og:title"           content="@Model.CurrentPost.Title"/>
+    <meta property="og:description"     content="@ViewData["SeoDescription"]"/>
+    <meta property="og:image"           content="https://bradley.chatha.dev/favicon.ico"/>
+    <meta property="og:type"            content="article"/>
+}
+
 <section class="blog wrapper">
     <menu class="blog navigation @tabClass tab">
         @if (Model.LastPost != null)
