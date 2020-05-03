@@ -67,6 +67,8 @@ namespace PersonalWebsite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseHttpsRedirection();
+
             if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
@@ -74,7 +76,7 @@ namespace PersonalWebsite
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -85,7 +87,7 @@ namespace PersonalWebsite
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.UseHttpsRedirection();
+            app.UseNotFoundMiddleware();
             app.UseRewriteMiddleware(c => 
             {
                 // Rewrite the old links for JsonSerialiser
