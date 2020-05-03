@@ -201,7 +201,7 @@ section.home > h1 > span {
   padding-left: 0.2em;
   padding-right: 0.2em;
   border-bottom: solid 4px black;
-  border-radius: 3%;
+  border-radius: 4px;
 }
 section.home.about > header {
   padding-top: 0.5em;
