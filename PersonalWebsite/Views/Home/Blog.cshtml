@@ -15,6 +15,38 @@
     string DATE_FORMAT = "dd/MM/yyyy";
 }
 
+@section SchemaOrg {
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org/",
+            "@@type": "Blog",
+            "about": "programming",
+            "abstract": "My personal blog covering different topics of software and web development, including tutorials.",
+            "accessMode": "textual",
+            "accessModeSufficient": ["textual"],
+            "accountablePerson": {
+                "@@type": "Person",
+                "name": "Bradley Chatha"
+            },
+            "audience": {
+                "@@type": "Audience",
+                "audienceType": ["programmers", "software developers", "web developers", "dlang"]
+            },
+            "author": {
+                "@@type": "Person",
+                "name": "Bradley Chatha"
+            },
+            "inLanguage": "en",
+            "isAccessibleForFree": "true",
+            "isFamilyFriendly": "true",
+            "keywords": "@Model.Series.SelectMany(s => s.Series.Tags).Aggregate((a,b) => a+","+b),serialise,template,constraint,mixin,static if",
+            "sameAs": [
+                "https://bradley.chatha.dev/Blog"
+            ]
+        }
+    </script>
+}
+
 <section class="series">
     @foreach(var series in Model.Series)
     {
