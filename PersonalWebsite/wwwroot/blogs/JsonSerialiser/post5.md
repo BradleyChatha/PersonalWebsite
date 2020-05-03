@@ -333,7 +333,7 @@ While testing the UDAs, the tests will show the output from both `Person` and
 `PersonWithUDAs` to make the differences more obvious.
 
 ```
-// https://godbolt.org/z/VYWCjw">https://godbolt.org/z/VYWCjw
+// https://godbolt.org/z/VYWCjw
 void main()
 {
     import std.stdio : writeln;
