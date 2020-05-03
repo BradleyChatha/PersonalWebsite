@@ -135,6 +135,7 @@ main {
 
 footer {
     $REMOVE_GUTTER_BREAKPOINT: 840px; // When to remove the gutter.
+    $MULTILINE_BREAKPOINT: 422px; // When to split things onto multiple lines.
 
     display: flex;
     position: absolute;
@@ -148,16 +149,6 @@ footer {
     
     > address, > div.gutter, > div.social.medias {
         width: calc(100% / 3);
-    }
-
-    @media screen and (max-width: $REMOVE_GUTTER_BREAKPOINT) {
-        > div.gutter {
-            display: none;
-        }
-
-        > address, > div.social.medias {
-            width: 50%;
-        }
     }
 
     > address {
@@ -189,6 +180,40 @@ footer {
         > a {
             color: lighten($HEADER_FOOTER_BACK_COLOUR, 30%);
             padding-right: 1em;
+        }
+    }
+
+    @media screen and (max-width: $REMOVE_GUTTER_BREAKPOINT) {
+        > div.gutter {
+            display: none;
+        }
+
+        > address, > div.social.medias {
+            width: 50%;
+            align-items: flex-start;
+
+            > div > i.fa-phone {
+                margin-left: 0;
+            }
+        }
+    }
+
+    @media screen and(max-width: $MULTILINE_BREAKPOINT) {
+        flex-wrap: wrap;
+        > address {
+            width: 100%;
+        }
+
+        > div.social.medias {
+            width: 100%;
+
+            > a {
+                display: flex;
+                justify-content: center;
+                width: 33%;
+                padding: 0;
+                margin: 0 auto; 
+            }
         }
     }
 }

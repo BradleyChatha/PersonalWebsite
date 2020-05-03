@@ -119,14 +119,6 @@ footer {
 footer > address, footer > div.gutter, footer > div.social.medias {
   width: calc(100% / 3);
 }
-@media screen and (max-width: 840px) {
-  footer > div.gutter {
-    display: none;
-  }
-  footer > address, footer > div.social.medias {
-    width: 50%;
-  }
-}
 footer > address {
   font-style: unset;
   display: flex;
@@ -153,6 +145,36 @@ footer > div.social.medias {
 footer > div.social.medias > a {
   color: #5b98be;
   padding-right: 1em;
+}
+@media screen and (max-width: 840px) {
+  footer > div.gutter {
+    display: none;
+  }
+  footer > address, footer > div.social.medias {
+    width: 50%;
+    align-items: flex-start;
+  }
+  footer > address > div > i.fa-phone, footer > div.social.medias > div > i.fa-phone {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 422px) {
+  footer {
+    flex-wrap: wrap;
+  }
+  footer > address {
+    width: 100%;
+  }
+  footer > div.social.medias {
+    width: 100%;
+  }
+  footer > div.social.medias > a {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    padding: 0;
+    margin: 0 auto;
+  }
 }
 
 section.home {
