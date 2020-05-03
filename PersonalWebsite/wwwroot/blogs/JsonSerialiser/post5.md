@@ -333,7 +333,7 @@ While testing the UDAs, the tests will show the output from both `Person` and
 `PersonWithUDAs` to make the differences more obvious.
 
 ```
-// <a href="https://godbolt.org/z/VYWCjw">https://godbolt.org/z/VYWCjw</a>
+// https://godbolt.org/z/VYWCjw">https://godbolt.org/z/VYWCjw
 void main()
 {
     import std.stdio : writeln;
@@ -463,7 +463,7 @@ The testing code is the same as before, but now that we've implemented support f
 `@Name`, the output is a bit different:
 
 ```
-// <a href="https://godbolt.org/z/_n6fbB">https://godbolt.org/z/_n6fbB</a>   
+// https://godbolt.org/z/_n6fbB
 void main()
 {
     import std.stdio : writeln;
@@ -607,7 +607,7 @@ Just like with `@Name` we'll use the same testing code as before, but
 now that we've implemented `@ByValue` we should get different results:
 
 ```
-// <a href="https://godbolt.org/z/TXLkMC">https://godbolt.org/z/TXLkMC</a>   
+// https://godbolt.org/z/TXLkMC
 void main()
 {
     import std.stdio : writeln;
