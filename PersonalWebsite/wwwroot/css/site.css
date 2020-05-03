@@ -461,6 +461,12 @@ article.blog {
 article.blog h1 {
   font-size: 38px;
   align-self: center;
+  margin-bottom: 0.2em;
+}
+article.blog div.metadata {
+  font-size: 16px;
+  color: #4d4d4d;
+  align-self: center;
 }
 article.blog h2 {
   font-size: 32px;
@@ -550,4 +556,48 @@ menu.blog.navigation.three.tab a.tab {
     border-style: solid;
     border-radius: 0;
   }
+}
+
+.social.linkedin, .social.reddit, .social.twitter {
+  color: white;
+  padding: 0.5em;
+}
+
+a.social {
+  border-radius: 20px;
+  text-decoration: none;
+  margin-right: 1em;
+}
+a.social > i {
+  padding-right: 0.2em;
+}
+a.social:hover {
+  cursor: pointer;
+}
+
+.social.twitter {
+  background-color: #1b95e0;
+  border-color: #1b95e0;
+}
+.social.twitter:hover {
+  background-color: #1886c9;
+  border-color: #1886c9;
+}
+
+.social.reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+.social.reddit:hover {
+  background-color: #e63e00;
+  border-color: #e63e00;
+}
+
+.social.linkedin {
+  background-color: #0073b1;
+  border-color: #0073b1;
+}
+.social.linkedin:hover {
+  background-color: #006298;
+  border-color: #006298;
 }

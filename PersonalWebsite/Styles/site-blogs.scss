@@ -72,6 +72,13 @@ article.blog {
     h1 {
         font-size: 38px;
         align-self: center;
+        margin-bottom: 0.2em;
+    }
+    
+    div.metadata {
+        font-size: 16px;
+        color: hsl(0, 0%, 30%);
+        align-self: center;
     }
 
     h2 {
@@ -181,4 +188,48 @@ menu.blog.navigation {
             border-radius: 0;
         }
     }
+}
+
+@mixin social-colour($background, $border) {
+    background-color: $background;
+    border-color: $border;
+
+    &:hover {
+        background-color: darken($background, 5%);
+        border-color: darken($border, 5%);
+    }
+}
+
+%social-generic {
+    color: white;
+    padding: 0.5em;
+}
+
+a.social {
+    border-radius: 20px;
+    text-decoration: none;
+    margin-right: 1em;
+
+    > i {
+        padding-right: 0.2em;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.social.twitter {
+    @include social-colour(#1b95e0, #1b95e0);
+    @extend %social-generic;
+}
+
+.social.reddit {
+    @include social-colour(#ff4500, #ff4500);
+    @extend %social-generic;
+}
+
+.social.linkedin {
+    @include social-colour(#0073b1, #0073b1);
+    @extend %social-generic;
 }

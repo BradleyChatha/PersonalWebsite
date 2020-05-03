@@ -51,6 +51,8 @@
         Posts  = new[] { Model.LastPost, Model.CurrentPost, Model.NextPost }
     };
     ViewData["SeoCanonical"] = $"BlogPost/{seoAccessor.GetPostSeoPath(1)}";
+
+    string DATE_FORMAT = "dd/MM/yyyy";
 }
 
 <section class="blog wrapper">
@@ -76,6 +78,31 @@
     </menu>
     <article class="blog">
         <h1>@Model.CurrentPost.Title</h1>
+        <div class="metadata">
+            Created on @Model.CurrentPost.DateCreated.ToString(DATE_FORMAT) | Updated on @Model.CurrentPost.DateUpdated.ToString(DATE_FORMAT)
+        </div>
+        <div class="metadata">
+            @{ var shareUrl = Html.Encode($"https://bradley.chatha.dev/BlogPost/{seoAccessor.GetPostSeoPath(1)}"); }
+            <a class="social twitter"
+               href="https://twitter.com/intent/tweet?text=@shareUrl"
+               target="_blank">
+                <i class="fa fa-twitter"></i>
+                Tweet
+            </a>
+            <a class="social reddit"
+               href="http://www.reddit.com/submit?url=@shareUrl&title=@Html.Encode(Model.CurrentPost.Title)"
+               target="_blank">
+                <i class="fa fa-reddit-alien"></i>
+                Share
+            </a>
+            <a class="social linkedin"
+               href="https://www.linkedin.com/sharing/share-offsite/?url=@shareUrl"
+               target="_blank">
+                <i class="fa fa-linkedin"></i>
+                Share
+            </a>
+        </div>
+
         @Html.Raw(Model.CurrentPost.GeneratedHtml)
     </article>
 </section>
