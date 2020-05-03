@@ -46,12 +46,14 @@ body > header {
         height: 100%;
         background-color: $HEADER_FOOTER_BACK_COLOUR;
 
-        > h1 > a {
+        > div.name > a {
             display: flex;
             flex-direction: column;
             margin-top: auto;
             margin-bottom: auto;
             padding-left: 1em;
+            padding-top: 0.6em;
+            padding-bottom: 0.6em;
 
             text-decoration: none;
             min-width: 200px;

@@ -48,11 +48,12 @@
 }
 
 <section class="series">
+    <h1>My programming and teaching blog</h1>
     @foreach(var series in Model.Series)
     {
         <div class="wrapper">
             <article>
-                <h1>@series.Series.Name</h1>
+                <h2>@series.Series.Name</h2>
                 <small>Created on @series.Posts.First().DateCreated.ToString(DATE_FORMAT)</small>
                 <small>Updated on @series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)</small>
                 <p>@series.Series.Description</p>

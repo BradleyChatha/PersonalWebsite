@@ -41,11 +41,11 @@
 }
 
 <section class="home about">
-    <header>
+    <h1>
         <span>
             About Me
         </span>
-    </header>
+    </h1>
     <div class="personal summary">
         <div class="image">
             <div class="images">
@@ -87,11 +87,11 @@
 </section>
 <section id="appCards" class="home languages">
     <template v-for="section in sections">
-        <header>
+        <h1>
             <span>
                 {{ section.name }}
             </span>
-        </header>
+        </h1>
         <div class="languages">
             <language-card v-for="card in section.cards"
                            :key="card.logoClass"

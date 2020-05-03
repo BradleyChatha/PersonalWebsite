@@ -7,11 +7,12 @@
         object-fit: none;
     }
 
-    > header {
+    > h1 {
         display: flex;
         justify-content: center;
         color: black;
-        padding-top: 1.6em;
+        margin: 0;
+        padding-top: 1em;
         padding-bottom: 1em;
         // Otherwise the border goes across the entire screen.
         > span {
