@@ -103,7 +103,7 @@ namespace PersonalWebsite
             {
                 OnPrepareResponse = ctx => 
                 {
-                    ctx.CacheVersionedFiles();
+                    ctx.CacheFiles();
                     ctx.ServeGzipFiles();
                 }
             });
@@ -121,13 +121,10 @@ namespace PersonalWebsite
     {
         static FileExtensionContentTypeProvider _fileTypes = new FileExtensionContentTypeProvider();
 
-        public static void CacheVersionedFiles(this StaticFileResponseContext ctx)
+        public static void CacheFiles(this StaticFileResponseContext ctx)
         {
-            if (ctx.Context.Request.Query.ContainsKey("v"))
-            {
-                ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
-                ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
-            }
+            ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
+            ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
         }
 
         // https://gunnarpeipman.com/aspnet-core-precompressed-files/
