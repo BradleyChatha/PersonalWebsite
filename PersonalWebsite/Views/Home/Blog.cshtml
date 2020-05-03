@@ -1,6 +1,6 @@
 ﻿@model BlogIndexViewModel
 @{
-    ViewData["NavItem"] = "My Programming Blog";
+    ViewData["NavItem"] = "Blog";
     ViewData["Title"] = (Model.TagFilter == null) ? "Blog" : $"Blogs for {Model.TagFilter}";
 
     var seoExtraDescription = Model.Series
