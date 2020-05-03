@@ -10,6 +10,7 @@
         Model.TagFilter == null
         ? $"A collection of all of my blog series, such as {seoExtraDescription}"
         : $"A collection of all of my blog series that are tagged with {Model.TagFilter}, such as {seoExtraDescription}";
+    ViewData["SeoCanonical"] = "Blog";
 
     string DATE_FORMAT = "dd/MM/yyyy";
 }
