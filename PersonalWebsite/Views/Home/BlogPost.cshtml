@@ -102,7 +102,7 @@
                 Tweet
             </a>
             <a class="social reddit"
-               href="http://www.reddit.com/submit?url=@shareUrl&title=@Html.Encode(Model.CurrentPost.Title)"
+               href="https://www.reddit.com/submit?url=@shareUrl&title=@Html.Encode(Model.CurrentPost.Title)"
                target="_blank">
                 <i class="fa fa-reddit-alien"></i>
                 Share
@@ -116,5 +116,13 @@
         </div>
 
         @Html.Raw(Model.CurrentPost.GeneratedHtml)
+
+        <div class="bottom padded metadata">
+            <a class="social github"
+               href="@Model.CurrentPost.GithubUrl">
+                <i class="fa fa-github"></i>
+                Improve this page on Github
+            </a>
+        </div>
     </article>
 </section>

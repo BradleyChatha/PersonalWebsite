@@ -499,6 +499,9 @@ article.blog div.metadata {
   color: #4d4d4d;
   align-self: center;
 }
+article.blog div.metadata.bottom.padded {
+  padding-bottom: 1em;
+}
 article.blog h2 {
   font-size: 32px;
   margin-bottom: 0.2em;
@@ -589,7 +592,7 @@ menu.blog.navigation.three.tab a.tab {
   }
 }
 
-.social.linkedin, .social.reddit, .social.twitter {
+.social.github, .social.linkedin, .social.reddit, .social.twitter {
   color: white;
   padding: 0.5em;
 }
@@ -631,4 +634,13 @@ a.social:hover {
 .social.linkedin:hover {
   background-color: #006298;
   border-color: #006298;
+}
+
+.social.github {
+  background-color: #6a737d;
+  border-color: #6a737d;
+}
+.social.github:hover {
+  background-color: #5e666f;
+  border-color: #5e666f;
 }

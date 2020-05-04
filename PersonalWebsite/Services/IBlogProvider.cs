@@ -49,6 +49,7 @@ namespace PersonalWebsite.Services
         public DateTimeOffset DateUpdated { get; set; }
         public string GeneratedHtml { get; set; }
         public int OrderInSeries { get; set; }
+        public string GithubUrl { get; set; }
     }
 
     public interface IBlogProvider
@@ -94,10 +95,10 @@ namespace PersonalWebsite.Services
                                  {
                                      Series = s,
                                      Posts = s.PostFilePaths
-                                              .Select(path => this._environment.WebRootPath + path)
-                                              .Select(path => File.ReadAllText(path))
-                                              .Select(text => 
+                                              .Select(relativePath => 
                                               {
+                                                  var path     = this._environment.WebRootPath + relativePath;
+                                                  var text     = File.ReadAllText(path);
                                                   var document = Markdown.Parse(text, pipeline);
                                                   return new BlogPost 
                                                   {
@@ -107,6 +108,7 @@ namespace PersonalWebsite.Services
                                                       Title         = this.FindRequiredMetadataAsText(document, "title"),
                                                       SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
                                                       SeoTag        = this.FindMetadataAsText(document, "seo-tag"),
+                                                      GithubUrl     = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
                                                       OrderInSeries = order++
                                                   };
                                               }).ToList()

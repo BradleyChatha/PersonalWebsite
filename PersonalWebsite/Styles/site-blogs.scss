@@ -86,6 +86,10 @@ article.blog {
         font-size: 16px;
         color: hsl(0, 0%, 30%);
         align-self: center;
+
+        &.bottom.padded {
+            padding-bottom: 1em;
+        }
     }
 
     h2 {
@@ -238,5 +242,10 @@ a.social {
 
 .social.linkedin {
     @include social-colour(#0073b1, #0073b1);
+    @extend %social-generic;
+}
+
+.social.github {
+    @include social-colour(#6a737d, #6a737d);
     @extend %social-generic;
 }
