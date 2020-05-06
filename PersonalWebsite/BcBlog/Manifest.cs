@@ -112,6 +112,13 @@ namespace PersonalWebsite.BcBlog
                             series.PostFilePaths.Add(post);
                             break;
 
+                        case "status":
+                            var status = tokens.Current.Value;
+                            this.AssertNextToken(tokens, ManifestParser.TokenType.String, PopToken.Yes);
+
+                            series.Status = status;
+                            break;
+
                         case "tags":
                             while(true)
                             {
@@ -159,6 +166,7 @@ namespace PersonalWebsite.BcBlog
         public string Description { get; set; }
         public ICollection<string> PostFilePaths { get; set; }
         public ICollection<string> Tags { get; set; }
+        public string Status { get; set; }
 
         public BlogSeries()
         {

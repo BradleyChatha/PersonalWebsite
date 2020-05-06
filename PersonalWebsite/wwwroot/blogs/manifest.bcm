@@ -10,6 +10,7 @@
 					"tutorial"
 					"metaprogramming"
 	]
+	[status			"finished"]
 
 	[post "/blogs/JsonSerialiser/post1.md"]
 	[post "/blogs/JsonSerialiser/post1_1.md"]

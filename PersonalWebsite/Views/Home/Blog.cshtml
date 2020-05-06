@@ -65,8 +65,13 @@
         <div class="wrapper">
             <article>
                 <h2>@series.Series.Name</h2>
-                <small>Created on @series.Posts.First().DateCreated.ToString(DATE_FORMAT)</small>
-                <small>Updated on @series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)</small>
+                <small>
+                    Created on @series.Posts.First().DateCreated.ToString(DATE_FORMAT)
+                    |
+                    Updated on @series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)
+                </small>
+                <small></small>
+                <small>Status: @series.Series.Status</small>
                 <p>@series.Series.Description</p>
 
                 <ol>
