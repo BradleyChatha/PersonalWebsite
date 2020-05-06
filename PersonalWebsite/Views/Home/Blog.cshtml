@@ -51,6 +51,11 @@
     <meta property="og:description"     content="@ViewData["SeoDescription"]"/>
     <meta property="og:image"           content="https://bradley.chatha.dev/favicon.ico"/>
     <meta property="og:type"            content="website"/>
+
+    @if(Model.TagFilter != null)
+    {
+        <meta name="robots" content="noindex"/>
+    }
 }
 
 <section class="series">

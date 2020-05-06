@@ -21,7 +21,10 @@ namespace PersonalWebsite.Middleware
             await this._next(httpContext);
 
             if(httpContext.Response.StatusCode == 404)
-                httpContext.Response.Redirect("/", true);
+            {
+                httpContext.Request.Path = "/";
+                await this._next(httpContext);
+            }
         }
     }
 
