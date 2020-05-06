@@ -39,7 +39,7 @@ namespace PersonalWebsite.Middleware
                                    .FirstOrDefault();
             if(exactRewrite != null)
             {
-                httpContext.Response.Redirect(exactRewrite, true);
+                httpContext.Response.Redirect(exactRewrite, true, false);
                 return Task.CompletedTask;
             }
 
