@@ -443,6 +443,7 @@ section.series {
 section.series > h1 {
   border-bottom: 1px solid black;
   width: 900px;
+  max-width: 95%;
   padding-bottom: 0.8em;
   color: #262626;
 }
