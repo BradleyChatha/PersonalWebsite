@@ -62,10 +62,15 @@ gulp.task("sass", gulp.series("compile-sass", "minify-css"));
 
 // Create image atlases
 const indexAtlas = {
-    "+(cooper.*|selfie.*)": {
+    "selfie*": {
         width: 300,
         height: 300,
         rotate: 90
+    },
+    "cooper*": {
+        width: 300,
+        height: 300,
+        position: "top"
     },
     "nasm*": {
         width: 120,
