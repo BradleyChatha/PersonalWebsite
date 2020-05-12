@@ -31,7 +31,7 @@
     @RenderSection("Styles", required: false)
     @if(ViewData.ContainsKey("CssBundle"))
     {
-        <link rel="stylesheet" href="~/css/bundle-@(ViewData["CssBundle"]).css"/>
+        <link rel="stylesheet" href="~/css/bundle-@(ViewData["CssBundle"]).css" asp-append-version="true"/>
     }
 </head>
 <body>
