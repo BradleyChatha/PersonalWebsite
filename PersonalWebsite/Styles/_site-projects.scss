@@ -8,7 +8,7 @@ section.project.wrapper {
         @include common.generic-primary-header;
     }
 
-    > a > article {
+    > a > article:last-of-type {
         $MULTI_LINE_BREAKPOINT: 720px; // Vertical design instead of horizontal.
 
         background-color: hsl(0, 0%, 95%);
