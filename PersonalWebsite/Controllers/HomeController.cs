@@ -9,6 +9,7 @@ using PersonalWebsite.Services;
 
 namespace PersonalWebsite.Controllers
 {
+    [ResponseCache(VaryByHeader = "User-Agent", Duration = 60 * 60 * 8)]
     public class HomeController : Controller
     {
         public IActionResult Index()
