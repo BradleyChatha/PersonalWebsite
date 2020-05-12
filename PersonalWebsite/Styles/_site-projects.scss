@@ -1,0 +1,59 @@
+@use "_sass-common.scss" as common;
+
+section.project.wrapper {
+    @include common.fluid-centered-flex-column;
+    @include common.generic-font-sizing;
+
+    > h1 {
+        @include common.generic-primary-header;
+    }
+
+    > a > article {
+        $MULTI_LINE_BREAKPOINT: 720px; // Vertical design instead of horizontal.
+
+        background-color: hsl(0, 0%, 95%);
+        margin-bottom: 1em; // Otherwise the bottom margin in > div removes the gutter between the content and footer.
+        border-radius: 20px;
+
+        transition: background-color linear 0.2s;
+        &:hover {
+            background-color: hsl(0, 0%, 90%);
+        }
+
+        > img {
+            flex-direction: column;
+            align-self: center;
+            max-width: 128px;
+            height: 128px;
+            margin-top: 1em;
+            margin-left: 1em;
+        }
+
+        @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
+            flex-wrap: wrap;
+
+            > img {
+                margin: 0 auto; // To center horizontally, we can't set the direction to 'row' because we can't modify the width to allow centering like that.
+                margin-top: 1em;
+            }
+        }
+
+        > div {
+            flex-direction: column;
+            margin-top: 1em;
+            margin-left: 1em;
+            margin-bottom: 1em;
+
+            > h2 {
+                margin: 0;
+                align-self: center;
+                font-size: 32px;
+                width: 100%; // Otherwise the content of the description pushes the title to the right.
+            }
+
+            > .description {
+                padding-top: 0.3em;
+            }
+        }
+    }
+}

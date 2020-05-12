@@ -1,8 +1,8 @@
 ﻿@{
     ViewData["Title"] = "My projects";
-    ViewData["NavItem"] = "Projects";
+    ViewData["NavItem"] = "Project";
     ViewData["SeoDescription"] = "A collection of all of my more useful projects.";
-    ViewData["SeoCanonical"] = "projects";
+    ViewData["SeoCanonical"] = "Projects";
     ViewData["CssBundle"] = "projects";
 }
 
@@ -14,6 +14,21 @@
     <meta property="og:type" content="website" />
 }
 
-<div class="projects wrapper">
+<section class="project wrapper">
     <h1>Projects</h1>
-</div>
+
+    <a class="no style" href="anal">
+        <article>
+            <img src="~/img/logos/jcli.svg" />
+            <div>
+                <h2>JCLI - Command Line Interface framework</h2>
+                <div class="description">
+                    An easy-to-use, yet powerful CLI framework written in the D programming language.
+                </div>
+                <div class="description">
+                    Features reusable components, compile-time metaprogramming, and dependency injection.
+                </div>
+            </div>
+        </article>
+    </a>
+</section>

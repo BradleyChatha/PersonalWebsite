@@ -1,25 +1,18 @@
+@use "_sass-common.scss"as common;
+
 section.blog.wrapper {
-    display: flex;
-    flex-direction: column;
-    max-width: 900px;
-    width: 100vw;
-    margin: 0 auto;
+    @include common.fluid-centered-flex-column;
 }
 
 section.series {
+    @include common.generic-font-sizing;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    font-size: 20px;
-    line-height: 1.5em;
-
     > h1 {
-        border-bottom: 1px solid black;
-        width: 900px;
-        max-width: 95%;
-        padding-bottom: 0.8em;
-        color: hsl(0, 0, 15%);
+        @include common.generic-primary-header;
     }
 
     > div.wrapper {
@@ -82,7 +75,7 @@ article.blog {
         align-self: center;
         margin-bottom: 0.2em;
     }
-    
+
     div.metadata {
         font-size: 16px;
         color: hsl(0, 0%, 30%);
@@ -103,11 +96,13 @@ article.blog {
         max-width: 95vw;
     }
 
-    ul, ol {
+    ul,
+    ol {
         margin-top: 0em;
     }
 
-    p ~ ul, p ~ ol {
+    p ~ ul,
+    p ~ ol {
         margin-top: -0.6em;
     }
 
@@ -192,7 +187,8 @@ menu.blog.navigation {
         width: 33%;
     }
 
-    &.three.tab a.tab, &.two.tab a.tab {
+    &.three.tab a.tab,
+    &.two.tab a.tab {
         @media screen and (max-width: $MULTILINE_BREAKPOINT) {
             width: 100%;
             margin-right: 1em;

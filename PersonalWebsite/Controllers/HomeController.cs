@@ -21,7 +21,7 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        [Route("/projects")]
+        [Route("/Projects")]
         public IActionResult Projects()
         {
             return View();
