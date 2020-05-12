@@ -28,7 +28,11 @@
     <meta property="og:locale"   content="en_GB"/>
     @RenderSection("SchemaOrg", required: false)
 
-    <partial name="_LayoutStylesPartial" />
+    @RenderSection("Styles", required: false)
+    @if(ViewData.ContainsKey("CssBundle"))
+    {
+        <link rel="stylesheet" href="~/css/bundle-@(ViewData["CssBundle"]).css"/>
+    }
 </head>
 <body>
     <header>
@@ -47,7 +51,7 @@
                     var blogClasses    = (ViewData["NavItem"] as string) == "Blog"    ? "active item" : "item";
                 }
                 <a class="@homeClasses" href="/">Home</a>
-                <a class="@projectClasses" href="/">Projects</a>
+                <a class="@projectClasses" asp-action="Projects">Projects</a>
                 <a class="@blogClasses" asp-action="Blog">Blog</a>
                 <a class="@awardsClasses" asp-action="Awards">Awards</a>
             </div>

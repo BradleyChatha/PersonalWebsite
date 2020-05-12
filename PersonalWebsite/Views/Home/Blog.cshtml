@@ -2,6 +2,7 @@
 @{
     ViewData["NavItem"] = "Blog";
     ViewData["Title"] = (Model.TagFilter == null) ? "Blog" : $"Blogs for {Model.TagFilter}";
+    ViewData["CssBundle"] = "blogs";
 
     var seoExtraDescription = Model.Series
                                    .Select(s => $"{s.Series.Reference} which covers {s.Series.Tags.Aggregate((a, b) => a+" "+b)}")

@@ -21,6 +21,18 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
+        [Route("/projects")]
+        public IActionResult Projects()
+        {
+            return View();
+        }
+
+        [Route("/jcli")]
+        public IActionResult ProjectJcli()
+        {
+            return View("Projects/Jcli");
+        }
+
         [Route("/sitemap.xml")]
         public IActionResult Sitemap([FromServices] ISitemapGenerator sitemap)
         {

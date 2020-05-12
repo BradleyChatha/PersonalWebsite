@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = Model.CurrentPost.SeoTitle;
     ViewData["NavItem"] = "Blog";
+    ViewData["CssBundle"] = "blogs";
 
     var seoIndexString = Convert.ToString(Model.CurrentPost.OrderInSeries + 1); // Plus one so we don't include "0th".
     string seoIndexSuffix = "";

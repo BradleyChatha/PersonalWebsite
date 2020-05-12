@@ -11,8 +11,11 @@ let minimatch   = require("minimatch");
 let through     = require("through2");
 let webp        = require("gulp-webp");
 let buffer      = require("vinyl-buffer");
-let order       = require("gulp-order");
+let flatten     = require("gulp-flatten");
 let webpack     = require("webpack-stream");
+let foreach     = require("gulp-foreach");
+let addSrc      = require("gulp-add-src");
+let path        = require("path");
 
 // Configure plugins
 sass.compiler = require("sass");
@@ -20,7 +23,7 @@ sass.compiler = require("sass");
 // Path configs
 const paths = {
     src: {
-        sass:                   "Styles/site.scss",
+        sass:                   "Styles/{site.scss,bundle-*.scss}",
         sass_watch:             "Styles/*.scss",
         imgs_watch:             "ImageRaw/**",
         imgs_index:             "ImageRaw/Index/*.+(png|jpg)",
@@ -29,21 +32,15 @@ const paths = {
     },
 
     dest: {
-        sass:               "wwwroot/css",
+        sass:               "Styles/build",
+        sass_min:           "wwwroot/css",
+        atlas_css:          "Styles/build/atlas",
         imgs_index_atlas:   "wwwroot/img/atlas/index.png",
-        imgs_index_css:     "wwwroot/css/atlas_index.css",
         webpack_bundles:    "wwwroot/js/"
     }
 };
 
 // Compile & Minify Our Sass
-const cssOrder = [
-    "**font-*",
-    "**site*",
-    "**highlight*",
-    "**atlas_*"
-];
-
 gulp.task('compile-sass', function () {
     return gulp.src(paths.src.sass)
         .pipe(sass())
@@ -51,11 +48,15 @@ gulp.task('compile-sass', function () {
 });
 
 gulp.task("minify-css", function () {
-    return gulp.src(paths.dest.sass + "/!(bundle.min.css)")
-        .pipe(order(cssOrder))
-        .pipe(concat("bundle.min.css"))
+    return gulp.src(paths.dest.sass + "/bundle-*")
+        .pipe(foreach((stream, file) => {
+            return stream
+                .pipe(addSrc("Styles/extern/font-awesome.min.css"))
+                .pipe(concat(path.basename(file.path)));
+        }))
         .pipe(cleanCSS({ level: 2 }))
-        .pipe(gulp.dest(paths.dest.sass));
+        .pipe(flatten())
+        .pipe(gulp.dest(paths.dest.sass_min));
 });
 
 gulp.task("sass", gulp.series("compile-sass", "minify-css"));
@@ -121,7 +122,7 @@ function createAtlas(sourcePath, imgName, cssName, atlasConfig) {
 }
 
 gulp.task("atlas-index", function () {
-    return createAtlas(paths.src.imgs_index, paths.dest.imgs_index_atlas, paths.dest.imgs_index_css, indexAtlas);
+    return createAtlas(paths.src.imgs_index, paths.dest.imgs_index_atlas, paths.dest.atlas_css + "/index.css", indexAtlas);
 });
 
 gulp.task("atlas", gulp.series(["atlas-index"]));

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "My projects";
+    ViewData["NavItem"] = "Projects";
+    ViewData["SeoDescription"] = "A collection of all of my more useful projects.";
+    ViewData["SeoCanonical"] = "projects";
+    ViewData["CssBundle"] = "projects";
+}
+
+@section SchemaOrg {
+    <meta property="og:url" content="https://bradley.chatha.dev/projects" />
+    <meta property="og:title" content="My projects - Bradley Chatha" />
+    <meta property="og:description" content="@ViewData["SeoDescription"]" />
+    <meta property="og:image" content="https://bradley.chatha.dev/favicon.ico" />
+    <meta property="og:type" content="website" />
+}
+
+<div class="projects wrapper">
+    <h1>Projects</h1>
+</div>
