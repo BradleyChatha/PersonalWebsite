@@ -96,19 +96,19 @@
         </div>
         <div class="metadata">
             @{ var shareUrl = Html.Encode($"https://bradley.chatha.dev/BlogPost/{seoAccessor.GetPostSeoPath(1)}"); }
-            <a class="social twitter"
+            <a class="social twitter no style"
                href="https://twitter.com/intent/tweet?text=@shareUrl"
                target="_blank">
                 <i class="fa fa-twitter"></i>
                 Tweet
             </a>
-            <a class="social reddit"
+            <a class="social reddit no style"
                href="https://www.reddit.com/submit?url=@shareUrl&title=@Html.Encode(Model.CurrentPost.Title)"
                target="_blank">
                 <i class="fa fa-reddit-alien"></i>
                 Share
             </a>
-            <a class="social linkedin"
+            <a class="social linkedin no style"
                href="https://www.linkedin.com/sharing/share-offsite/?url=@shareUrl"
                target="_blank">
                 <i class="fa fa-linkedin"></i>
@@ -119,7 +119,7 @@
         @Html.Raw(Model.CurrentPost.GeneratedHtml)
 
         <div class="bottom padded metadata">
-            <a class="social github"
+            <a class="social github no style"
                href="@Model.CurrentPost.GithubUrl">
                 <i class="fa fa-github"></i>
                 Improve this page on Github

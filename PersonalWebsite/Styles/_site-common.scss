@@ -4,7 +4,7 @@ body {
     background-color: hsl(48, 20%, 99%);
 }
 
-a:not(.no.style) {
+a:not(.no):not(.style) {
     text-decoration: none;
     color: hsl(241, 100%, 67%);
 
@@ -14,7 +14,6 @@ a:not(.no.style) {
 }
 
 a.no.style {
-    color: #444;
     text-decoration: none;
 }
 

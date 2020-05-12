@@ -3,6 +3,7 @@
 section.project.wrapper {
     @include common.fluid-centered-flex-column;
     @include common.generic-font-sizing;
+    @include common.all-children-flex;
 
     > h1 {
         @include common.generic-primary-header;
@@ -14,6 +15,7 @@ section.project.wrapper {
         background-color: hsl(0, 0%, 95%);
         margin-bottom: 1em; // Otherwise the bottom margin in > div removes the gutter between the content and footer.
         border-radius: 20px;
+        color: #444;
 
         transition: background-color linear 0.2s;
         &:hover {
