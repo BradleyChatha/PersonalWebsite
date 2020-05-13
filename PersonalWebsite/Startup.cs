@@ -52,10 +52,11 @@ namespace PersonalWebsite
             {
                 var root = "https://bradley.chatha.dev";
                 var p = o.ContentProviders;
-                p.Add(new StaticSitemapProvider(root,                  SitemapFrequency.Monthly, 1.0f));
-                p.Add(new StaticSitemapProvider($"{root}/Home/Awards", SitemapFrequency.Yearly,  0.6f));
-                p.Add(new StaticSitemapProvider($"{root}/Blog",        SitemapFrequency.Weekly,  0.7f));
-                p.Add(new StaticSitemapProvider($"{root}/Projects",    SitemapFrequency.Monthly, 0.7f));
+                p.Add(new StaticSitemapProvider(root,                           SitemapFrequency.Monthly, 1.0f));
+                p.Add(new StaticSitemapProvider($"{root}/Home/Awards",          SitemapFrequency.Yearly,  0.6f));
+                p.Add(new StaticSitemapProvider($"{root}/Blog",                 SitemapFrequency.Weekly,  0.7f));
+                p.Add(new StaticSitemapProvider($"{root}/Projects",             SitemapFrequency.Monthly, 0.7f));
+                p.Add(new StaticSitemapProvider($"{root}/jcli-d-cli-framework", SitemapFrequency.Monthly, 0.8f));
                 p.Add(new ServicedSitemapProvider<BlogSitemapProvider>());
             }); 
 
