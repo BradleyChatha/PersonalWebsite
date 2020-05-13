@@ -28,10 +28,10 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        [Route("/jcli")]
+        [Route("/jcli-d-cli-framework")]
         public IActionResult ProjectJcli()
         {
-            return View("Projects/Jcli");
+            return View("/Views/Projects/Jcli.cshtml");
         }
 
         [Route("/sitemap.xml")]

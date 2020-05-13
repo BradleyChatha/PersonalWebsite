@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "^JCLI - The easy to use CLI framework for D";
+    ViewData["NavItem"] = "Project";
+    ViewData["SeoDescription"] = "An advanced, yet easy to use CLI framework.";
+    ViewData["SeoCanonical"] = "jcli-d-cli-framework";
+    ViewData["CssBundle"] = "jcli";
+}
+
+@section SchemaOrg {
+    <meta property="og:url" content="https://bradley.chatha.dev/projects" />
+    <meta property="og:title" content="JCLI - A CLI Framework for D" />
+    <meta property="og:description" content="@ViewData["SeoDescription"]" />
+    <meta property="og:image" content="https://bradley.chatha.dev/img/logos/jcli_512x.png" />
+    <meta property="og:type" content="website" />
+}
+
+<!--
+    This was more just a page to do for fun really, I've been wanting to have a hand at making a product landing page for a while.
+
+    JCLI isn't actually all that impressive to be honest, but trying new things I haven't done yet (a.l.a the design of this page and
+    the JCLI logo) is helping me get through Corona.
+
+    This was made in a more playful manner, rather than a serious one :)
+-->
+<section class="hero">
+    <img class="logo" src="~/img/logos/jcli_512x.png"/>
+    <h1 class="description">A modern CLI framework for D</h1>
+</section>
+
+<section class="key points">
+    <article>
+        <h2>Easy yet powerful</h2>
+        <div>
+            It takes minutes to get started with JCLI, while also providing more
+            advanced features such as dependency injection, string binding, and more!
+        </div>
+    </article>
+    <article>
+        <h2>A framework AND a library</h2>
+        <div>
+            JCLI can be used as either a framework or the basis of your own
+            framework due to its independent, reusable components.
+        </div>
+    </article>
+    <article>
+        <h2>The power of D</h2>
+        <div>
+            Powerful metaprogramming capabilities alongside a featureful yet concise
+            language allows for an easy and developer-friendly experience.
+        </div>
+    </article>
+</section>
+
+<section class="dark feature">
+    <div class="img wrapper">
+        <img src="~/img/projects/jcli/log_colours.png" />
+    </div>
+    <div>
+        <h2>Colourful, toggleable output</h2>
+        <p>
+            Whether it's to talk to the user; show verbose logging, or even to display debug-only information, the
+            UserIO component has your back!
+        </p>
+        <p>
+            Perhaps you want to mess with colours yourself? Well, the AnsiText component allows fluent construction
+            of ANSI-escaped coloured strings, including automatic Windows support.
+        </p>
+    </div>
+</section>
+
+<section class="feature">
+    <div>
+        <h2>Use JCLI's core, or roll your own</h2>
+        <p>
+            Leverage JCLI's default core with the CommandLineInterface class to make use
+            of all of JCLI's components to easily create or prototype your next CLI tool.
+        </p>
+        <p>
+            CommandLineInterface not doing it for you? JCLI's components are designed so that
+            they can be used independentally from the default core, allowing you build your
+            very own core on top of an existing, battle-tested* toolset.
+        </p>
+        <small>
+            * I'm pretty sure I'm the only one who uses this library right now, don't take that statement too
+            literally. The API isn't even stable yet. This page was mostly made for fun >:d
+        </small>
+    </div>
+    <div class="img wrapper">
+        <img src="~/img/projects/jcli/cog.png" />
+    </div>
+</section>
+
+<section class="dark feature">
+    <div class="img wrapper">
+        <a href="https://dlang-community.github.io/d-mans/meiz/">
+            <img src="~/img/projects/jcli/dman.png" />
+        </a>
+    </div>
+    <div>
+        <h2>Become one with the D</h2>
+        <p>
+            Like it long and hard? I don't either, which is why you should drop
+            your other languages and move to D!
+        </p>
+        <p>
+            With one of the most advanced metaprogramming capabilities for a compiled language;
+            clean and easy to read syntax; and the potential for jokes about phallic objects, D
+            allows you to write productive python-like code while leveraging the perfomance benefits
+            of a natively compiled language.
+        </p>
+        <p>
+            It's not about the size of your codebase, its how you use it.
+        </p>
+    </div>
+</section>

@@ -28,7 +28,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Views\Projects\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
