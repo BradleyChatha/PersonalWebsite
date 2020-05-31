@@ -71,6 +71,10 @@ article.blog {
     font-size: 20px;
     line-height: 1.8em;
 
+    img {
+        max-width: 100%;
+    }
+
     h1 {
         font-size: 38px;
         align-self: center;
