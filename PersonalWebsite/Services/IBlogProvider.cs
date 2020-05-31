@@ -83,7 +83,7 @@ namespace PersonalWebsite.Services
                               .UseBlogMetadata()
                               .UseEmphasisExtras()
                               .Build();
-            var order = 0;
+
             this._seriesCache = 
                 this._environment.WebRootFileProvider
                                  .GetDirectoryContents("blogs/")
@@ -91,27 +91,31 @@ namespace PersonalWebsite.Services
                                  .Select    (f => File.ReadAllText(f.PhysicalPath))
                                  .Select    (t => new Manifest(new ManifestParser(t)))
                                  .SelectMany(m => m.Series)
-                                 .Select    (s => new BlogSeriesAndPosts
+                                 .Select    (s => 
                                  {
-                                     Series = s,
-                                     Posts = s.PostFilePaths
-                                              .Select(relativePath => 
-                                              {
-                                                  var path     = this._environment.WebRootPath + relativePath;
-                                                  var text     = File.ReadAllText(path);
-                                                  var document = Markdown.Parse(text, pipeline);
-                                                  return new BlogPost 
+                                     var order = 0;
+                                     return new BlogSeriesAndPosts
+                                     {
+                                         Series = s,
+                                         Posts = s.PostFilePaths
+                                                  .Select(relativePath => 
                                                   {
-                                                      GeneratedHtml = Markdown.ToHtml(text, pipeline), // meh
-                                                      DateCreated   = this.FindRequiredMetadataAsDate(document, "date-created"),
-                                                      DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
-                                                      Title         = this.FindRequiredMetadataAsText(document, "title"),
-                                                      SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
-                                                      SeoTag        = this.FindMetadataAsText(document, "seo-tag"),
-                                                      GithubUrl     = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
-                                                      OrderInSeries = order++
-                                                  };
-                                              }).ToList()
+                                                      var path     = this._environment.WebRootPath + relativePath;
+                                                      var text     = File.ReadAllText(path);
+                                                      var document = Markdown.Parse(text, pipeline);
+                                                      return new BlogPost 
+                                                      {
+                                                          GeneratedHtml = Markdown.ToHtml(text, pipeline), // meh
+                                                          DateCreated   = this.FindRequiredMetadataAsDate(document, "date-created"),
+                                                          DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
+                                                          Title         = this.FindRequiredMetadataAsText(document, "title"),
+                                                          SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
+                                                          SeoTag        = this.FindMetadataAsText(document, "seo-tag"),
+                                                          GithubUrl     = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
+                                                          OrderInSeries = order++
+                                                      };
+                                                  }).ToList()
+                                     };
                                  })
                                  .ToList();
             return this._seriesCache;
