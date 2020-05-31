@@ -20,3 +20,17 @@
 	[post "/blogs/JsonSerialiser/post5.md"]
 	[post "/blogs/JsonSerialiser/post6.md"]
 }
+
+@series
+{
+	[reference		"JcliNews"]
+	[name			"JCLI News"]
+	[description	"Any misc news about JCLI, such as changelogs."]
+	[tags			"jcli"
+					"dlang"
+					"library"
+	]
+	[status			"jcli still being supported"]
+
+	[post "/blogs/JcliNews/v0.5.0.md"]
+}
