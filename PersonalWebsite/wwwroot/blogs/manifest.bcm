@@ -30,7 +30,8 @@
 					"dlang"
 					"library"
 	]
-	[status			"jcli still being supported"]
+	[status			"jcli is still being supported"]
 
 	[post "/blogs/JcliNews/v0.5.0.md"]
+	[post "/blogs/JcliNews/v0.6.0.md"]
 }
