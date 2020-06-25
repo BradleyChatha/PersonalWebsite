@@ -17,6 +17,7 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
+        [Route("/Awards")]
         public IActionResult Awards()
         {
             return View();
