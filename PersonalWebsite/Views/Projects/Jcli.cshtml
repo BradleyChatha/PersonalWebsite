@@ -1,17 +1,41 @@
 ﻿@{
     ViewData["Title"] = "^JCLI - The easy to use CLI framework for D";
     ViewData["NavItem"] = "Project";
-    ViewData["SeoDescription"] = "An advanced, yet easy to use CLI framework.";
+    ViewData["SeoDescription"] = "An advanced, modern, yet easy to use CLI framework using the D programming language.";
     ViewData["SeoCanonical"] = "jcli-d-cli-framework";
     ViewData["CssBundle"] = "jcli";
+
+    var genericTitle = "JCLI - A modern, easy-to-use CLI Framework for D";
 }
 
 @section SchemaOrg {
-    <meta property="og:url" content="https://bradley.chatha.dev/jcli-d-cli-framework" />
-    <meta property="og:title" content="JCLI - A CLI Framework for D" />
-    <meta property="og:description" content="@ViewData["SeoDescription"]" />
-    <meta property="og:image" content="https://bradley.chatha.dev/img/logos/jcli_512x.png" />
-    <meta property="og:type" content="website" />
+    <meta property="og:url"                 content="https://bradley.chatha.dev/jcli-d-cli-framework" />
+    <meta property="og:title"               content="@genericTitle" />
+    <meta property="og:description"         content="@ViewData["SeoDescription"]" />
+    <meta property="og:image"               content="https://bradley.chatha.dev/img/logos/jcli_512x.png" />
+    <meta property="og:type"                content="article" />
+    <meta property="twitter:title"          content="@genericTitle" />
+    <meta property="twitter:description"    content="@ViewData["SeoDescription"]" />
+    <meta property="twitter:image"          content="https://bradley.chatha.dev/img/logos/jcli_512x.png"/>
+
+    <script type="application/ld+json">
+    {
+        "@@context": "http://schema.org",
+        "@@type": "SoftwareApplication",
+        "author": {
+        "@@type": "Person",
+        "name": "Bradley Chatha"
+        },
+        "applicationCategory": "Library, Framework",
+        "applicationSubCategory": "CLI, command line interface",
+        "downloadUrl": "https://code.dlang.org/packages/jcli",
+        "releaseNotes": "https://bradley.chatha.dev/Blog/JcliNews",
+        "name": "JCLI",
+        "abstract": "A modern, easy-to-use CLI framework.",
+        "image": "https://bradley.chatha.dev/img/logos/jcli_512x.png",
+        "keywords": "dlang,command line interface,library,framework"
+    }
+    </script>
 }
 
 <!--
@@ -23,7 +47,7 @@
     This was made in a more playful manner, rather than a serious one :)
 -->
 <section class="hero">
-    <img class="logo" src="~/img/logos/jcli_512x.png"/>
+    <img class="logo" src="~/img/logos/jcli_512x.png" alt="JCLI Logo"/>
     <h1 class="description">A modern CLI framework for D</h1>
 </section>
 
@@ -53,7 +77,7 @@
 
 <section class="dark feature">
     <div class="img wrapper">
-        <img src="~/img/projects/jcli/log_colours.png" />
+        <img src="~/img/projects/jcli/log_colours.png" alt="JCLI Colours" />
     </div>
     <div>
         <h2>Colourful, toggleable output</h2>
@@ -86,14 +110,14 @@
         </small>
     </div>
     <div class="img wrapper">
-        <img src="~/img/projects/jcli/cog.png" />
+        <img src="~/img/projects/jcli/cog.png" alt="cog" />
     </div>
 </section>
 
 <section class="dark feature">
     <div class="img wrapper">
         <a href="https://dlang-community.github.io/d-mans/meiz/">
-            <img src="~/img/projects/jcli/dman.png" />
+            <img src="~/img/projects/jcli/dman.png" alt="D-man by Meiz" />
         </a>
     </div>
     <div>
