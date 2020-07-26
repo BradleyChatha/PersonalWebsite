@@ -14,7 +14,7 @@ section {
 .hero {
     $HERO_HEIGHT: 380px;
     $LOGO_HEIGHT: 128px;
-    $LOGO_TOP_OFFSET: -20px;
+    $LOGO_TOP_OFFSET: -50px;
 
     flex-direction: column;
     
@@ -45,6 +45,7 @@ section {
         font-family: Helvetica;
         letter-spacing: 2px;
         text-shadow: 1px 2px 2px rgba(128, 128, 128, 1);
+        text-align: center;
     }
 
     .repo.link {
