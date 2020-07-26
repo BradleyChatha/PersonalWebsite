@@ -63,6 +63,7 @@ code {
 article.blog {
     $CHARS_PER_LINE: 80;
     $GENERIC_MARGIN_BOTTOM: 2rem;
+    $MAIN_HEADER_MARGIN_BOTTOM: 0.45rem;
 
     display: flex;
     flex-direction: column;
@@ -85,7 +86,7 @@ article.blog {
     h1 {
         font-size: 38px;
         align-self: center;
-        margin-bottom: 0.2em;
+        margin-bottom: $MAIN_HEADER_MARGIN_BOTTOM;
         margin-top: 1em;
     }
 
@@ -99,6 +100,10 @@ article.blog {
 
         &.centered {
             align-self: center;
+        }
+
+        + .metadata { // Add equal spacing between header, first row of metadata, and second row of metadata. At the top.
+            margin-top: $MAIN_HEADER_MARGIN_BOTTOM;
         }
     }
 
