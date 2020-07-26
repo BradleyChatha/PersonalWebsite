@@ -65,8 +65,7 @@ gulp.task("sass", gulp.series("compile-sass", "minify-css"));
 const indexAtlas = {
     "selfie*": {
         width: 300,
-        height: 300,
-        rotate: 90
+        height: 300
     },
     "cooper*": {
         width: 300,
