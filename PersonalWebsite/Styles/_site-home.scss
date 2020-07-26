@@ -82,6 +82,11 @@
             > p > i.fa-smile-o:hover::before {
                 content: "Wrong face.";
             }
+
+            // Once the screen's reached our width, we'll add a margin to make the text not look as weird.
+            @media screen and(max-width:900px) {
+                margin-left: 1em;
+            }
         }
     }
 
