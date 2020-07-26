@@ -168,6 +168,7 @@ menu.blog.navigation {
     max-width: inherit; // Inherit from wrapper.
     padding-left: 0;
     margin-bottom: 0;
+    align-self: center;
 
     @media screen and (max-width: $MULTILINE_BREAKPOINT) {
         flex-wrap: wrap;
