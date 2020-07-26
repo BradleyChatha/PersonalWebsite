@@ -109,10 +109,12 @@ section {
 
         h2 {
             color: #255ca2;
+            text-align: center;
         }
 
         div {
             max-width: 450px;
+            text-align: center;
         }
     }
 }
@@ -144,6 +146,10 @@ section {
         flex-direction: column;
         width: 50%;
         margin: 0 auto;
+
+        @media screen and (max-width:$VERTICAL_BREAKPOINT) {
+            width: 60ch;
+        }
 
         h2 {
             justify-content: center;
