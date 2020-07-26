@@ -64,6 +64,7 @@ article.blog {
     $CHARS_PER_LINE: 80;
     $GENERIC_MARGIN_BOTTOM: 2rem;
     $MAIN_HEADER_MARGIN_BOTTOM: 0.45rem;
+    $REMOVE_LIST_LEFT_PADDING_BREAKPOINT: 1000px; // Breakpoint for when the left-padding on lists should be removed, because it forces the content beyond 100vw
 
     display: flex;
     flex-direction: column;
@@ -143,6 +144,10 @@ article.blog {
 
     ul, ol {
         margin-bottom: $GENERIC_MARGIN_BOTTOM;
+
+        @media screen and (max-width: $REMOVE_LIST_LEFT_PADDING_BREAKPOINT) {
+            padding-left: 0;
+        }
     }
 
     p + ul, p + ol {
