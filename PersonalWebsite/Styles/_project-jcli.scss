@@ -14,7 +14,7 @@ section {
 .hero {
     $HERO_HEIGHT: 380px;
     $LOGO_HEIGHT: 128px;
-    $LOGO_TOP_OFFSET: -50px;
+    $LOGO_TOP_OFFSET: -60px;
 
     flex-direction: column;
     
@@ -40,7 +40,7 @@ section {
     .description {
         color: hsl(0, 0, 97%);
         margin: 0 auto;
-        margin-top: 1em;
+        margin-top: 2rem;
         font-size: 32px;
         font-family: Helvetica;
         letter-spacing: 2px;
@@ -65,7 +65,7 @@ section {
         padding-right: 1em;
         padding-top: 0.2em;
         padding-bottom: 0.2em;
-        margin-top: 1em;
+        margin-top: 2rem;
 
         transition: background-color .1s ease;
 
