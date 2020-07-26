@@ -127,7 +127,7 @@
                     var tag = Model.Series.Tags.Skip(i).First();
                     var needsComma = (i != Model.Series.Tags.Count - 1);
                     <small>
-                        <a asp-action="Blog" asp-route-tag="@tag">
+                        <a asp-action="Blog" asp-route-tag="@tag" rel="nofollow">
                             @(tag + (needsComma ? "," : ""))
                         </a>
                     </small>
