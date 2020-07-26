@@ -76,6 +76,8 @@ body > header {
         > div.gutter {
             display: flex;
             flex-direction: column;
+            
+            // Multiline gutters only show once we've hit the MULTI_LINE_BREAKPOINT
             &:not(.multiline) {
                 width: 100%;
             }
@@ -200,11 +202,7 @@ footer {
 
         > address, > div.social.medias {
             width: 50%;
-            align-items: flex-start;
-
-            > div > i.fa-phone {
-                margin-left: 0;
-            }
+            align-items: center;
         }
     }
 
@@ -212,6 +210,7 @@ footer {
         flex-wrap: wrap;
         > address {
             width: 100%;
+            padding-bottom: 0.5em;
         }
 
         > div.social.medias {
