@@ -51,7 +51,7 @@ gulp.task("minify-css", function () {
     return gulp.src(paths.dest.sass + "/bundle-*")
         .pipe(foreach((stream, file) => {
             return stream
-                .pipe(addSrc("Styles/extern/font-awesome.min.css"))
+                //.pipe(addSrc("Styles/extern/font-awesome.min.css"))
                 .pipe(concat(path.basename(file.path)));
         }))
         .pipe(cleanCSS({ level: 2 }))
