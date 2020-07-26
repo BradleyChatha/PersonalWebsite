@@ -103,7 +103,8 @@
         <div class="languages">
             <language-card v-for="card in section.cards"
                            :key="card.logoClass"
-                           v-bind="card"></language-card>
+                           v-bind="card"
+                           :experience-label="section.experienceLabel"></language-card>
         </div>
     </template>
 </section>
@@ -129,6 +130,7 @@
                 sections: [
                     {
                         name: "Languages (Main)",
+                        experienceLabel: "Experience",
                         cards: [
                             ["csharp",  new Date(2013, 06, 01), 5, 4, ["ASP Core", "EF Core", "Nuget", "Reflection", "1st Web Dev", "2nd App Dev"]],
                             ["dlang",   new Date(2014, 02, 01), 5, 4, ["Main Language", "1st App Dev", "Advanced meta programming", "Complex codegen"]],
@@ -139,6 +141,7 @@
                     },
                     {
                         name: "Languages (Minor, on/off usage)",
+                        experienceLabel: "Exposure",
                         cards: [
                             ["cpp",     new Date(2013, 11, 01), 1, 2, ["Smart pointers"]],
                             ["python",  new Date(2015, 01, 01), 3, 2],

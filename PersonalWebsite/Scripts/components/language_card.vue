@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="language" ref="card" :style="{ height: cardHeight }" @transitionend="onCardResize">
             <img class="atlas" v-bind:class="[logoClass]" src="/img/atlas/index.webp" :alt="logoClass" asp-append-version="true" />
-            <h2>{{ timeUsedString }} Experience</h2>
+            <h2>{{ timeUsedString }}' {{ experienceLabel }}</h2>
             <div class="rating">
                 <label>Comfort</label>
                 <span v-for="i in 5" class="fa fa-star" v-bind:class="{ checked: i <= comfort }" :key="i"></span>
@@ -47,7 +47,8 @@ export default {
         timeStarted: Date,
         comfort: Number,
         knowledge: Number,
-        metadata: Array
+        metadata: Array,
+        experienceLabel: String
     },
     
     computed: {
