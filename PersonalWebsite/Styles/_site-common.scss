@@ -57,7 +57,7 @@ body > header {
                 text-align: center;
                 padding-left: 0;
             }
-            
+
             > a {
                 display: flex;
                 flex-direction: column;
@@ -76,11 +76,14 @@ body > header {
         > div.gutter {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            &:not(.multiline) {
+                width: 100%;
+            }
 
             // Act as top padding when we're multi line.
             @media screen and (max-width: $MULTI_LINE_BREAKPOINT) {
                 height: 10px;
+                width: 100%; // To counteract the :not above.
             }
         }
 
