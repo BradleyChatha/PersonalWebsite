@@ -127,33 +127,35 @@ section {
     padding-bottom: 2em;
     flex-wrap: wrap;
 
-    .img.wrapper {
-        width: 33%;
-        align-items: center;
+    &.image {
+        .img.wrapper {
+            width: 33%;
+            align-items: center;
 
-        @media screen and(max-width: $VERTICAL_BREAKPOINT) {
-            width: 100%;
-            padding-bottom: 2em;
+            @media screen and(max-width: $VERTICAL_BREAKPOINT) {
+                width: 100%;
+                padding-bottom: 2em;
+            }
+
+            img {
+                width: 312px;
+                height: 256px;
+            }
         }
 
-        img {
-            width: 312px;
-            height: 256px;
-        }
-    }
+        div {
+            flex-direction: column;
+            width: 50%;
+            margin: 0 auto;
 
-    div {
-        flex-direction: column;
-        width: 50%;
-        margin: 0 auto;
+            @media screen and (max-width:$VERTICAL_BREAKPOINT) {
+                width: 60ch;
+            }
 
-        @media screen and (max-width:$VERTICAL_BREAKPOINT) {
-            width: 60ch;
-        }
-
-        h2 {
-            justify-content: center;
-            margin-top: 0;
+            h2 {
+                justify-content: center;
+                margin-top: 0;
+            }
         }
     }
 }
