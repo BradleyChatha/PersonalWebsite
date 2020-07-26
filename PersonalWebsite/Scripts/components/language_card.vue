@@ -98,6 +98,9 @@ export default {
             this.metadataHeight = this.$refs.metadata.getBoundingClientRect().height;
             this.metadataShow = false;
         }
+
+        this.baseHeight = 313; // Hard coded because it's so annoying to set this automatically, witout the first-time animation breaking.
+                               // Will have to keep this manually updated, but thankfully that shouldn't happen too often.
     }
 }
 </script>
