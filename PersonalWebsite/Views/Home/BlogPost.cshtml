@@ -91,10 +91,10 @@
     </menu>
     <article class="blog">
         <h1>@Model.CurrentPost.Title</h1>
-        <div class="metadata">
+        <div class="centered metadata">
             Created on @Model.CurrentPost.DateCreated.ToString(DATE_FORMAT) | Updated on @Model.CurrentPost.DateUpdated.ToString(DATE_FORMAT)
         </div>
-        <div class="metadata">
+        <div class="centered metadata">
             @{ var shareUrl = Html.Encode($"https://bradley.chatha.dev/BlogPost/{seoAccessor.GetPostSeoPath(1)}"); }
             <a class="social twitter no style"
                href="https://twitter.com/intent/tweet?text=@shareUrl"
