@@ -118,8 +118,25 @@
 
         @Html.Raw(Model.CurrentPost.GeneratedHtml)
 
-        <div class="bottom padded metadata">
-            <a class="social github no style"
+        <div class="bottom padded metadata`">
+            <!--Copy pasted from Blog.cshtml, but meh...-->
+            <div class="tags">
+                <i class="fa fa-tags"></i>
+                @for (int i = 0; i < Model.Series.Tags.Count; i++)
+                {
+                    var tag = Model.Series.Tags.Skip(i).First();
+                    var needsComma = (i != Model.Series.Tags.Count - 1);
+                    <small>
+                        <a asp-action="Blog" asp-route-tag="@tag">
+                            @(tag + (needsComma ? "," : ""))
+                        </a>
+                    </small>
+                }
+            </div>
+        </div>
+
+        <div class="bottom padded centered metadata">
+            <a class="social github no style centered"
                href="@Model.CurrentPost.GithubUrl">
                 <i class="fa fa-github"></i>
                 Improve this page on Github

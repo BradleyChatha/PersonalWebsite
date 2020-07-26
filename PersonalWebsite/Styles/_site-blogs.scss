@@ -84,10 +84,13 @@ article.blog {
     div.metadata {
         font-size: 16px;
         color: hsl(0, 0%, 30%);
-        align-self: center;
 
         &.bottom.padded {
             padding-bottom: 1em;
+        }
+
+        &.centered {
+            align-self: center;
         }
     }
 
@@ -250,4 +253,8 @@ a.social {
 .social.github {
     @include social-colour(#6a737d, #6a737d);
     @extend %social-generic;
+}
+
+.tags {
+    font-size: 20px;
 }
