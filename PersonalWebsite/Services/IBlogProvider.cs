@@ -51,6 +51,7 @@ namespace PersonalWebsite.Services
         public int              OrderInSeries       { get; set; }
         public string           GithubUrl           { get; set; }
         public string           CardImageGeneric    { get; set; }
+        public string           CardImageTwitter    { get; set; }
     }
 
     public interface IBlogProvider
@@ -113,6 +114,7 @@ namespace PersonalWebsite.Services
                                                           SeoTitle          = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
                                                           SeoTag            = this.FindMetadataAsText(document, "seo-tag"),
                                                           CardImageGeneric  = this.FindMetadataAsText(document, "card-image"),
+                                                          CardImageTwitter  = this.FindMetadataAsText(document, "card-image-twitter"),
                                                           GithubUrl         = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
                                                           OrderInSeries     = order++
                                                       };

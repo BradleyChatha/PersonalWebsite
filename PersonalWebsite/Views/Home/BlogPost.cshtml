@@ -66,6 +66,11 @@
     <meta property="article:modified_time"      content="@Model.CurrentPost.DateUpdated.ToString("o")"/>
     <meta property="article:author"             content="Bradley Chatha"/>
     <meta property="article:section"            content="Programming"/>
+
+    @if(Model.CurrentPost.CardImageTwitter != null)
+    {
+        <meta property="twitter:image" content="@Model.CurrentPost.CardImageTwitter" />
+    }
 }
 
 <section class="blog wrapper">
