@@ -42,14 +42,15 @@ namespace PersonalWebsite.Services
 
     public sealed class BlogPost
     {
-        public string Title { get; set; }
-        public string SeoTitle { get; set; }
-        public string SeoTag { get; set; }
-        public DateTimeOffset DateCreated { get; set; }
-        public DateTimeOffset DateUpdated { get; set; }
-        public string GeneratedHtml { get; set; }
-        public int OrderInSeries { get; set; }
-        public string GithubUrl { get; set; }
+        public string           Title               { get; set; }
+        public string           SeoTitle            { get; set; }
+        public string           SeoTag              { get; set; }
+        public DateTimeOffset   DateCreated         { get; set; }
+        public DateTimeOffset   DateUpdated         { get; set; }
+        public string           GeneratedHtml       { get; set; }
+        public int              OrderInSeries       { get; set; }
+        public string           GithubUrl           { get; set; }
+        public string           CardImageGeneric    { get; set; }
     }
 
     public interface IBlogProvider
@@ -105,14 +106,15 @@ namespace PersonalWebsite.Services
                                                       var document = Markdown.Parse(text, pipeline);
                                                       return new BlogPost 
                                                       {
-                                                          GeneratedHtml = Markdown.ToHtml(text, pipeline), // meh
-                                                          DateCreated   = this.FindRequiredMetadataAsDate(document, "date-created"),
-                                                          DateUpdated   = this.FindRequiredMetadataAsDate(document, "date-updated"),
-                                                          Title         = this.FindRequiredMetadataAsText(document, "title"),
-                                                          SeoTitle      = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
-                                                          SeoTag        = this.FindMetadataAsText(document, "seo-tag"),
-                                                          GithubUrl     = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
-                                                          OrderInSeries = order++
+                                                          GeneratedHtml     = Markdown.ToHtml(text, pipeline), // meh
+                                                          DateCreated       = this.FindRequiredMetadataAsDate(document, "date-created"),
+                                                          DateUpdated       = this.FindRequiredMetadataAsDate(document, "date-updated"),
+                                                          Title             = this.FindRequiredMetadataAsText(document, "title"),
+                                                          SeoTitle          = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
+                                                          SeoTag            = this.FindMetadataAsText(document, "seo-tag"),
+                                                          CardImageGeneric  = this.FindMetadataAsText(document, "card-image"),
+                                                          GithubUrl         = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
+                                                          OrderInSeries     = order++
                                                       };
                                                   }).ToList()
                                      };
