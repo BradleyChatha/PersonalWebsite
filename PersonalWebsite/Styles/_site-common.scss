@@ -18,6 +18,30 @@ a.no.style {
     text-decoration: none;
 }
 
+@mixin header-footer-link {
+    $TRANSITION_TIME: 0.1s;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: normal;
+    color: rgb(159, 190, 223);
+
+    transition: color ease-out $TRANSITION_TIME;
+
+    &:hover {
+        color: hsl(211, 59%, 84%);
+        transition: color ease-in $TRANSITION_TIME;
+    }
+
+    &.active {
+        font-weight: bold;
+    }
+}
+
 // Height calcs
 $HEADER_HEIGHT_PERCENT: 0.075; // Header is actually locked to 68PX, this is just here as a rough estimate for Main and Footer to scale from.
 $FOOTER_HEIGHT_PERCENT: 0.055;
@@ -109,27 +133,7 @@ body > header {
             }
 
             > a.item {
-                $TRANSITION_TIME: 0.1s;
-
-                display: flex;
-                flex-direction: column;
-
-                text-align: center;
-                text-decoration: none;
-                font-size: 20px;
-                font-weight: normal;
-                color: rgb(159, 190, 223);
-
-                transition: color ease-out $TRANSITION_TIME;
-
-                &:hover {
-                    color: hsl(211, 59%, 84%);
-                    transition: color ease-in $TRANSITION_TIME;
-                }
-
-                &.active {
-                    font-weight: bold;
-                }
+                @include header-footer-link()
             }
         }
     }
@@ -146,8 +150,7 @@ main {
 }
 
 footer {
-    $REMOVE_GUTTER_BREAKPOINT: 840px; // When to remove the gutter.
-    $MULTILINE_BREAKPOINT: 422px; // When to split things onto multiple lines.
+    $MULTILINE_BREAKPOINT: 600px; // When to split things onto multiple lines.
 
     display: flex;
     position: absolute;
@@ -159,8 +162,18 @@ footer {
     background-color: $HEADER_FOOTER_BACK_COLOUR;
     color: $HEADER_FOOTER_TEXT_COLOUR;
     
-    > address, > div.gutter, > div.social.medias {
+    > address, > div.social.medias, > div.links {
         width: calc(100% / 3);
+    }
+
+    > div.links {
+        display: flex;
+
+        > a {
+            @include header-footer-link();
+            align-self: center;
+            margin-left: 1em;
+        }
     }
 
     > address {
@@ -195,22 +208,11 @@ footer {
         }
     }
 
-    @media screen and (max-width: $REMOVE_GUTTER_BREAKPOINT) {
-        > div.gutter {
-            display: none;
-        }
-
-        > address, > div.social.medias {
-            width: 50%;
-            align-items: center;
-        }
-    }
-
     @media screen and(max-width: $MULTILINE_BREAKPOINT) {
         flex-wrap: wrap;
         > address {
             width: 100%;
-            padding-bottom: 0.5em;
+            padding-bottom: 1em;
         }
 
         > div.social.medias {
@@ -221,7 +223,24 @@ footer {
                 justify-content: center;
                 width: 33%;
                 padding: 0;
-                margin: 0 auto; 
+                margin: 0 auto;
+
+                &:first-of-type {
+                    justify-content: end;
+                }
+
+                &:last-of-type {
+                    justify-content: start;
+                }
+            }
+        }
+
+        > div.links {
+            width: 100%;
+            padding-bottom: 1em;
+
+            > a {
+                margin: 0 auto;
             }
         }
     }
