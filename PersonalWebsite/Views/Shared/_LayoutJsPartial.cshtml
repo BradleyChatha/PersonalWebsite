@@ -8,6 +8,15 @@
 
     <!-- Matomo -->
     <script type="text/javascript">
+        function currentScrollPercentage()
+        {
+            return (
+                (document.documentElement.scrollTop + document.body.scrollTop)
+              / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
+              * 100
+            );
+        }
+
         var _paq = window._paq || [];
         _paq.push(['disableCookies']);
         _paq.push(['trackPageView']);
@@ -20,6 +29,30 @@
             g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'mjs'; s.parentNode.insertBefore(g, s);
         })();
         window._paq = _paq;
+
+        const scrollGoals = [
+            [10,  false],
+            [20,  false],
+            [30,  false],
+            [40,  false],
+            [50,  false],
+            [60,  false],
+            [70,  false],
+            [80,  false],
+            [90,  false],
+            [100, false]
+        ];
+        window.addEventListener("scroll", function (e) {
+            const percentage = currentScrollPercentage();
+            for (let i = 0; i < scrollGoals.length; i++) {
+                const tuple = scrollGoals[i];
+
+                if (!tuple[1] && percentage >= tuple[0]) {
+                    tuple[1] = true;
+                    _paq.push(["trackEvent", "Generic", "Scroll", window.location.href.split('?')[0], tuple[0]]);
+                }
+            }
+        });
     </script>
     <!-- End Matomo Code -->
 </environment>
