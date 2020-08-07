@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    ViewData["NavItem"] = "Home";
+    ViewData["SeoDescription"] = "The privacy policy for my personal website";
+    ViewData["SeoCanonical"] = "privacy-policy";
+    ViewData["CssBundle"] = "index";
+}
+
+@section SchemaOrg {
+    <meta property="og:url" content="https://bradley.chatha.dev/privacy-policy" />
+    <meta property="og:title" content="Bradley Chatha's privacy policy for his personal website" />
+    <meta property="og:description" content="@ViewData["SeoDescription"]" />
+    <meta property="og:image" content="@WebConstants.DEFAULT_OG_IMAGE" />
+    <meta property="og:type" content="website" />
+}
+
+<section class="home about">
+    <h1>
+        <span>
+            Privacy Policy
+        </span>
+    </h1>
+    <div class="personal summary">
+        <div class="summary">
+            <h2>Introduction</h2>
+            <p>
+                This privacy policy details how; why, and how long this website stores data about your visit.
+            </p>
+
+            <h2>Analytics</h2>
+            <p>
+                This website makes use of a self-hosted instance of Matomo (https://matomo.org/), which is a privacy-focused
+                analytics platform.
+            </p>
+            <p>
+                The privacy-related configuration for this website's Matomo instance, as of 7th August 2020, is as follows:
+                <ul>
+                    <li>IP Addresses are only stored by their first byte, so the address (123.456.789.200) is stored as (123.0.0.0).</li>
+                    <li>Cookies are disabled, which means Matomo will treat you as an entirely new user for subsequent visits to this website.</li>
+                    <li>DNT (Do not track) is respected.</li>
+                </ul>
+            </p>
+            <p>
+                Furthermore, a non-exhaustive list of things Matomo tracks includes: The first byte of your IP address; your browser language;
+                your country (based off of your browser language, therefore inaccurate); your browser and its version; your OS and its version;
+                your device (desktop/mobile, brand, version, and screen size); any pages or links that you visit or click.
+            </p>
+
+            <h2>Why?</h2>
+            <p>
+                I (Bradley Chatha) would like to know how my website is being used; where the common "pain points" are; which devices/screen sizes
+                may be having issues, and simply knowing which pages are the most popular.
+            </p>
+            <p>
+                For example, if I notice people on larger screens stick around more when reading my blog yet people on smaller screens leave
+                faster, then that tells me I need to do more work on optimising the website for mobile viewing.
+            </p>
+
+            <h2>Sharing</h2>
+            <p>
+                All of this data is stored in a self-hosted Matomo instance, and no access is provided or shared to any third-parties.
+            </p>
+
+            <h2>How long?</h2>
+            <p>
+                As your data is sufficiently anonymised to the point where you cannot be identified, this data is stored indefinitely to allow
+                me to create long-term aggregations of data.
+            </p>
+
+            <h2>Your rights</h2>
+            <p>
+                Under GDPR you have the right to request access, correction, and deletion of your personal data.
+            </p>
+            <p>
+                However, since this website stores so little information such that it cannot be associated to any singular person, I cannot
+                perform any of these requests.
+            </p>
+
+            <h2>I have concerns...</h2>
+            <p>
+                If you have concerns on how this website handles its data collection, please use the contact information
+                provided in the footer of this website, detailing any concerns you may have.
+            </p>
+
+            <h2>Can I opt-out?</h2>
+            <p>
+                Yes. If you have your browser's DNT (Do not track) setting turned on, then Matomo will respect this setting. You can also
+                disable javascript for this website to disable any client-side tracking, although certain parts of this website may not 
+                render correctly, if at all.
+            </p>
+
+            <h2>Server-side tracking</h2>
+            <p>
+                Certain actions you take are recorded using server-side tracking, as opposed to client-side tracking.
+                Any data tracked by the server contains no data (device, ip, etc.) about you except the action that triggered the data collection.
+            </p>
+            <p>
+                The following actions are tracked via server-side tracking:
+                <ul>
+                    <li>HTTP 404 (Page not found) errors, as well as the URL that caused the error.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</section>

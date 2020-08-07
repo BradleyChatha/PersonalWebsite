@@ -29,6 +29,12 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
+        [Route("/privacy-policy")]
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
         [Route("/jcli-d-cli-framework")]
         public IActionResult ProjectJcli()
         {
