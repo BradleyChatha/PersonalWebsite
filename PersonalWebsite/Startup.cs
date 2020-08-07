@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalWebsite.Constants;
 using PersonalWebsite.Middleware;
 using PersonalWebsite.Services;
 
@@ -36,6 +37,12 @@ namespace PersonalWebsite
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Http clients
+            services.AddHttpClient(MatomoConstants.CLIENT_NAME, c => 
+            {
+                c.BaseAddress = new Uri(MatomoConstants.TRACKER_URL);
+            });
+
             // HSTS
             services.AddHsts(o =>
             {
@@ -57,6 +64,7 @@ namespace PersonalWebsite
                 p.Add(new StaticSitemapProvider($"{root}/Blog",                 SitemapFrequency.Weekly,  0.7f));
                 p.Add(new StaticSitemapProvider($"{root}/Projects",             SitemapFrequency.Monthly, 0.7f));
                 p.Add(new StaticSitemapProvider($"{root}/jcli-d-cli-framework", SitemapFrequency.Monthly, 0.8f));
+                p.Add(new StaticSitemapProvider($"{root}/privacy-policy",       SitemapFrequency.Yearly,  0.1f));
                 p.Add(new ServicedSitemapProvider<BlogSitemapProvider>());
             }); 
 
@@ -100,9 +108,9 @@ namespace PersonalWebsite
                     c.ExactRewrite.Add($"/Home/Blog?post=JsonSerialiser{(i == 0 ? i + 1 : i)}", $"/BlogPost/JsonSerialiser/{i}");
                 }
                 c.ExactRewrite.Add("/Home/Blog?post=JsonSerialiser1_1", "/BlogPost/JsonSerialiser/1");
-                c.ExactRewrite.Add("/Blog/JsonSerialiser/1", "/BlogPost/JsonSerialiser/1"); // No clue where this is coming from, but it exists.
-                c.ExactRewrite.Add("/Home/Blog", "/Blog");
-                c.ExactRewrite.Add("/Home/Awards", "/Awards");
+                c.ExactRewrite.Add("/Blog/JsonSerialiser/1",            "/BlogPost/JsonSerialiser/1"); // No clue where this is coming from, but it exists.
+                c.ExactRewrite.Add("/Home/Blog",                        "/Blog");
+                c.ExactRewrite.Add("/Home/Awards",                      "/Awards");
             });
             app.UseStaticFiles(new StaticFileOptions
             {
