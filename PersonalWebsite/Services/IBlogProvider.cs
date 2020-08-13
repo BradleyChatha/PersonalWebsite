@@ -115,7 +115,7 @@ namespace PersonalWebsite.Services
                                                           SeoTag            = this.FindMetadataAsText(document, "seo-tag"),
                                                           CardImageGeneric  = this.FindMetadataAsText(document, "card-image"),
                                                           CardImageTwitter  = this.FindMetadataAsText(document, "card-image-twitter"),
-                                                          GithubUrl         = $"https://github.com/SealabJaster/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
+                                                          GithubUrl         = $"https://github.com/BradleyChatha/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
                                                           OrderInSeries     = order++
                                                       };
                                                   }).ToList()
