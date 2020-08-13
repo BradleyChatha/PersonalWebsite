@@ -32,13 +32,13 @@ jobs:
       run: echo "::set-output name=short_ref::$(echo $GITHUB_REF | cut -d/ -f3)"
          
     - name: Docker login
-      run: docker login -u SealabJaster -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+      run: docker login -u BradleyChatha -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/bradleychatha/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
     - name: Publish the Docker image
-      run: docker push docker.pkg.github.com/sealabjaster/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
+      run: docker push docker.pkg.github.com/bradleychatha/personalwebsite/deployment:${{ steps.vars.outputs.short_ref }}
       
     - uses: chrnorm/deployment-action@releases/v1
       if: always()
