@@ -12,6 +12,9 @@ namespace PersonalWebsite.Constants
 
         public static string FilePathToUrl(string filePath)
         {
+            if(filePath == null)
+                return null;
+
             if(filePath.Length == 0)
                 return WEBSITE_URL;
                
