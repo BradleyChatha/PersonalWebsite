@@ -16,15 +16,22 @@ namespace PersonalWebsite.Services
         public BlogSeries Series { get; set; }
         public IList<BlogPost> Posts { get; set; }
 
+        // "SEO V1" is where the post's URL has the series' tags appended to it.
+        // I'm pretty sure though that this is triggering the keyword stuffing in Google, so from now on we'll just not do that.
+        public bool UsesSeoV1 => this.Posts.Any(p => p.DateCreated < new DateTimeOffset(2020, 10, 16, 0, 0, 0, TimeSpan.Zero));
+
         public Uri GetPostSeoPath(int postIndex)
         {
             var post   = this.Posts[postIndex];
-            var values = new string[]
+            var values = new List<string>()
             {
                 Convert.ToString(post.OrderInSeries),
-                post.SeoTag,
-                this.Series.Tags.Aggregate((a,b) => a+'-'+b)
+                post.SeoTag
             };
+
+            if(this.UsesSeoV1)
+                values.Add(this.Series.Tags.Aggregate((a,b) => a+'-'+b));
+
             return new Uri($"{this.Series.Reference}/{values.Aggregate((a,b) => a+'-'+b)}", UriKind.Relative);
         }
 
