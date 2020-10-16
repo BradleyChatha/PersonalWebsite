@@ -18,7 +18,7 @@ namespace PersonalWebsite.Services
 
         // "SEO V1" is where the post's URL has the series' tags appended to it.
         // I'm pretty sure though that this is triggering the keyword stuffing in Google, so from now on we'll just not do that.
-        public bool UsesSeoV1 => this.Posts.Any(p => p.DateCreated < new DateTimeOffset(2020, 10, 16, 0, 0, 0, TimeSpan.Zero));
+        public bool UsesSeoV1 => this.Posts.Any(p => p?.DateCreated < new DateTimeOffset(2020, 10, 16, 0, 0, 0, TimeSpan.Zero));
 
         public Uri GetPostSeoPath(int postIndex)
         {
