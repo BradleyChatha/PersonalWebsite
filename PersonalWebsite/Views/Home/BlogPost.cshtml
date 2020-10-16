@@ -148,4 +148,24 @@
             </a>
         </div>
     </article>
+    <menu class="blog navigation @tabClass tab">
+        @if (Model.LastPost != null)
+        {
+            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(0)">
+                <h2>Previous</h2>
+                <span title="@Model.LastPost.Title">@Model.LastPost.Title</span>
+            </a>
+        }
+        <a class="active tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(1)">
+            <h2>Current</h2>
+            <span title="@Model.CurrentPost.Title">@Model.CurrentPost.Title</span>
+        </a>
+        @if (Model.NextPost != null)
+        {
+            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(2)">
+                <h2>Next</h2>
+                <span title="@Model.NextPost.Title">@Model.NextPost.Title</span>
+            </a>
+        }
+    </menu>
 </section>

@@ -176,6 +176,10 @@ menu.blog.navigation {
     margin-bottom: 0;
     align-self: center;
 
+    &:last-of-type {
+        margin-bottom: 1em;
+    }
+
     @media screen and (max-width: $MULTILINE_BREAKPOINT) {
         flex-wrap: wrap;
     }
