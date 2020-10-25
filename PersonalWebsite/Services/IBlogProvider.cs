@@ -207,6 +207,10 @@ namespace PersonalWebsite.Services
 
         public BlogSeriesAndPosts GetBlogPostFromSeoUrlOrNull(string url, out int index)
         {
+            // /some/blog/         -> /some/blog
+            // /some/blog?tracking -> /some/blog
+            url = url.TrimEnd('/').Split('?').First();
+
             bool exists = this.GetSeoUrlMetadata().TryGetValue(url, out BlogPostInfo info);
 
             index = (exists) ? info.Index : -1;
