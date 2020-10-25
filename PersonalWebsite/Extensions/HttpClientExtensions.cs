@@ -10,7 +10,7 @@ namespace PersonalWebsite.Extensions
 {
     public static class HttpClientExtensions
     {
-        public static async void PostMatomoEventAsync(
+        public static async Task PostMatomoEventAsync(
             this HttpClient client,
             string category,
             string action,
