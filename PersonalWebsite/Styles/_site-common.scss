@@ -19,7 +19,7 @@ a.no.style {
 }
 
 @mixin header-footer-link {
-    $TRANSITION_TIME: 0.1s;
+    $TRANSITION_TIME: 0.05s;
 
     display: flex;
     flex-direction: column;
