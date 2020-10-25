@@ -67,11 +67,11 @@
             <article>
                 <h2>@series.Series.Name</h2>
                 <small>
-                    Created on @series.Posts.First().DateCreated.ToString(DATE_FORMAT)
+                    Created <i>@series.Posts.First().DateCreated.ToString(DATE_FORMAT)</i>
                     |
-                    Updated on @series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)
+                    Updated <i>@series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)</i>
                 </small>
-                <small>Status: @series.Series.Status</small>
+                <small>Status: <i>@series.Series.Status</i></small>
                 <p>@series.Series.Description</p>
 
                 @if(series.Series.IsSingleSeries)

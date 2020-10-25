@@ -32,18 +32,16 @@ section.series {
         }
 
         > article {
-            > h1 {
+            > h2 {
                 font-size: 28px;
-            }
-
-            > small {
-                font-style: italic;
+                margin-bottom: 0.5em;
             }
 
             > div.single {
                 margin-bottom: 1em;
                 a {
                     text-decoration: none;
+                    font-size: 18px;
                     color: #ebf0ff;
                     background-color: #216591;
                     border-radius: 24px;
@@ -54,6 +52,10 @@ section.series {
                         background-color: #214d91;
                     }
                 }
+            }
+
+            ol {
+                margin-top: 0;
             }
 
             display: flex;
