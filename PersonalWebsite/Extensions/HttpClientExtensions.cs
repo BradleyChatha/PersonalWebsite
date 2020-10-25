@@ -10,14 +10,14 @@ namespace PersonalWebsite.Extensions
 {
     public static class HttpClientExtensions
     {
-        public static Task PostMatomoEventAsync(
+        public static async void PostMatomoEventAsync(
             this HttpClient client,
             string category,
             string action,
             string name = null
         )
         {
-            var request = new HttpRequestMessage(
+            using var request = new HttpRequestMessage(
                 HttpMethod.Post,
                 new Uri($"mphp" +
                         $"?idsite={MatomoConstants.SITE_ID}" +
@@ -32,7 +32,11 @@ namespace PersonalWebsite.Extensions
                 )
             );
 
-            return client.SendAsync(request);
+            try
+            {
+                await client.SendAsync(request);
+            }
+            catch (HttpRequestException) { }
         }
     }
 }
