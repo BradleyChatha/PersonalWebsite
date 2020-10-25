@@ -227,6 +227,9 @@ namespace PersonalWebsite.Services
                         if (post.SeoUrl == null)
                             continue;
 
+                        if(this._infoBySeoUrl.ContainsKey(post.SeoUrl))
+                            throw new InvalidOperationException($"Duplicate SeoUrl: {post.SeoUrl}");
+
                         this._infoBySeoUrl[post.SeoUrl] = new BlogPostInfo
                         {
                             Index = i,
