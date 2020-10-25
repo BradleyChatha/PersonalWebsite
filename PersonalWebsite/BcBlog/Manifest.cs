@@ -119,6 +119,14 @@ namespace PersonalWebsite.BcBlog
                             series.Status = status;
                             break;
 
+                        case "single":
+                            if(series.Name == null || series.Description == null)
+                                throw new Exception("[single] must come after [name] and [description]");
+
+                            series.Reference = $"_s{(series.Name + series.Description).GetHashCode()}";
+                            series.IsSingleSeries = true;
+                            break;
+
                         case "tags":
                             while(true)
                             {
@@ -167,6 +175,7 @@ namespace PersonalWebsite.BcBlog
         public ICollection<string> PostFilePaths { get; set; }
         public ICollection<string> Tags { get; set; }
         public string Status { get; set; }
+        public bool IsSingleSeries { get; set; } // Will only ever contain a single blog post.
 
         public BlogSeries()
         {

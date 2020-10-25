@@ -70,7 +70,7 @@ namespace PersonalWebsite.Controllers
         {
             var series = blogs.GetBlogSeries().FirstOrDefault(s => s.Series.Reference == seriesRef);
             if(series == null)
-                return Redirect("Blog");
+                return Redirect("/Blog");
 
             BlogPost lastBlog    = null;
             BlogPost currentBlog = null;
