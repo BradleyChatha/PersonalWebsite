@@ -23,13 +23,21 @@ namespace PersonalWebsite.Middleware
         {
             await this._next(httpContext);
 
-            if(httpContext.Response.StatusCode == 404)
+            using var client = clientFactory.CreateClient(MatomoConstants.CLIENT_NAME);
+
+            if (httpContext.Response.StatusCode == 404)
             {
-                using var client = clientFactory.CreateClient(MatomoConstants.CLIENT_NAME);
                 await client.PostMatomoEventAsync("Error", "404", httpContext.Request.Path);
 
                 httpContext.Request.Path = "/";
                 await this._next(httpContext);
+            }
+            else
+            {
+                // Thinking about playing around with Kubernetes soon, might use this as the test project, so knowing the node will help.
+                //
+                // If this adds too much overhead to initial page loads, then it might have to go though.
+                await client.PostMatomoEventAsync(Environment.MachineName, "Served", httpContext.Request.Path);
             }
         }
     }
