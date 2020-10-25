@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PersonalWebsite.Constants;
+using PersonalWebsite.Extensions;
 
 namespace PersonalWebsite.Middleware
 {
@@ -25,22 +26,7 @@ namespace PersonalWebsite.Middleware
             if(httpContext.Response.StatusCode == 404)
             {
                 using var client = clientFactory.CreateClient(MatomoConstants.CLIENT_NAME);
-                var request = new HttpRequestMessage(
-                    HttpMethod.Post,
-                    new Uri($"mphp"                                 +
-                            $"?idsite={MatomoConstants.SITE_ID}"    +
-                            $"&rec=1"                               +
-                            $"&uid=SERVER"                          +
-                            $"&_id=0123456789ABCDEF"                +
-                            $"&cid=0123456789ABCDEF"                +
-                            $"&e_c=Error"                           +
-                            $"&e_a=404"                             +
-                            $"&e_n={httpContext.Request.Path}", 
-                            UriKind.Relative
-                    )
-                );
-
-                await client.SendAsync(request);
+                await client.PostMatomoEventAsync(httpContext, "Error", "404");
 
                 httpContext.Request.Path = "/";
                 await this._next(httpContext);
