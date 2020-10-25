@@ -51,13 +51,13 @@
         Series = Model.Series,
         Posts  = new[] { Model.LastPost, Model.CurrentPost, Model.NextPost }
     };
-    ViewData["SeoCanonical"] = $"BlogPost/{seoAccessor.GetPostSeoPath(1)}";
+    ViewData["SeoCanonical"] = $"{seoAccessor.GetPostSeoPath(1)}";
 
     string DATE_FORMAT = "dd/MM/yyyy";
 }
 
 @section SchemaOrg {
-    <meta property="og:url"                     content="https://bradley.chatha.dev/BlogPost/@seoAccessor.GetPostSeoPath(1)"/>
+    <meta property="og:url"                     content="https://bradley.chatha.dev/@seoAccessor.GetPostSeoPath(1)"/>
     <meta property="og:title"                   content="@Model.CurrentPost.Title"/>
     <meta property="og:description"             content="@ViewData["SeoDescription"]"/>
     <meta property="og:image"                   content="@(WebConstants.FilePathToUrl(Model.CurrentPost.CardImageGeneric) ?? WebConstants.DEFAULT_OG_IMAGE)"/>
@@ -77,18 +77,18 @@
     <menu class="blog navigation @tabClass tab">
         @if (Model.LastPost != null)
         {
-            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(0)">
+            <a class="tab" href="/@seoAccessor.GetPostSeoPath(0)">
                 <h2>Previous</h2>
                 <span title="@Model.LastPost.Title">@Model.LastPost.Title</span>
             </a>
         }
-        <a class="active tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(1)">
+        <a class="active tab" href="/@seoAccessor.GetPostSeoPath(1)">
             <h2>Current</h2>
             <span title="@Model.CurrentPost.Title">@Model.CurrentPost.Title</span>
         </a>
         @if (Model.NextPost != null)
         {
-            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(2)">
+            <a class="tab" href="/@seoAccessor.GetPostSeoPath(2)">
                 <h2>Next</h2>
                 <span title="@Model.NextPost.Title">@Model.NextPost.Title</span>
             </a>
@@ -100,7 +100,7 @@
             Created on @Model.CurrentPost.DateCreated.ToString(DATE_FORMAT) | Updated on @Model.CurrentPost.DateUpdated.ToString(DATE_FORMAT)
         </div>
         <div class="centered metadata">
-            @{ var shareUrl = Html.Encode($"https://bradley.chatha.dev/BlogPost/{seoAccessor.GetPostSeoPath(1)}"); }
+            @{ var shareUrl = Html.Encode($"https://bradley.chatha.dev/{seoAccessor.GetPostSeoPath(1)}"); }
             <a class="social twitter no style"
                href="https://twitter.com/intent/tweet?text=@shareUrl"
                target="_blank">
@@ -151,18 +151,18 @@
     <menu class="blog navigation @tabClass tab">
         @if (Model.LastPost != null)
         {
-            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(0)">
+            <a class="tab" href="/@seoAccessor.GetPostSeoPath(0)">
                 <h2>Previous</h2>
                 <span title="@Model.LastPost.Title">@Model.LastPost.Title</span>
             </a>
         }
-        <a class="active tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(1)">
+        <a class="active tab" href="/@seoAccessor.GetPostSeoPath(1)">
             <h2>Current</h2>
             <span title="@Model.CurrentPost.Title">@Model.CurrentPost.Title</span>
         </a>
         @if (Model.NextPost != null)
         {
-            <a class="tab" href="/BlogPost/@seoAccessor.GetPostSeoPath(2)">
+            <a class="tab" href="/@seoAccessor.GetPostSeoPath(2)">
                 <h2>Next</h2>
                 <span title="@Model.NextPost.Title">@Model.NextPost.Title</span>
             </a>

@@ -112,6 +112,7 @@ namespace PersonalWebsite
                 c.ExactRewrite.Add("/Home/Blog",                        "/Blog");
                 c.ExactRewrite.Add("/Home/Awards",                      "/Awards");
             });
+            app.UseBlogRouterMiddleware();
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx => 

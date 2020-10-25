@@ -639,7 +639,7 @@ Via the power of UDAs we can now customise to a basic extent the way our seriali
 One of the downsides of course is that our single-function `serialise` and
 `deserialise` functions are becoming very unweidly and will continue to do so
 as more and more UDAs are added (e.g. via the excercises below), so I encourage you to
-experiment with [a different way](/Blog/JsonSerialiser/1)
+experiment with [a different way](/BlogPost/JsonSerialiser/1)
 of organising these two functions, or just a better way to organise the entire project as a whole.
 
 There will likely be a large gap in time between this post and the next (which may or may not be the last of

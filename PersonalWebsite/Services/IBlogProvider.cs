@@ -13,12 +13,19 @@ namespace PersonalWebsite.Services
 {
     public sealed class BlogSeriesAndPosts
     {
+        private struct BlogPostInfo
+        {
+            public int Index;
+        }
+
+        private IDictionary<string, BlogPostInfo> _infoBySeoUrl { get; set; }
+
         public BlogSeries Series { get; set; }
         public IList<BlogPost> Posts { get; set; }
-
         // "SEO V1" is where the post's URL has the series' tags appended to it.
         // I'm pretty sure though that this is triggering the keyword stuffing in Google, so from now on we'll just not do that.
         public bool UsesSeoV1 => this.Posts.Any(p => p?.DateCreated < new DateTimeOffset(2020, 10, 16, 0, 0, 0, TimeSpan.Zero));
+        public bool UsesSeoV2 => !UsesSeoV1;
 
         public Uri GetPostSeoPath(int postIndex)
         {
@@ -32,7 +39,11 @@ namespace PersonalWebsite.Services
             if(this.UsesSeoV1)
                 values.Add(this.Series.Tags.Aggregate((a,b) => a+'-'+b));
 
-            return new Uri($"{this.Series.Reference}/{values.Aggregate((a,b) => a+'-'+b)}", UriKind.Relative);
+            // SEO V2 allows posts to specify their own canonical URL.
+            if(this.UsesSeoV2 && post.SeoUrl != null)
+                return new Uri(post.SeoUrl.TrimStart('/'), UriKind.Relative);
+            else
+                return new Uri($"BlogPost/{this.Series.Reference}/{values.Aggregate((a,b) => a+'-'+b)}", UriKind.Relative);
         }
 
         public Uri GetPostSeoPath(BlogPost p)
@@ -44,6 +55,28 @@ namespace PersonalWebsite.Services
             }
 
             throw new KeyNotFoundException();
+        }
+
+        public int? GetPostIndexBySeoUrl(string seoUrl)
+        {
+            if(this._infoBySeoUrl == null)
+            {
+                this._infoBySeoUrl = new Dictionary<string, BlogPostInfo>();
+
+                for(int i = 0; i < this.Posts.Count; i++)
+                {
+                    var post = this.Posts[i];
+                    if(post.SeoUrl == null)
+                        continue;
+
+                    this._infoBySeoUrl[post.SeoUrl] = new BlogPostInfo 
+                    {
+                        Index = i
+                    };
+                }
+            }
+
+            return (this._infoBySeoUrl.ContainsKey(seoUrl)) ? this._infoBySeoUrl[seoUrl].Index : default(int?);
         }
     }
 
@@ -59,11 +92,13 @@ namespace PersonalWebsite.Services
         public string           GithubUrl           { get; set; }
         public string           CardImageGeneric    { get; set; }
         public string           CardImageTwitter    { get; set; }
+        public string           SeoUrl              { get; set; }
     }
 
     public interface IBlogProvider
     {
         IEnumerable<BlogSeriesAndPosts> GetBlogSeries();
+        BlogSeriesAndPosts GetBlogPostFromSeoUrlOrNull(string url, out int index);
     }
 
     public class CachingBlogProvider : IBlogProvider
@@ -120,6 +155,7 @@ namespace PersonalWebsite.Services
                                                           Title             = this.FindRequiredMetadataAsText(document, "title"),
                                                           SeoTitle          = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
                                                           SeoTag            = this.FindMetadataAsText(document, "seo-tag"),
+                                                          SeoUrl            = this.FindMetadataAsText(document, "seo-url"),
                                                           CardImageGeneric  = this.FindMetadataAsText(document, "card-image"),
                                                           CardImageTwitter  = this.FindMetadataAsText(document, "card-image-twitter"),
                                                           GithubUrl         = $"https://github.com/BradleyChatha/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",
@@ -189,6 +225,22 @@ namespace PersonalWebsite.Services
                 throw new InvalidDataException($"The blog post is missing all of the following potential keys: {keys}");
 
             return text;
+        }
+
+        public BlogSeriesAndPosts GetBlogPostFromSeoUrlOrNull(string url, out int index)
+        {
+            foreach(var series in this.GetBlogSeries())
+            {
+                var postIndex = series.GetPostIndexBySeoUrl(url);
+                if(postIndex == null)
+                    continue;
+
+                index = postIndex.Value;
+                return series;
+            }
+
+            index = -1;
+            return null;
         }
     }
 }
