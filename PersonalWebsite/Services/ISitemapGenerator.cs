@@ -143,19 +143,28 @@ namespace PersonalWebsite.Services
         {
             return this._blogs
                        .GetBlogSeries()
-                       .Select(s => s.Posts
-                                     .Select(b => new SitemapContent
-                                     {
-                                         Loc        = $"https://bradley.chatha.dev/BlogPost/{s.GetPostSeoPath(b)}",
-                                         ChangeFreq = SitemapFrequency.Monthly,
-                                         Priority   = 0.7f
-                                     })
-                                     .Concat(new[] { new SitemapContent
-                                     {
-                                         Loc        = $"https://bradley.chatha.dev/Blog/{s.Series.Reference}",
-                                         ChangeFreq = SitemapFrequency.Weekly,
-                                         Priority   = 0.8f
-                                     }})
+                       .Select(s => 
+                       { 
+                           var entries = s.Posts
+                                          .Select(b => new SitemapContent
+                                          {
+                                              Loc        = $"https://bradley.chatha.dev/BlogPost/{s.GetPostSeoPath(b)}",
+                                              ChangeFreq = SitemapFrequency.Monthly,
+                                              Priority   = 0.7f
+                                          }).ToList();
+                            
+                           if(!s.Series.IsSingleSeries)
+                           {
+                               entries.Add(new SitemapContent
+                               {
+                                   Loc = $"https://bradley.chatha.dev/Blog/{s.Series.Reference}",
+                                   ChangeFreq = SitemapFrequency.Weekly,
+                                   Priority = 0.8f
+                               });
+                           }
+
+                           return entries;
+                        }
                        )
                        .SelectMany(c => c);
         }
