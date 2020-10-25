@@ -11,10 +11,10 @@ namespace PersonalWebsite.Extensions
     public static class HttpClientExtensions
     {
         public static Task PostMatomoEventAsync(
-            this HttpClient client, 
-            HttpContext context,
+            this HttpClient client,
             string category,
-            string action
+            string action,
+            string name = null
         )
         {
             var request = new HttpRequestMessage(
@@ -27,7 +27,7 @@ namespace PersonalWebsite.Extensions
                         $"&cid=0123456789ABCDEF" +
                         $"&e_c={category}" +
                         $"&e_a={action}" +
-                        $"&e_n={context.Request.Path}",
+                        $"{(name != null ? "&e_n="+name : null)}",
                         UriKind.Relative
                 )
             );

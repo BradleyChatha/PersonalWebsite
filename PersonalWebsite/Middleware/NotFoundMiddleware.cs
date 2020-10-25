@@ -26,7 +26,7 @@ namespace PersonalWebsite.Middleware
             if(httpContext.Response.StatusCode == 404)
             {
                 using var client = clientFactory.CreateClient(MatomoConstants.CLIENT_NAME);
-                await client.PostMatomoEventAsync(httpContext, "Error", "404");
+                await client.PostMatomoEventAsync("Error", "404", httpContext.Request.Path);
 
                 httpContext.Request.Path = "/";
                 await this._next(httpContext);
