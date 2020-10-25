@@ -13,18 +13,11 @@ namespace PersonalWebsite.Services
 {
     public sealed class BlogSeriesAndPosts
     {
-        private struct BlogPostInfo
-        {
-            public int Index;
-        }
-
-        private IDictionary<string, BlogPostInfo> _infoBySeoUrl { get; set; }
-
         public BlogSeries Series { get; set; }
         public IList<BlogPost> Posts { get; set; }
         // "SEO V1" is where the post's URL has the series' tags appended to it.
         // I'm pretty sure though that this is triggering the keyword stuffing in Google, so from now on we'll just not do that.
-        public bool UsesSeoV1 => this.Posts.Any(p => p?.DateCreated < new DateTimeOffset(2020, 10, 16, 0, 0, 0, TimeSpan.Zero));
+        public bool UsesSeoV1 => this.Posts.Any(p => p?.DateCreated < new DateTimeOffset(2019, 10, 16, 0, 0, 0, TimeSpan.Zero));
         public bool UsesSeoV2 => !UsesSeoV1;
 
         public Uri GetPostSeoPath(int postIndex)
@@ -56,28 +49,6 @@ namespace PersonalWebsite.Services
 
             throw new KeyNotFoundException();
         }
-
-        public int? GetPostIndexBySeoUrl(string seoUrl)
-        {
-            if(this._infoBySeoUrl == null)
-            {
-                this._infoBySeoUrl = new Dictionary<string, BlogPostInfo>();
-
-                for(int i = 0; i < this.Posts.Count; i++)
-                {
-                    var post = this.Posts[i];
-                    if(post.SeoUrl == null)
-                        continue;
-
-                    this._infoBySeoUrl[post.SeoUrl] = new BlogPostInfo 
-                    {
-                        Index = i
-                    };
-                }
-            }
-
-            return (this._infoBySeoUrl.ContainsKey(seoUrl)) ? this._infoBySeoUrl[seoUrl].Index : default(int?);
-        }
     }
 
     public sealed class BlogPost
@@ -103,8 +74,15 @@ namespace PersonalWebsite.Services
 
     public class CachingBlogProvider : IBlogProvider
     {
-        readonly IWebHostEnvironment _environment;
-        IEnumerable<BlogSeriesAndPosts> _seriesCache;
+        struct BlogPostInfo
+        {
+            public BlogSeriesAndPosts SeriesAndPosts;
+            public int Index;
+        }
+
+        readonly IWebHostEnvironment      _environment;
+        IEnumerable<BlogSeriesAndPosts>   _seriesCache;
+        IDictionary<string, BlogPostInfo> _infoBySeoUrl { get; set; }
 
         public CachingBlogProvider(IWebHostEnvironment environment)
         {
@@ -229,18 +207,36 @@ namespace PersonalWebsite.Services
 
         public BlogSeriesAndPosts GetBlogPostFromSeoUrlOrNull(string url, out int index)
         {
-            foreach(var series in this.GetBlogSeries())
-            {
-                var postIndex = series.GetPostIndexBySeoUrl(url);
-                if(postIndex == null)
-                    continue;
+            bool exists = this.GetSeoUrlMetadata().TryGetValue(url, out BlogPostInfo info);
 
-                index = postIndex.Value;
-                return series;
+            index = (exists) ? info.Index : -1;
+            return info.SeriesAndPosts;
+        }
+
+        IDictionary<string, BlogPostInfo> GetSeoUrlMetadata()
+        {
+            if(this._infoBySeoUrl == null)
+            {
+                this._infoBySeoUrl = new Dictionary<string, BlogPostInfo>();
+
+                foreach(var series in this.GetBlogSeries())
+                {
+                    for (int i = 0; i < series.Posts.Count; i++)
+                    {
+                        var post = series.Posts[i];
+                        if (post.SeoUrl == null)
+                            continue;
+
+                        this._infoBySeoUrl[post.SeoUrl] = new BlogPostInfo
+                        {
+                            Index = i,
+                            SeriesAndPosts = series
+                        };
+                    }
+                }
             }
 
-            index = -1;
-            return null;
+            return this._infoBySeoUrl;
         }
     }
 }
