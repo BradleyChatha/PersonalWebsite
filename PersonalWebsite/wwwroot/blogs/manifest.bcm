@@ -37,14 +37,5 @@
 	[post "/blogs/JcliNews/v0.7.0.md"]
 	[post "/blogs/JcliNews/v0.8.0.md"]
 	[post "/blogs/JcliNews/v0.9.0.md"]
-}
-
-@series
-{
-	[name "t"]
-	[description "t"]
-	[single]
-	[tags "t"]
-	[status "t"]
-	[post "/blogs/Single/test.md"]
+	[post "/blogs/JcliNews/v0.10.0.md"]
 }
