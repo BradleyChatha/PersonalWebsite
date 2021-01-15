@@ -148,7 +148,7 @@ namespace PersonalWebsite.Services
                            var entries = s.Posts
                                           .Select(b => new SitemapContent
                                           {
-                                              Loc        = $"https://bradley.chatha.dev/BlogPost/{s.GetPostSeoPath(b)}",
+                                              Loc        = $"https://bradley.chatha.dev/{s.GetPostSeoPath(b)}",
                                               ChangeFreq = SitemapFrequency.Monthly,
                                               Priority   = 0.7f
                                           }).ToList();
