@@ -134,8 +134,14 @@ article.blog {
         margin-top: 0;
         padding-top: $TOC_VERTICAL_MARGIN;
         padding-bottom: $TOC_VERTICAL_MARGIN;
+        padding-right: 1em;
         max-width: 50%;
         border-radius: 40px;
+
+        @media screen and (max-width: $REMOVE_LIST_LEFT_PADDING_BREAKPOINT) {
+            padding-left: 40px;
+            max-width: 75%;
+        }
 
         ol {
             margin-bottom: 0em;
@@ -185,7 +191,7 @@ article.blog {
         margin-bottom: $GENERIC_MARGIN_BOTTOM;
 
         @media screen and (max-width: $REMOVE_LIST_LEFT_PADDING_BREAKPOINT) {
-            padding-left: 0;
+            padding-left: 10px;
         }
     }
 
