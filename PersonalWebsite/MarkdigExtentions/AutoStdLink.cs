@@ -48,6 +48,12 @@ namespace PersonalWebsite.MarkdigExtentions
             pipeline.Extensions.AddIfNotAlready<BlogMetadata>();
             return pipeline;
         }
+
+        public static MarkdownPipelineBuilder UseTableOfContents(this MarkdownPipelineBuilder pipeline)
+        {
+            pipeline.Extensions.AddIfNotAlready<TableOfContents>();
+            return pipeline;
+        }
     }
 
     public class AutoStdLinkParser : InlineParser

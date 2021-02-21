@@ -1,4 +1,4 @@
-@use "_sass-common.scss"as common;
+@use "_sass-common.scss" as common;
 
 section.blog.wrapper {
     @include common.fluid-centered-flex-column;
@@ -126,6 +126,30 @@ article.blog {
         }
     }
 
+    ol.table.of.contents {
+        $TOC_VERTICAL_MARGIN: 1rem;
+
+        background-color: #f2f2f2;
+        margin-bottom: $GENERIC_MARGIN_BOTTOM;
+        margin-top: 0;
+        padding-top: $TOC_VERTICAL_MARGIN;
+        padding-bottom: $TOC_VERTICAL_MARGIN;
+        max-width: 50%;
+        border-radius: 40px;
+
+        ol {
+            margin-bottom: 0em;
+        }
+
+        ol.level._1 {
+            padding-left: 1rem;
+        }
+    }
+
+    .metadata + .table.of.contents {
+        margin-top: 1rem;
+    }
+
     h2 {
         font-size: 32px;
         margin-bottom: $GENERIC_MARGIN_BOTTOM;
@@ -151,8 +175,6 @@ article.blog {
             margin-bottom: 0;
             margin-top: 0;
         }
-
-        margin-bottom: $GENERIC_MARGIN_BOTTOM / 2;
 
         &:last-of-type {
             margin-bottom: 0; // Don't add onto the final overall margin

@@ -104,6 +104,7 @@ namespace PersonalWebsite.Services
                               .UseAutoIdentifiers()
                               .UseBlogMetadata()
                               .UseEmphasisExtras()
+                              .UseTableOfContents()
                               .Build();
 
             this._seriesCache = 
