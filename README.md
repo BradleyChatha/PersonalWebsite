@@ -41,6 +41,8 @@ I noticed that it was pretty much just Markdown with a worse syntax, which spear
 My CSS consists *entirely* of custom [SASS](https://sass-lang.com/), to showcase my [ability](https://github.com/SealabJaster/PersonalWebsite/tree/master/PersonalWebsite/Styles) to create responsive,
 mobile-friendly websites without the use of existing frameworks such as Boostrap or Semantic UI.
 
+**I use Matomo now instead of Prometheus, Grafana, and InfluxDb, but I'm leaving them here because pretty images**
+
 I am making use of [Prometheus](https://prometheus.io/) to store non-persistant time series data (such as process memory usage; total HTTP requests since last restart, etc.), whereas I'm using [InfluxDb](https://www.influxdata.com/) to store persistant time series data, such as blog post views and where they were referred from.
 
 I am using [Grafana]() to visualise my data ![image](https://i.imgur.com/hkEZ842.png)

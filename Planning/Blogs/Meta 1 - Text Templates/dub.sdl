@@ -1,0 +1,5 @@
+name "meta1"
+description "A minimal D application."
+authors "Sealab"
+copyright "Copyright © 2021, Sealab"
+license "proprietary"

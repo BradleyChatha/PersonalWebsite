@@ -25,8 +25,8 @@
 {
     [reference      "MetaprogrammingInD"]
     [name           "Metaprogramming in D"]
-    [description    "D boasts one of the strongest, flexible array of metaprogramming features amongst most existing languages,"
-					"which allows it the ability to forego the need for use-cases such as automating boilerplate without the need"
+    [description    "D boasts one of the strongest, most flexible array of metaprogramming features amongst most existing languages,"
+					"which allows it the ability to perform use-cases such as automating boilerplate without the need"
 					"of external tooling; generating compiler optimised D code from a regex at compile-time; and running functions at compile-time"
 					"to generate values/more code. All done using the language's built-in features with little compromise."
     ]
@@ -35,7 +35,7 @@
     ]
 	[status			"WIP"]
 
-    [post "/blogs/MetaprogrammingInD/01_compile_time_values.md"]
+    [post "/blogs/MetaprogrammingInD/01_simple_text_template.md"]
 }
 
 @series

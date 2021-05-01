@@ -55,6 +55,7 @@ namespace PersonalWebsite.Services
     {
         public string           Title               { get; set; }
         public string           SeoTitle            { get; set; }
+        public string           SeoDescription      { get; set; }
         public string           SeoTag              { get; set; }
         public DateTimeOffset   DateCreated         { get; set; }
         public DateTimeOffset   DateUpdated         { get; set; }
@@ -135,6 +136,7 @@ namespace PersonalWebsite.Services
                                                           SeoTitle          = this.FindFirstMatchingMetadataAsText(document, "seo-title", "title"),
                                                           SeoTag            = this.FindMetadataAsText(document, "seo-tag"),
                                                           SeoUrl            = this.FindMetadataAsText(document, "seo-url"),
+                                                          SeoDescription    = this.FindMetadataAsText(document, "seo-description"),
                                                           CardImageGeneric  = this.FindMetadataAsText(document, "card-image"),
                                                           CardImageTwitter  = this.FindMetadataAsText(document, "card-image-twitter"),
                                                           GithubUrl         = $"https://github.com/BradleyChatha/PersonalWebsite/blob/master/PersonalWebsite/wwwroot/{relativePath}",

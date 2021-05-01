@@ -1,0 +1,18 @@
+DECLARE
+    $NAME
+    $AGE
+    $HOBBIES
+COMPUTE
+    $HOBBIES_LOUD : variables["$HOBBIES"].splitter(',').map!(str => "!!!"~str.strip(' ').toUpper~"!!!").fold!((a,b) => a~", "~b)
+    $MYSELF       : readText("views/template.txt")
+    $OTHER        : resolve!("other.txt")(["$HOWDY": "Y'ALL"])
+START
+My name is $NAME I am $AGE years old and my hobbies are: $HOBBIES
+
+If you couldn't hear me loud enough, my hobbies are: $HOBBIES_LOUD
+
+I can even print myself!
+$MYSELF
+
+And even... other templates:
+$OTHER
