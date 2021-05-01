@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/meta1
+meta1.so
+meta1.dylib
+meta1.dll
+meta1.a
+meta1.lib
+meta1-test-*
+*.exe
+*.o
+*.obj
+*.lst

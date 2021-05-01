@@ -19,8 +19,10 @@
     else
         seoIndexSuffix = "th"; // 4th, 24th, etc.
     ViewData["SeoDescription"] =
-        $"The {seoIndexString}{seoIndexSuffix} blog post of my {Model.Series.Reference} series. " +
-        $"Includes: {Model.Series.Tags.Aggregate((a, b) => $"{a} {b}")}";
+        (Model.CurrentPost.SeoDescription == null)
+        ? $"The {seoIndexString}{seoIndexSuffix} blog post of my {Model.Series.Reference} series. " +
+          $"Includes: {Model.Series.Tags.Aggregate((a, b) => $"{a} {b}")}"
+        : Model.CurrentPost.SeoDescription;
 
     int tabCount = (Model.LastPost != null && Model.NextPost != null)
                    ? 3

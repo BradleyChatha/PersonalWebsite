@@ -71,7 +71,10 @@
                     |
                     Updated <i>@series.Posts.OrderBy(p => p.DateUpdated).Last().DateUpdated.ToString(DATE_FORMAT)</i>
                 </small>
-                <small>Status: <i>@series.Series.Status</i></small>
+                @if(!series.Series.IsSingleSeries)
+                {
+                    <small>Status: <i>@series.Series.Status</i></small>
+                }
                 <p>@series.Series.Description</p>
 
                 @if(series.Series.IsSingleSeries)

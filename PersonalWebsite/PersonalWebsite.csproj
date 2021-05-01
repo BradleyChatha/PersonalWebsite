@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="ImageRaw\**" />
+    <Compile Remove="wwwroot\lib\**" />
     <Content Remove="ImageRaw\**" />
+    <Content Remove="wwwroot\lib\**" />
     <EmbeddedResource Remove="ImageRaw\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
     <None Remove="ImageRaw\**" />
+    <None Remove="wwwroot\lib\**" />
   </ItemGroup>
 
 
@@ -29,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>
