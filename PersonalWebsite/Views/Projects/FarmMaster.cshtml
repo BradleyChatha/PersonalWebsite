@@ -1,0 +1,247 @@
+@{
+    ViewData["Title"] = "^FarmMaster - My first foray into web development";
+    ViewData["NavItem"] = "Project";
+    ViewData["SeoDescription"] = "TODO.";
+    ViewData["SeoCanonical"] = "farmmaster";
+    ViewData["CssBundle"] = "farmmaster";
+
+    var genericTitle = "FarmMaster - My first foray into web development";
+}
+
+@section SchemaOrg {
+    <meta property="og:url"                 content="https://bradley.chatha.dev/farmmaster" />
+    <meta property="og:title"               content="@genericTitle" />
+    <meta property="og:description"         content="@ViewData["SeoDescription"]" />
+    <meta property="og:type"                content="article" />
+    <meta property="twitter:title"          content="@genericTitle" />
+    <meta property="twitter:description"    content="@ViewData["SeoDescription"]" />
+}
+
+<section>
+    <h1>FarmMaster</h1>
+    <p>
+        During my time as a student at AIM Educational Ltd, one of the projects I began work on was FarmMaster: a website solution
+        for managing and tracking livestock, and various other bits-and-bobs related to farming.
+    </p>
+    <p>
+        This project page isn't as colourful as my other project pages are, due to the fact that this is an abandoned project.
+        However, I still want to document this project, as all of my current knowledge about web development and system administation is all
+        thanks to FarmMaster.
+    </p>
+    <p>
+        There were 4 versions of FarmMaster in total. Version 1 seems to be lost to time. Version 2 requires code that probably doesn't exist anymore.
+        I was however able to get versions 3 and 4 running, so their sections will come with a video clip, showing off most of the functionality I got
+        around to implementing.
+    </p>
+    
+    <h2>Version 1</h2>
+    <p>
+        Version 1 was more of a learning project than a serious attempt at FarmMaster.
+    </p>
+    <p>
+        I used this version to introduce myself to horrible yet wonderful world of web development. I learned about: Bootstrap;
+        HTML; ASP Core fundamentals; EF Core fundamentals (database-first), and some very basic Javascript.
+    </p>
+    <p>
+        I don't quite remember how much we implemented within this version, but this is where I layed the groundwork of my knowledge for future attempts.
+    </p>
+
+    <h2>Version 2</h2>
+    <p>
+        In this version I was still using bootstrap, however now that I was more comfortable with web development and usage of ASP Core, I felt more
+        confident in being able to better design the codebase to cover my current and future needs.
+    </p>
+    <p>
+        This version was using basic AJAX GET and POST endpoints for anything dynamic, but for the most part the website was still mostly form-based.
+    </p>
+    <p>
+        This version had some interesting things though - I started to dip my toes into TypeScript, and the awful yet convenient world that is NPM.
+    </p>
+    <p>
+        I had also created two libraries which I thought would've helped me keep the code clean and sane:
+        <a href="https://gitlab.com/aimmis/aimdatamapper">AimDataMapper</a>, and <a href="https://gitlab.com/aimmis/aimlogin">AimLogin</a>. 
+    </p>
+    <p>
+        AimDataMapper was a library used to "easily" set up mappings between tables from different databases. Here's a small snippet:
+    </p>
+    <pre>
+        <code class="csharp">// Setup the data mappers
+new DataMapBuilder&lt;AimLoginContext, LivestockContext, UserDataMap, LivestockEntityTypes&gt;(services)
+    .UseSingleReference&lt;User, Role&gt;()
+    .UseSingleValue&lt;User, AlUserInfo&gt;();
+
+new DataMapBuilder&lt;LivestockContext, LivestockContext, AdmmGroupMap, AdmuGroupEntityTypes&gt;(services)
+    .UseUserType&lt;AdmuGroup&gt;()
+    .UseMapDatabase()
+    .UseMultiReference&lt;AdmuGroup, Critter&gt;();
+
+new DataMapBuilder&lt;LivestockContext, AimLoginContext, AdmmGroupMap, AdmuGroupEntityTypes&gt;(services)
+    .UseMultiReference&lt;AdmuGroup, User&gt;();</code>
+    </pre>
+    <p>
+        AimLogin was supposed to be a login library that was going to be shared between multiple AIM-related websites. It was pretty trash though in all
+        honesty. And besides, I found out about ASP Core's Identity stuff later on.
+    </p>
+    <p>
+        The final interesting thing about this project: It had a 'CustomScaffolder' tool which would generate all the CRUD '.cshtml' and controller files
+        for every generic thing (critters; holdings; vehicles, etc.) reflected from the database schema. It was a complete and utter mess.
+    </p>
+
+    <h2>Version 3</h2>
+    <p>
+        Version 3 was the most complete version of FarmMaster, but was still far from being complete.
+    </p>
+    <p>
+        For version 3 I moved away from Bootstrap and instead used <a href="https://fomantic-ui.com/">Fomantic UI</a> instead. I also
+        replaced most of the AJAX GETters with <a href="https://graphql.org/">GraphQL</a>, but there were still AJAX POST endpoints.
+    </p>
+    <p>
+        At this point I also transitioned over to code-first for EF Core, since I found it easier to model than with database-first. I had also
+        moved away from SQL Server and instead started to use <a href="https://www.postgresql.org/">Postgres</a> as I saw SQL Server as nothing but a limitation in comparison.
+    </p>
+    <p>
+        (Apologies for the low quality video - I don't want these videos to eat my bandwith allowance so they're compressed a decent amount!)
+    </p>
+    <video controls preload="metadata">
+        <source src="img/projects/farmmaster/v2_hd.webm" />
+    </video>
+    <p>
+        The issue with this version was that the code was still a complete and utter mess, both frontend and backend.
+    </p>
+    <p>
+        Backend-wise, this was my first time setting up GraphQL so it was mostly just a chaotic nightmare. For some reason ASP Core's claims
+        weren't automatically populating either, so there were some ugly hacks there. The data access layer was also just flat out bad and buggy.
+    </p>
+    <p>
+        I just... don't want to talk about the frontend code at all. Let's just say, I learned the hard way why there are so many Javascript front-end frameworks, 
+        and it drove me to learn <a href="https://v3.vuejs.org/">Vue</a> which is a decision I will never regret. *cough* also each page had their own specific
+        javascript that was often duplicated between other pages *cough*.
+    </p>
+    <p>
+        ASP Core uses a really trashy validation library by default, so I took it upon myself to make something slightly better/worse.
+        The <a href="https://github.com/BradleyChatha/jaster-validate-js">Javascript</a> side of things worked well on its own, but I also
+        added a <a href="https://github.com/BradleyChatha/jaster-validate-asp-core">C#</a> integration for it.
+    </p>
+    <p>
+        You can see I put a moderate amount of effort to make the UX not completely awful. I was still far off the mark, but at least I tried!
+    </p>
+    <p>
+        This version had a rather buggy yet robust role system; GDPR friendly contact storage; Dynamic user-created forms for animal life events;
+        Relatively decent animal search functions, and last but not least: GroupScript.
+    </p>
+    <p>
+        You'll see near the end of the video what GroupScript is, and I was definitely a bit optimistic about whether it was going to be useful or not, especially
+        for the type of people who worked at AIM, but I thought it was cool at the time. Just don't ask why I implemented half of it as a stored procedure.
+    </p>
+    <p>
+        This project was what I'd call my "booster" project. This is when I started to really get comfortable with ASP Core, Javascript/Typescript, server management, etc.
+        And from that point forward web development became much less stressful on my mind, and I could start to just bumble along and do whatever it is I wanted to get done.
+    </p>
+    <p>
+        Of course, there's a million different frameworks, paradigms, patterns, and concepts I still need to learn, but this is when web development started to open up for me.
+    </p>
+    
+    <h2>Version 4</h2>
+    <p>
+        I eventually got sick of how brittle and unusable the codebase for Version 3 was, so I started work on Version 4.
+    </p>
+    <p>
+        With version 4 I learned more about how to use Webpack and Gulp; I started to use my own CSS (via SASS) instead of relying on a pre-made styling framework;
+        I started to use ASP Core's features a bit more instead of hacking my own things on top of it, and just in general I was trying to use the tools given to me better
+        instead of just writing my own dodgy versions.
+    </p>
+    <p>
+        This version made use of Vue, SASS, GraphQL, Typescript, and most interestingly: the backend code had a modular architecture.
+    </p>
+    <video controls preload="metadata">
+        <source src="img/projects/farmmaster/v3_qhd.webm" />
+    </video>
+    <p>
+        You can <a href="https://github.com/Aim-Educational/FarmMaster">see for yourself</a> how the project was layed out, and while it wasn't the greatest, it
+        was so much easier to work with than any of the previous versions.
+    </p>
+    <p>
+        Because I was using my own responsive SASS, as well as using Vue, the front end was easy to maintain, improve, and easy to keep consistant between pages.
+    </p>
+    <p>
+        Because I was using GraphQL for both querying and mutations, there was a single unified way on both the front end and back end (excluding form POST endpoints)
+        to manipulate data.
+    </p>
+    <p>
+        This version had a core project which was the standard ASP Core loading point, but during loading it would then load up a list of 
+        predefined modules so they can inject their features into FarmMaster.
+    </p>
+    <p>
+        These modules were compiled into the final FarmMaster project, but technically with a bit of extra work FarmMaster would be able to 
+        dynamically load external plugins, which was one of the long-term goals I wanted to achieve.
+    </p>
+    <p>
+        Modules had to define and expose a class that implements the ModuleConfigurator base class: 
+    </p>
+    <pre>
+        <code class="csharp">public abstract class ModuleConfigurator
+{
+    public abstract ModuleInfo Info { get; }
+    public virtual void RegisterFeatureProviders(ApplicationPartManager parts) { }
+    public virtual void RegisterNavMenuItems(NavMenu menu) { }
+}</code>
+    </pre>
+    <p>
+        Modules could then do things such as: adding items onto the nav menu; adding onto the GraphQL schema; exposing an API for other modules to make use of (this is how
+        the GraphQL stuff is done); registering their controllers, middleware, views, and so on. I also used ASP Core's ApplicationFeature API to provide even further
+        configuration and support between modules and the core framework of FarmMaster.
+    </p>
+    <p>
+        Here is the AccountModule as an example:
+    </p>
+    <pre>
+        <code class="sharp">internal class AccountConfigureProvider : IApplicationFeatureProvider&lt;ConfigureFeature&gt;
+{
+    public void PopulateFeature(IEnumerable&lt;ApplicationPart&gt; parts, ConfigureFeature feature)
+    {
+        feature.ConfigurePipeline.Add(new AccountConfigurePipeline());
+        feature.ConfigureServices.Add(new AccountConfigureServices());
+    }
+}
+
+internal class AccountGraphQLProvider : IApplicationFeatureProvider&lt;GraphQLFeature&gt;
+{
+    public void PopulateFeature(IEnumerable&lt;ApplicationPart&gt; parts, GraphQLFeature feature)
+    {
+        feature.AddGraphQLPart&lt;AccountQueries&gt;();
+    }
+}
+
+public class Module : ModuleConfigurator
+{
+    public override ModuleInfo Info =&gt; this._info;
+    private readonly ModuleInfo _info = new ModuleInfo
+    {
+        Name = "AccountModule",
+        LoadOrder = 0
+    };
+
+    public override void RegisterFeatureProviders(ApplicationPartManager parts)
+    {
+        parts.FeatureProviders.Add(new AccountConfigureProvider());
+        parts.FeatureProviders.Add(new AccountGraphQLProvider());
+    }
+}</code>
+    </pre>
+
+    <h2>Conclusion</h2>
+    <p>
+        That's mostly it I guess. This all happened only within a year, and I even got an award for this project.
+    </p>
+    <p>
+        All my knowledge of Web dev, databases, server provisioning and management, etc. is all thanks to this project. So even though it's
+        not being worked on anymore (due to me no longer being at AIM), it's an invaluable part of my development as a programmer.
+    </p>
+</section>
+
+@section Scripts {
+    <script src="~/js/highlight.pack.js" asp-append-version="true"></script>
+    <script> 
+        hljs.initHighlightingOnLoad();
+    </script>
+}

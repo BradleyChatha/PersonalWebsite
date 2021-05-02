@@ -1,0 +1,26 @@
+@use "sass-common" as common;
+
+h1 {
+    align-self: center;
+    margin-bottom: 0;
+}
+
+section {
+    @include common.generic-font-sizing;
+    @include common.generic-column-width;
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+video {
+    max-width: 95%;
+    width: 860px;
+    margin: 0 auto;
+}
+
+pre {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

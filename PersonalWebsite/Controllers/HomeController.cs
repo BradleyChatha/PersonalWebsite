@@ -41,6 +41,12 @@ namespace PersonalWebsite.Controllers
             return View("/Views/Projects/Jcli.cshtml");
         }
 
+        [Route("/farmmaster")]
+        public IActionResult ProjectFarmMaster()
+        {
+            return View("/Views/Projects/FarmMaster.cshtml");
+        }
+
         [Route("/sitemap.xml")]
         public IActionResult Sitemap([FromServices] ISitemapGenerator sitemap)
         {
